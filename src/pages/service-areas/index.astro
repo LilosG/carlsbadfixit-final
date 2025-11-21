@@ -1,82 +1,165 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { serviceAreas } from "../../data/service-areas";
-import AreaCard from "../../components/AreaCard.astro";
+import PageCtaStrip from "../../components/PageCtaStrip.astro";
 
-const travelNotes = [
-  "Primary focus on coastal North County communities like Carlsbad, Oceanside, and Encinitas.",
-  "Select availability for nearby inland areas such as Vista and San Marcos.",
-  "Most visits are for single-family homes, townhomes, and small rentals.",
-  "Borderline areas are considered when the project scope and timing are a good fit."
+const areas = [
+  {
+    slug: "/service-areas/carlsbad/",
+    name: "Carlsbad, CA",
+    summary:
+      "Handyman visits for small to medium home projects in Carlsbad. Tidy work, clear expectations, and realistic timing.",
+    popularProjects: [
+      "Fence and gate repairs",
+      "Drywall and trim touch-ups",
+      "Lighting, fan, and TV updates",
+    ],
+  },
+  {
+    slug: "/service-areas/oceanside/",
+    name: "Oceanside, CA",
+    summary:
+      "Electrical visits for small to medium home projects in Oceanside and nearby neighborhoods.",
+    popularProjects: [
+      "Lighting upgrades",
+      "Switches, dimmers, and smart controls",
+      "Troubleshooting simple non-code issues",
+    ],
+  },
+  {
+    slug: "/service-areas/encinitas/",
+    name: "Encinitas, CA",
+    summary:
+      "Handyman visits for small and medium home projects across Encinitas communities.",
+    popularProjects: [
+      "Interior carpentry and woodwork",
+      "Fixture swaps and small repairs",
+      "Drywall patches and paint touch-ups",
+    ],
+  },
+  {
+    slug: "/service-areas/vista/",
+    name: "Vista, CA",
+    summary:
+      "Visits focused on small to medium home projects in Vista, CA and nearby neighborhoods.",
+    popularProjects: [
+      "Honey-do lists and small repairs",
+      "Plumbing fixture swaps",
+      "Fence, gate, and exterior touch-ups",
+    ],
+  },
+  {
+    slug: "/service-areas/san-marcos/",
+    name: "San Marcos, CA",
+    summary:
+      "Handyman services for townhomes, condos, and single-family homes in San Marcos, CA.",
+    popularProjects: [
+      "TV mounting and media walls",
+      "Furniture assembly and installation",
+      "Drywall, paint, and trim repairs",
+    ],
+  },
 ];
 ---
+
 <BaseLayout
-  title="Service Areas | Carlsbad Fix It"
-  description="Carlsbad Fix It provides local handyman services in Carlsbad and nearby North County San Diego communities."
+  title="Handyman service areas in North County San Diego"
+  description="Local handyman visits based in Carlsbad, CA and serving nearby North County San Diego communities. Travel is kept reasonable so more of your visit goes toward actual repair and improvement work."
 >
-  <!-- SERVICE AREAS GRID -->
-  <section class="space-y-6">
-    <div class="section-header">
-      <p class="eyebrow">
-        Service areas
-      </p>
-      <h1>
-        Handyman service areas in North County San Diego
-      </h1>
-      <p class="section-subtitle max-w-2xl">
-        Carlsbad Fix It is based in Carlsbad and focuses on nearby coastal and inland North County communities. If you
-        do not see your city listed, you can still get in touch to ask about availability.
-      </p>
-    </div>
-    <div class="grid gap-5 md:grid-cols-3">
-      {serviceAreas.map((area) => (
-        <AreaCard area={area} />
-      ))}
-    </div>
-  </section>
+  <main class="bg-cf-page pb-16 pt-8 md:pb-24 md:pt-10">
+    <div class="mx-auto flex max-w-6xl flex-col gap-12 px-4 md:px-6">
+      <!-- HERO -->
+      <section class="rounded-3xl bg-gradient-to-br from-cf-heroStart to-cf-heroEnd p-8 text-white shadow-soft md:p-10">
+        <div class="space-y-4">
+          <p class="eyebrow text-cf-heroEyebrow">
+            Where we offer handyman visits
+          </p>
+          <h1 class="text-h1 font-semibold leading-tight">
+            Handyman service areas in North County San Diego
+          </h1>
+          <p class="max-w-2xl text-body-md text-white/90">
+            Visits are focused in North County communities. Travel is kept
+            reasonable so more of your visit goes toward actual repair and
+            improvement work. Availability in each area depends on scheduling
+            and project scope.
+          </p>
 
-  <!-- COVERAGE DETAILS + TRUST ASIDE -->
-  <section class="grid gap-8 md:grid-cols-[minmax(0,1.7fr)_minmax(0,1.3fr)] md:items-start">
-    <div class="space-y-4">
-      <p class="eyebrow">
-        Coverage
-      </p>
-      <h2 class="text-lg font-semibold text-cf-text">
-        Local handyman coverage across coastal and nearby inland communities.
-      </h2>
-      <p class="text-body-sm">
-        Most projects are within a short drive of Carlsbad. This keeps travel time reasonable, which helps protect your
-        schedule and keeps visits focused on actual repair and improvement work. If you are just outside the listed
-        areas, you can still reach out with details.
-      </p>
-      <ul class="grid gap-2 text-sm text-cf-textMuted sm:grid-cols-2">
-        {travelNotes.map((item) => (
-          <li class="flex items-start gap-2">
-            <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-cf-accentBlueSoft text-[10px] font-semibold text-cf-accentBlue">
-              ✓
-            </span>
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
+          <div class="mt-4 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-wide text-white/80">
+            <span class="rounded-full bg-white/10 px-3 py-1 backdrop-blur">Carlsbad, CA</span>
+            <span class="rounded-full bg-white/10 px-3 py-1 backdrop-blur">Oceanside, CA</span>
+            <span class="rounded-full bg-white/10 px-3 py-1 backdrop-blur">Encinitas, CA</span>
+            <span class="rounded-full bg-white/10 px-3 py-1 backdrop-blur">Vista, CA</span>
+            <span class="rounded-full bg-white/10 px-3 py-1 backdrop-blur">San Marcos, CA</span>
+          </div>
+        </div>
+      </section>
 
-    <aside class="card-soft space-y-4">
-      <p class="eyebrow">
-        Not sure if you are in range?
-      </p>
-      <p class="text-sm text-cf-text">
-        Borderline ZIP codes and nearby communities are often possible, especially for projects that can be completed in
-        a single visit. The best way to check is to share your location, a short list of tasks, and timing.
-      </p>
-      <a href="/contact/" class="btn-primary mt-1 w-full text-xs uppercase tracking-wide">
-        Ask about availability
-      </a>
-      <p class="text-[11px] text-cf-textMuted">
-        You can also call or text
-        <span class="font-semibold text-cf-accentBlue"> (808) 226-6681</span> to quickly confirm whether your address is
-        within the current service area.
-      </p>
-    </aside>
-  </section>
+      <!-- COVERAGE GRID -->
+      <section class="space-y-6">
+        <header class="space-y-2">
+          <p class="eyebrow">Neighborhood coverage</p>
+          <h2 class="text-h2 font-semibold text-cf-text">
+            Local option for small home projects
+          </h2>
+          <p class="max-w-2xl text-body-sm text-cf-textMuted">
+            Each area below includes a mix of neighborhoods typically included, and the types of
+            properties that are a good fit. Most projects are scoped so they can be completed in a
+            single visit wherever possible, with larger projects broken into clear phases.
+          </p>
+        </header>
+
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {areas.map((area) => (
+            <article class="card flex h-full flex-col justify-between">
+              <div class="space-y-2">
+                <p class="text-[11px] font-semibold uppercase tracking-wide text-cf-textMuted">
+                  Service area
+                </p>
+                <h3 class="text-base font-semibold text-cf-text">
+                  {area.name}
+                </h3>
+                <p class="text-sm text-cf-textMuted">
+                  {area.summary}
+                </p>
+
+                <div class="mt-3 space-y-1">
+                  <p class="text-[11px] font-semibold uppercase tracking-wide text-cf-textMuted">
+                    Popular services in this area
+                  </p>
+                  <ul class="space-y-1 text-sm text-cf-textMuted">
+                    {area.popularProjects.map((project) => (
+                      <li>• {project}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div class="mt-4 flex items-center justify-between gap-3">
+                <a
+                  href={area.slug}
+                  class="text-sm font-semibold text-cf-link hover:underline"
+                >
+                  View details for {area.name}
+                </a>
+                <a
+                  href={`${area.slug}#request`}
+                  class="btn btn-primary btn-sm"
+                >
+                  Request a visit
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- CTA STRIP -->
+      <div class="mt-10 md:mt-12">
+        <PageCtaStrip
+          eyebrow="Next steps"
+          title="Ready to see if your home is in our service area?"
+          body="Share your address or general neighborhood, a short list of projects, and any helpful photos. You will receive clear next steps and a no-obligation estimate for your home in Carlsbad, CA or a nearby community."
+        />
+      </div>
+    </div>
+  </main>
 </BaseLayout>

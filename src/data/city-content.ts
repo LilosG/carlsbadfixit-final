@@ -1,19 +1,23 @@
+export interface CityPopularProject {
+  title: string;
+  summary: string;
+}
+
+export interface CityReviewSnippet {
+  quote: string;
+  name: string;
+  location?: string;
+  role?: string;
+}
+
 export interface CityContent {
   intro?: string;
-  popularProjects?: {
-    title: string;
-    summary: string;
-  }[];
+  popularProjects?: CityPopularProject[];
   neighborhoods?: string[];
   propertyTypes?: string[];
   landlordNote?: string;
   businessNote?: string;
-  reviewSnippet?: {
-    quote: string;
-    name: string;
-    location: string;
-    role?: string;
-  };
+  reviewSnippet?: CityReviewSnippet;
 }
 
 export const cityContent: Record<string, CityContent> = {
@@ -24,18 +28,18 @@ export const cityContent: Record<string, CityContent> = {
       {
         title: "Fence and gate repairs",
         summary:
-          "Repairing damaged fence sections, tightening hardware, and tuning gates so they close smoothly again."
+          "Replacing damaged fence sections, tightening hardware, and tuning gates so they close smoothly again.",
       },
       {
         title: "Drywall and trim touch-ups",
         summary:
-          "Patching wall dings and holes, repairing corners, and updating baseboards or casing where needed."
+          "Patching wall dings and holes, repairing corners, and updating baseboards or casing where needed.",
       },
       {
         title: "Lighting, fan, and TV updates",
         summary:
-          "Swapping light fixtures and fans, adding dimmers, and mounting TVs with cables organized where possible."
-      }
+          "Swapping light fixtures and fans, adding dimmers, and mounting TVs with cables organized where possible.",
+      },
     ],
     neighborhoods: [
       "Olde Carlsbad",
@@ -43,13 +47,13 @@ export const cityContent: Record<string, CityContent> = {
       "La Costa",
       "Bressi Ranch",
       "Calavera Hills",
-      "Aviara and nearby communities"
+      "Aviara and nearby communities",
     ],
     propertyTypes: [
       "Single-family homes",
       "Townhomes and condos",
       "Smaller rental homes",
-      "Home offices and studios"
+      "Home offices and studios",
     ],
     landlordNote:
       "Helpful for small rental portfolios that need occasional drywall repairs, fixture swaps, or honey-do style lists between longer tenancies.",
@@ -60,161 +64,192 @@ export const cityContent: Record<string, CityContent> = {
         "They handled drywall repairs, a few trim fixes, and a new light in one visit. Everything looked great and was cleaned up before they left.",
       name: "Sarah M.",
       location: "Carlsbad, CA",
-      role: "Homeowner"
-    }
+      role: "Homeowner",
+    },
   },
 
   oceanside: {
     intro:
-      "Handyman visits in Oceanside often focus on carpentry and woodwork, lighting and fan updates, drywall repair, and honey-do style punch lists for coastal homes.",
+      "Handyman visits for small to medium home projects in Oceanside, CA and nearby coastal neighborhoods. Visits are scoped so work can be completed in a clear service window with realistic timing.",
     popularProjects: [
       {
-        title: "Coastal carpentry maintenance",
+        title: "Coastal wear-and-tear repairs",
         summary:
-          "Tightening and repairing exterior gates, railings, and small wood structures that see sun and salt exposure."
+          "Tightening loose exterior hardware, replacing rusted fasteners, and addressing small patches of wood rot before they spread.",
       },
       {
-        title: "Fixture and hardware refresh",
+        title: "Lighting and electrical updates",
         summary:
-          "Replacing faucets, shower heads, and cabinet hardware to freshen up kitchens and baths without a full remodel."
+          "Swapping tired light fixtures and fans, adding dimmers and smart switches, and troubleshooting simple non-code issues.",
       },
       {
-        title: "Small drywall and paint prep",
+        title: "Rental turnover punch lists",
         summary:
-          "Patching drywall around previous fixtures, smoothing small areas, and preparing walls for painting."
-      }
+          "Touching up paint, adjusting doors, and taking care of small repairs between tenants or short-term rental guests.",
+      },
     ],
     neighborhoods: [
       "Fire Mountain",
       "South Oceanside",
+      "Downtown Oceanside",
       "Rancho Del Oro",
-      "Arrowood",
-      "Downtown Oceanside condos and townhomes"
+      "Ocean Hills",
+      "North Valley and nearby communities",
     ],
     propertyTypes: [
-      "Primary homes",
-      "Duplexes and smaller rentals",
-      "Condos and townhomes",
-      "Small commercial suites"
+      "Single-family homes and cottages",
+      "Townhomes and condos",
+      "Small rental homes and ADUs",
+      "Duplexes and small multifamily buildings",
     ],
     landlordNote:
-      "Good fit for owners who occasionally need drywall repairs, plumbing fixture swaps, and other small tasks handled in a single visit.",
+      "Good fit for small punch lists between guests or tenants—tightening up loose items, touching up paint, and handling minor repairs so the property is ready for the next stay.",
     businessNote:
-      "Minor repairs and improvements for Oceanside offices and storefronts, such as wall repair, shelving installs, and fixture changes."
+      "Light improvement projects for Oceanside storefronts, studios, and small offices, scheduled to minimize disruption to daily operations.",
+    reviewSnippet: {
+      quote:
+        "Communication was clear, they arrived on time, and our Oceanside rental was ready for the next guests without any loose ends.",
+      name: "Josh T.",
+      location: "Oceanside, CA",
+      role: "Small landlord",
+    },
   },
 
   encinitas: {
     intro:
-      "Encinitas homeowners often use Carlsbad Fix It for fixture updates, drywall repair, small carpentry projects, and TV mounting between larger remodels.",
+      "Handyman services for small and medium projects across Encinitas communities. Visits are planned around realistic timing, tidy work areas, and clear expectations on what will be completed.",
     popularProjects: [
       {
-        title: "Kitchen and bath fixture updates",
+        title: "Interior carpentry and woodwork",
         summary:
-          "Replacing faucets, disposals, shower heads, and vanity lighting to modernize high-use spaces."
+          "Repairing trim, casing, and baseboards; installing shelves; and tightening up small framing details that make rooms feel finished.",
       },
       {
-        title: "Built-ins and storage installs",
+        title: "Fixture swaps and small repairs",
         summary:
-          "Assembling and anchoring shelving, closet systems, and storage cabinets for busy households."
+          "Updating faucets, swapping hardware, and taking care of the small fixes that pile up in busy homes.",
       },
       {
-        title: "Wall repair and TV mounting",
+        title: "Drywall patches and paint touch-ups",
         summary:
-          "Repairing drywall from previous mounts, patching cable holes, and mounting TVs with a clean final look."
-      }
+          "Patching nail pops, repairing cracks, and blending in paint so patched areas do not draw attention.",
+      },
     ],
     neighborhoods: [
       "Leucadia",
-      "Cardiff-by-the-Sea",
+      "Old Encinitas",
       "New Encinitas",
+      "Cardiff-by-the-Sea",
       "Olivenhain",
-      "Encinitas Ranch"
     ],
     propertyTypes: [
       "Single-family homes",
-      "Smaller rentals and ADUs",
-      "Condos and townhomes",
-      "Home offices and creative studios"
+      "Townhomes and condos",
+      "Smaller rental properties",
+      "Home offices and creative studios",
     ],
     landlordNote:
-      "Occasional visits for small repair lists, fixture swaps, and drywall patches in Encinitas rental homes.",
+      "Useful for investors and small landlords who need occasional touch-ups and repairs between longer tenancies without engaging a full remodel contractor.",
     businessNote:
-      "Light handyman work for Encinitas offices and studios, including shelving installs and small repairs."
+      "Light repairs and adjustments for Encinitas boutiques, studios, and professional offices that want work completed cleanly and on a predictable schedule.",
+    reviewSnippet: {
+      quote:
+        "They worked neatly around our family schedule, kept us in the loop, and left everything looking finished and put together.",
+      name: "Emily R.",
+      location: "Encinitas, CA",
+      role: "Homeowner",
+    },
   },
 
   vista: {
     intro:
-      "Vista homeowners rely on Carlsbad Fix It for focused handyman visits that combine drywall repair, fixture swaps, carpentry, and TV mounting into a single service window.",
+      "Handyman visits focused on small to medium home projects in Vista, CA and nearby neighborhoods. Many projects can be combined into a single visit wherever possible.",
     popularProjects: [
       {
-        title: "Drywall patching and texture blends",
+        title: "Honey-do lists and small repairs",
         summary:
-          "Repairing holes, cracks, and dents in walls and ceilings with texture blended to match the surrounding area."
+          "Tackling a mixed list of small repairs—doors that stick, hardware that needs tightening, and fixtures that need attention.",
       },
       {
-        title: "Fan and lighting upgrades",
+        title: "Drywall and ceiling patches",
         summary:
-          "Replacing dated fixtures with modern ceiling fans and lights, adding dimmers where appropriate."
+          "Repairing small ceiling stains after plumbing fixes, patching holes, and blending in texture and paint.",
       },
       {
-        title: "Door, lock, and hardware fixes",
+        title: "Fence and yard structures",
         summary:
-          "Adjusting sticky doors, replacing locks, and updating handles or hinges for smoother operation."
-      }
+          "Repairing fence panels and gates, tuning up small outdoor structures, and replacing worn hardware.",
+      },
     ],
     neighborhoods: [
       "Shadowridge",
       "Vista Village area",
       "Buena Creek",
-      "South Vista neighborhoods"
+      "Twin Oaks Valley",
+      "North Vista neighborhoods",
     ],
     propertyTypes: [
       "Single-family homes",
       "Townhomes and condos",
-      "Smaller rentals and investment properties"
+      "Small rental homes and duplexes",
+      "Manufactured homes and cottages",
     ],
     landlordNote:
-      "Ideal for small lists of drywall repair, carpentry fixes, and fixture replacements in Vista properties.",
+      "Helpful for small portfolios where each visit needs to handle a list of issues in one trip—ideal for move-in and move-out touch-ups.",
     businessNote:
-      "Small handyman projects for Vista offices and workspaces, such as TV mounting, shelving, and minor repairs."
+      "Service for Vista offices, service businesses, and studios that need basic repairs handled without a large project crew.",
+    reviewSnippet: {
+      quote:
+        "They knocked out a full list of little issues in one visit and left the house in much better shape than when they arrived.",
+      name: "Carlos G.",
+      location: "Vista, CA",
+      role: "Homeowner",
+    },
   },
 
   "san-marcos": {
     intro:
-      "In San Marcos, many handyman visits focus on drywall repair, small carpentry and trim projects, lighting and fan updates, and TV mounting for busy households and students.",
+      "Handyman services for townhomes, condos, and single-family homes in San Marcos, CA. Visits are scheduled to keep travel efficient and maximize time spent on actual repairs.",
     popularProjects: [
       {
-        title: "Wall repair in active homes",
+        title: "TV mounting and media walls",
         summary:
-          "Patching drywall from daily wear, previous shelves, and older mounts, then preparing surfaces for paint."
+          "Mounting TVs, organizing basic cabling where possible, and making sure brackets are safely anchored into framing.",
       },
       {
-        title: "Kitchen and bath tune-ups",
+        title: "Furniture assembly and installation",
         summary:
-          "Swapping faucets, disposals, shower heads, and lighting to keep high-use spaces working smoothly."
+          "Assembling flat-pack furniture, anchoring shelves and cabinets, and securing tall pieces to walls for safety.",
       },
       {
-        title: "TV mounting and media setups",
+        title: "Fixture and hardware updates",
         summary:
-          "Mounting TVs, installing brackets, and organizing cables to keep shared spaces tidy."
-      }
+          "Swapping faucets, replacing dated hardware, and updating small details that make newer homes feel customized.",
+      },
     ],
     neighborhoods: [
       "San Elijo Hills",
       "Discovery Hills",
-      "Twin Oaks",
       "Lake San Marcos",
-      "Neighborhoods near CSUSM"
+      "Twin Oaks Valley",
+      "Old Creek Ranch and nearby communities",
     ],
     propertyTypes: [
       "Single-family homes",
-      "Condos and townhomes",
-      "Student rentals",
-      "Small landlord portfolios"
+      "Townhomes and condos",
+      "Student and faculty rentals",
+      "Small commercial suites and offices",
     ],
     landlordNote:
-      "Good fit for owners who occasionally need drywall repair, lighting or fan swaps, and other small projects in San Marcos homes.",
+      "Useful for owners of student and faculty rentals who need periodic touch-ups, fixture swaps, and small repairs between tenants.",
     businessNote:
-      "Light handyman work for San Marcos offices and studios, including carpentry, wall repair, and fixture changes."
-  }
+      "Light repairs and improvements for professional offices and studios in San Marcos that prefer small, clearly scoped visits.",
+    reviewSnippet: {
+      quote:
+        "Scheduling was easy, the work was tidy, and everything was wrapped up within the service window they promised.",
+      name: "Lauren P.",
+      location: "San Marcos, CA",
+      role: "Homeowner",
+    },
+  },
 };

@@ -1,351 +1,405 @@
-export interface ServiceFAQItem {
+export interface ServiceFaqItem {
   question: string;
   answer: string;
+}
+
+export interface ServiceProjectsColumn {
+  title: string;
+  items: string[];
 }
 
 export interface ServicePageContent {
   intro?: string;
   typicalProjectsHeading?: string;
   typicalProjectsIntro?: string;
-  typicalProjectsColumns?: { title: string; items: string[] }[];
+  typicalProjectsColumns?: ServiceProjectsColumn[];
   pricingHeading?: string;
   pricingParagraphs?: string[];
-  faq?: ServiceFAQItem[];
+  faq?: ServiceFaqItem[];
 }
 
 export const serviceContent: Record<string, ServicePageContent> = {
   "carpentry-woodwork": {
-    intro:
-      "Small to medium carpentry projects that focus on clean, functional repairs: fence sections, gates, trim, doors, and other details that make a home feel finished.",
+    intro: `Small to medium carpentry projects that keep trim, doors, and wood surfaces looking tidy without the mess and cost of a full remodel. Great for punch-list style repairs and light improvements around the house.`,
     typicalProjectsHeading: "Typical carpentry and woodwork projects",
-    typicalProjectsIntro:
-      "Most visits combine a few of these items so they can be completed in a single service window.",
+    typicalProjectsIntro: `Projects that repair or refresh existing woodwork instead of rebuilding your home from the studs. Many of these can be grouped into a single, well-planned visit.`,
     typicalProjectsColumns: [
       {
-        title: "Exterior repairs and small structures",
+        title: "Exterior repairs",
         items: [
-          "Repair or replace damaged fence sections and gate posts",
-          "Adjust or rebuild wood gates that no longer close correctly",
-          "Tighten, replace, or add new gate hardware and latches",
-          "Assemble and install small sheds or storage cabinets",
-          "Replace rotted trim or small exterior wood details"
+          "Replace damaged fence boards or posts on wood fences",
+          "Repair or rebuild wood gates that no longer close correctly",
+          "Tighten or replace loose deck boards, steps, or handrails",
+          "Patch small areas of trim or fascia that have started to rot"
         ]
       },
       {
-        title: "Interior trim and finish carpentry",
+        title: "Interior trim and doors",
         items: [
-          "Install or replace baseboards, casing, and simple trim profiles",
-          "Replace damaged door jambs, stops, and strike plates",
-          "Plane or adjust interior doors that rub or stick",
-          "Install new interior or exterior doors where framing allows",
-          "Patch, sand, and prep wood surfaces for painting"
+          "Adjust sticking interior doors and latches so they close smoothly",
+          "Replace or install baseboards, casings, and simple trim profiles",
+          "Repair small gaps, dings, and nail holes in door and window trim",
+          "Secure loose handrails or simple interior guardrails"
+        ]
+      },
+      {
+        title: "Built-ins and storage",
+        items: [
+          "Install simple shelving in closets, garages, and pantries",
+          "Re-secure sagging closet rods or supports",
+          "Tune up cabinet doors and drawer fronts that no longer sit level",
+          "Add basic blocking or backing in walls for future projects"
         ]
       }
     ],
-    pricingHeading: "How pricing works for carpentry and woodwork",
+    pricingHeading: "How pricing works for carpentry and woodwork visits",
     pricingParagraphs: [
-      "Smaller carpentry projects are often billed as a minimum service visit, especially when work is limited to one or two locations around the home.",
-      "Larger projects, or work that involves multiple rooms or exterior areas, is typically quoted up front once the full scope is clear.",
-      "Photos of the existing conditions are very helpful. When you request an estimate, include close-up photos of any damage along with a wider view that shows how the area fits into the rest of the space."
+      "Most carpentry and woodwork visits are priced as a single service visit that covers drive time, set-up, and clean-up, plus the time needed to complete your list of repairs.",
+      "Smaller tasks can often be combined into one visit as long as they are in the same general area of the home and use similar tools. Grouping projects together keeps your overall cost lower than booking several separate trips.",
+      "Material costs are billed in addition to labor. You are welcome to provide your own fixtures or lumber, or we can source common items locally and include them on your invoice."
     ],
     faq: [
       {
-        question: "Can you match my existing trim or fence style?",
-        answer:
-          "In many cases, yes. If the exact material is still available, we will aim to match it closely. When exact matches are not possible, we will suggest options that blend well with your existing style and explain any differences up front."
+        question: "Do you handle small fence and gate repairs?",
+        answer: "Yes. Replacing damaged fence boards, tightening hardware, and tuning up wood gates are all good fits for a handyman visit, as long as we are not rebuilding long runs of fence from scratch."
       },
       {
-        question: "Do you build large decks or room additions?",
-        answer:
-          "No. Carlsbad Fix It focuses on small to medium carpentry projects such as fence repairs, gates, trim, and doors. Larger structural projects are better handled by a general contractor."
+        question: "Can you build custom furniture or built-ins from scratch?",
+        answer: "Custom furniture and fully built-in cabinetry are usually better handled by a dedicated carpenter or cabinet shop. Our carpentry visits focus on small repairs and straightforward projects that fit into a single service window."
+      },
+      {
+        question: "Do I need to buy materials ahead of time?",
+        answer: "You are welcome to purchase specific trim, lumber, or hardware if you have something particular in mind. Otherwise, we can recommend standard options, pick them up locally, and include them on your final invoice."
       }
     ]
   },
 
   electrical: {
-    intro:
-      "Clean, code-conscious help with small electrical projects such as fixture swaps, dimmers, and additional switches so rooms are brighter and easier to use.",
+    intro: `Small electrical projects that keep lights, switches, and outlets working properly without the disruption of a major rewire. Ideal for fixture swaps, device replacements, and simple troubleshooting.`,
     typicalProjectsHeading: "Typical electrical projects",
-    typicalProjectsIntro:
-      "Electrical visits focus on small projects that can be safely completed without major rewiring.",
+    typicalProjectsIntro: `Projects that stay within your existing wiring and panel, with easy access and a clear scope. Larger rewiring, new circuits, and panel upgrades are typically referred to a dedicated electrical contractor.`,
     typicalProjectsColumns: [
       {
         title: "Lighting upgrades",
         items: [
-          "Swap outdated ceiling fixtures for new flush-mount or semi-flush lights",
-          "Replace vanity lights in bathrooms for better, more even lighting",
-          "Install or replace basic ceiling fans where wiring already exists",
-          "Update kitchen or dining fixtures to match new finishes",
-          "Replace failing or noisy bathroom fans where access allows"
+          "Replace outdated ceiling fixtures with new flush-mount or semi-flush lights",
+          "Swap old incandescent fixtures for LED fixtures where wiring is already in place",
+          "Install or replace basic bath vanity lights and entry lights",
+          "Change out existing switches for dimmers where compatible"
         ]
       },
       {
         title: "Switches, dimmers, and outlets",
         items: [
-          "Replace worn or noisy switches and standard dimmers",
-          "Install modern rocker-style switches and wall plates",
-          "Replace standard outlets in living spaces and bedrooms",
-          "Add USB or tamper-resistant outlets where location is suitable",
-          "Troubleshoot simple non-code issues such as loose devices or flickering from worn switches"
+          "Replace worn or noisy switches with new standard devices",
+          "Install tamper-resistant or decor-style outlets in place of older devices",
+          "Swap existing outlets for GFCI devices where required and wiring allows",
+          "Replace cracked or discolored wall plates for a cleaner look"
+        ]
+      },
+      {
+        title: "Small troubleshooting and safety tweaks",
+        items: [
+          "Investigate flickering at a single fixture or device",
+          "Tighten loose devices that have started to move in the box",
+          "Label switches and controls so they are easier to understand",
+          "Upgrade exposed extension cord set-ups to safer, code-aware solutions where feasible"
         ]
       }
     ],
-    pricingHeading: "How pricing works for small electrical projects",
+    pricingHeading: "How pricing works for electrical visits",
     pricingParagraphs: [
-      "Pricing depends on access, ceiling height, and how many fixtures or devices are being replaced during the same visit.",
-      "Many small swaps can be combined into a single minimum service visit when they are in the same general area of the home.",
-      "Electrical work is scoped conservatively. If existing wiring or panels are not in good condition, you may be referred to a licensed electrician who handles larger or more complex projects."
+      "Electrical visits are scheduled in blocks of time so there is room to safely shut off circuits, verify connections, and test devices before we leave.",
+      "Pricing depends on access, ceiling height, and how many fixtures or devices we can group into one visit. Swapping several fixtures or devices in the same area is usually more cost-effective than doing them one at a time.",
+      "Major work such as new circuits, panel changes, whole-house rewiring, or trenching for exterior power is outside the scope of a handyman visit. If your project turns out to be larger than expected, we can recommend when to involve a licensed electrical contractor."
     ],
     faq: [
       {
-        question: "Do you run new circuits or upgrade electrical panels?",
-        answer:
-          "No. Carlsbad Fix It focuses on small fixture, switch, and outlet projects where the existing wiring and panel are in good condition. New circuits, sub-panels, and service upgrades are handled by full-service electrical contractors."
+        question: "Can you replace light fixtures and ceiling fans?",
+        answer: "Yes, as long as there is an existing, properly supported electrical box and the new fixture is a safe match for the location. Very heavy fixtures or fans on tall ceilings may require a different type of contractor or lift equipment."
       },
       {
-        question: "Can you install smart switches or smart dimmers?",
-        answer:
-          "Yes, in many cases. As long as the devices are compatible with your wiring and lighting, they can often be installed during a standard visit. Sharing product information and photos of the existing switches ahead of time is helpful."
+        question: "Do you work on electrical panels or run new circuits?",
+        answer: "No. Main service panels, subpanels, new circuits, and service upgrades should always be handled by a licensed electrical contractor. Our focus is on small, accessible projects within existing circuits."
+      },
+      {
+        question: "Do I need to provide the fixtures and devices?",
+        answer: "Most homeowners prefer to choose their own fixtures and devices so they match the rest of the home. If you would like suggestions, we can point you toward common options that work well in small projects."
       }
     ]
   },
 
   "furniture-assembly-installations": {
-    intro:
-      "Careful assembly and installation for furniture, shelving, and wall décor so rooms feel organized, balanced, and ready to use.",
+    intro: `Assembly and installation projects that turn boxes and loose parts into finished pieces of furniture, shelves, and wall décor without leaving packaging or fasteners behind.`,
     typicalProjectsHeading: "Typical furniture assembly and installation projects",
-    typicalProjectsIntro:
-      "Most appointments combine a few pieces of furniture or a mix of furniture and wall installations.",
+    typicalProjectsIntro: `Projects that involve unpacking, assembling, and securing ready-made pieces, rather than designing fully custom cabinetry or built-ins.`,
     typicalProjectsColumns: [
       {
-        title: "Furniture assembly",
+        title: "Flat-pack furniture",
         items: [
-          "Assemble beds, dressers, and nightstands from flat-pack kits",
-          "Set up desks, bookshelves, and office storage",
-          "Assemble dining tables and chairs with all hardware secured",
-          "Build storage cabinets for laundry rooms, garages, or hallways",
-          "Level and adjust assembled pieces so doors and drawers work smoothly"
+          "Assemble desks, dressers, nightstands, and bookcases from major retailers",
+          "Put together bed frames and headboards with included hardware",
+          "Assemble small tables, benches, and storage cubes",
+          "Level furniture on uneven floors so doors and drawers work smoothly"
         ]
       },
       {
-        title: "Wall mounting and décor",
+        title: "Shelving and storage",
         items: [
-          "Install floating shelves and standard wall shelves with appropriate anchors",
-          "Hang artwork, framed photos, and mirrors in drywall or over studs",
-          "Mount small cabinets, coat racks, and wall hooks",
-          "Center groupings of frames or décor along a wall or over furniture",
-          "Secure tall furniture to walls with safety straps where helpful"
+          "Install simple wall-mounted shelving in living areas, garages, and closets",
+          "Hang coat hooks, peg rails, and simple organizers",
+          "Secure tall furniture to studs with anti-tip kits for safety",
+          "Mount small cabinets or wall cubes within manufacturer limits"
+        ]
+      },
+      {
+        title: "Home décor installations",
+        items: [
+          "Hang curtain rods and basic window hardware",
+          "Install towel bars, robe hooks, and bath accessories",
+          "Hang framed art, mirrors, and decor pieces with appropriate anchors",
+          "Adjust existing hardware so lines are straight and consistent"
         ]
       }
     ],
-    pricingHeading: "How pricing works for assembly and installations",
+    pricingHeading: "How pricing works for furniture assembly and installations",
     pricingParagraphs: [
-      "Pricing is based on the number of pieces, manufacturer complexity, and whether wall mounting is involved.",
-      "Flat-pack furniture from different brands can often be combined into one visit as long as the total assembly time remains reasonable.",
-      "Sharing product links or clear photos of the boxes and instruction sheets ahead of time helps estimate the time required and confirm that all parts and hardware are on site."
+      "Furniture and installation visits are usually priced by time, with a minimum visit that covers travel, set-up, and clean-up.",
+      "Clear instructions and complete hardware help keep your visit efficient. If pieces are missing or the product has manufacturing issues, additional time may be needed to make everything work safely.",
+      "Very large or unusually complex systems, such as full-wall closet systems or commercial shelving, may require a separate review or a specialty installer."
     ],
     faq: [
       {
-        question: "Should I open the boxes before the visit?",
-        answer:
-          "It is not required, but opening boxes enough to confirm the correct items arrived and that no major parts are missing is helpful. If anything seems damaged or incomplete, it is best to address that with the retailer before scheduling assembly."
+        question: "How many pieces can you assemble in one visit?",
+        answer: "It depends on the size and complexity of each item. A typical visit might include several small pieces or one larger piece plus a few wall-mounted items. If you share your list ahead of time, we can estimate what fits comfortably into a single visit."
       },
       {
-        question: "Can you move heavy furniture between rooms?",
-        answer:
-          "Light repositioning as part of an assembly visit is usually fine, but full-house furniture moving is not offered. Large moves are best handled by professional movers with the right equipment."
+        question: "Can you secure tall furniture to the wall?",
+        answer: "Yes. Securing tall dressers, bookcases, and media cabinets with manufacturer-supplied anti-tip brackets is a great fit for a handyman visit, especially in homes with kids or pets."
+      },
+      {
+        question: "Do you bring anchors and basic hardware?",
+        answer: "Yes. We carry common anchors and fasteners for drywall and wood framing. If your project needs specialty hardware or brackets, we may ask you to purchase those ahead of time or add a quick materials run to your visit."
       }
     ]
   },
 
   "plumbing-fixtures-repairs": {
-    intro:
-      "Targeted help with small plumbing fixtures and repairs such as faucets, disposals, toilets, and shower heads where access is straightforward and shutoffs work properly.",
-    typicalProjectsHeading: "Typical plumbing fixture projects",
-    typicalProjectsIntro:
-      "The focus is on visible fixtures and minor leaks, not whole-house plumbing or underground lines.",
+    intro: `Small plumbing fixture repairs that address drips, minor leaks, and tired hardware without opening up walls or replacing major lines.`,
+    typicalProjectsHeading: "Typical plumbing fixture and small repair projects",
+    typicalProjectsIntro: `Tasks that focus on visible fixtures and connections you can see under sinks, at toilets, and at tubs or showers. Larger leaks inside walls or in main lines are usually best handled by a licensed plumber.`,
     typicalProjectsColumns: [
       {
-        title: "Fixture replacements",
+        title: "Kitchen and bath fixtures",
         items: [
-          "Replace kitchen and bathroom sink faucets with new standard models",
-          "Install or replace garbage disposals where outlets and plumbing are in good condition",
-          "Swap older shower heads for new fixed or handheld models",
-          "Replace angle stops and supply lines at sinks and toilets where accessible",
-          "Install new toilet tanks and bowls in the same location"
+          "Replace kitchen and bath faucets with homeowner-supplied fixtures",
+          "Swap out old showerheads for newer models",
+          "Install hand-held shower kits where valves are compatible",
+          "Replace decorative sink drains and trim where accessible"
         ]
       },
       {
-        title: "Minor repairs and adjustments",
+        title: "Toilet repairs",
         items: [
-          "Address slow drips at faucet spouts or handles where parts are available",
-          "Replace worn flappers, fill valves, and supply lines inside toilet tanks",
-          "Tighten loose fixtures and escutcheons at sinks and showers",
-          "Reseal around sinks and tubs with fresh caulking where needed",
-          "Investigate small, visible leaks at traps or under-sink connections"
+          "Replace fill valves, flappers, and tank hardware that cause running toilets",
+          "Swap out loose or worn toilet seats",
+          "Re-seat toilets with new wax rings when minor leaks are visible at the base",
+          "Tighten loose toilet bolts and address simple rocking issues"
+        ]
+      },
+      {
+        title: "Small under-sink repairs",
+        items: [
+          "Replace P-traps and tailpieces under sinks where corroded",
+          "Tighten or replace loose slip-joint connections",
+          "Swap out simple shut-off valves where access is straightforward",
+          "Install or replace garbage disposers within existing electrical and plumbing connections"
         ]
       }
     ],
-    pricingHeading: "How pricing works for plumbing fixtures and repairs",
+    pricingHeading: "How pricing works for plumbing fixture visits",
     pricingParagraphs: [
-      "Most small plumbing tasks are quoted per fixture with a minimum service visit. Combining several fixtures into one visit helps spread out that minimum.",
-      "Pricing assumes accessible shutoff valves, sound supply lines, and no hidden damage. If additional work is needed beyond small repairs, you may be referred to a plumbing specialist.",
-      "Clear photos under sinks, behind toilets, and at the shutoff valves make it easier to confirm whether your project is a good fit before anything is scheduled."
+      "Most small plumbing tasks are completed within a standard visit, which includes shutoff, drain-down, and clean-up time.",
+      "Pricing depends on access, how many fixtures are involved, and whether we discover existing damage such as rusted fittings or stuck shut-off valves.",
+      "Significant leaks, broken pipes inside walls, or main-line issues are outside the scope of a handyman visit and are best handled by a licensed plumber."
     ],
     faq: [
       {
-        question: "Do you work on main lines or sewer issues?",
-        answer:
-          "No. Carlsbad Fix It focuses on visible fixtures and small repairs. Main line, sewer, and major drain problems are best handled by a licensed plumbing company with specialized equipment."
+        question: "Can you fix leaks inside walls or ceilings?",
+        answer: "No. Hidden leaks in supply or drain lines inside walls or ceilings should be handled by a licensed plumber. We can often help with small, visible leaks at traps, flexible connections, or fixtures."
       },
       {
-        question: "Can you supply the faucets or fixtures?",
-        answer:
-          "In many cases, homeowners prefer to choose fixtures themselves to match style and finish. If you would like recommendations, general guidance can be provided, but you will typically purchase the fixtures directly."
+        question: "Do you install new faucets and disposers I’ve already purchased?",
+        answer: "Yes. Many homeowners prefer to choose fixtures that match their style. As long as they are compatible with your existing plumbing and electrical connections, installing them is a good fit for a handyman visit."
+      },
+      {
+        question: "Will you shut off water to the whole house?",
+        answer: "For some projects, yes. If individual shutoff valves are stuck or missing, we may need to shut off water at the main for a short time while repairs are made."
       }
     ]
   },
 
   "honey-do-lists-small-repairs": {
-    intro:
-      "A flexible visit built around a list of small repairs, touch-ups, and adjustments throughout the home so you can clear several to-dos at once.",
+    intro: `A flexible visit designed to tackle a list of small repairs and improvements in one trip, so you do not have to schedule several separate service calls.`,
     typicalProjectsHeading: "Typical honey-do and small repair projects",
-    typicalProjectsIntro:
-      "Each visit is scoped so the most important items on your list are prioritized within the available time.",
+    typicalProjectsIntro: `Projects that are too small to justify calling multiple specialists, but important enough that you want them handled neatly and safely.`,
     typicalProjectsColumns: [
       {
-        title: "Common repair items",
+        title: "Little fixes that add up",
         items: [
-          "Tighten or replace loose door and cabinet hardware",
-          "Adjust doors that rub, stick, or do not latch correctly",
-          "Patch small drywall dings, nail holes, and minor scuffs",
-          "Replace missing or damaged trim pieces and transition strips",
-          "Install or adjust door stops, bumpers, and basic weatherstripping"
+          "Replace loose or missing door and cabinet hardware",
+          "Adjust interior doors that rub or do not latch properly",
+          "Touch up caulking at sinks, tubs, and simple trim transitions",
+          "Install or replace basic weatherstripping at exterior doors"
         ]
       },
       {
-        title: "Quick improvements",
+        title: "Safety and comfort tweaks",
         items: [
-          "Swap out dated light fixtures, faucets, or cabinet pulls",
-          "Install curtain rods, blinds, and basic window hardware",
-          "Replace vent covers, register grilles, and switch plates",
-          "Hang mirrors, artwork, and bulletin boards in living spaces",
-          "Tidy up small safety concerns such as loose handrails where feasible"
+          "Secure loose handrails and grab bars where backing allows",
+          "Install simple battery or plug-in safety devices, such as childproofing hardware",
+          "Replace smoke or CO alarms where locations are already established",
+          "Swap out tired switch and outlet plates for a cleaner look"
+        ]
+      },
+      {
+        title: "Light assembly and install tasks",
+        items: [
+          "Assemble small pieces of furniture that come flat-packed",
+          "Hang simple shelves, hooks, or bulletin boards",
+          "Install small bath accessories like towel bars and robe hooks",
+          "Tidy up loose cords with basic cord-management solutions"
         ]
       }
     ],
     pricingHeading: "How pricing works for honey-do visits",
     pricingParagraphs: [
-      "Honey-do visits are usually booked as a block of time with a clear list of priorities. The list can mix repairs, fixture swaps, and small installations.",
-      "Before scheduling, you will be asked to share your full list along with photos of anything that might be more involved. This helps confirm what can realistically be completed within one visit.",
-      "If certain items turn out to be larger than expected, they may be separated into a follow-up visit so that small, quick wins still get checked off right away."
+      "Honey-do visits are usually booked as a block of time, often a half-day, so we can work through a prioritized list efficiently.",
+      "Grouping similar tasks together by room or by tool type helps you get more done in one visit. We can help you organize the list so the most important items are handled first.",
+      "Very specialized tasks, like large-scale roofing, HVAC, or major electrical or plumbing work, are better left to those specific trades. We will let you know if anything on your list would be safer for a specialist."
     ],
     faq: [
       {
-        question: "How many items can you complete in one visit?",
-        answer:
-          "It depends on the complexity of each task. Several quick items such as hardware swaps, small patches, and installations can often be completed in a single visit. Larger items such as multiple drywall repairs or several fixture replacements will take longer."
+        question: "How many items can I include on my list?",
+        answer: "You can include as many items as you like. We will help you prioritize the list and estimate what can be completed within a standard visit, then work from most important to least important."
       },
       {
-        question: "Can I add new items on the day of the visit?",
-        answer:
-          "If time allows, additional small tasks can sometimes be added. However, the original list is used to plan the visit, so sharing everything up front is the best way to make sure the right tools and materials are on hand."
+        question: "Can you add new projects on the day of the visit?",
+        answer: "If there is time left in the visit and we have the right tools and materials, we are happy to add small, related items. Larger surprises may need a follow-up visit so we can plan properly."
+      },
+      {
+        question: "What if a task turns out to be bigger than expected?",
+        answer: "If we uncover a larger issue, we will explain what we found and recommend next steps. Sometimes that means a future visit with more time set aside, and sometimes it means bringing in a specialist."
       }
     ]
   },
 
   "drywall-repair": {
-    intro:
-      "Neat, blended repairs for holes, cracks, and dents in walls and ceilings so patched areas disappear as much as possible once painted.",
+    intro: `Small to medium drywall repairs that make walls and ceilings paint-ready again after dents, dings, or minor water spots.`,
     typicalProjectsHeading: "Typical drywall repair projects",
-    typicalProjectsIntro:
-      "Drywall visits are scoped to keep dust under control and leave surfaces ready for primer and paint.",
+    typicalProjectsIntro: `Repairs that can be blended into surrounding surfaces without re-drywalling entire rooms. Most are completed with a mix of patching, sanding, and texture touch-ups.`,
     typicalProjectsColumns: [
       {
-        title: "Wall and ceiling repairs",
+        title: "Wall repairs",
         items: [
-          "Patch small to medium holes from accidents, anchors, or previous work",
-          "Repair cracks along seams, corners, and around doors or windows",
-          "Fix door knob holes and impact damage behind doors",
-          "Cut out and replace damaged sections around fixtures where framing allows",
-          "Skim and smooth minor texture inconsistencies in localized areas"
+          "Patch doorknob holes and small impact damage",
+          "Repair nail pops and small cracks at seams",
+          "Fill and sand holes left from shelves, TVs, or artwork",
+          "Blend in patches where outlets or low-voltage boxes were removed"
         ]
       },
       {
-        title: "Finishing and preparation",
+        title: "Ceiling touch-ups",
         items: [
-          "Apply joint compound in multiple coats with sanding between steps",
-          "Recreate common wall textures in North County homes where possible",
-          "Feather edges into surrounding areas to minimize visible transitions",
-          "Prime repaired areas so they are ready for paint",
-          "Coordinate with your painter or provide basic touch-up guidance"
+          "Repair small ceiling blemishes after minor leaks have been fixed",
+          "Patch and blend around new light fixtures or fan boxes",
+          "Touch up texture to reduce the visibility of past repairs",
+          "Address small cracks at ceiling seams where movement has occurred"
+        ]
+      },
+      {
+        title: "Finishing for paint",
+        items: [
+          "Feather edges so patches are less visible once painted",
+          "Prime repaired areas so touch-up paint adheres correctly",
+          "Coordinate with your painter or provide basic touch-up painting if arranged",
+          "Protect floors and furnishings and clean up dust before leaving"
         ]
       }
     ],
-    pricingHeading: "How pricing works for drywall repair",
+    pricingHeading: "How pricing works for drywall repair visits",
     pricingParagraphs: [
-      "Drywall pricing is based on the number of repair locations, size of each area, and whether ceiling work or ladder work is required.",
-      "Multiple small repairs in the same room are often grouped together for efficiency. Repairs spread across several rooms may be broken into phases.",
-      "Photos taken straight-on and from a few steps back help determine how involved the repair will be and whether it fits within a standard visit."
+      "Drywall pricing is based on the number and size of patches, ceiling height, and the level of finish you want. Small, grouped repairs are more economical than scattered spots throughout the home.",
+      "Some repairs require more than one visit to allow drying time between coats of compound, especially for deeper patches or areas that will be closely inspected.",
+      "If there is ongoing moisture or structural movement, we may recommend addressing those issues first so your repairs last longer."
     ],
     faq: [
       {
-        question: "Do you handle large areas of flood or major water damage?",
-        answer:
-          "No. Extensive water damage, mold issues, or full-room gut repairs are best handled by a remediation or restoration company. Carlsbad Fix It focuses on localized repairs and patches."
+        question: "Can you match my existing wall or ceiling texture?",
+        answer: "We can usually get close enough that repairs are not obvious once painted, especially in standard textures. Very unique or hand-troweled finishes may still show a subtle transition."
       },
       {
-        question: "Can you match my existing wall texture exactly?",
-        answer:
-          "The goal is always to blend new texture as closely as possible, but perfect matches are not always realistic. You will receive an honest expectation of how well the repair is likely to blend in your specific space."
+        question: "Do you paint after drywall repairs?",
+        answer: "We can often handle basic priming and small touch-ups if we have the correct paint on hand. Larger repainting projects are usually better handled by a dedicated painting contractor."
+      },
+      {
+        question: "What if there was a leak involved?",
+        answer: "The source of the leak should be repaired and the area fully dried before we begin drywall work. If we suspect there is still moisture or damage, we will recommend next steps before closing things up."
       }
     ]
   },
 
   "tv-mounting": {
-    intro:
-      "Safe, clean mounting for flat-screen TVs with thoughtful cable routing so living rooms and bedrooms feel organized instead of cluttered.",
+    intro: `Safe, clean TV mounting and basic media setup so cables are organized and screens are at a comfortable viewing height.`,
     typicalProjectsHeading: "Typical TV mounting projects",
-    typicalProjectsIntro:
-      "Each mounting job is planned around your viewing height, wall construction, and available power and signal connections.",
+    typicalProjectsIntro: `Projects that use appropriate mounts and anchors for the wall type, with a focus on tidy cable routing and solid, level installation.`,
     typicalProjectsColumns: [
       {
-        title: "Standard wall mounting",
+        title: "Wall-mounted TVs",
         items: [
-          "Mount TVs on drywall or over stud framing using appropriate anchors",
-          "Install fixed, tilt, or basic full-motion mounts you provide",
-          "Center TVs over consoles, fireplaces, or stand-alone walls",
-          "Adjust existing mounts to improve viewing height or level",
-          "Secure soundbars or small speakers to compatible brackets"
+          "Mount flat-screen TVs to drywall or wood-framed walls with suitable anchors",
+          "Level and center TVs over furniture, fireplaces, or media consoles",
+          "Install tilting or low-profile mounts provided by the homeowner",
+          "Confirm viewing height and angle before final tightening"
         ]
       },
       {
         title: "Cable management",
         items: [
-          "Route and bundle surface cables with raceways where feasible",
-          "Tidy up existing power strips and streaming devices near consoles",
-          "Advise on locations for future outlets or low-voltage lines",
-          "Hide or shorten visible cabling where safe and practical",
-          "Label key connections so future changes are easier"
+          "Route HDMI and power cords along walls with low-profile raceways",
+          "Bundle and secure loose cables behind media consoles",
+          "Label key connections so future changes are easier",
+          "Coordinate TV placement with existing outlets and low-voltage plates"
+        ]
+      },
+      {
+        title: "Small media extras",
+        items: [
+          "Mount small soundbars under or above the TV when brackets allow",
+          "Install simple shelves for streaming boxes or small components",
+          "Swap out aging surge strips for newer units that fit your setup",
+          "Tidy up wall plates or blank off unused openings for a cleaner look"
         ]
       }
     ],
-    pricingHeading: "How pricing works for TV mounting",
+    pricingHeading: "How pricing works for TV mounting visits",
     pricingParagraphs: [
-      "Pricing depends on TV size, mounting height, wall construction, and how much cable management is required.",
-      "Most standard drywall mounts with nearby power and signal connections can be handled within a typical visit, especially when brackets are on site.",
-      "Projects that require fishing wires inside walls, opening drywall, or adding power may require coordination with a licensed electrician and are quoted more cautiously."
+      "Pricing depends on TV size, mounting height, wall construction, and how complex the cable routing will be.",
+      "Mounting multiple TVs in one visit is usually more cost-effective than scheduling separate trips, especially if they are on similar wall types.",
+      "Running new in-wall power or low-voltage lines, cutting into masonry, or modifying existing electrical circuits generally requires a licensed electrician or low-voltage specialist."
     ],
     faq: [
       {
-        question: "Do you provide the TV mount and cables?",
-        answer:
-          "Homeowners often purchase their own mounts so they can choose specific features and compatibility with their TV. Recommendations on common mount types can be provided if needed, but mounts and specialty cables are typically supplied by the homeowner."
+        question: "Do you provide the mounting brackets?",
+        answer: "Most homeowners purchase their own mounts so they can match TV size and desired features. We are happy to help you choose an appropriate mount style before your visit."
       },
       {
-        question: "Can you hide all of the wires inside the wall?",
-        answer:
-          "In some cases, yes, but only when it can be done safely and in line with electrical best practices. Many projects use a mix of in-wall kits and surface raceways. The options for your specific wall and layout will be discussed before work begins."
+        question: "Can you hide all of the cables inside the wall?",
+        answer: "In many cases we can significantly tidy your cable situation with surface raceways and better routing. Full in-wall cable concealment or new in-wall power often requires additional planning and may need to follow specific electrical and building codes."
+      },
+      {
+        question: "Will you help set up the TV once it is mounted?",
+        answer: "We can help with basic connections to existing devices and make sure everything powers on. More advanced configuration, such as streaming account setup or complex audio systems, is usually outside the scope of a standard visit."
       }
     ]
   }

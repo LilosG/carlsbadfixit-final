@@ -1,104 +1,150 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { serviceAreas } from "../data/service-areas";
 import PageCtaStrip from "../components/PageCtaStrip.astro";
-import QuickEstimateCard from "../components/QuickEstimateCard.astro";
-
-const primaryArea = serviceAreas.find((area) => area.primary) ?? serviceAreas[0];
 ---
+
 <BaseLayout
-  title="About Carlsbad Fix It | Local Handyman in Carlsbad, CA"
-  description="Learn about Carlsbad Fix It, a local handyman service providing reliable small home repairs and improvements in Carlsbad, California and nearby North County San Diego communities."
+  title="About Carlsbad Fix It"
+  description="Carlsbad Fix It is a local handyman service focused on small to medium home projects in Carlsbad, CA and nearby North County San Diego communities."
 >
-  <section class="space-y-6">
-    <div class="max-w-3xl space-y-3">
-      <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
-        About
-      </p>
-      <h1 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-        About Carlsbad Fix It
-      </h1>
-      <p class="text-base text-slate-600">
-        Carlsbad Fix It was created to give homeowners in {primaryArea.label} a dependable, friendly option for
-        the small repairs and projects that larger contractors often overlook. The goal is simple: clear
-        communication, tidy work, and results that make your home feel cared for.
-      </p>
-    </div>
-
-    <div class="grid gap-8 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1.2fr)] md:items-start">
-      <div class="space-y-4 text-sm text-slate-700">
-        <p>
-          Most visits are focused on single-day projects and punch lists: repairing damaged drywall, updating
-          fixtures, assembling furniture, or tackling the small jobs that have been sitting on your to-do list.
-          Each project is scoped so you know what will be completed and what to expect on the day of service.
-        </p>
-        <p>
-          Whether you are preparing for guests, handling a move-in or move-out, or finally fixing recurring
-          issues around the house, the priority is to respect your time and your home. That means arriving
-          on time, protecting floors and surfaces, and cleaning up thoroughly before leaving.
-        </p>
-        <p>
-          Carlsbad Fix It serves homeowners, small landlords, and local businesses across coastal and nearby
-          inland North County communities, with a primary focus on {primaryArea.label} and surrounding neighborhoods.
-        </p>
-      </div>
-
-      <aside class="space-y-4">
-        <div class="space-y-4 rounded-3xl border border-amber-100 bg-amber-50 p-6">
-          <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
-            What you can expect
+  <main class="bg-cf-page pb-16 pt-8 md:pb-24 md:pt-10">
+    <div class="mx-auto flex max-w-6xl flex-col gap-12 px-4 md:px-6">
+      <!-- HERO -->
+      <section class="grid gap-8 rounded-3xl bg-gradient-to-br from-cf-heroStart to-cf-heroEnd p-8 text-white shadow-soft md:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] md:p-10">
+        <div class="space-y-4 md:space-y-5">
+          <p class="eyebrow text-cf-heroEyebrow">
+            About the company
           </p>
-          <ul class="space-y-3 text-sm text-slate-700">
-            <li class="flex gap-2">
-              <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-sky-100 text-[10px] font-semibold text-sky-700">
-                ✓
-              </span>
-              <span>Clear communication before, during, and after your project.</span>
-            </li>
-            <li class="flex gap-2">
-              <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-sky-100 text-[10px] font-semibold text-sky-700">
-                ✓
-              </span>
-              <span>Professional, tidy work with attention to detail on every task.</span>
-            </li>
-            <li class="flex gap-2">
-              <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-sky-100 text-[10px] font-semibold text-sky-700">
-                ✓
-              </span>
-              <span>Respect for your home, including careful prep and thorough cleanup.</span>
-            </li>
-            <li class="flex gap-2">
-              <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-sky-100 text-[10px] font-semibold text-sky-700">
-                ✓
-              </span>
-              <span>Reliable scheduling for small projects, punch lists, and recurring maintenance.</span>
-            </li>
-          </ul>
+          <h1 class="text-h1 font-semibold leading-tight">
+            Local handyman help for small to medium home projects
+          </h1>
+          <p class="max-w-xl text-body-md text-white/90">
+            Carlsbad Fix It focuses on tidy, well-planned visits for homeowners who want
+            clear expectations, careful work, and reliable follow-through for repairs and
+            improvements around the home.
+          </p>
 
-          <div class="mt-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-            <p class="text-xs font-semibold uppercase tracking-wide text-slate-700">
-              Direct contact
-            </p>
-            <p class="mt-2 text-sm text-slate-700">
-              Call or text <span class="font-semibold text-sky-700">(808) 226-6681</span> or email
-              <span class="font-semibold"> carlsbadfixit@gmail.com</span> with a short description of what you need help with.
-            </p>
-          </div>
+          <ul class="mt-4 space-y-2 text-sm text-white/90">
+            <li>✔ Based in Carlsbad, CA and focused on North County neighborhoods.</li>
+            <li>✔ Best fit for punch lists, repairs, and projects that fit into a single visit.</li>
+            <li>✔ Surfaces protected, details handled, and cleanup before leaving.</li>
+          </ul>
         </div>
 
-        <QuickEstimateCard
-          eyebrow="Ready to schedule?"
-          title={`Request your free estimate in ${primaryArea.label}`}
-          body="Share your punch list, preferred timing, and any helpful photos. You will receive clear next steps and a no-obligation estimate."
-          defaultCity={primaryArea.label}
-        />
-      </aside>
-    </div>
-  </section>
+        <aside class="card bg-white/95 p-6 text-left text-cf-text shadow-soft backdrop-blur md:p-7">
+          <p class="eyebrow text-cf-textMuted">What homeowners can expect</p>
+          <h2 class="mt-1 text-lg font-semibold">
+            A clear plan before work begins
+          </h2>
+          <p class="mt-2 text-sm text-cf-textMuted">
+            Every visit starts with a focused punch list and realistic timing. You will know
+            which items are the priority, what can be completed in one visit, and any steps
+            that may need a follow-up appointment.
+          </p>
+          <ol class="mt-4 space-y-3 text-sm text-cf-textMuted">
+            <li>
+              <span class="font-semibold text-cf-text">1. Understand the project.</span>
+              {" "}
+              You share your list, photos, and timing so we can plan the visit around the most
+              important items.
+            </li>
+            <li>
+              <span class="font-semibold text-cf-text">2. Protect the space.</span>
+              {" "}
+              Floors, counters, and nearby surfaces are protected as needed before work begins.
+            </li>
+            <li>
+              <span class="font-semibold text-cf-text">3. Leave things tidy.</span>
+              {" "}
+              Work areas are cleaned up, and a quick walkthrough explains what was completed
+              and any recommended next steps.
+            </li>
+          </ol>
+        </aside>
+      </section>
 
-  <PageCtaStrip
-    eyebrow="Next steps"
-    title="Ready to schedule a handyman visit?"
-    body="Share your punch list, preferred timing, and any helpful photos. You will receive clear next steps and a no-obligation estimate."
-  />
+      <!-- STORY / APPROACH -->
+      <section class="grid gap-6 rounded-3xl bg-white p-6 shadow-soft md:grid-cols-2 md:p-8">
+        <div class="space-y-3">
+          <p class="eyebrow">How it started</p>
+          <h2 class="text-h2 font-semibold text-cf-text">
+            Built around practical, repeatable visits
+          </h2>
+          <p class="text-body-sm text-cf-textMuted">
+            Carlsbad Fix It grew out of repeat requests from homeowners who needed help with
+            projects that were too small for a general contractor but too involved for a
+            quick DIY fix. The focus is on work that can be planned carefully, completed
+            cleanly, and repeated reliably from home to home.
+          </p>
+          <p class="text-body-sm text-cf-textMuted">
+            Most visits combine several tasks—like drywall touch-ups, fixture swaps, and
+            small carpentry repairs—so more progress is made each time we are in your home.
+          </p>
+        </div>
+
+        <div class="space-y-3 text-sm text-cf-textMuted">
+          <p class="font-semibold text-cf-text">
+            A calm, professional experience
+          </p>
+          <ul class="space-y-2">
+            <li>• Respectful of your time, schedule, and home.</li>
+            <li>• Clear communication before, during, and after the visit.</li>
+            <li>• Honest feedback when a project is better suited for a specialist or licensed trade contractor.</li>
+            <li>• Focus on quality and safety over rushing to fit too much into one visit.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- VALUES -->
+      <section class="rounded-3xl bg-white p-6 shadow-soft md:p-8">
+        <header class="mb-4 space-y-1">
+          <p class="eyebrow">What matters most</p>
+          <h2 class="text-h2 font-semibold text-cf-text">
+            How we approach each project
+          </h2>
+        </header>
+
+        <div class="grid gap-4 md:grid-cols-3">
+          <article class="card">
+            <h3 class="text-sm font-semibold text-cf-text">
+              Clear expectations
+            </h3>
+            <p class="mt-2 text-sm text-cf-textMuted">
+              You will know what is included in a visit, how long it is expected to take,
+              and which items are the priority so there are no surprises.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3 class="text-sm font-semibold text-cf-text">
+              Respect for your home
+            </h3>
+            <p class="mt-2 text-sm text-cf-textMuted">
+              Surfaces are protected where needed, materials are handled carefully, and work
+              areas are cleaned up before leaving.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3 class="text-sm font-semibold text-cf-text">
+              Reliable follow-through
+            </h3>
+            <p class="mt-2 text-sm text-cf-textMuted">
+              From the first message to the final walkthrough, the goal is a calm, professional
+              experience with clear communication at each step.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- CTA STRIP -->
+      <div class="mt-10 md:mt-12">
+        <PageCtaStrip
+          eyebrow="Next steps"
+          title="Ready to talk about your project?"
+          body="Share your punch list, preferred timing, and any helpful photos. You will receive clear next steps and a no-obligation estimate for your home in Carlsbad, CA or a nearby North County community."
+        />
+      </div>
+    </div>
+  </main>
 </BaseLayout>

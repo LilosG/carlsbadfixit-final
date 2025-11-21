@@ -1,135 +1,190 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { serviceAreas } from "../data/service-areas";
-
-const primaryArea = serviceAreas.find((area) => area.primary) ?? serviceAreas[0];
-
-const contactPageSchema = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "ContactPage",
-  "name": "Contact Carlsbad Fix It",
-  "url": "https://carlsbadfixit.com/contact/",
-  "about": {
-    "@type": "HomeAndConstructionBusiness",
-    "name": "Carlsbad Fix It",
-    "telephone": "+1-808-226-6681",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "3027 Greenwich St.",
-      "addressLocality": "Carlsbad",
-      "addressRegion": "CA",
-      "postalCode": "92010",
-      "addressCountry": "US"
-    }
-  }
-});
+import PageCtaStrip from "../components/PageCtaStrip.astro";
 ---
-<BaseLayout
-  title="Contact Carlsbad Fix It | Request an Estimate"
-  description="Request a free handyman estimate from Carlsbad Fix It. Share your project details, location, and photos for a clear, no-obligation quote."
->
-  <script type="application/ld+json" slot="head">
-    {contactPageSchema}
-  </script>
 
-  <section class="grid gap-8 md:grid-cols-[minmax(0,1.7fr)_minmax(0,1.2fr)] md:items-start">
-    <div class="card space-y-4">
-      <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
-        Get started
-      </p>
-      <h1 class="text-2xl font-semibold tracking-tight text-slate-900">
-        Request your free estimate in {primaryArea.label}
-      </h1>
-      <p class="text-sm text-slate-600">
-        Tell us about your project and where you are located. You will receive clear next steps and a no-obligation estimate, usually within one business day.
-      </p>
-      <form class="mt-2 grid gap-4 md:grid-cols-2">
-        <div class="space-y-1 md:col-span-1">
-          <label for="name" class="text-xs font-medium text-slate-800">Name</label>
-          <input
-            id="name"
-            type="text"
-            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs outline-none ring-sky-500 focus:border-sky-500 focus:ring-1"
-            placeholder="Your name"
-          />
+<BaseLayout>
+  <main class="bg-[#f4f7fb]">
+    <!-- Hero + main contact form -->
+    <section class="mx-auto max-w-5xl px-4 pb-12 pt-10 md:px-6 md:pb-16 md:pt-12">
+      <div class="grid items-start gap-8 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
+        <!-- Intro / expectations -->
+        <article class="rounded-3xl bg-white p-6 shadow-[0_22px_45px_rgba(15,37,64,0.12)] md:p-8">
+          <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7C8AA5]">
+            Get in touch
+          </p>
+          <h1 class="mt-2 text-2xl font-semibold leading-snug text-[#101828] md:text-3xl">
+            Contact Carlsbad Fix It for handyman help
+          </h1>
+          <p class="mt-4 text-sm leading-relaxed text-[#4B5565] md:text-[15px]">
+            Share a short list of projects, your preferred timing, and any helpful photos. We will respond
+            during normal business hours with clear next steps and, when possible, a no-obligation estimate
+            for your visit.
+          </p>
+          <ul class="mt-4 space-y-2 text-sm text-[#4B5565]">
+            <li class="flex gap-2">
+              <span class="mt-[6px] inline-block h-1.5 w-1.5 rounded-full bg-[#FFB547]" />
+              <span>Local handyman services for small to medium home projects in Carlsbad and nearby North County communities.</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-[6px] inline-block h-1.5 w-1.5 rounded-full bg-[#FFB547]" />
+              <span>Most visits group several related tasks into a single, tidy service window.</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-[6px] inline-block h-1.5 w-1.5 rounded-full bg-[#FFB547]" />
+              <span>Clear expectations about scope, timing, and pricing before anything is scheduled.</span>
+            </li>
+          </ul>
+          <p class="mt-4 text-xs text-[#9CA3AF]">
+            Messages are reviewed during normal business hours. You will usually receive a reply with next
+            steps or follow-up questions before scheduling a visit.
+          </p>
+        </article>
+
+        <!-- Contact form card -->
+        <section class="rounded-3xl bg-white p-5 shadow-[0_22px_45px_rgba(15,37,64,0.16)] md:p-6">
+          <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7C8AA5]">
+            Request an estimate
+          </p>
+          <h2 class="mt-1 text-base font-semibold text-[#101828] md:text-lg">
+            Share a few details about your project
+          </h2>
+          <p class="mt-2 text-[13px] leading-relaxed text-[#4B5565]">
+            A brief description and a couple of photos (if you have them) help set clear expectations for
+            what can be completed in a single visit.
+          </p>
+
+          <form class="mt-4 space-y-3">
+            <div class="grid gap-3 md:grid-cols-2">
+              <div>
+                <label class="block text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7C8AA5]">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  autocomplete="name"
+                  placeholder="Your name"
+                  class="mt-1 w-full rounded-xl border border-[#E5E7EB] bg-white px-3 py-2 text-sm text-[#111827] shadow-sm placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:ring-2 focus:ring-[#2563EB]/20"
+                />
+              </div>
+              <div>
+                <label class="block text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7C8AA5]">
+                  Phone
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  autocomplete="tel"
+                  placeholder="Best number to reach you"
+                  class="mt-1 w-full rounded-xl border border-[#E5E7EB] bg-white px-3 py-2 text-sm text-[#111827] shadow-sm placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:ring-2 focus:ring-[#2563EB]/20"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7C8AA5]">
+                Email <span class="font-normal normal-case text-[#9CA3AF]">(optional)</span>
+              </label>
+              <input
+                type="email"
+                name="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                class="mt-1 w-full rounded-xl border border-[#E5E7EB] bg-white px-3 py-2 text-sm text-[#111827] shadow-sm placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:ring-2 focus:ring-[#2563EB]/20"
+              />
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7C8AA5]">
+                City
+              </label>
+              <input
+                type="text"
+                name="city"
+                autocomplete="address-level2"
+                placeholder="Carlsbad, CA"
+                class="mt-1 w-full rounded-xl border border-[#E5E7EB] bg-white px-3 py-2 text-sm text-[#111827] shadow-sm placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:ring-2 focus:ring-[#2563EB]/20"
+              />
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7C8AA5]">
+                Project details
+              </label>
+              <textarea
+                name="details"
+                rows="4"
+                placeholder="Briefly describe the work you need help with and any timing constraints."
+                class="mt-1 w-full rounded-xl border border-[#E5E7EB] bg-white px-3 py-2 text-sm text-[#111827] shadow-sm placeholder:text-[#9CA3AF] focus:border-[#2563EB] focus:outline-none focus:ring-2 focus:ring-[#2563EB]/20"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-[#FFB547] to-[#FF6A3D] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(255,122,69,0.55)] transition hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-[#FF8A4A]"
+            >
+              Submit request
+            </button>
+
+            <p class="pt-1 text-[11px] leading-relaxed text-[#9CA3AF]">
+              This form is a visual placeholder and will be connected to your preferred email or form
+              provider by your developer. You can also call or text directly if you prefer.
+            </p>
+          </form>
+        </section>
+      </div>
+
+      <!-- Secondary info row -->
+      <section class="mt-8 grid gap-6 md:mt-10 md:grid-cols-2">
+        <div class="rounded-3xl bg-white p-6 shadow-[0_16px_35px_rgba(15,37,64,0.10)]">
+          <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7C8AA5]">
+            How to reach us
+          </p>
+          <h2 class="mt-2 text-base font-semibold text-[#101828] md:text-lg">
+            Call, text, or email about your project
+          </h2>
+          <p class="mt-3 text-sm leading-relaxed text-[#4B5565]">
+            The contact form is usually the best way to share photos and a clear punch list. If you prefer,
+            you can call or text with a brief description and we will follow up with any details needed to
+            schedule a visit.
+          </p>
+          <dl class="mt-4 space-y-1 text-sm text-[#111827]">
+            <div class="flex gap-2">
+              <dt class="w-16 shrink-0 text-[#6B7280]">Phone</dt>
+              <dd>(808) 226-0681</dd>
+            </div>
+            <div class="flex gap-2">
+              <dt class="w-16 shrink-0 text-[#6B7280]">Email</dt>
+              <dd>carlsbadfixit@gmail.com</dd>
+            </div>
+          </dl>
         </div>
-        <div class="space-y-1 md:col-span-1">
-          <label for="phone" class="text-xs font-medium text-slate-800">Phone</label>
-          <input
-            id="phone"
-            type="tel"
-            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs outline-none ring-sky-500 focus:border-sky-500 focus:ring-1"
-            placeholder="Best number to reach you"
-          />
-        </div>
-        <div class="space-y-1 md:col-span-1">
-          <label for="email" class="text-xs font-medium text-slate-800">Email</label>
-          <input
-            id="email"
-            type="email"
-            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs outline-none ring-sky-500 focus:border-sky-500 focus:ring-1"
-            placeholder="you@example.com"
-          />
-        </div>
-        <div class="space-y-1 md:col-span-1">
-          <label for="city" class="text-xs font-medium text-slate-800">City</label>
-          <input
-            id="city"
-            type="text"
-            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs outline-none ring-sky-500 focus:border-sky-500 focus:ring-1"
-            placeholder={primaryArea.label}
-          />
-        </div>
-        <div class="space-y-1 md:col-span-2">
-          <label for="details" class="text-xs font-medium text-slate-800">Project details</label>
-          <textarea
-            id="details"
-            rows={5}
-            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs outline-none ring-sky-500 focus:border-sky-500 focus:ring-1"
-            placeholder="Briefly describe the work you need help with. You can list multiple tasks here."
-          ></textarea>
-        </div>
-        <div class="md:col-span-2">
-          <button type="submit" class="btn-primary w-full">
-            Submit request
-          </button>
-          <p class="mt-2 text-[11px] text-slate-500">
-            This form is a visual placeholder and will be connected to your preferred email or form provider. You can also call or text for urgent requests.
+
+        <div class="rounded-3xl bg-white p-6 shadow-[0_16px_35px_rgba(15,37,64,0.10)]">
+          <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7C8AA5]">
+            When we typically reply
+          </p>
+          <h2 class="mt-2 text-base font-semibold text-[#101828] md:text-lg">
+            What to expect after you reach out
+          </h2>
+          <p class="mt-3 text-sm leading-relaxed text-[#4B5565]">
+            Messages are answered during normal business hours on weekdays. If you reach out in the evening
+            or on a weekend, you will usually receive a reply the next business day.
+          </p>
+          <p class="mt-3 text-sm leading-relaxed text-[#4B5565]">
+            For urgent safety issues such as active leaks, electrical burning smells, or similar
+            emergencies, contact the appropriate licensed trade contractor or emergency services before
+            scheduling a handyman visit.
           </p>
         </div>
-      </form>
-    </div>
-    <aside class="space-y-4 rounded-3xl bg-amber-50 p-6">
-      <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
-        Contact details
-      </p>
-      <h2 class="text-lg font-semibold text-slate-900">
-        Call or text for quick questions
-      </h2>
-      <p class="text-sm text-slate-700">
-        Some projects are easiest to discuss by phone, especially if you are not sure which services you need.
-      </p>
-      <div class="rounded-2xl bg-white p-4 text-sm shadow-sm">
-        <p class="text-xs font-semibold uppercase tracking-wide text-slate-700">
-          Call or text
-        </p>
-        <p class="mt-1 text-lg font-semibold text-sky-700">
-          (808) 226-6681
-        </p>
-        <p class="mt-1 text-[11px] text-slate-500">
-          Typical response during normal business hours.
-        </p>
-      </div>
-      <div class="space-y-2 text-sm text-slate-700">
-        <p class="text-xs font-semibold uppercase tracking-wide text-slate-700">
-          Helpful details to include
-        </p>
-        <ul class="list-disc space-y-1 pl-5 text-xs">
-          <li>Where you are located and type of home.</li>
-          <li>A short list of each task or project.</li>
-          <li>Approximate dates or timeframes that work best.</li>
-        </ul>
-      </div>
-    </aside>
-  </section>
+      </section>
+    </section>
+
+    <PageCtaStrip
+      eyebrow="Next steps"
+      title="Ready to schedule a handyman visit?"
+      body="Share your punch list, preferred timing, and any helpful photos using the contact form. You will receive clear next steps and a no-obligation estimate for your home in Carlsbad, CA or a nearby North County community."
+    />
+  </main>
 </BaseLayout>

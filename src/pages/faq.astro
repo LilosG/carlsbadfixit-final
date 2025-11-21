@@ -1,95 +1,160 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import QuickEstimateCard from "../components/QuickEstimateCard.astro";
 import PageCtaStrip from "../components/PageCtaStrip.astro";
-import { getFaqPageJsonLd } from "../lib/seo";
 
-interface FaqItem {
-  question: string;
-  answer: string;
-}
-
-const faqs: FaqItem[] = [
+const faqVisit = [
   {
-    question: "What kinds of projects are a good fit for Carlsbad Fix It",
+    question: "What kinds of projects are a good fit for a handyman visit?",
     answer:
-      "Small to medium home projects that can usually be completed in a focused visit. That includes carpentry and woodwork, drywall repair, lighting and small electrical, plumbing fixtures, furniture assembly, TV mounting, and mixed honey-do style punch lists."
+      "Visits are best for small to medium home projects that can be completed with light carpentry, drywall repair, fixture swaps, basic electrical, and similar work. Larger projects can sometimes be broken into clear phases that fit within several visits.",
   },
   {
-    question: "Which areas do you serve",
+    question: "Do you offer free estimates?",
     answer:
-      "Carlsbad Fix It is based in Carlsbad, CA and serves nearby North County communities including Oceanside, Encinitas, Vista, and San Marcos, depending on availability."
+      "Yes. You can share a punch list, photos, and your location for a no-obligation estimate. In most cases, we are able to provide a ballpark range and visit plan remotely before anything is scheduled.",
   },
   {
-    question: "How does pricing work",
+    question: "Can I combine several different types of work into one visit?",
     answer:
-      "Pricing depends on the number of tasks, how involved each one is, and how many areas of the home are included. Smaller jobs may be billed as a minimum service visit, while larger or multi-room projects are usually quoted up front."
+      "Often yes. When tasks are in the same general area of the home, combining them into a single visit is usually the most efficient option. During scheduling, we will clarify what is realistic for the time available.",
   },
-  {
-    question: "Do you provide free estimates",
-    answer:
-      "Yes. You can request a no-obligation estimate by sharing your location, a short list of tasks, and any helpful photos. You will receive clear next steps and timing before anything is scheduled."
-  },
-  {
-    question: "Do you handle emergency repairs or after-hours work",
-    answer:
-      "Carlsbad Fix It is not set up for emergency response or large restoration work. Sudden water leaks, major electrical issues, or structural concerns are best handled by emergency plumbers, electricians, or restoration companies."
-  },
-  {
-    question: "Are materials included",
-    answer:
-      "Many projects use a mix of materials supplied by the homeowner and standard items supplied on the truck. Details on what is included will be explained as part of your estimate so you know what to expect."
-  }
 ];
 
-const faqJsonLd = JSON.stringify(
-  getFaqPageJsonLd(faqs, "/faq/", "Handyman FAQ | Carlsbad Fix It")
-);
+const faqScheduling = [
+  {
+    question: "Which areas do you serve?",
+    answer:
+      "Carlsbad Fix It is based in Carlsbad, CA and focuses on nearby North County communities such as Oceanside, Encinitas, Vista, and San Marcos. Availability in each area depends on scheduling and overall project scope.",
+  },
+  {
+    question: "How far in advance should I schedule?",
+    answer:
+      "Scheduling often depends on the time of year and current workload. For most small projects, reaching out 1–2 weeks before you would like the work completed provides the most flexibility in picking a visit window.",
+  },
+  {
+    question: "What if my project takes longer than expected?",
+    answer:
+      "If it becomes clear that a project will exceed the planned visit, we will pause, explain what remains, and outline options. When possible, the most important items are completed first so progress is still made even if more time is needed later.",
+  },
+];
+
+const faqPricing = [
+  {
+    question: "How does pricing work?",
+    answer:
+      "Pricing depends on scope, access, and timing. Smaller projects are usually more cost effective when combined into a single visit, while larger or more complex projects may be scheduled as half-day or full-day blocks.",
+  },
+  {
+    question: "Do you charge for travel?",
+    answer:
+      "Travel time is factored into how visits are scheduled so more of your appointment can go toward actual repair and improvement work. If additional travel is required beyond the regular service area, that will be discussed before you decide to move forward.",
+  },
+  {
+    question: "What payment methods do you accept?",
+    answer:
+      "Payment is typically collected at the end of the visit. Common options include major credit cards and digital payments. Any details specific to your visit will be confirmed along with the estimate.",
+  },
+];
 ---
 
 <BaseLayout
-  title="Handyman FAQ | Carlsbad Fix It"
-  description="Answers to common questions about handyman services, service areas, pricing, and scheduling with Carlsbad Fix It in Carlsbad, CA."
+  title="Frequently asked questions"
+  description="Answers to common questions about handyman visits, scheduling, pricing, and what to expect when Carlsbad Fix It works in your home."
 >
-  <script type="application/ld+json" slot="head">
-    {faqJsonLd}
-  </script>
+  <main class="bg-cf-page pb-16 pt-8 md:pb-24 md:pt-10">
+    <div class="mx-auto flex max-w-5xl flex-col gap-12 px-4 md:px-6">
+      <!-- HERO -->
+      <section class="rounded-3xl bg-white p-8 shadow-soft md:p-10">
+        <div class="space-y-3">
+          <p class="eyebrow">Questions from homeowners</p>
+          <h1 class="text-h1 font-semibold text-cf-text">
+            Frequently asked questions about handyman visits
+          </h1>
+          <p class="max-w-2xl text-body-md text-cf-textMuted">
+            A few of the questions that come up most often when homeowners schedule small
+            to medium home projects. If you do not see your question here, you can always
+            add it to your estimate request.
+          </p>
+        </div>
+      </section>
 
-  <section class="grid gap-8 md:grid-cols-[minmax(0,1.8fr)_minmax(0,1.2fr)] md:items-start">
-    <div class="space-y-4">
-      <div class="space-y-2">
-        <p class="eyebrow">FAQ</p>
-        <h1 class="text-h1 font-semibold text-cf-text">
-          Frequently asked questions
-        </h1>
-        <p class="text-body-sm">
-          Answers to common questions about services, service areas, pricing, and scheduling. If you do not see your question here, you can always ask in your estimate request.
-        </p>
-      </div>
+      <!-- FAQ GROUPS -->
+      <section class="space-y-8">
+        <div class="rounded-3xl bg-white p-6 shadow-soft md:p-8">
+          <header class="mb-4 space-y-1">
+            <p class="eyebrow">Planning a visit</p>
+            <h2 class="text-h2 font-semibold text-cf-text">
+              About projects and visits
+            </h2>
+          </header>
 
-      <div class="space-y-3">
-        {faqs.map((item) => (
-          <details class="card">
-            <summary class="cursor-pointer text-sm font-semibold text-cf-text">
-              {item.question}
-            </summary>
-            <p class="mt-2 text-sm text-cf-textMuted">
-              {item.answer}
-            </p>
-          </details>
-        ))}
+          <div class="space-y-3">
+            {faqVisit.map((item) => (
+              <details class="card">
+                <summary class="cursor-pointer text-sm font-semibold text-cf-text">
+                  {item.question}
+                </summary>
+                <p class="mt-2 text-sm text-cf-textMuted">
+                  {item.answer}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+
+        <div class="rounded-3xl bg-white p-6 shadow-soft md:p-8">
+          <header class="mb-4 space-y-1">
+            <p class="eyebrow">Scheduling</p>
+            <h2 class="text-h2 font-semibold text-cf-text">
+              Service area and timing
+            </h2>
+          </header>
+
+          <div class="space-y-3">
+            {faqScheduling.map((item) => (
+              <details class="card">
+                <summary class="cursor-pointer text-sm font-semibold text-cf-text">
+                  {item.question}
+                </summary>
+                <p class="mt-2 text-sm text-cf-textMuted">
+                  {item.answer}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+
+        <div class="rounded-3xl bg-white p-6 shadow-soft md:p-8">
+          <header class="mb-4 space-y-1">
+            <p class="eyebrow">Pricing</p>
+            <h2 class="text-h2 font-semibold text-cf-text">
+              Costs, estimates, and payment
+            </h2>
+          </header>
+
+          <div class="space-y-3">
+            {faqPricing.map((item) => (
+              <details class="card">
+                <summary class="cursor-pointer text-sm font-semibold text-cf-text">
+                  {item.question}
+                </summary>
+                <p class="mt-2 text-sm text-cf-textMuted">
+                  {item.answer}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA STRIP -->
+      <div class="mt-6 md:mt-10">
+        <PageCtaStrip
+          eyebrow="Still have questions?"
+          title="Ask about your specific project"
+          body="If your situation is a little different than the examples here, you can include your question with your estimate request. You will receive clear next steps before anything is scheduled."
+        />
       </div>
     </div>
-
-    <aside class="space-y-4">
-      <QuickEstimateCard
-        eyebrow="Quick request"
-        title="Ask a question or request an estimate"
-        body="Share your location, a short list of tasks, and any questions you have. You will receive clear next steps and timing before anything is scheduled."
-        defaultCity="Carlsbad, CA"
-      />
-    </aside>
-  </section>
-
-  <PageCtaStrip />
+  </main>
 </BaseLayout>

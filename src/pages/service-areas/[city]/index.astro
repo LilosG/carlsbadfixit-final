@@ -1,0 +1,265 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { serviceAreas } from "../../../data/service-areas";
+import { services } from "../../../data/services";
+import { cityContent } from "../../../data/city-content";
+import ServiceCard from "../../../components/ServiceCard.astro";
+import QuickEstimateCard from "../../../components/QuickEstimateCard.astro";
+import PageCtaStrip from "../../../components/PageCtaStrip.astro";
+
+export function getStaticPaths() {
+  return serviceAreas.map((area) => ({
+    params: { city: area.slug },
+    props: { area }
+  }));
+}
+
+const { area } = Astro.props;
+const city = cityContent[area.slug] ?? {};
+
+const siteUrl = Astro.site?.toString() ?? "https://carlsbadfixit.com";
+const urlPath = `/service-areas/${area.slug}/`;
+const canonicalUrl = new URL(urlPath, siteUrl).toString();
+
+const serviceAreaJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: `Handyman services in ${area.label}`,
+  description:
+    city.intro ??
+    `Local handyman services for homeowners in ${area.label} and nearby neighborhoods.`,
+  areaServed: {
+    "@type": "Place",
+    name: area.label
+  },
+  provider: {
+    "@type": "HomeAndConstructionBusiness",
+    name: "Carlsbad Fix It",
+    url: siteUrl
+  },
+  url: canonicalUrl
+});
+
+const breadcrumbJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: `${siteUrl}/`
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Service areas",
+      item: `${siteUrl}/service-areas/`
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: area.label,
+      item: canonicalUrl
+    }
+  ]
+});
+
+const neighborhoods = city.neighborhoods ?? [];
+const propertyTypes = city.propertyTypes ?? [];
+const popularProjects = city.popularProjects ?? [];
+---
+<BaseLayout
+  title={`Handyman services in ${area.label} | Carlsbad Fix It`}
+  description={
+    city.intro ??
+    `Local handyman services for homeowners in ${area.label} and nearby neighborhoods. Typical visits combine carpentry, drywall repair, fixture swaps, and small repair items into a single, tidy service window.`
+  }
+  canonical={canonicalUrl}
+>
+  <script type="application/ld+json" slot="head">
+    {serviceAreaJsonLd}
+  </script>
+  <script type="application/ld+json" slot="head">
+    {breadcrumbJsonLd}
+  </script>
+
+  <section class="space-y-10">
+    <section class="grid gap-8 rounded-3xl bg-cf-card px-6 py-8 shadow-soft md:grid-cols-[minmax(0,1.7fr)_minmax(0,1.2fr)] md:items-start">
+      <div class="space-y-4">
+        <p class="eyebrow">
+          Service area
+        </p>
+        <h1 class="section-title">
+          Handyman services in {area.label}
+        </h1>
+        <p class="section-subtitle">
+          {city.intro ??
+            `Local handyman services for homeowners in ${area.label} and nearby neighborhoods. Typical visits combine carpentry, drywall repair, fixture swaps, and small repair items into a single, tidy service window.`}
+        </p>
+        <ul class="mt-2 space-y-2 text-sm text-cf-text">
+          <li class="flex gap-2">
+            <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-cf-accentBlueSoft text-[10px] font-semibold text-cf-accentBlue">
+              ✓
+            </span>
+            <span>Licensed and insured local handyman based near {area.label}.</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-cf-accentBlueSoft text-[10px] font-semibold text-cf-accentBlue">
+              ✓
+            </span>
+            <span>Focused on small to medium home projects that fit into clear service windows.</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-cf-accentBlueSoft text-[10px] font-semibold text-cf-accentBlue">
+              ✓
+            </span>
+            <span>Tidy job sites with surfaces protected and cleanup before leaving.</span>
+          </li>
+        </ul>
+      </div>
+
+      <aside class="space-y-4">
+        <QuickEstimateCard
+          eyebrow="Get your estimate started"
+          title={`Request your free estimate in ${area.label}`}
+          body={`Tell us about your project in ${area.label}. Share your location, a short list of tasks, and any helpful photos. You will receive clear next steps, timing, and a no-obligation estimate.`}
+          defaultCity={area.label}
+        />
+      </aside>
+    </section>
+
+    <section class="space-y-6">
+      <div class="section-header">
+        <p class="eyebrow">
+          Services in {area.label}
+        </p>
+        <h2 class="section-title">
+          Handyman services available in {area.label}
+        </h2>
+        <p class="section-subtitle max-w-2xl">
+          Core handyman services focused on the small to medium projects homeowners in {area.label} call about most. You can also combine several tasks into a single visit.
+        </p>
+      </div>
+      <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {services.map((service) => (
+          <ServiceCard
+            service={service}
+            primaryAreaSlug={area.slug}
+            primaryAreaName={area.name}
+            variant="local"
+          />
+        ))}
+      </div>
+    </section>
+
+    <section class="grid gap-8 md:grid-cols-[minmax(0,1.7fr)_minmax(0,1.3fr)] md:items-start">
+      <div class="space-y-4">
+        <p class="eyebrow">
+          Coverage
+        </p>
+        <h2 class="text-lg font-semibold text-cf-text">
+          A local option for small home projects in {area.label}.
+        </h2>
+        <p class="text-body-sm">
+          Most visits in {area.label} are scheduled to keep travel time reasonable and maximize time spent on actual
+          repair and improvement work. Projects are scoped so they can be completed in a single visit whenever possible,
+          with larger projects broken into clear phases.
+        </p>
+        <div class="grid gap-6 sm:grid-cols-2">
+          {neighborhoods.length > 0 && (
+            <div class="space-y-2">
+              <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
+                Neighborhoods often served
+              </p>
+              <div class="flex flex-wrap gap-2 text-xs text-cf-textMuted">
+                {neighborhoods.map((n) => (
+                  <span class="rounded-pill bg-cf-sandSoft px-3 py-1">
+                    {n}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+          {propertyTypes.length > 0 && (
+            <div class="space-y-2">
+              <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
+                Typical property types
+              </p>
+              <ul class="space-y-1 text-sm text-cf-textMuted">
+                {propertyTypes.map((t) => (
+                  <li>{t}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <aside class="space-y-4">
+        {popularProjects.length > 0 && (
+          <div class="card-soft space-y-3">
+            <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
+              Popular projects in {area.label}
+            </p>
+            <div class="space-y-3">
+              {popularProjects.map((project) => (
+                <div class="rounded-2xl bg-white p-3 text-sm shadow-soft">
+                  <p class="font-semibold text-cf-text">
+                    {project.title}
+                  </p>
+                  <p class="mt-1 text-xs text-cf-textMuted">
+                    {project.summary}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {(city.landlordNote || city.businessNote || city.reviewSnippet) && (
+          <div class="card space-y-3">
+            {city.landlordNote && (
+              <div class="space-y-1 text-sm text-cf-textMuted">
+                <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
+                  For small rentals
+                </p>
+                <p>{city.landlordNote}</p>
+              </div>
+            )}
+
+            {city.businessNote && (
+              <div class="space-y-1 text-sm text-cf-textMuted">
+                <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
+                  For local businesses
+                </p>
+                <p>{city.businessNote}</p>
+              </div>
+            )}
+
+            {city.reviewSnippet && (
+              <div class="space-y-1 text-xs text-cf-textMuted">
+                <p class="italic">
+                  “{city.reviewSnippet.quote}”
+                </p>
+                <p class="mt-1 font-semibold text-cf-text">
+                  {city.reviewSnippet.name}
+                </p>
+                <p>
+                  {city.reviewSnippet.location}
+                  {city.reviewSnippet.role ? ` · ${city.reviewSnippet.role}` : ""}
+                </p>
+              </div>
+            )}
+          </div>
+        )}
+      </aside>
+    </section>
+
+    <PageCtaStrip
+      eyebrow={`Next steps in ${area.label}`}
+      title={`Ready to schedule a handyman visit in ${area.label}?`}
+      body={`Share your punch list, preferred timing, and any helpful photos. You will receive clear next steps and a no-obligation estimate for your home in ${area.label}.`}
+    />
+  </section>
+</BaseLayout>

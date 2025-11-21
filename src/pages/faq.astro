@@ -1,0 +1,95 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import QuickEstimateCard from "../components/QuickEstimateCard.astro";
+import PageCtaStrip from "../components/PageCtaStrip.astro";
+import { getFaqPageJsonLd } from "../lib/seo";
+
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+const faqs: FaqItem[] = [
+  {
+    question: "What kinds of projects are a good fit for Carlsbad Fix It",
+    answer:
+      "Small to medium home projects that can usually be completed in a focused visit. That includes carpentry and woodwork, drywall repair, lighting and small electrical, plumbing fixtures, furniture assembly, TV mounting, and mixed honey-do style punch lists."
+  },
+  {
+    question: "Which areas do you serve",
+    answer:
+      "Carlsbad Fix It is based in Carlsbad, CA and serves nearby North County communities including Oceanside, Encinitas, Vista, and San Marcos, depending on availability."
+  },
+  {
+    question: "How does pricing work",
+    answer:
+      "Pricing depends on the number of tasks, how involved each one is, and how many areas of the home are included. Smaller jobs may be billed as a minimum service visit, while larger or multi-room projects are usually quoted up front."
+  },
+  {
+    question: "Do you provide free estimates",
+    answer:
+      "Yes. You can request a no-obligation estimate by sharing your location, a short list of tasks, and any helpful photos. You will receive clear next steps and timing before anything is scheduled."
+  },
+  {
+    question: "Do you handle emergency repairs or after-hours work",
+    answer:
+      "Carlsbad Fix It is not set up for emergency response or large restoration work. Sudden water leaks, major electrical issues, or structural concerns are best handled by emergency plumbers, electricians, or restoration companies."
+  },
+  {
+    question: "Are materials included",
+    answer:
+      "Many projects use a mix of materials supplied by the homeowner and standard items supplied on the truck. Details on what is included will be explained as part of your estimate so you know what to expect."
+  }
+];
+
+const faqJsonLd = JSON.stringify(
+  getFaqPageJsonLd(faqs, "/faq/", "Handyman FAQ | Carlsbad Fix It")
+);
+---
+
+<BaseLayout
+  title="Handyman FAQ | Carlsbad Fix It"
+  description="Answers to common questions about handyman services, service areas, pricing, and scheduling with Carlsbad Fix It in Carlsbad, CA."
+>
+  <script type="application/ld+json" slot="head">
+    {faqJsonLd}
+  </script>
+
+  <section class="grid gap-8 md:grid-cols-[minmax(0,1.8fr)_minmax(0,1.2fr)] md:items-start">
+    <div class="space-y-4">
+      <div class="space-y-2">
+        <p class="eyebrow">FAQ</p>
+        <h1 class="text-h1 font-semibold text-cf-text">
+          Frequently asked questions
+        </h1>
+        <p class="text-body-sm">
+          Answers to common questions about services, service areas, pricing, and scheduling. If you do not see your question here, you can always ask in your estimate request.
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        {faqs.map((item) => (
+          <details class="card">
+            <summary class="cursor-pointer text-sm font-semibold text-cf-text">
+              {item.question}
+            </summary>
+            <p class="mt-2 text-sm text-cf-textMuted">
+              {item.answer}
+            </p>
+          </details>
+        ))}
+      </div>
+    </div>
+
+    <aside class="space-y-4">
+      <QuickEstimateCard
+        eyebrow="Quick request"
+        title="Ask a question or request an estimate"
+        body="Share your location, a short list of tasks, and any questions you have. You will receive clear next steps and timing before anything is scheduled."
+        defaultCity="Carlsbad, CA"
+      />
+    </aside>
+  </section>
+
+  <PageCtaStrip />
+</BaseLayout>

@@ -1,0 +1,65 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./src/**/*.{astro,html,js,jsx,ts,tsx,vue,svelte,md,mdx}'],
+  theme: {
+    extend: {
+      colors: {
+        cf: {
+          bg: '#f3f6fb',
+          sand: '#ffe8c2',
+          sandSoft: '#fff4dd',
+          card: '#ffffff',
+          primary: '#ff7a1a',
+          primarySoft: '#ffe4c4',
+          primaryDark: '#f76707',
+          accentBlue: '#0070c9',
+          accentBlueSoft: '#e3f0ff',
+          footer: '#020617',
+          footerMuted: '#050816',
+          text: '#0f172a',
+          textMuted: '#6b7280',
+          borderSubtle: '#e2e8f0',
+          borderStrong: '#cbd5e1',
+          success: '#16a34a',
+          warning: '#ffd84f',
+          danger: '#dc2626'
+        }
+      },
+      borderRadius: {
+        card: '1.5rem',
+        pill: '9999px',
+        section: '2rem'
+      },
+      boxShadow: {
+        soft: '0 10px 25px rgba(15, 23, 42, 0.06)',
+        card: '0 18px 45px rgba(15, 23, 42, 0.08)',
+        cta: '0 22px 55px rgba(255, 122, 26, 0.45)'
+      },
+      spacing: {
+        'section-sm': '3.5rem',
+        section: '4.5rem',
+        'section-lg': '6rem'
+      },
+      fontFamily: {
+        sans: [
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'Roboto',
+          'Helvetica Neue',
+          'Arial',
+          'Noto Sans',
+          'sans-serif'
+        ]
+      },
+      fontSize: {
+        display: ['2.75rem', { lineHeight: '1.05', letterSpacing: '-0.04em' }],
+        h1: ['2.125rem', { lineHeight: '1.1', letterSpacing: '-0.03em' }],
+        h2: ['1.5rem', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
+        h3: ['1.25rem', { lineHeight: '1.3', letterSpacing: '-0.01em' }]
+      }
+    }
+  },
+  plugins: []
+};

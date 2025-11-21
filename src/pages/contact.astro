@@ -1,0 +1,135 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { serviceAreas } from "../data/service-areas";
+
+const primaryArea = serviceAreas.find((area) => area.primary) ?? serviceAreas[0];
+
+const contactPageSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Carlsbad Fix It",
+  "url": "https://carlsbadfixit.com/contact/",
+  "about": {
+    "@type": "HomeAndConstructionBusiness",
+    "name": "Carlsbad Fix It",
+    "telephone": "+1-808-226-6681",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "3027 Greenwich St.",
+      "addressLocality": "Carlsbad",
+      "addressRegion": "CA",
+      "postalCode": "92010",
+      "addressCountry": "US"
+    }
+  }
+});
+---
+<BaseLayout
+  title="Contact Carlsbad Fix It | Request an Estimate"
+  description="Request a free handyman estimate from Carlsbad Fix It. Share your project details, location, and photos for a clear, no-obligation quote."
+>
+  <script type="application/ld+json" slot="head">
+    {contactPageSchema}
+  </script>
+
+  <section class="grid gap-8 md:grid-cols-[minmax(0,1.7fr)_minmax(0,1.2fr)] md:items-start">
+    <div class="card space-y-4">
+      <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
+        Get started
+      </p>
+      <h1 class="text-2xl font-semibold tracking-tight text-slate-900">
+        Request your free estimate in {primaryArea.label}
+      </h1>
+      <p class="text-sm text-slate-600">
+        Tell us about your project and where you are located. You will receive clear next steps and a no-obligation estimate, usually within one business day.
+      </p>
+      <form class="mt-2 grid gap-4 md:grid-cols-2">
+        <div class="space-y-1 md:col-span-1">
+          <label for="name" class="text-xs font-medium text-slate-800">Name</label>
+          <input
+            id="name"
+            type="text"
+            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs outline-none ring-sky-500 focus:border-sky-500 focus:ring-1"
+            placeholder="Your name"
+          />
+        </div>
+        <div class="space-y-1 md:col-span-1">
+          <label for="phone" class="text-xs font-medium text-slate-800">Phone</label>
+          <input
+            id="phone"
+            type="tel"
+            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs outline-none ring-sky-500 focus:border-sky-500 focus:ring-1"
+            placeholder="Best number to reach you"
+          />
+        </div>
+        <div class="space-y-1 md:col-span-1">
+          <label for="email" class="text-xs font-medium text-slate-800">Email</label>
+          <input
+            id="email"
+            type="email"
+            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs outline-none ring-sky-500 focus:border-sky-500 focus:ring-1"
+            placeholder="you@example.com"
+          />
+        </div>
+        <div class="space-y-1 md:col-span-1">
+          <label for="city" class="text-xs font-medium text-slate-800">City</label>
+          <input
+            id="city"
+            type="text"
+            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs outline-none ring-sky-500 focus:border-sky-500 focus:ring-1"
+            placeholder={primaryArea.label}
+          />
+        </div>
+        <div class="space-y-1 md:col-span-2">
+          <label for="details" class="text-xs font-medium text-slate-800">Project details</label>
+          <textarea
+            id="details"
+            rows={5}
+            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs outline-none ring-sky-500 focus:border-sky-500 focus:ring-1"
+            placeholder="Briefly describe the work you need help with. You can list multiple tasks here."
+          ></textarea>
+        </div>
+        <div class="md:col-span-2">
+          <button type="submit" class="btn-primary w-full">
+            Submit request
+          </button>
+          <p class="mt-2 text-[11px] text-slate-500">
+            This form is a visual placeholder and will be connected to your preferred email or form provider. You can also call or text for urgent requests.
+          </p>
+        </div>
+      </form>
+    </div>
+    <aside class="space-y-4 rounded-3xl bg-amber-50 p-6">
+      <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
+        Contact details
+      </p>
+      <h2 class="text-lg font-semibold text-slate-900">
+        Call or text for quick questions
+      </h2>
+      <p class="text-sm text-slate-700">
+        Some projects are easiest to discuss by phone, especially if you are not sure which services you need.
+      </p>
+      <div class="rounded-2xl bg-white p-4 text-sm shadow-sm">
+        <p class="text-xs font-semibold uppercase tracking-wide text-slate-700">
+          Call or text
+        </p>
+        <p class="mt-1 text-lg font-semibold text-sky-700">
+          (808) 226-6681
+        </p>
+        <p class="mt-1 text-[11px] text-slate-500">
+          Typical response during normal business hours.
+        </p>
+      </div>
+      <div class="space-y-2 text-sm text-slate-700">
+        <p class="text-xs font-semibold uppercase tracking-wide text-slate-700">
+          Helpful details to include
+        </p>
+        <ul class="list-disc space-y-1 pl-5 text-xs">
+          <li>Where you are located and type of home.</li>
+          <li>A short list of each task or project.</li>
+          <li>Approximate dates or timeframes that work best.</li>
+        </ul>
+      </div>
+    </aside>
+  </section>
+</BaseLayout>

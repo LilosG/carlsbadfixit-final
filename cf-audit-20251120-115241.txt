@@ -1,0 +1,1937 @@
+=== PWD ===
+/Users/michaelprickett/carlsbadfixit
+
+=== FILE: package.json ===
+{
+  "name": "carlsbadfixit",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.17",
+    "astro": "^5.15.9",
+    "tailwindcss": "^4.1.17"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.17"
+  }
+}
+
+=== FILE: astro.config.* ===
+--- astro.config.mjs ---
+// @ts-check
+import { defineConfig } from 'astro/config';
+import tailwindcss from '@tailwindcss/vite';
+
+// https://astro.build/config
+export default defineConfig({
+  // Canonical production URL (used by Astro for sitemap, canonical helpers, etc.)
+  site: 'https://carlsbadfixit.com',
+  // Match your /services/, /contact/, etc. URL style
+  trailingSlash: 'always',
+  vite: {
+    plugins: [tailwindcss()]
+  }
+});
+
+
+=== FILE: tailwind.config.* ===
+--- tailwind.config.mjs ---
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./src/**/*.{astro,html,js,jsx,ts,tsx,vue,svelte,md,mdx}'],
+  plugins: []
+};
+
+--- tailwind.config.js ---
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    './src/**/*.{astro,html,js,jsx,ts,tsx,vue,svelte,md,mdx}'
+  ],
+  theme: {
+    extend: {
+      colors: {
+        cf: {
+          bg: '#f3f6fb',
+          sand: '#ffe8c2',
+          sandSoft: '#fff4dd',
+          card: '#ffffff',
+          primary: '#ff7a1a',
+          primarySoft: '#ffe4c4',
+          primaryDark: '#f76707',
+          accentBlue: '#0070c9',
+          accentBlueSoft: '#e3f0ff',
+          footer: '#020617',
+          footerMuted: '#050816',
+          text: '#0f172a',
+          textMuted: '#6b7280',
+          borderSubtle: '#e2e8f0',
+          borderStrong: '#cbd5e1',
+          success: '#16a34a',
+          warning: '#ffd84f',
+          danger: '#dc2626'
+        }
+      },
+      borderRadius: {
+        card: '1.5rem',
+        pill: '9999px',
+        section: '2rem'
+      },
+      boxShadow: {
+        soft: '0 10px 25px rgba(15, 23, 42, 0.06)',
+        card: '0 18px 45px rgba(15, 23, 42, 0.08)',
+        cta: '0 22px 55px rgba(255, 122, 26, 0.45)'
+      },
+      spacing: {
+        'section-sm': '3.5rem',
+        section: '4.5rem',
+        'section-lg': '6rem'
+      },
+      fontFamily: {
+        sans: [
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'Roboto',
+          'Helvetica Neue',
+          'Arial',
+          'Noto Sans',
+          'sans-serif'
+        ]
+      },
+      fontSize: {
+        display: ['2.75rem', { lineHeight: '1.05', letterSpacing: '-0.04em' }],
+        h1: ['2.125rem', { lineHeight: '1.1', letterSpacing: '-0.03em' }],
+        h2: ['1.5rem', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
+        h3: ['1.25rem', { lineHeight: '1.3', letterSpacing: '-0.01em' }]
+      }
+    }
+  },
+  plugins: []
+};
+
+
+=== FILE: src/styles/global.css (or main.css / base.css) ===
+--- src/styles/global.css ---
+@import "tailwindcss";
+
+/* Tailwind 4 design tokens: colors, radii, shadows, spacing, fonts, type scale */
+@theme {
+  /* Colors */
+  --color-cf-bg: #f3f6fb;
+  --color-cf-sand: #ffe8c2;
+  --color-cf-sandSoft: #fff4dd;
+  --color-cf-card: #ffffff;
+  --color-cf-primary: #ff7a1a;
+  --color-cf-primarySoft: #ffe4c4;
+  --color-cf-primaryDark: #f76707;
+  --color-cf-accentBlue: #0070c9;
+  --color-cf-accentBlueSoft: #e3f0ff;
+  --color-cf-footer: #020617;
+  --color-cf-footerMuted: #050816;
+  --color-cf-text: #0f172a;
+  --color-cf-textMuted: #6b7280;
+  --color-cf-borderSubtle: #e2e8f0;
+  --color-cf-borderStrong: #cbd5e1;
+  --color-cf-success: #16a34a;
+  --color-cf-warning: #ffd84f;
+  --color-cf-danger: #dc2626;
+
+  /* Radii */
+  --radius-card: 1.5rem;
+  --radius-pill: 9999px;
+  --radius-section: 2rem;
+
+  /* Shadows */
+  --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.06);
+  --shadow-card: 0 18px 45px rgba(15, 23, 42, 0.08);
+  --shadow-cta: 0 22px 55px rgba(255, 122, 26, 0.45);
+
+  /* Spacing */
+  --spacing-section-sm: 3.5rem;
+  --spacing-section: 4.5rem;
+  --spacing-section-lg: 6rem;
+
+  /* Fonts */
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+
+  /* Type scale */
+  --text-display: 2.75rem;
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.04em;
+
+  --text-h1: 2.125rem;
+  --text-h1--line-height: 1.1;
+  --text-h1--letter-spacing: -0.03em;
+
+  --text-h2: 1.5rem;
+  --text-h2--line-height: 1.2;
+  --text-h2--letter-spacing: -0.02em;
+
+  --text-h3: 1.25rem;
+  --text-h3--line-height: 1.3;
+  --text-h3--letter-spacing: -0.01em;
+}
+
+/* Base element styles */
+@layer base {
+  :root {
+    color-scheme: light;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-h-screen bg-cf-bg text-cf-text antialiased font-sans flex flex-col;
+  }
+
+  main {
+    @apply flex-1;
+  }
+
+  h1 {
+    @apply text-h1 font-semibold tracking-tight text-cf-text;
+  }
+
+  h2 {
+    @apply text-h2 font-semibold tracking-tight text-cf-text;
+  }
+
+  h3 {
+    @apply text-h3 font-semibold tracking-tight text-cf-text;
+  }
+
+  h4 {
+    @apply text-lg font-semibold tracking-tight text-cf-text;
+  }
+
+  p {
+    @apply text-base leading-relaxed text-cf-textMuted;
+  }
+
+  a {
+    @apply text-cf-accentBlue no-underline underline-offset-4 transition-colors duration-150;
+  }
+
+  a:hover {
+    @apply text-cf-primaryDark underline;
+  }
+
+  a:focus-visible {
+    @apply outline-none ring-2 ring-offset-2 ring-cf-primaryDark;
+  }
+
+  section {
+    @apply py-section md:py-section-lg;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold tracking-[0.16em] uppercase text-cf-accentBlue;
+  }
+}
+
+/* Reusable components: buttons, cards, sections, badges, small text */
+@layer components {
+  /* Shared button shell: shape, spacing, typography, focus */
+  .btn,
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline,
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-pill border border-transparent px-5 py-2.5 text-sm font-semibold tracking-tight shadow-soft transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cf-primaryDark disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-primary {
+    @apply text-white bg-gradient-to-r from-cf-primary to-cf-warning shadow-cta hover:from-cf-primaryDark hover:to-cf-primaryDark;
+  }
+
+  .btn-secondary {
+    @apply bg-cf-card text-cf-text border border-cf-borderSubtle hover:bg-cf-bg;
+  }
+
+  .btn-outline {
+    @apply bg-transparent text-cf-text border border-cf-borderSubtle hover:bg-cf-card;
+  }
+
+  .btn-ghost {
+    @apply border-none shadow-none bg-transparent text-cf-accentBlue hover:bg-cf-accentBlueSoft;
+  }
+
+  .card {
+    @apply bg-cf-card rounded-card border border-cf-borderSubtle shadow-soft p-6;
+  }
+
+  .card-soft {
+    @apply bg-cf-sandSoft rounded-card border border-transparent shadow-soft p-6;
+  }
+
+  .section-shell {
+    @apply mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-header {
+    @apply max-w-2xl space-y-3;
+  }
+
+  .section-title {
+    @apply text-h1 font-semibold text-cf-text;
+  }
+
+  .section-subtitle {
+    @apply text-base text-cf-textMuted;
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-pill bg-cf-accentBlueSoft px-3 py-1 text-xs font-medium text-cf-accentBlue;
+  }
+
+  .badge-muted {
+    @apply inline-flex items-center rounded-pill bg-cf-sandSoft px-3 py-1 text-xs font-medium text-cf-textMuted;
+  }
+
+  .text-body-sm {
+    @apply text-sm leading-relaxed text-cf-textMuted;
+  }
+}
+
+
+=== LAYOUTS (src/layouts) ===
+BaseLayout.astro
+
+=== FILE: src/layouts/BaseLayout.astro ===
+---
+import "../styles/global.css";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  noIndex?: boolean;
+}
+
+const {
+  title = "Carlsbad Fix It | Handyman Services in Carlsbad, CA",
+  description = "Local handyman for home repairs, installations, and maintenance in Carlsbad, California.",
+  canonical,
+  noIndex = false
+} = Astro.props;
+
+const siteUrl = Astro.site?.toString() ?? "https://carlsbadfixit.com";
+const defaultCanonical = new URL(Astro.url.pathname, siteUrl).toString();
+const canonicalUrl = canonical ?? defaultCanonical;
+const robots = noIndex ? "noindex,nofollow" : "index,follow";
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <slot name="head" />
+  </head>
+  <body>
+    <SiteHeader />
+    <main class="mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 py-10">
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>
+
+=== DATA MODULES ===
+--- src/data/services.ts ---
+export interface Service {
+  slug: string;
+  name: string;
+  shortDescription: string;
+  primary?: boolean;
+  examples?: string[];
+}
+
+export const services: Service[] = [
+  {
+    slug: "carpentry-woodwork",
+    name: "Carpentry & Woodwork",
+    shortDescription: "Framing, pergolas, fences, gates, trim, doors, sheds, and other small structures.",
+    primary: true,
+    examples: [
+      "Repair or replace damaged fence sections",
+      "Install new interior or exterior doors",
+      "Build or repair wood gates",
+      "Install baseboards, casing, and trim",
+      "Assemble and install small sheds or storage structures"
+    ]
+  },
+  {
+    slug: "electrical",
+    name: "Electrical",
+    shortDescription: "Lighting, outlets, switches, and small electrical projects around the home.",
+    examples: [
+      "Replace light fixtures and ceiling fans",
+      "Install dimmers, switches, and smart controls",
+      "Add or replace standard outlets",
+      "Swap old vanity or kitchen lighting",
+      "Troubleshoot simple non-code electrical issues"
+    ]
+  },
+  {
+    slug: "furniture-assembly-installations",
+    name: "Furniture Assembly & Installations",
+    shortDescription: "Assembly and installation for home and office furniture, shelves, and wall décor.",
+    examples: [
+      "Assemble beds, dressers, and nightstands",
+      "Assemble desks, office chairs, and shelving",
+      "Install wall shelves and floating shelves",
+      "Hang artwork, mirrors, and framed photos",
+      "Install TV stands, media consoles, and storage units"
+    ]
+  },
+  {
+    slug: "plumbing-fixtures-repairs",
+    name: "Plumbing Fixtures & Repairs",
+    shortDescription: "Small plumbing projects like faucets, sinks, disposals, toilets, and shower heads.",
+    examples: [
+      "Replace faucets in kitchens and bathrooms",
+      "Install or replace garbage disposals",
+      "Replace toilets and wax rings",
+      "Swap shower heads and hand showers",
+      "Fix minor leaks at visible supply connections"
+    ]
+  },
+  {
+    slug: "honey-do-lists-small-repairs",
+    name: "Honey-Do Lists & Small Repairs",
+    shortDescription: "Tackle a list of small projects and fixes around the house in a single visit.",
+    examples: [
+      "Tighten loose hinges, knobs, and handles",
+      "Patch small wall dings and nail holes",
+      "Adjust sticky doors and cabinets",
+      "Replace vent covers, registers, and door stops",
+      "Mix-and-match tasks into one service visit"
+    ]
+  },
+  {
+    slug: "drywall-repair",
+    name: "Drywall Repair",
+    shortDescription: "Patching holes, cracks, and dents in walls and ceilings with blending texture and paint.",
+    examples: [
+      "Patch small to medium drywall holes",
+      "Repair cracks along seams and corners",
+      "Fix door knob holes behind doors",
+      "Blend new texture into existing walls",
+      "Prep repaired areas for painting"
+    ]
+  },
+  {
+    slug: "tv-mounting",
+    name: "TV Mounting",
+    shortDescription: "Safe, clean wall mounting for flat-screen TVs and media setups with hidden cabling when possible.",
+    examples: [
+      "Mount TVs on drywall or above consoles",
+      "Install tilt or full-motion TV mounts",
+      "Route and conceal surface wiring where possible",
+      "Set up basic soundbars and small speakers",
+      "Secure cables and components for a tidy look"
+    ]
+  }
+];
+
+--- src/data/service-areas.ts ---
+export interface ServiceArea {
+  slug: string;
+  name: string;
+  label: string;
+  primary?: boolean;
+}
+
+export const serviceAreas: ServiceArea[] = [
+  {
+    slug: "carlsbad",
+    name: "Carlsbad",
+    label: "Carlsbad, CA",
+    primary: true
+  },
+  {
+    slug: "oceanside",
+    name: "Oceanside",
+    label: "Oceanside, CA"
+  },
+  {
+    slug: "encinitas",
+    name: "Encinitas",
+    label: "Encinitas, CA"
+  },
+  {
+    slug: "vista",
+    name: "Vista",
+    label: "Vista, CA"
+  },
+  {
+    slug: "san-marcos",
+    name: "San Marcos",
+    label: "San Marcos, CA"
+  }
+];
+
+=== TREE: src/components ===
+AreaCard.astro
+ServiceCard.astro
+SiteFooter.astro
+SiteHeader.astro
+
+=== COMPONENTS (header/footer/cards) ===
+--- src/components/SiteHeader.astro ---
+---
+---
+<header class="border-b border-cf-borderSubtle bg-cf-card/90 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-4">
+    <a href="/" class="flex items-center gap-3">
+      <div class="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-tr from-cf-primary to-cf-warning text-xs font-semibold text-white">
+        CF
+      </div>
+      <div class="flex flex-col">
+        <span class="text-sm font-semibold tracking-tight text-cf-text">
+          Carlsbad Fix It
+        </span>
+        <span class="text-xs text-cf-textMuted">
+          Local handyman in Carlsbad, CA
+        </span>
+      </div>
+    </a>
+    <div class="flex items-center gap-4">
+      <nav class="hidden items-center gap-6 text-sm font-medium text-cf-textMuted md:flex">
+        <a href="/services/" class="hover:text-cf-accentBlue">
+          Services
+        </a>
+        <a href="/service-areas/" class="hover:text-cf-accentBlue">
+          Service areas
+        </a>
+        <a href="/about/" class="hover:text-cf-accentBlue">
+          About
+        </a>
+        <a href="/faq/" class="hover:text-cf-accentBlue">
+          FAQ
+        </a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a
+          href="tel:+18082266681"
+          class="hidden text-xs font-medium text-cf-textMuted sm:inline"
+        >
+          (808) 226-6681
+        </a>
+        <a href="/contact/" class="btn-primary text-xs">
+          Request a quote
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+--- src/components/SiteFooter.astro ---
+---
+---
+<footer class="border-t border-cf-footerMuted bg-cf-footer text-cf-textMuted">
+  <div class="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-10 md:flex-row md:items-start md:justify-between">
+    <div class="space-y-3">
+      <p class="text-sm font-semibold tracking-wide text-cf-accentBlue">
+        Carlsbad Fix It
+      </p>
+      <p class="max-w-xs text-sm text-cf-textMuted">
+        Local handyman serving Carlsbad and nearby North County San Diego communities with small home repairs and improvements.
+      </p>
+      <p class="text-xs text-cf-textMuted">
+        3027 Greenwich St, Carlsbad, CA 92010
+      </p>
+    </div>
+    <div class="flex flex-1 flex-wrap gap-10 text-sm">
+      <div class="space-y-2">
+        <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
+          Site
+        </p>
+        <a href="/services/" class="block text-cf-textMuted hover:text-white">
+          Services
+        </a>
+        <a href="/service-areas/" class="block text-cf-textMuted hover:text-white">
+          Service areas
+        </a>
+        <a href="/about/" class="block text-cf-textMuted hover:text-white">
+          About
+        </a>
+        <a href="/contact/" class="block text-cf-textMuted hover:text-white">
+          Contact
+        </a>
+      </div>
+      <div class="space-y-2">
+        <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
+          Support
+        </p>
+        <a href="/faq/" class="block text-cf-textMuted hover:text-white">
+          FAQ
+        </a>
+        <a href="/who-we-work-with/" class="block text-cf-textMuted hover:text-white">
+          Who we work with
+        </a>
+      </div>
+      <div class="space-y-2">
+        <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
+          Contact
+        </p>
+        <p class="text-sm text-cf-textMuted">
+          Call or text:
+          <a href="tel:+18082266681" class="ml-1 hover:text-white">
+            (808) 226-6681
+          </a>
+        </p>
+        <p class="text-sm text-cf-textMuted">
+          Email:
+          <a href="mailto:carlsbadfixit@gmail.com" class="ml-1 hover:text-white">
+            carlsbadfixit@gmail.com
+          </a>
+        </p>
+        <p class="text-xs text-cf-textMuted">
+          Typical response during normal business hours.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-cf-footerMuted">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-4 text-xs text-cf-textMuted md:flex-row">
+      <p>
+        © {new Date().getFullYear()} Carlsbad Fix It. All rights reserved.
+      </p>
+      <p>
+        Website for Carlsbad Fix It.
+      </p>
+    </div>
+  </div>
+</footer>
+
+--- src/components/ServiceCard.astro ---
+---
+interface Props {
+  service: {
+    slug: string;
+    name: string;
+    shortDescription: string;
+  };
+  primaryAreaSlug: string;
+  primaryAreaName: string;
+}
+
+const { service, primaryAreaSlug, primaryAreaName } = Astro.props;
+---
+<article class="card flex flex-col">
+  <div class="flex items-start justify-between gap-3">
+    <h2 class="text-sm font-semibold text-slate-900">
+      <a href={"/services/" + service.slug + "/"} class="hover:text-sky-700">
+        {service.name}
+      </a>
+    </h2>
+    <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-sky-50 text-xs font-semibold text-sky-700">
+      ✓
+    </span>
+  </div>
+  <p class="mt-2 flex-1 text-xs text-slate-600">
+    {service.shortDescription}
+  </p>
+  <div class="mt-4 flex items-center justify-between text-[11px] text-slate-500">
+    <a
+      href={"/services/" + service.slug + "/"}
+      class="font-semibold text-sky-700 underline-offset-2 hover:underline"
+    >
+      Learn more
+    </a>
+    <a
+      href={"/service-areas/" + primaryAreaSlug + "/" + service.slug + "/"}
+      class="underline-offset-2 hover:underline"
+    >
+      In {primaryAreaName}
+    </a>
+  </div>
+</article>
+
+--- src/components/AreaCard.astro ---
+---
+interface ServiceArea {
+  slug: string;
+  name: string;
+  label: string;
+  primary?: boolean;
+}
+
+interface Props {
+  area: ServiceArea;
+}
+
+const { area } = Astro.props;
+---
+<article class="card flex flex-col justify-between text-sm">
+  <div class="space-y-1">
+    <h2 class="text-sm font-semibold text-slate-900">
+      <a href={"/service-areas/" + area.slug + "/"} class="hover:text-sky-700">
+        {area.label}
+      </a>
+    </h2>
+    <p class="text-xs text-slate-600">
+      Handyman services for homeowners in {area.label} and nearby neighborhoods.
+    </p>
+  </div>
+  <div class="mt-3 text-[11px]">
+    <a
+      href={"/service-areas/" + area.slug + "/"}
+      class="font-semibold text-sky-700 underline-offset-2 hover:underline"
+    >
+      View city page
+    </a>
+  </div>
+</article>
+
+
+=== PAGES: HOME & SERVICES ===
+--- src/pages/index.astro (HOME) ---
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { services } from "../data/services";
+import { serviceAreas } from "../data/service-areas";
+
+const primaryArea = serviceAreas.find((area) => area.primary) ?? serviceAreas[0];
+
+const processSteps = [
+  {
+    step: "1",
+    title: "Request an estimate",
+    body: "Share your punch list or project details online and include photos if you can."
+  },
+  {
+    step: "2",
+    title: "Schedule your service",
+    body: "Pick a time that works for you and get clear expectations before we arrive."
+  },
+  {
+    step: "3",
+    title: "We fix it right",
+    body: "Professional, tidy work with attention to detail on every task."
+  },
+  {
+    step: "4",
+    title: "Final walkthrough",
+    body: "Review the work together and make sure everything looks and works as it should."
+  }
+];
+
+const testimonials = [
+  {
+    name: "Sarah M.",
+    location: "Carlsbad, CA",
+    text: "Showed up on time, fixed our drywall and a few small items in one visit. Very easy to work with.",
+    source: "Homeowner (placeholder)"
+  },
+  {
+    name: "David R.",
+    location: "Encinitas, CA",
+    text: "Clear estimate, no surprises, and everything was cleaned up before they left. Highly recommend.",
+    source: "Homeowner (placeholder)"
+  },
+  {
+    name: "Rachel K.",
+    location: "Vista, CA",
+    text: "Our go-to for small repairs and maintenance between tenants. Reliable and professional.",
+    source: "Small landlord (placeholder)"
+  }
+];
+
+const featuredProjects = [
+  {
+    title: "Carlsbad carpentry and drywall refresh",
+    location: "Carlsbad",
+    summary: "Framed a small wall section, patched drywall, and installed new trim for a clean, updated look.",
+    url: "#"
+  },
+  {
+    title: "Oceanside lighting and TV setup",
+    location: "Oceanside",
+    summary: "Installed new lighting, mounted a TV, and organized cabling in a living room update.",
+    url: "#"
+  },
+  {
+    title: "Vista plumbing fixtures update",
+    location: "Vista",
+    summary: "Replaced faucets, shower heads, and a vanity to modernize a bathroom.",
+    url: "#"
+  }
+];
+
+const areasForGrid = serviceAreas;
+const servicesForGrid = services;
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "Carlsbad Fix It",
+  "url": "https://carlsbadfixit.com/",
+  "telephone": "+1-808-226-6681",
+  "description":
+    "Local handyman for home repairs, installations, and maintenance in Carlsbad and nearby North County San Diego communities.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "3027 Greenwich St.",
+    "addressLocality": "Carlsbad",
+    "addressRegion": "CA",
+    "postalCode": "92010",
+    "addressCountry": "US"
+  },
+  "areaServed": serviceAreas.map((area) => area.label)
+};
+
+const localBusinessJsonLd = JSON.stringify(localBusinessSchema);
+---
+
+<BaseLayout
+  title="Handyman Services You Can Trust in Carlsbad | Carlsbad Fix It"
+  description="Carlsbad Fix It provides expert handyman services in Carlsbad and North County San Diego, including carpentry, electrical, plumbing, furniture assembly, and honey-do lists."
+>
+  <script type="application/ld+json" slot="head">
+    {localBusinessJsonLd}
+  </script>
+
+  <!-- HERO -->
+  <section class="grid gap-10 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1.2fr)] lg:items-center">
+    <div class="space-y-6">
+      <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
+        Local handyman • North County San Diego
+      </p>
+      <h1 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
+        Handyman services you can trust in {primaryArea.name}
+      </h1>
+      <p class="max-w-xl text-base text-slate-600">
+        From carpentry and electrical to plumbing fixtures, furniture assembly, and honey-do lists, Carlsbad Fix It
+        delivers quality workmanship with tidy results. Proudly serving {primaryArea.label} and nearby coastal North County communities.
+      </p>
+      <div class="flex flex-wrap items-center gap-3">
+        <a
+          href="/contact/"
+          class="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-orange-500 via-amber-400 to-yellow-400 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:from-orange-600 hover:via-amber-500 hover:to-yellow-400"
+        >
+          Request free estimate
+        </a>
+        <a
+          href="tel:+18082266681"
+          class="inline-flex items-center justify-center rounded-full border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800 hover:border-sky-500 hover:text-sky-700"
+        >
+          Call to schedule
+        </a>
+      </div>
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-slate-600">
+        <div class="inline-flex items-center gap-2">
+          <span class="h-2 w-2 rounded-full bg-orange-400"></span>
+          <span>Licensed & insured</span>
+        </div>
+        <div class="inline-flex items-center gap-2">
+          <span class="h-2 w-2 rounded-full bg-sky-500"></span>
+          <span>Locally owned in Carlsbad</span>
+        </div>
+        <div class="inline-flex items-center gap-2">
+          <span class="h-2 w-2 rounded-full bg-amber-400"></span>
+          <span>Focused on small home projects</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-center">
+      <div class="relative w-full max-w-md">
+        <div class="rounded-3xl bg-gradient-to-br from-sky-600 via-sky-500 to-orange-500 p-1 shadow-lg">
+          <div class="flex h-full flex-col rounded-[1.35rem] bg-white">
+            <div class="relative aspect-video overflow-hidden rounded-t-[1.25rem] bg-slate-200">
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.9),transparent_55%),radial-gradient(circle_at_bottom,_rgba(255,255,255,0.5),transparent_55%)]"></div>
+              <div class="absolute bottom-3 left-3 rounded-full bg-white/80 px-3 py-1 text-xs font-semibold text-slate-800">
+                Project photo coming soon
+              </div>
+            </div>
+            <div class="space-y-2 px-5 py-4">
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-700">
+                Recent project
+              </p>
+              <p class="text-sm font-semibold text-slate-900">
+                Carpentry, drywall, and lighting in {primaryArea.name}
+              </p>
+              <p class="text-xs text-slate-500">
+                Combined carpentry, patching, and electrical updates in a single visit for a refreshed living space.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="absolute -bottom-4 -right-4 hidden rounded-2xl bg-white px-4 py-3 text-xs shadow-lg sm:flex sm:flex-col">
+          <p class="font-semibold text-slate-900">5.0 rating</p>
+          <p class="mt-1 text-[11px] text-slate-500">From local North County homeowners</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES (CARD LAYOUT) -->
+  <section class="rounded-3xl bg-amber-50 px-4 py-10 sm:px-6 md:px-8">
+    <div class="mx-auto max-w-5xl space-y-6">
+      <div class="space-y-2 text-center">
+        <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
+          Services
+        </p>
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-900">
+          Expert handyman services
+        </h2>
+        <p class="text-sm text-slate-600">
+          Core services built around what North County homeowners request most, with room for custom projects and punch lists.
+        </p>
+      </div>
+      <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {servicesForGrid.map((service) => (
+          <article class="card flex flex-col">
+            <div class="flex items-start justify-between gap-3">
+              <h3 class="text-sm font-semibold text-slate-900">
+                <a href={"/services/" + service.slug + "/"} class="hover:text-sky-700">
+                  {service.name}
+                </a>
+              </h3>
+              <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-sky-50 text-xs font-semibold text-sky-700">
+                ✓
+              </span>
+            </div>
+            <p class="mt-2 flex-1 text-xs text-slate-600">
+              {service.shortDescription}
+            </p>
+            <div class="mt-4 flex items-center justify-between text-[11px] text-slate-500">
+              <a
+                href={"/services/" + service.slug + "/"}
+                class="font-semibold text-sky-700 underline-offset-2 hover:underline"
+              >
+                Learn more
+              </a>
+              <a
+                href={"/service-areas/" + primaryArea.slug + "/" + service.slug + "/"}
+                class="underline-offset-2 hover:underline"
+              >
+                In {primaryArea.name}
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="space-y-8">
+    <div class="space-y-2 text-center">
+      <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
+        How we work
+      </p>
+      <h2 class="text-2xl font-semibold tracking-tight text-slate-900">
+        A simple, four-step process
+      </h2>
+      <p class="text-sm text-slate-600">
+        Clear communication, tidy work, and a dependable experience from first call to final walkthrough.
+      </p>
+    </div>
+    <div class="grid gap-5 md:grid-cols-4">
+      {processSteps.map((item) => (
+        <div class="flex flex-col items-start rounded-2xl border border-slate-200 bg-white p-4 text-left shadow-sm">
+          <div class="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-full bg-sky-50 text-xs font-semibold text-sky-700">
+            {item.step}
+          </div>
+          <h3 class="text-sm font-semibold text-slate-900">
+            {item.title}
+          </h3>
+          <p class="mt-2 text-xs text-slate-600">
+            {item.body}
+          </p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- BEFORE / AFTER -->
+  <section class="rounded-3xl bg-orange-50 px-4 py-10 sm:px-6 md:px-8">
+    <div class="mx-auto max-w-5xl space-y-6">
+      <div class="space-y-2 text-center">
+        <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
+          Results
+        </p>
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-900">
+          Real results you can see
+        </h2>
+        <p class="text-sm text-slate-600">
+          Attention to detail and consistent quality on every project, large or small.
+        </p>
+      </div>
+      <div class="relative mx-auto max-w-3xl">
+        <div class="flex overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+          <div class="flex-1 border-r border-slate-100 bg-slate-100">
+            <div class="flex h-full flex-col items-center justify-center px-4 py-10 text-center text-xs text-slate-500">
+              <span class="mb-2 rounded-full bg-slate-900/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-white">
+                Before
+              </span>
+              <p>
+                Wall damage, outdated fixtures, and unfinished repairs. We document the issues so you know exactly what will be fixed.
+              </p>
+            </div>
+          </div>
+          <div class="flex-1 bg-slate-50">
+            <div class="flex h-full flex-col items-center justify-center px-4 py-10 text-center text-xs text-slate-500">
+              <span class="mb-2 rounded-full bg-sky-600 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-white">
+                After
+              </span>
+              <p>
+                Clean, finished work that blends with existing textures and paint, leaving your home ready to enjoy.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="absolute inset-y-6 left-1/2 flex -translate-x-1/2 items-center justify-center">
+          <div class="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-lg ring-1 ring-slate-200">
+            <span class="text-xs font-semibold text-slate-600">⇆</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECTS -->
+  <section class="space-y-6">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <div class="space-y-2">
+        <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
+          Projects
+        </p>
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-900">
+          Featured handyman projects
+        </h2>
+        <p class="text-sm text-slate-600">
+          A snapshot of the kinds of projects Carlsbad Fix It handles for homeowners across North County.
+        </p>
+      </div>
+    </div>
+    <div class="grid gap-5 md:grid-cols-3">
+      {featuredProjects.map((project) => (
+        <article class="flex flex-col rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+          <div class="aspect-video rounded-xl bg-slate-100"></div>
+          <div class="mt-4 space-y-1">
+            <h3 class="text-sm font-semibold text-slate-900">
+              {project.title}
+            </h3>
+            <p class="text-xs font-medium text-slate-500">
+              {project.location}, CA
+            </p>
+            <p class="mt-1 text-xs text-slate-600">
+              {project.summary}
+            </p>
+          </div>
+          <div class="mt-3 text-[11px]">
+            <a href={project.url} class="font-semibold text-sky-700 underline-offset-2 hover:underline">
+              View details
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="space-y-6">
+    <div class="space-y-2 text-center">
+      <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
+        Testimonials
+      </p>
+      <h2 class="text-2xl font-semibold tracking-tight text-slate-900">
+        What our customers say
+      </h2>
+      <p class="text-sm text-slate-600">
+        Real feedback from North County homeowners and property owners.
+      </p>
+    </div>
+    <div class="grid gap-5 md:grid-cols-3">
+      {testimonials.map((t) => (
+        <article class="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+          <div class="flex items-center gap-1 text-[11px] text-amber-500">
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+          </div>
+          <p class="mt-3 flex-1 text-xs text-slate-700">
+            {t.text}
+          </p>
+          <div class="mt-4 space-y-1 text-xs">
+            <p class="font-semibold text-slate-900">
+              {t.name}
+            </p>
+            <p class="text-slate-500">{t.location}</p>
+            <p class="text-[11px] text-slate-400">{t.source}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- SERVICE AREAS (CARD LAYOUT) -->
+  <section class="rounded-3xl bg-amber-50 px-4 py-10 sm:px-6 md:px-8">
+    <div class="mx-auto max-w-5xl space-y-6">
+      <div class="space-y-2 text-center">
+        <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
+          Service areas
+        </p>
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-900">
+          Proudly serving North County San Diego
+        </h2>
+        <p class="text-sm text-slate-600">
+          Local service for coastal and nearby inland communities. If you do not see your city listed, you can still reach out to check availability.
+        </p>
+      </div>
+      <div class="grid gap-4 md:grid-cols-3">
+        {areasForGrid.map((area) => (
+          <article class="card flex flex-col justify-between text-sm">
+            <div class="space-y-1">
+              <h3 class="text-sm font-semibold text-slate-900">
+                <a href={"/service-areas/" + area.slug + "/"} class="hover:text-sky-700">
+                  {area.label}
+                </a>
+              </h3>
+              <p class="text-xs text-slate-600">
+                Handyman services for homeowners in {area.label} and nearby neighborhoods.
+              </p>
+            </div>
+            <div class="mt-3 text-[11px]">
+              <a
+                href={"/service-areas/" + area.slug + "/"}
+                class="font-semibold text-sky-700 underline-offset-2 hover:underline"
+              >
+                View city page
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HOME INLINE FORM + WHY CHOOSE -->
+  <section class="grid gap-8 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1.1fr)] md:items-start">
+    <div class="space-y-4 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+      <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
+        Get started
+      </p>
+      <h2 class="text-2xl font-semibold tracking-tight text-slate-900">
+        Request your free estimate
+      </h2>
+      <p class="text-sm text-slate-600">
+        Tell us a bit about your project and where you are located. You will receive clear next steps and a no-obligation estimate.
+      </p>
+      <form class="mt-2 grid gap-4 md:grid-cols-2">
+        <div class="space-y-1 md:col-span-1">
+          <label for="home-name" class="text-xs font-medium text-slate-800">Name</label>
+          <input
+            id="home-name"
+            type="text"
+            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs outline-none ring-sky-500 focus:border-sky-500 focus:ring-1"
+            placeholder="Your name"
+          />
+        </div>
+        <div class="space-y-1 md:col-span-1">
+          <label for="home-phone" class="text-xs font-medium text-slate-800">Phone</label>
+          <input
+            id="home-phone"
+            type="tel"
+            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs outline-none ring-sky-500 focus:border-sky-500 focus:ring-1"
+            placeholder="Best number to reach you"
+          />
+        </div>
+        <div class="space-y-1 md:col-span-1">
+          <label for="home-email" class="text-xs font-medium text-slate-800">Email</label>
+          <input
+            id="home-email"
+            type="email"
+            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs outline-none ring-sky-500 focus:border-sky-500 focus:ring-1"
+            placeholder="you@example.com"
+          />
+        </div>
+        <div class="space-y-1 md:col-span-1">
+          <label for="home-city" class="text-xs font-medium text-slate-800">City</label>
+          <input
+            id="home-city"
+            type="text"
+            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs outline-none ring-sky-500 focus:border-sky-500 focus:ring-1"
+            placeholder={primaryArea.label}
+          />
+        </div>
+        <div class="space-y-1 md:col-span-2">
+          <label for="home-details" class="text-xs font-medium text-slate-800">Project details</label>
+          <textarea
+            id="home-details"
+            rows={4}
+            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs outline-none ring-sky-500 focus:border-sky-500 focus:ring-1"
+            placeholder="Briefly describe the work you need help with"
+          ></textarea>
+        </div>
+        <div class="md:col-span-2">
+          <button
+            type="submit"
+            class="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-orange-500 via-amber-400 to-yellow-400 px-4 py-2 text-sm font-semibold text-white hover:from-orange-600 hover:via-amber-500 hover:to-yellow-400"
+          >
+            Submit request
+          </button>
+          <p class="mt-2 text-[11px] text-slate-500">
+            This form is a visual placeholder and will be connected to your preferred email or form provider.
+            You can also use the dedicated contact page for a full form.
+          </p>
+        </div>
+      </form>
+    </div>
+    <aside class="space-y-4 rounded-3xl bg-amber-50 p-6">
+      <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
+        Why choose Carlsbad Fix It?
+      </p>
+      <h2 class="text-lg font-semibold text-slate-900">
+        Licensed, insured, and focused on the small jobs that matter.
+      </h2>
+      <ul class="space-y-2 text-sm text-slate-700">
+        <li>Local handyman based in Carlsbad, serving North County San Diego.</li>
+        <li>Clear communication and upfront pricing before any work begins.</li>
+        <li>Respect for your home with tidy, careful work on every visit.</li>
+        <li>Flexible scheduling for punch lists, turnovers, and recurring maintenance.</li>
+      </ul>
+      <div class="rounded-2xl bg-white p-4 shadow-sm">
+        <p class="text-xs font-semibold uppercase tracking-wide text-slate-700">
+          Call or text
+        </p>
+        <p class="mt-1 text-lg font-semibold text-sky-700">
+          (808) 226-6681
+        </p>
+        <p class="mt-1 text-[11px] text-slate-500">
+          Typical response during normal business hours.
+        </p>
+      </div>
+    </aside>
+  </section>
+</BaseLayout>
+
+--- src/pages/services/index.astro ---
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { services } from "../../data/services";
+import { serviceAreas } from "../../data/service-areas";
+import ServiceCard from "../../components/ServiceCard.astro";
+
+const primaryArea = serviceAreas.find((area) => area.primary) ?? serviceAreas[0];
+---
+<BaseLayout
+  title="Handyman Services | Carlsbad Fix It"
+  description="Browse handyman services from Carlsbad Fix It, including carpentry, electrical, plumbing fixtures, furniture assembly, and honey-do lists."
+>
+  <section class="space-y-6">
+    <div class="section-header">
+      <p class="eyebrow">
+        Services
+      </p>
+      <h1>
+        Handyman services in {primaryArea.label}
+      </h1>
+      <p class="section-subtitle max-w-2xl">
+        Core services focused on the small to medium projects North County homeowners call about most. You can also combine several tasks into a single visit.
+      </p>
+    </div>
+    <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      {services.map((service) => (
+        <ServiceCard
+          service={service}
+          primaryAreaSlug={primaryArea.slug}
+          primaryAreaName={primaryArea.name}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+--- src/pages/services/[service].astro ---
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { services } from "../../data/services";
+import { serviceAreas } from "../../data/service-areas";
+
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: { service: service.slug },
+    props: { service }
+  }));
+}
+
+const { service } = Astro.props;
+const primaryArea = serviceAreas.find((area) => area.primary) ?? serviceAreas[0];
+---
+<BaseLayout
+  title={service.name + " | Carlsbad Fix It"}
+  description={service.shortDescription + " Available in " + primaryArea.label + " and nearby North County San Diego areas."}
+>
+  <section class="space-y-8">
+    <div class="space-y-3">
+      <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
+        Service overview
+      </p>
+      <h1 class="text-3xl font-semibold tracking-tight text-slate-900">
+        {service.name}
+      </h1>
+      <p class="max-w-2xl text-sm text-slate-600">
+        {service.shortDescription} Carlsbad Fix It focuses on neat, efficient work that respects your home and your schedule, with clear communication from estimate to final walkthrough.
+      </p>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-[minmax(0,1.7fr)_minmax(0,1.3fr)]">
+      <div class="space-y-6">
+        <div class="space-y-3 rounded-3xl bg-amber-50 p-6">
+          <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-800">
+            Typical project types
+          </h2>
+          <p class="text-sm text-slate-600">
+            Here are some common examples of {service.name.toLowerCase()} projects. The exact scope is tailored to your home and your priorities.
+          </p>
+          {service.examples && (
+            <ul class="mt-2 grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
+              {service.examples.map((example) => (
+                <li class="flex items-start gap-2">
+                  <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-sky-100 text-[10px] font-semibold text-sky-700">
+                    ✓
+                  </span>
+                  <span>{example}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        <div class="space-y-3">
+          <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-800">
+            How pricing works
+          </h2>
+          <p class="text-sm text-slate-600">
+            Pricing depends on scope, access, and material choices. Smaller projects may be billed as a minimum service visit, while larger or multi-room projects are typically quoted up front.
+          </p>
+          <p class="text-sm text-slate-600">
+            For the most accurate estimate, include clear photos and a short description of each task when you submit your request.
+          </p>
+        </div>
+      </div>
+
+      <aside class="card space-y-4">
+        <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
+          Service area
+        </p>
+        <p class="text-sm text-slate-700">
+          Primary service area is {primaryArea.label}, with select availability in nearby North County communities.
+        </p>
+        <a
+          href="/service-areas/"
+          class="text-sm font-semibold text-sky-700 underline-offset-2 hover:underline"
+        >
+          View all service areas
+        </a>
+        <div class="h-px bg-slate-200"></div>
+        <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
+          Ready to schedule?
+        </p>
+        <p class="text-sm text-slate-700">
+          Share a few details and photos of your {service.name.toLowerCase()} project. You will get clear next steps and a no-obligation estimate.
+        </p>
+        <a href="/contact/" class="btn-primary w-full text-xs uppercase tracking-wide">
+          Request an estimate
+        </a>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+=== PAGES: SERVICE AREAS ===
+--- src/pages/service-areas/index.astro ---
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { serviceAreas } from "../../data/service-areas";
+import AreaCard from "../../components/AreaCard.astro";
+---
+<BaseLayout
+  title="Service Areas | Carlsbad Fix It"
+  description="Carlsbad Fix It provides local handyman services in Carlsbad and nearby North County San Diego communities."
+>
+  <section class="space-y-6">
+    <div class="section-header">
+      <p class="eyebrow">
+        Service areas
+      </p>
+      <h1>
+        Handyman service areas in North County San Diego
+      </h1>
+      <p class="section-subtitle max-w-2xl">
+        Carlsbad Fix It is based in Carlsbad and focuses on nearby coastal and inland North County communities. If you do not see your city listed, you can still get in touch to ask about availability.
+      </p>
+    </div>
+    <div class="grid gap-5 md:grid-cols-3">
+      {serviceAreas.map((area) => (
+        <AreaCard area={area} />
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+--- src/pages/service-areas/[city].astro ---
+NOT FOUND
+
+--- src/pages/service-areas/[city]/index.astro ---
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { services } from "../../../data/services";
+import { serviceAreas } from "../../../data/service-areas";
+
+export async function getStaticPaths() {
+  return serviceAreas.map((area) => {
+    return {
+      params: { city: area.slug },
+      props: { area }
+    };
+  });
+}
+
+const { area } = Astro.props;
+const featuredServices = services.slice(0, 4);
+---
+<BaseLayout
+  title={"Handyman in " + area.label + " | Carlsbad Fix It"}
+  description={"Local handyman services for homeowners in " + area.label + " and nearby neighborhoods."}
+>
+  <section class="space-y-6">
+    <h1 class="text-3xl font-semibold tracking-tight text-slate-900">
+      Handyman in {area.label}
+    </h1>
+    <p class="max-w-2xl text-base text-slate-600">
+      Carlsbad Fix It provides reliable small home repairs and improvements for homeowners in {area.label}. Most visits are focused on single day projects and punch lists.
+    </p>
+    <div class="space-y-3">
+      <p class="text-sm font-semibold uppercase tracking-wide text-slate-700">
+        Popular services in this area
+      </p>
+      <div class="grid gap-4 md:grid-cols-2">
+        {featuredServices.map((service) => (
+          <article class="card">
+            <h2 class="text-base font-semibold text-slate-900">
+              <a
+                href={"/service-areas/" + area.slug + "/" + service.slug + "/"}
+                class="hover:text-sky-700"
+              >
+                {service.name} in {area.name}
+              </a>
+            </h2>
+            <p class="mt-2 text-sm text-slate-600">
+              {service.shortDescription}
+            </p>
+            <a
+              href={"/service-areas/" + area.slug + "/" + service.slug + "/"}
+              class="mt-3 inline-flex text-xs font-semibold uppercase tracking-wide text-sky-700 underline-offset-2 hover:underline"
+            >
+              View service in {area.name}
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+--- src/pages/service-areas/[city]/[service].astro ---
+---
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import { services } from "../../../../data/services";
+import { serviceAreas } from "../../../../data/service-areas";
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const area of serviceAreas) {
+    for (const service of services) {
+      paths.push({
+        params: { city: area.slug, service: service.slug },
+        props: { area, service }
+      });
+    }
+  }
+  return paths;
+}
+
+const { area, service } = Astro.props;
+---
+<BaseLayout
+  title={service.name + " in " + area.label + " | Carlsbad Fix It"}
+  description={service.shortDescription + " Available for homeowners in " + area.label + "."}
+>
+  <section class="space-y-6">
+    <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
+      Local handyman service
+    </p>
+    <h1 class="text-3xl font-semibold tracking-tight text-slate-900">
+      {service.name} in {area.label}
+    </h1>
+    <p class="max-w-2xl text-base text-slate-600">
+      This page is designed as a focused landing page for searchers in {area.label} looking for {service.name.toLowerCase()}.
+      Over time you can refine the copy, add project photos, and include FAQs specific to this combination.
+    </p>
+    <div class="grid gap-6 md:grid-cols-[minmax(0,2fr)_minmax(0,1.2fr)]">
+      <div class="space-y-4">
+        <h2 class="text-lg font-semibold text-slate-900">
+          What is included
+        </h2>
+        <p class="text-sm text-slate-600">
+          Describe the typical scope of work for this service, how pricing works, and what homeowners in {area.name} can expect on the day of service.
+        </p>
+        <p class="text-sm text-slate-600">
+          You can expand this section with examples of common projects, materials used, and any prep work that makes the visit smoother.
+        </p>
+      </div>
+      <aside class="space-y-4 rounded-2xl border border-slate-200 bg-amber-50 p-4 text-sm text-slate-800">
+        <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
+          Book this service
+        </p>
+        <p>
+          Ready to schedule {service.name.toLowerCase()} in {area.name}?
+          Share a few details and photos of your project with Carlsbad Fix It.
+        </p>
+        <a href="/contact/" class="btn-primary mt-3 text-xs uppercase tracking-wide">
+          Request an estimate
+        </a>
+        <div class="h-px bg-slate-200"></div>
+        <p class="text-xs font-semibold uppercase tracking-wide text-slate-700">
+          More options
+        </p>
+        <ul class="space-y-1 text-xs text-slate-700">
+          <li>
+            <a
+              href={"/service-areas/" + area.slug + "/"}
+              class="underline-offset-2 hover:underline"
+            >
+              View all handyman services in {area.label}
+            </a>
+          </li>
+          <li>
+            <a
+              href={"/services/" + service.slug + "/"}
+              class="underline-offset-2 hover:underline"
+            >
+              Learn more about {service.name.toLowerCase()}
+            </a>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+=== PAGES: ABOUT / FAQ / WHO-WE-WORK-WITH / CONTACT ===
+--- src/pages/about.astro ---
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { serviceAreas } from "../data/service-areas";
+
+const primaryArea = serviceAreas.find((area) => area.primary) ?? serviceAreas[0];
+---
+<BaseLayout
+  title="About Carlsbad Fix It | Local Handyman in Carlsbad, CA"
+  description="Learn about Carlsbad Fix It, a local handyman service providing reliable small home repairs and improvements in Carlsbad, California and nearby North County San Diego communities."
+>
+  <section class="space-y-6">
+    <div class="space-y-3 max-w-3xl">
+      <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
+        About
+      </p>
+      <h1 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+        About Carlsbad Fix It
+      </h1>
+      <p class="text-base text-slate-600">
+        Carlsbad Fix It was created to give homeowners in {primaryArea.label} a dependable, friendly option for
+        the small repairs and projects that larger contractors often overlook. The goal is simple: clear
+        communication, tidy work, and results that make your home feel cared for.
+      </p>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1.2fr)] md:items-start">
+      <div class="space-y-4 text-sm text-slate-700">
+        <p>
+          Most visits are focused on single-day projects and punch lists: repairing damaged drywall, updating
+          fixtures, assembling furniture, or tackling the small jobs that have been sitting on your to-do list.
+          Each project is scoped so you know what will be completed and what to expect on the day of service.
+        </p>
+        <p>
+          Whether you are preparing for guests, handling a move-in or move-out, or finally fixing recurring
+          issues around the house, the priority is to respect your time and your home. That means arriving
+          on time, protecting floors and surfaces, and cleaning up thoroughly before leaving.
+        </p>
+        <p>
+          Carlsbad Fix It serves homeowners, small landlords, and local businesses across coastal and nearby
+          inland North County communities, with a primary focus on {primaryArea.label} and surrounding neighborhoods.
+        </p>
+      </div>
+
+      <aside class="space-y-4 rounded-3xl bg-amber-50 p-6 border border-amber-100">
+        <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
+          What you can expect
+        </p>
+        <ul class="space-y-3 text-sm text-slate-700">
+          <li class="flex gap-2">
+            <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-sky-100 text-[10px] font-semibold text-sky-700">
+              ✓
+            </span>
+            <span>Clear communication before, during, and after your project.</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-sky-100 text-[10px] font-semibold text-sky-700">
+              ✓
+            </span>
+            <span>Professional, tidy work with attention to detail on every task.</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-sky-100 text-[10px] font-semibold text-sky-700">
+              ✓
+            </span>
+            <span>Respect for your home, including careful prep and thorough cleanup.</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-sky-100 text-[10px] font-semibold text-sky-700">
+              ✓
+            </span>
+            <span>Reliable scheduling for small projects, punch lists, and recurring maintenance.</span>
+          </li>
+        </ul>
+
+        <div class="mt-4 rounded-2xl bg-white p-4 shadow-sm border border-slate-200">
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-700">
+            Ready to talk about a project?
+          </p>
+          <p class="mt-2 text-sm text-slate-700">
+            Call or text <span class="font-semibold text-sky-700">(808) 226-6681</span> or email
+            <span class="font-semibold"> carlsbadfixit@gmail.com</span> with a short description of what you need help with.
+          </p>
+          <a
+            href="/contact/"
+            class="mt-3 inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-orange-500 via-amber-400 to-yellow-400 px-4 py-2 text-xs font-semibold text-white hover:from-orange-600 hover:via-amber-500 hover:to-yellow-400"
+          >
+            Request an estimate
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+--- src/pages/faq.astro ---
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout
+  title="Handyman FAQ | Carlsbad Fix It"
+  description="Answers to common questions about scheduling, pricing, and scope for Carlsbad Fix It handyman services."
+>
+  <section class="space-y-6">
+    <div class="space-y-2">
+      <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
+        FAQ
+      </p>
+      <h1 class="text-3xl font-semibold tracking-tight text-slate-900">
+        Frequently asked questions
+      </h1>
+      <p class="max-w-2xl text-sm text-slate-600">
+        A quick overview of how Carlsbad Fix It works, what kinds of projects are a good fit, and what to expect when you schedule service.
+      </p>
+    </div>
+    <div class="space-y-4">
+      <details class="card">
+        <summary class="cursor-pointer text-sm font-semibold text-slate-900">
+          What kinds of projects are a good fit for Carlsbad Fix It?
+        </summary>
+        <p class="mt-3 text-sm text-slate-600">
+          Carlsbad Fix It is focused on small to medium sized repair and improvement projects that can usually be completed in a few hours or a single day. Larger projects may be split into multiple visits.
+        </p>
+      </details>
+      <details class="card">
+        <summary class="cursor-pointer text-sm font-semibold text-slate-900">
+          Do you offer free estimates?
+        </summary>
+        <p class="mt-3 text-sm text-slate-600">
+          Yes. Most projects can be estimated from your description and photos. For more complex work, an on-site visit may be recommended before confirming pricing.
+        </p>
+      </details>
+      <details class="card">
+        <summary class="cursor-pointer text-sm font-semibold text-slate-900">
+          Which areas do you serve?
+        </summary>
+        <p class="mt-3 text-sm text-slate-600">
+          The primary service area is Carlsbad, with select availability in nearby North County communities. Visit the service areas page for a current list.
+        </p>
+      </details>
+      <details class="card">
+        <summary class="cursor-pointer text-sm font-semibold text-slate-900">
+          Do you work with landlords and small businesses?
+        </summary>
+        <p class="mt-3 text-sm text-slate-600">
+          Yes. Carlsbad Fix It works with homeowners, small landlords, and local businesses that need a reliable point of contact for small repairs and recurring maintenance.
+        </p>
+      </details>
+    </div>
+  </section>
+</BaseLayout>
+
+--- src/pages/who-we-work-with.astro ---
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout
+  title="Who We Work With | Carlsbad Fix It"
+  description="Carlsbad Fix It works with homeowners, small landlords, and local businesses that need reliable help with small repairs and projects."
+>
+  <section class="space-y-6">
+    <div class="space-y-2">
+      <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
+        Clients
+      </p>
+      <h1 class="text-3xl font-semibold tracking-tight text-slate-900">
+        Who we work with
+      </h1>
+      <p class="max-w-2xl text-sm text-slate-600">
+        Carlsbad Fix It is built for people who value clear communication, dependable arrival times, and careful work on small projects that make a home or space feel complete.
+      </p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-3">
+      <article class="card">
+        <h2 class="text-base font-semibold text-slate-900">
+          Homeowners and renters
+        </h2>
+        <p class="mt-2 text-sm text-slate-600">
+          Fix the nagging issues around your home, from sticky doors and damaged drywall to furniture assembly, fixture swaps, and punch lists before guests arrive.
+        </p>
+      </article>
+      <article class="card">
+        <h2 class="text-base font-semibold text-slate-900">
+          Small landlords
+        </h2>
+        <p class="mt-2 text-sm text-slate-600">
+          Turnover punch lists, quick fixes between tenants, and maintenance that keeps rentals in great shape without disrupting your schedule or your tenants.
+        </p>
+      </article>
+      <article class="card">
+        <h2 class="text-base font-semibold text-slate-900">
+          Local businesses
+        </h2>
+        <p class="mt-2 text-sm text-slate-600">
+          Minor repairs and improvements for small offices, studios, and storefronts that need a dependable point of contact for small projects and maintenance.
+        </p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+--- src/pages/contact.astro ---
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { serviceAreas } from "../data/service-areas";
+
+const primaryArea = serviceAreas.find((area) => area.primary) ?? serviceAreas[0];
+---
+<BaseLayout
+  title="Contact Carlsbad Fix It | Request an Estimate"
+  description="Request a free handyman estimate from Carlsbad Fix It. Share your project details, location, and photos for a clear, no-obligation quote."
+>
+  <section class="grid gap-8 md:grid-cols-[minmax(0,1.7fr)_minmax(0,1.2fr)] md:items-start">
+    <div class="card space-y-4">
+      <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
+        Get started
+      </p>
+      <h1 class="text-2xl font-semibold tracking-tight text-slate-900">
+        Request your free estimate
+      </h1>
+      <p class="text-sm text-slate-600">
+        Tell us about your project and where you are located. You will receive clear next steps and a no-obligation estimate, usually within one business day.
+      </p>
+      <form class="mt-2 grid gap-4 md:grid-cols-2">
+        <div class="space-y-1 md:col-span-1">
+          <label for="name" class="text-xs font-medium text-slate-800">Name</label>
+          <input
+            id="name"
+            type="text"
+            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs outline-none ring-sky-500 focus:border-sky-500 focus:ring-1"
+            placeholder="Your name"
+          />
+        </div>
+        <div class="space-y-1 md:col-span-1">
+          <label for="phone" class="text-xs font-medium text-slate-800">Phone</label>
+          <input
+            id="phone"
+            type="tel"
+            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs outline-none ring-sky-500 focus:border-sky-500 focus:ring-1"
+            placeholder="Best number to reach you"
+          />
+        </div>
+        <div class="space-y-1 md:col-span-1">
+          <label for="email" class="text-xs font-medium text-slate-800">Email</label>
+          <input
+            id="email"
+            type="email"
+            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs outline-none ring-sky-500 focus:border-sky-500 focus:ring-1"
+            placeholder="you@example.com"
+          />
+        </div>
+        <div class="space-y-1 md:col-span-1">
+          <label for="city" class="text-xs font-medium text-slate-800">City</label>
+          <input
+            id="city"
+            type="text"
+            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs outline-none ring-sky-500 focus:border-sky-500 focus:ring-1"
+            placeholder={primaryArea.label}
+          />
+        </div>
+        <div class="space-y-1 md:col-span-2">
+          <label for="details" class="text-xs font-medium text-slate-800">Project details</label>
+          <textarea
+            id="details"
+            rows={5}
+            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs outline-none ring-sky-500 focus:border-sky-500 focus:ring-1"
+            placeholder="Briefly describe the work you need help with. You can list multiple tasks here."
+          ></textarea>
+        </div>
+        <div class="md:col-span-2">
+          <button type="submit" class="btn-primary w-full">
+            Submit request
+          </button>
+          <p class="mt-2 text-[11px] text-slate-500">
+            This form is a visual placeholder and will be connected to your preferred email or form provider. You can also call or text for urgent requests.
+          </p>
+        </div>
+      </form>
+    </div>
+    <aside class="space-y-4 rounded-3xl bg-amber-50 p-6">
+      <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
+        Contact details
+      </p>
+      <h2 class="text-lg font-semibold text-slate-900">
+        Call or text for quick questions
+      </h2>
+      <p class="text-sm text-slate-700">
+        Some projects are easiest to discuss by phone, especially if you are not sure which services you need.
+      </p>
+      <div class="rounded-2xl bg-white p-4 text-sm shadow-sm">
+        <p class="text-xs font-semibold uppercase tracking-wide text-slate-700">
+          Call or text
+        </p>
+        <p class="mt-1 text-lg font-semibold text-sky-700">
+          (808) 226-6681
+        </p>
+        <p class="mt-1 text-[11px] text-slate-500">
+          Typical response during normal business hours.
+        </p>
+      </div>
+      <div class="space-y-2 text-sm text-slate-700">
+        <p class="text-xs font-semibold uppercase tracking-wide text-slate-700">
+          Helpful details to include
+        </p>
+        <ul class="list-disc space-y-1 pl-5 text-xs">
+          <li>Where you are located and type of home.</li>
+          <li>A short list of each task or project.</li>
+          <li>Approximate dates or timeframes that work best.</li>
+        </ul>
+      </div>
+    </aside>
+  </section>
+</BaseLayout>
+
+=== PAGES: 404 ===
+--- src/pages/404.astro or src/pages/[...404].astro ---
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { services } from "../data/services";
+import { serviceAreas } from "../data/service-areas";
+
+const primaryArea = serviceAreas.find((area) => area.primary) ?? serviceAreas[0];
+const popularServices = services.slice(0, 3);
+---
+<BaseLayout
+  title="Page not found | Carlsbad Fix It"
+  description="The page you are looking for could not be found. Browse handyman services and service areas for Carlsbad Fix It."
+>
+  <section class="space-y-6">
+    <h1 class="text-3xl font-semibold tracking-tight text-slate-900">
+      Page not found
+    </h1>
+    <p class="max-w-2xl text-base text-slate-600">
+      The page you requested does not exist or may have been moved. You can return home, browse services, or jump to your local service area.
+    </p>
+    <div class="flex flex-wrap items-center gap-3">
+      <a href="/" class="btn-primary">
+        Back to home
+      </a>
+      <a href="/services/" class="btn-outline">
+        Browse handyman services
+      </a>
+      <a href="/service-areas/" class="btn-outline">
+        View service areas
+      </a>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2">
+      <div class="space-y-3">
+        <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-700">
+          Popular services
+        </h2>
+        <ul class="space-y-1 text-sm text-slate-600">
+          {popularServices.map((service) => (
+            <li>
+              <a
+                href={"/services/" + service.slug + "/"}
+                class="underline-offset-2 hover:text-sky-700 hover:underline"
+              >
+                {service.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="space-y-3">
+        <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-700">
+          Primary service area
+        </h2>
+        <p class="text-sm text-slate-600">
+          Carlsbad Fix It is based in {primaryArea.label} with select availability in nearby North County San Diego communities.
+        </p>
+        <a
+          href={"/service-areas/" + primaryArea.slug + "/"}
+          class="text-sm text-sky-700 underline-offset-2 hover:underline"
+        >
+          Handyman in {primaryArea.label}
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+=== TREE: src/lib & src/utils (if any) ===
+src/lib NOT FOUND
+src/utils NOT FOUND
+
+=== ANY SEO/UTILITY FILES (seo.ts / seo.mts / seo.js) ===

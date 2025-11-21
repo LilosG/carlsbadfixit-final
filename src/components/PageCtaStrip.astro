@@ -1,0 +1,44 @@
+---
+export interface Props {
+  eyebrow?: string;
+  title?: string;
+  body?: string;
+  primaryHref?: string;
+  primaryLabel?: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
+}
+
+const {
+  eyebrow = "Get started",
+  title = "Ready to check off your list?",
+  body = "Share your project details, location, and photos for a clear, no-obligation estimate.",
+  primaryHref = "/contact/",
+  primaryLabel = "Request an estimate",
+  secondaryHref = "tel:+18082266681",
+  secondaryLabel = "Call or text (808) 226-6681"
+} = Astro.props;
+---
+<section class="mt-10 rounded-3xl bg-amber-50 px-6 py-8">
+  <div class="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
+    <div class="space-y-2">
+      <p class="eyebrow">
+        {eyebrow}
+      </p>
+      <h2 class="text-lg font-semibold text-cf-text">
+        {title}
+      </h2>
+      <p class="text-sm text-cf-textMuted">
+        {body}
+      </p>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <a href={primaryHref} class="btn-primary text-xs">
+        {primaryLabel}
+      </a>
+      <a href={secondaryHref} class="btn-outline text-xs">
+        {secondaryLabel}
+      </a>
+    </div>
+  </div>
+</section>

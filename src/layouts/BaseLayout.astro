@@ -1,0 +1,56 @@
+---
+import "../styles/global.css";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import TrustStrip from "../components/TrustStrip.astro";
+import MobileStickyCta from "../components/MobileStickyCta.astro";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  noIndex?: boolean;
+}
+
+const {
+  title = "Carlsbad Fix It | Handyman Services in Carlsbad, CA",
+  description = "Local handyman for home repairs, installations, and maintenance in Carlsbad, California.",
+  canonical,
+  noIndex = false
+} = Astro.props;
+
+const siteUrl = Astro.site?.toString() ?? "https://carlsbadfixit.com";
+const defaultCanonical = new URL(Astro.url.pathname, siteUrl).toString();
+const canonicalUrl = canonical ?? defaultCanonical;
+const robots = noIndex ? "noindex,nofollow" : "index,follow";
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <slot name="head" />
+  </head>
+  <body class="pb-16 sm:pb-0">
+    <SiteHeader />
+    <TrustStrip />
+    <main class="mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 py-10">
+      <slot />
+    </main>
+    <SiteFooter />
+    <MobileStickyCta />
+  </body>
+</html>

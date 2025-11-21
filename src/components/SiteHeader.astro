@@ -1,0 +1,74 @@
+---
+---
+<header class="border-b border-cf-borderSubtle bg-cf-card/90 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-4">
+    <a href="/" class="flex items-center gap-3">
+      <div class="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center overflow-hidden rounded-full bg-cf-card">
+        <picture>
+          <!-- Modern WebP sources -->
+          <source
+            srcset="
+              /images/logo/logo-small.webp 1x,
+              /images/logo/logo-medium.webp 2x,
+              /images/logo/logo-large.webp 3x
+            "
+            type="image/webp"
+          />
+
+          <!-- Fallback PNG sources -->
+          <source
+            srcset="
+              /images/logo/logo-small.png 1x,
+              /images/logo/logo-medium.png 2x,
+              /images/logo/logo-large.png 3x
+            "
+            type="image/png"
+          />
+
+          <img
+            src="/images/logo/logo-medium.png"
+            alt="Carlsbad Fix It"
+            class="h-full w-full object-contain"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </picture>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-sm font-semibold tracking-tight text-cf-text">
+          Carlsbad Fix It
+        </span>
+        <span class="text-xs text-cf-textMuted">
+          Local handyman in Carlsbad, CA
+        </span>
+      </div>
+    </a>
+    <div class="flex items-center gap-4">
+      <nav class="hidden items-center gap-6 text-sm font-medium text-cf-textMuted md:flex">
+        <a href="/services/" class="hover:text-cf-accentBlue">
+          Services
+        </a>
+        <a href="/service-areas/" class="hover:text-cf-accentBlue">
+          Service areas
+        </a>
+        <a href="/about/" class="hover:text-cf-accentBlue">
+          About
+        </a>
+        <a href="/faq/" class="hover:text-cf-accentBlue">
+          FAQ
+        </a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a
+          href="tel:+18082266681"
+          class="hidden text-xs font-medium text-cf-textMuted sm:inline"
+        >
+          (808) 226-6681
+        </a>
+        <a href="/contact/" class="btn-primary text-xs">
+          Request a quote
+        </a>
+      </div>
+    </div>
+  </div>
+</header>

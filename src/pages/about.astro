@@ -1,0 +1,104 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { serviceAreas } from "../data/service-areas";
+import PageCtaStrip from "../components/PageCtaStrip.astro";
+import QuickEstimateCard from "../components/QuickEstimateCard.astro";
+
+const primaryArea = serviceAreas.find((area) => area.primary) ?? serviceAreas[0];
+---
+<BaseLayout
+  title="About Carlsbad Fix It | Local Handyman in Carlsbad, CA"
+  description="Learn about Carlsbad Fix It, a local handyman service providing reliable small home repairs and improvements in Carlsbad, California and nearby North County San Diego communities."
+>
+  <section class="space-y-6">
+    <div class="max-w-3xl space-y-3">
+      <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
+        About
+      </p>
+      <h1 class="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+        About Carlsbad Fix It
+      </h1>
+      <p class="text-base text-slate-600">
+        Carlsbad Fix It was created to give homeowners in {primaryArea.label} a dependable, friendly option for
+        the small repairs and projects that larger contractors often overlook. The goal is simple: clear
+        communication, tidy work, and results that make your home feel cared for.
+      </p>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1.2fr)] md:items-start">
+      <div class="space-y-4 text-sm text-slate-700">
+        <p>
+          Most visits are focused on single-day projects and punch lists: repairing damaged drywall, updating
+          fixtures, assembling furniture, or tackling the small jobs that have been sitting on your to-do list.
+          Each project is scoped so you know what will be completed and what to expect on the day of service.
+        </p>
+        <p>
+          Whether you are preparing for guests, handling a move-in or move-out, or finally fixing recurring
+          issues around the house, the priority is to respect your time and your home. That means arriving
+          on time, protecting floors and surfaces, and cleaning up thoroughly before leaving.
+        </p>
+        <p>
+          Carlsbad Fix It serves homeowners, small landlords, and local businesses across coastal and nearby
+          inland North County communities, with a primary focus on {primaryArea.label} and surrounding neighborhoods.
+        </p>
+      </div>
+
+      <aside class="space-y-4">
+        <div class="space-y-4 rounded-3xl border border-amber-100 bg-amber-50 p-6">
+          <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
+            What you can expect
+          </p>
+          <ul class="space-y-3 text-sm text-slate-700">
+            <li class="flex gap-2">
+              <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-sky-100 text-[10px] font-semibold text-sky-700">
+                ✓
+              </span>
+              <span>Clear communication before, during, and after your project.</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-sky-100 text-[10px] font-semibold text-sky-700">
+                ✓
+              </span>
+              <span>Professional, tidy work with attention to detail on every task.</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-sky-100 text-[10px] font-semibold text-sky-700">
+                ✓
+              </span>
+              <span>Respect for your home, including careful prep and thorough cleanup.</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-sky-100 text-[10px] font-semibold text-sky-700">
+                ✓
+              </span>
+              <span>Reliable scheduling for small projects, punch lists, and recurring maintenance.</span>
+            </li>
+          </ul>
+
+          <div class="mt-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+            <p class="text-xs font-semibold uppercase tracking-wide text-slate-700">
+              Direct contact
+            </p>
+            <p class="mt-2 text-sm text-slate-700">
+              Call or text <span class="font-semibold text-sky-700">(808) 226-6681</span> or email
+              <span class="font-semibold"> carlsbadfixit@gmail.com</span> with a short description of what you need help with.
+            </p>
+          </div>
+        </div>
+
+        <QuickEstimateCard
+          eyebrow="Ready to schedule?"
+          title={`Request your free estimate in ${primaryArea.label}`}
+          body="Share your punch list, preferred timing, and any helpful photos. You will receive clear next steps and a no-obligation estimate."
+          defaultCity={primaryArea.label}
+        />
+      </aside>
+    </div>
+  </section>
+
+  <PageCtaStrip
+    eyebrow="Next steps"
+    title="Ready to schedule a handyman visit?"
+    body="Share your punch list, preferred timing, and any helpful photos. You will receive clear next steps and a no-obligation estimate."
+  />
+</BaseLayout>

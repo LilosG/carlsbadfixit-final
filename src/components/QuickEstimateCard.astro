@@ -1,0 +1,108 @@
+---
+export interface Props {
+  eyebrow?: string;
+  title: string;
+  body?: string;
+  defaultCity?: string;
+  submitLabel?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  body,
+  defaultCity = "Carlsbad, CA",
+  submitLabel = "Submit request"
+} = Astro.props;
+---
+<div class="card space-y-4">
+  {eyebrow && (
+    <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
+      {eyebrow}
+    </p>
+  )}
+  <h2 class="text-base font-semibold text-slate-900">
+    {title}
+  </h2>
+  {body && (
+    <p class="text-sm text-slate-600">
+      {body}
+    </p>
+  )}
+
+  <div class="flex flex-wrap items-center gap-2 text-[11px] text-slate-500">
+    <span class="inline-flex items-center gap-1">
+      <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+      <span>Licensed and insured</span>
+    </span>
+    <span class="inline-flex items-center gap-1">
+      <span class="h-2 w-2 rounded-full bg-sky-400"></span>
+      <span>Local to North County San Diego</span>
+    </span>
+  </div>
+
+  <form class="mt-2 grid gap-3 text-xs">
+    <div class="space-y-1">
+      <label for="qe-name" class="text-xs font-medium text-slate-800">Name</label>
+      <input
+        id="qe-name"
+        type="text"
+        class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs text-slate-900 outline-none ring-cf-accentBlue focus:border-cf-accentBlue focus:ring-1"
+        placeholder="Your name"
+      />
+    </div>
+
+    <div class="space-y-1">
+      <label for="qe-phone" class="text-xs font-medium text-slate-800">Phone</label>
+      <input
+        id="qe-phone"
+        type="tel"
+        class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs text-slate-900 outline-none ring-cf-accentBlue focus:border-cf-accentBlue focus:ring-1"
+        placeholder="Best number to reach you"
+      />
+    </div>
+
+    <div class="space-y-1">
+      <label for="qe-email" class="text-xs font-medium text-slate-800">Email</label>
+      <input
+        id="qe-email"
+        type="email"
+        class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs text-slate-900 outline-none ring-cf-accentBlue focus:border-cf-accentBlue focus:ring-1"
+        placeholder="you@example.com"
+      />
+    </div>
+
+    <div class="space-y-1">
+      <label for="qe-city" class="text-xs font-medium text-slate-800">City</label>
+      <input
+        id="qe-city"
+        type="text"
+        class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs text-slate-900 outline-none ring-cf-accentBlue focus:border-cf-accentBlue focus:ring-1"
+        placeholder={defaultCity}
+      />
+    </div>
+
+    <div class="space-y-1">
+      <label for="qe-details" class="text-xs font-medium text-slate-800">Project details</label>
+      <textarea
+        id="qe-details"
+        rows={4}
+        class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs text-slate-900 outline-none ring-cf-accentBlue focus:border-cf-accentBlue focus:ring-1"
+        placeholder="Briefly describe the work you need help with"
+      ></textarea>
+    </div>
+
+    <div>
+      <button
+        type="submit"
+        class="btn-primary w-full text-xs uppercase tracking-wide"
+      >
+        {submitLabel}
+      </button>
+      <p class="mt-2 text-[11px] text-slate-500">
+        This form is a visual placeholder and will be connected to your preferred email or form provider.
+        You can also use the main contact page or call or text directly.
+      </p>
+    </div>
+  </form>
+</div>

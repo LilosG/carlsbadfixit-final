@@ -1,0 +1,82 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { serviceAreas } from "../../data/service-areas";
+import AreaCard from "../../components/AreaCard.astro";
+
+const travelNotes = [
+  "Primary focus on coastal North County communities like Carlsbad, Oceanside, and Encinitas.",
+  "Select availability for nearby inland areas such as Vista and San Marcos.",
+  "Most visits are for single-family homes, townhomes, and small rentals.",
+  "Borderline areas are considered when the project scope and timing are a good fit."
+];
+---
+<BaseLayout
+  title="Service Areas | Carlsbad Fix It"
+  description="Carlsbad Fix It provides local handyman services in Carlsbad and nearby North County San Diego communities."
+>
+  <!-- SERVICE AREAS GRID -->
+  <section class="space-y-6">
+    <div class="section-header">
+      <p class="eyebrow">
+        Service areas
+      </p>
+      <h1>
+        Handyman service areas in North County San Diego
+      </h1>
+      <p class="section-subtitle max-w-2xl">
+        Carlsbad Fix It is based in Carlsbad and focuses on nearby coastal and inland North County communities. If you
+        do not see your city listed, you can still get in touch to ask about availability.
+      </p>
+    </div>
+    <div class="grid gap-5 md:grid-cols-3">
+      {serviceAreas.map((area) => (
+        <AreaCard area={area} />
+      ))}
+    </div>
+  </section>
+
+  <!-- COVERAGE DETAILS + TRUST ASIDE -->
+  <section class="grid gap-8 md:grid-cols-[minmax(0,1.7fr)_minmax(0,1.3fr)] md:items-start">
+    <div class="space-y-4">
+      <p class="eyebrow">
+        Coverage
+      </p>
+      <h2 class="text-lg font-semibold text-cf-text">
+        Local handyman coverage across coastal and nearby inland communities.
+      </h2>
+      <p class="text-body-sm">
+        Most projects are within a short drive of Carlsbad. This keeps travel time reasonable, which helps protect your
+        schedule and keeps visits focused on actual repair and improvement work. If you are just outside the listed
+        areas, you can still reach out with details.
+      </p>
+      <ul class="grid gap-2 text-sm text-cf-textMuted sm:grid-cols-2">
+        {travelNotes.map((item) => (
+          <li class="flex items-start gap-2">
+            <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-cf-accentBlueSoft text-[10px] font-semibold text-cf-accentBlue">
+              ✓
+            </span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <aside class="card-soft space-y-4">
+      <p class="eyebrow">
+        Not sure if you are in range?
+      </p>
+      <p class="text-sm text-cf-text">
+        Borderline ZIP codes and nearby communities are often possible, especially for projects that can be completed in
+        a single visit. The best way to check is to share your location, a short list of tasks, and timing.
+      </p>
+      <a href="/contact/" class="btn-primary mt-1 w-full text-xs uppercase tracking-wide">
+        Ask about availability
+      </a>
+      <p class="text-[11px] text-cf-textMuted">
+        You can also call or text
+        <span class="font-semibold text-cf-accentBlue"> (808) 226-6681</span> to quickly confirm whether your address is
+        within the current service area.
+      </p>
+    </aside>
+  </section>
+</BaseLayout>

@@ -1,0 +1,102 @@
+=== CARLSBAD FIX IT – PROJECT STRUCTURE AUDIT ===
+Generated at:
+Wed Nov 19 12:53:31 PST 2025
+
+=== NODE / NPM VERSIONS (if available) ===
+v22.17.1
+10.9.2
+
+=== GIT STATUS (if this is a git repo) ===
+ M astro.config.mjs
+ M package-lock.json
+ M package.json
+ M src/pages/index.astro
+?? carlsbad-fix-it-structure-audit.txt
+?? dev-carlsbadfixit.sh
+?? dev-local.sh
+?? fix-config-clean.sh
+?? fix-configs.sh
+?? fix-tailwind-postcss.sh
+?? fix-tailwind.sh
+?? install-tailwind-postcss.sh
+?? postcss.config.cjs
+?? reset-tailwind.sh
+?? scripts/
+?? src/components/
+?? src/data/
+?? src/layouts/
+?? src/pages/404.astro
+?? src/pages/about.astro
+?? src/pages/contact.astro
+?? src/pages/faq.astro
+?? src/pages/service-areas/
+?? src/pages/services/
+?? src/pages/who-we-work-with.astro
+?? src/styles/
+?? tailwind.config.mjs
+
+=== PACKAGE.JSON ===
+{
+  "name": "carlsbadfixit",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.17",
+    "astro": "^5.15.9",
+    "tailwindcss": "^4.1.17"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.17"
+  }
+}
+
+=== ASTRO CONFIG FILES (names only) ===
+astro.config.mjs
+
+=== TAILWIND CONFIG FILES (names only) ===
+tailwind.config.mjs
+
+=== SRC/PAGES TREE (depth <= 5) ===
+src/pages/404.astro
+src/pages/about.astro
+src/pages/contact.astro
+src/pages/faq.astro
+src/pages/index.astro
+src/pages/service-areas/[city]/[service].astro
+src/pages/service-areas/[city]/index.astro
+src/pages/service-areas/index.astro
+src/pages/services/[service].astro
+src/pages/services/index.astro
+src/pages/who-we-work-with.astro
+
+=== SRC/LAYOUTS TREE (depth <= 5) ===
+src/layouts/BaseLayout.astro
+
+=== SRC/DATA TREE (depth <= 5) ===
+src/data/service-areas.ts
+src/data/services.ts
+
+=== OTHER TOP-LEVEL SRC DIRECTORIES ===
+src/components
+src/data
+src/layouts
+src/pages
+src/pages/service-areas
+src/pages/services
+src/styles
+
+=== USAGE OF getStaticPaths IN SRC ===
+src/pages/service-areas/[city]/index.astro:export async function getStaticPaths() {
+src/pages/service-areas/[city]/[service].astro:export async function getStaticPaths() {
+src/pages/services/[service].astro:export function getStaticPaths() {
+
+=== USAGE OF <title> TAGS IN SRC ===
+src/layouts/BaseLayout.astro:    <title>{title}</title>
+
+=== END OF AUDIT ===

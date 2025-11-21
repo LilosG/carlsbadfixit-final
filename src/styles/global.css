@@ -1,0 +1,180 @@
+@import "tailwindcss";
+
+/* Tailwind 4 design tokens: colors, radii, shadows, spacing, fonts, type scale */
+@theme {
+  /* Colors */
+  --color-cf-bg: #f3f6fb;
+  --color-cf-sand: #ffe8c2;
+  --color-cf-sandSoft: #fff4dd;
+  --color-cf-card: #ffffff;
+  --color-cf-primary: #ff7a1a;
+  --color-cf-primarySoft: #ffe4c4;
+  --color-cf-primaryDark: #f76707;
+  --color-cf-accentBlue: #0070c9;
+  --color-cf-accentBlueSoft: #e3f0ff;
+  --color-cf-footer: #020617;
+  --color-cf-footerMuted: #050816;
+  --color-cf-text: #0f172a;
+  --color-cf-textMuted: #6b7280;
+  --color-cf-borderSubtle: #e2e8f0;
+  --color-cf-borderStrong: #cbd5e1;
+  --color-cf-success: #16a34a;
+  --color-cf-warning: #ffd84f;
+  --color-cf-danger: #dc2626;
+
+  /* Radii */
+  --radius-card: 1.5rem;
+  --radius-pill: 9999px;
+  --radius-section: 2rem;
+
+  /* Shadows */
+  --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.06);
+  --shadow-card: 0 18px 45px rgba(15, 23, 42, 0.08);
+  --shadow-cta: 0 22px 55px rgba(255, 122, 26, 0.45);
+
+  /* Spacing */
+  --spacing-section-sm: 3.5rem;
+  --spacing-section: 4.5rem;
+  --spacing-section-lg: 6rem;
+
+  /* Fonts */
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+
+  /* Type scale */
+  --text-display: 2.75rem;
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.04em;
+
+  --text-h1: 2.125rem;
+  --text-h1--line-height: 1.1;
+  --text-h1--letter-spacing: -0.03em;
+
+  --text-h2: 1.5rem;
+  --text-h2--line-height: 1.2;
+  --text-h2--letter-spacing: -0.02em;
+
+  --text-h3: 1.25rem;
+  --text-h3--line-height: 1.3;
+  --text-h3--letter-spacing: -0.01em;
+}
+
+/* Base element styles */
+@layer base {
+  :root {
+    color-scheme: light;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-h-screen bg-cf-bg text-cf-text antialiased font-sans flex flex-col;
+  }
+
+  main {
+    @apply flex-1;
+  }
+
+  h1 {
+    @apply text-h1 font-semibold tracking-tight text-cf-text;
+  }
+
+  h2 {
+    @apply text-h2 font-semibold tracking-tight text-cf-text;
+  }
+
+  h3 {
+    @apply text-h3 font-semibold tracking-tight text-cf-text;
+  }
+
+  h4 {
+    @apply text-lg font-semibold tracking-tight text-cf-text;
+  }
+
+  p {
+    @apply text-base leading-relaxed text-cf-textMuted;
+  }
+
+  a {
+    @apply text-cf-accentBlue no-underline underline-offset-4 transition-colors duration-150;
+  }
+
+  a:hover {
+    @apply text-cf-primaryDark underline;
+  }
+
+  a:focus-visible {
+    @apply outline-none ring-2 ring-offset-2 ring-cf-primaryDark;
+  }
+
+  section {
+    @apply py-section md:py-section-lg;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold tracking-[0.16em] uppercase text-cf-accentBlue;
+  }
+}
+
+/* Reusable components: buttons, cards, sections, badges, small text */
+@layer components {
+  /* Shared button shell: shape, spacing, typography, focus */
+  .btn,
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline,
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-pill border border-transparent px-5 py-2.5 text-sm font-semibold tracking-tight shadow-soft transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cf-primaryDark disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-primary {
+    @apply text-white bg-gradient-to-r from-cf-primary to-cf-warning shadow-cta hover:from-cf-primaryDark hover:to-cf-primaryDark;
+  }
+
+  .btn-secondary {
+    @apply bg-cf-card text-cf-text border border-cf-borderSubtle hover:bg-cf-bg;
+  }
+
+  .btn-outline {
+    @apply bg-transparent text-cf-text border border-cf-borderSubtle hover:bg-cf-card;
+  }
+
+  .btn-ghost {
+    @apply border-none shadow-none bg-transparent text-cf-accentBlue hover:bg-cf-accentBlueSoft;
+  }
+
+  .card {
+    @apply bg-cf-card rounded-card border border-cf-borderSubtle shadow-soft p-6;
+  }
+
+  .card-soft {
+    @apply bg-cf-sandSoft rounded-card border border-transparent shadow-soft p-6;
+  }
+
+  .section-shell {
+    @apply mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-header {
+    @apply max-w-2xl space-y-3;
+  }
+
+  .section-title {
+    @apply text-h1 font-semibold text-cf-text;
+  }
+
+  .section-subtitle {
+    @apply text-base text-cf-textMuted;
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-pill bg-cf-accentBlueSoft px-3 py-1 text-xs font-medium text-cf-accentBlue;
+  }
+
+  .badge-muted {
+    @apply inline-flex items-center rounded-pill bg-cf-sandSoft px-3 py-1 text-xs font-medium text-cf-textMuted;
+  }
+
+  .text-body-sm {
+    @apply text-sm leading-relaxed text-cf-textMuted;
+  }
+}

@@ -129,8 +129,8 @@ const localBusinessJsonLd = JSON.stringify(localBusinessSchema);
           <a href="#hero-form" class="btn-primary text-xs">
             Request free estimate
           </a>
-          <a href="tel:+18082266681" class="btn-ghost text-xs text-white">
-            Call or text <a href="tel:+18082266681" class="font-semibold text-cf-accentBlue hover:underline">(808) 226-6681</a>
+          <a href="tel:+18082266681" data-ga-event="call_click" data-ga-label="site_phone" class="btn-ghost text-xs text-white">
+            Call or text <a href="tel:+18082266681" data-ga-event="call_click" data-ga-label="site_phone" class="font-semibold text-cf-accentBlue hover:underline">(808) 226-6681</a>
           </a>
         </div>
         <div class="flex flex-wrap items-center gap-x-6 gap-y-3 text-[11px] text-sky-100">
@@ -163,7 +163,7 @@ const localBusinessJsonLd = JSON.stringify(localBusinessSchema);
           <p class="mt-1 text-xs text-cf-textMuted">
             Share a few details and we will follow up with clear next steps and a no-obligation estimate, usually within one business day.
           </p>
-          <form class="mt-4 grid gap-3">
+          <form class="mt-4 grid gap-3" data-ga-form-event="estimate_request_submit" data-ga-label="home_hero_form">
             <div class="grid gap-3 sm:grid-cols-2">
               <div class="space-y-1">
                 <label for="hero-name" class="text-[11px] font-medium text-cf-text">Name</label>
@@ -443,7 +443,7 @@ const localBusinessJsonLd = JSON.stringify(localBusinessSchema);
       <p class="text-sm text-slate-600">
         Tell us a bit about your project and where you are located. You will receive clear next steps and a no-obligation estimate.
       </p>
-      <form class="mt-2 grid gap-4 md:grid-cols-2">
+      <form class="mt-2 grid gap-4 md:grid-cols-2" data-ga-form-event="estimate_request_submit" data-ga-label="home_inline_form">
         <div class="space-y-1 md:col-span-1">
           <label for="home-name" class="text-xs font-medium text-slate-800">Name</label>
           <input
@@ -521,7 +521,7 @@ const localBusinessJsonLd = JSON.stringify(localBusinessSchema);
           Call or text
         </p>
         <p class="mt-1 text-lg font-semibold text-sky-700">
-          <a href="tel:+18082266681" class="font-semibold text-cf-accentBlue hover:underline">(808) 226-6681</a>
+          <a href="tel:+18082266681" data-ga-event="call_click" data-ga-label="site_phone" class="font-semibold text-cf-accentBlue hover:underline">(808) 226-6681</a>
         </p>
         <p class="mt-1 text-[11px] text-slate-500">
           Typical response during normal business hours.

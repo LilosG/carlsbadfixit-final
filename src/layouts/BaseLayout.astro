@@ -67,6 +67,34 @@ const robots = noIndex ? "noindex,nofollow" : "index,follow";
       gtag('js', new Date());
       gtag('config', 'G-8L6X2ZZ5JH');
     </script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        if (typeof window.gtag !== 'function') return;
+
+        // Click events
+        document.querySelectorAll('[data-ga-event]').forEach((el) => {
+          el.addEventListener('click', () => {
+            const name = el.dataset.gaEvent || 'custom_click';
+            window.gtag('event', name, {
+              event_category: el.dataset.gaCategory || 'engagement',
+              event_label: el.dataset.gaLabel || window.location.pathname
+            });
+          });
+        });
+
+        // Form submit events
+        document.querySelectorAll('[data-ga-form-event]').forEach((form) => {
+          form.addEventListener('submit', () => {
+            const name = form.dataset.gaFormEvent || 'form_submit';
+            window.gtag('event', name, {
+              event_category: form.dataset.gaCategory || 'form',
+              event_label: form.dataset.gaLabel || window.location.pathname
+            });
+          });
+        });
+      });
+    </script>
+
 
     <slot name="head" />
   </head>

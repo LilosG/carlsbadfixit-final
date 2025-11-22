@@ -33,7 +33,7 @@ export const services: Service[] = [
     ]
   },
   {
-    slug: "furniture-assembly-installations",
+    slug: "furniture-assembly-installation",
     name: "Furniture Assembly & Installations",
     shortDescription: "Assembly and installation for home and office furniture, shelves, and wall décor.",
     examples: [

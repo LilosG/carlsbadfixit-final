@@ -129,7 +129,7 @@ export const serviceContent: Record<string, ServicePageContent> = {
     ]
   },
 
-  "furniture-assembly-installations": {
+  "furniture-assembly-installation": {
     intro: `Assembly and installation projects that turn boxes and loose parts into finished pieces of furniture, shelves, and wall décor without leaving packaging or fasteners behind.`,
     typicalProjectsHeading: "Typical furniture assembly and installation projects",
     typicalProjectsIntro: `Projects that involve unpacking, assembling, and securing ready-made pieces, rather than designing fully custom cabinetry or built-ins.`,

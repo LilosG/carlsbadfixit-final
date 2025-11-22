@@ -32,7 +32,6 @@ const robots = noIndex ? "noindex,nofollow" : "index,follow";
     <meta name="description" content={description} />
     <meta name="robots" content={robots} />
     <link rel="canonical" href={canonicalUrl} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -42,6 +41,23 @@ const robots = noIndex ? "noindex,nofollow" : "index,follow";
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/logo/logo-small.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/images/logo/logo-medium.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/images/logo/logo-large.png"
+    />
 
     <slot name="head" />
   </head>

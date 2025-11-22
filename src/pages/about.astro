@@ -10,57 +10,80 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
   <main class="bg-cf-page pb-16 pt-8 md:pb-24 md:pt-10">
     <div class="mx-auto flex max-w-6xl flex-col gap-12 px-4 md:px-6">
       <!-- HERO -->
-      <section class="grid gap-8 rounded-3xl bg-gradient-to-br from-cf-heroStart to-cf-heroEnd p-8 text-white shadow-soft md:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] md:p-10">
-        <div class="space-y-4 md:space-y-5">
-          <p class="eyebrow text-cf-heroEyebrow">
-            About the company
-          </p>
-          <h1 class="text-h1 font-semibold leading-tight">
-            Local handyman help for small to medium home projects
-          </h1>
-          <p class="max-w-xl text-body-md text-white/90">
-            Carlsbad Fix It focuses on tidy, well-planned visits for homeowners who want
-            clear expectations, careful work, and reliable follow-through for repairs and
-            improvements around the home.
-          </p>
-
-          <ul class="mt-4 space-y-2 text-sm text-white/90">
-            <li>✔ Based in Carlsbad, CA and focused on North County neighborhoods.</li>
-            <li>✔ Best fit for punch lists, repairs, and projects that fit into a single visit.</li>
-            <li>✔ Surfaces protected, details handled, and cleanup before leaving.</li>
-          </ul>
+      <section class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-cf-accentBlue via-sky-700 to-cf-primary p-8 text-white shadow-soft md:p-10">
+        <!-- soft glows -->
+        <div class="pointer-events-none absolute inset-0 -z-10 opacity-30">
+          <div class="absolute -left-32 -top-24 h-64 w-64 rounded-full bg-white/20 blur-3xl"></div>
+          <div class="absolute bottom-[-6rem] right-[-4rem] h-72 w-72 rounded-full bg-amber-300/25 blur-3xl"></div>
         </div>
 
-        <aside class="card bg-white/95 p-6 text-left text-cf-text shadow-soft backdrop-blur md:p-7">
-          <p class="eyebrow text-cf-textMuted">What homeowners can expect</p>
-          <h2 class="mt-1 text-lg font-semibold">
-            A clear plan before work begins
-          </h2>
-          <p class="mt-2 text-sm text-cf-textMuted">
-            Every visit starts with a focused punch list and realistic timing. You will know
-            which items are the priority, what can be completed in one visit, and any steps
-            that may need a follow-up appointment.
-          </p>
-          <ol class="mt-4 space-y-3 text-sm text-cf-textMuted">
-            <li>
-              <span class="font-semibold text-cf-text">1. Understand the project.</span>
-              {" "}
-              You share your list, photos, and timing so we can plan the visit around the most
-              important items.
-            </li>
-            <li>
-              <span class="font-semibold text-cf-text">2. Protect the space.</span>
-              {" "}
-              Floors, counters, and nearby surfaces are protected as needed before work begins.
-            </li>
-            <li>
-              <span class="font-semibold text-cf-text">3. Leave things tidy.</span>
-              {" "}
-              Work areas are cleaned up, and a quick walkthrough explains what was completed
-              and any recommended next steps.
-            </li>
-          </ol>
-        </aside>
+        <div class="relative z-10 grid gap-8 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] md:items-start">
+          <div class="space-y-4 md:space-y-5">
+            <p class="eyebrow text-amber-200">
+              About the company
+            </p>
+            <h1 class="text-h1 font-semibold leading-tight text-white">
+              Local handyman help for small to medium home projects
+            </h1>
+            <p class="max-w-xl text-body-md text-sky-100">
+              Carlsbad Fix It focuses on tidy, well-planned visits for homeowners who want
+              clear expectations, careful work, and reliable follow-through for repairs and
+              improvements around the home.
+            </p>
+
+            <ul class="mt-4 space-y-2 text-sm text-sky-50">
+              <li class="flex gap-2">
+                <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-amber-300/30 text-[10px] font-semibold text-amber-100">
+                  ✓
+                </span>
+                <span>Based in Carlsbad, CA and focused on North County neighborhoods.</span>
+              </li>
+              <li class="flex gap-2">
+                <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-amber-300/30 text-[10px] font-semibold text-amber-100">
+                  ✓
+                </span>
+                <span>Best fit for punch lists, repairs, and projects that fit into a single visit.</span>
+              </li>
+              <li class="flex gap-2">
+                <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-amber-300/30 text-[10px] font-semibold text-amber-100">
+                  ✓
+                </span>
+                <span>Surfaces protected, details handled, and cleanup before leaving.</span>
+              </li>
+            </ul>
+          </div>
+
+          <aside class="card bg-white/95 p-6 text-left text-cf-text shadow-soft backdrop-blur md:p-7">
+            <p class="eyebrow text-cf-textMuted">What homeowners can expect</p>
+            <h2 class="mt-1 text-lg font-semibold">
+              A clear plan before work begins
+            </h2>
+            <p class="mt-2 text-sm text-cf-textMuted">
+              Every visit starts with a focused punch list and realistic timing. You will know
+              which items are the priority, what can be completed in one visit, and any steps
+              that may need a follow-up appointment.
+            </p>
+            <ol class="mt-4 space-y-3 text-sm text-cf-textMuted">
+              <li>
+                <span class="font-semibold text-cf-text">1. Understand the project.</span>
+                {" "}
+                You share your list, photos, and timing so we can plan the visit around the most
+                important items.
+              </li>
+              <li>
+                <span class="font-semibold text-cf-text">2. Protect the space.</span>
+                {" "}
+                Floors, counters, and nearby surfaces are protected as needed before work begins.
+              </li>
+              <li>
+                <span class="font-semibold text-cf-text">3. Leave things tidy.</span>
+                {" "}
+                Work areas are cleaned up, and a quick walkthrough explains what was completed
+                and any recommended next steps.
+              </li>
+            </ol>
+          </aside>
+        </div>
       </section>
 
       <!-- STORY / APPROACH -->
@@ -92,84 +115,6 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
             <li>• Honest feedback when a project is better suited for a specialist or licensed trade contractor.</li>
             <li>• Focus on quality and safety over rushing to fit too much into one visit.</li>
           </ul>
-        </div>
-      </section>
-
-      <!-- LOCATION / MAP -->
-      <section class="grid gap-6 rounded-3xl bg-white p-6 shadow-soft md:grid-cols-[minmax(0,1.1fr)_minmax(0,1.4fr)] md:p-8">
-        <div class="space-y-3">
-          <p class="eyebrow">Location and service area</p>
-          <h2 class="text-h2 font-semibold text-cf-text">
-            Local handyman based in Carlsbad, CA
-          </h2>
-          <p class="text-body-sm text-cf-textMuted">
-            Carlsbad Fix It is based in Carlsbad, CA and focused on nearby North County San Diego communities. Most visits are
-            scheduled to keep travel time reasonable so more of your appointment goes toward actual repair and improvement work.
-          </p>
-
-          <div class="mt-3 space-y-2 text-sm text-cf-text">
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
-                Business name
-              </p>
-              <p class="mt-0.5">
-                Carlsbad Fix It
-              </p>
-            </div>
-
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
-                Address
-              </p>
-              <p class="mt-0.5">
-                3027 Greenwich St<br />
-                Carlsbad, CA 92010
-              </p>
-            </div>
-
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
-                Phone
-              </p>
-              <a
-                href="tel:+18082266681"
-                class="mt-0.5 inline-flex text-sm font-semibold text-cf-accentBlue hover:underline"
-              >
-                (808) 226-6681
-              </a>
-            </div>
-          </div>
-
-          <p class="mt-3 text-xs text-cf-textMuted">
-            Visits typically serve Carlsbad, Oceanside, Encinitas, Vista, San Marcos, and nearby neighborhoods. Availability in each area depends on schedule and project scope.
-          </p>
-
-          <a
-            href="https://maps.google.com/?q=Carlsbad+Fix+It"
-            target="_blank"
-            rel="noreferrer"
-            class="inline-flex text-sm font-semibold text-cf-accentBlue underline-offset-2 hover:underline"
-          >
-            View Carlsbad Fix It on Google Maps
-          </a>
-        </div>
-
-        <div class="space-y-2">
-          <div class="h-64 overflow-hidden rounded-2xl border border-cf-borderSubtle shadow-soft md:h-80">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30766351.379905254!2d-129.07963999736705!3d29.789218146246608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6cca91e010c60503%3A0xf7ff7d5cbbb4631c!2sCarlsbad%20Fix%20It!5e1!3m2!1sen!2sus!4v1763832981062!5m2!1sen!2sus"
-              width="600"
-              height="450"
-              style="border:0;"
-              allowfullscreen
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              class="h-full w-full"
-            ></iframe>
-          </div>
-          <p class="text-[11px] text-cf-textMuted">
-            Map shows the general business location for Carlsbad Fix It and primary service area.
-          </p>
         </div>
       </section>
 
@@ -212,6 +157,44 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
               experience with clear communication at each step.
             </p>
           </article>
+        </div>
+      </section>
+
+      <!-- LOCAL MAP / GBP EMBED -->
+      <section class="grid gap-6 rounded-3xl bg-white p-6 shadow-soft md:grid-cols-[minmax(0,1.4fr)_minmax(0,1.2fr)] md:p-8">
+        <div class="space-y-3">
+          <p class="eyebrow">Local to North County</p>
+          <h2 class="text-h2 font-semibold text-cf-text">
+            Based in Carlsbad, CA
+          </h2>
+          <p class="text-body-sm text-cf-textMuted">
+            Carlsbad Fix It is a neighborhood-focused service, with most visits scheduled
+            in Carlsbad and nearby North County San Diego communities. Keeping the service
+            area tight means more of each visit goes toward actual repair and improvement
+            work instead of driving.
+          </p>
+          <p class="text-body-sm text-cf-textMuted">
+            The map highlights the general service area and is connected to the Google Business
+            Profile for local reviews, directions, and contact details.
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          <div class="overflow-hidden rounded-2xl border border-cf-borderSubtle bg-cf-card shadow-soft">
+            <div class="aspect-[4/3] w-full">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30766351.379905254!2d-129.07963999736705!3d29.789218146246608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6cca91e010c60503%3A0xf7ff7d5cbbb4631c!2sCarlsbad%20Fix%20It!5e1!3m2!1sen!2sus!4v1763832981062!5m2!1sen!2sus"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen
+                class="h-full w-full border-0"
+              ></iframe>
+            </div>
+          </div>
+          <p class="text-[11px] text-cf-textMuted">
+            Map shown for general location and service area context. Exact visit availability
+            depends on schedule and project scope.
+          </p>
         </div>
       </section>
 

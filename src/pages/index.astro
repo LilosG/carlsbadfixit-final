@@ -101,9 +101,11 @@ const localBusinessJsonLd = JSON.stringify(localBusinessSchema);
   title="Handyman Services You Can Trust in Carlsbad | Carlsbad Fix It"
   description="Carlsbad Fix It provides expert handyman services in Carlsbad and North County San Diego, including carpentry, electrical, plumbing, furniture assembly, and honey-do lists."
 >
-  <script type="application/ld+json" slot="head">
-    {localBusinessJsonLd}
-  </script>
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={localBusinessJsonLd}
+  />
 
   <section class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-cf-accentBlue via-sky-700 to-cf-primary px-6 py-8 text-white shadow-card">
     <div class="pointer-events-none absolute inset-0 opacity-25">

@@ -59,6 +59,15 @@ const robots = noIndex ? "noindex,nofollow" : "index,follow";
       href="/images/logo/logo-large.png"
     />
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8L6X2ZZ5JH"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-8L6X2ZZ5JH');
+    </script>
+
     <slot name="head" />
   </head>
   <body class="pb-16 sm:pb-0">

@@ -10,26 +10,33 @@ export const serviceAreas: ServiceArea[] = [
     slug: "carlsbad",
     name: "Carlsbad",
     label: "Carlsbad, CA",
-    primary: true
+    primary: true,
   },
   {
     slug: "oceanside",
     name: "Oceanside",
-    label: "Oceanside, CA"
+    label: "Oceanside, CA",
   },
   {
     slug: "encinitas",
     name: "Encinitas",
-    label: "Encinitas, CA"
+    label: "Encinitas, CA",
   },
   {
     slug: "vista",
     name: "Vista",
-    label: "Vista, CA"
+    label: "Vista, CA",
   },
   {
     slug: "san-marcos",
     name: "San Marcos",
-    label: "San Marcos, CA"
-  }
+    label: "San Marcos, CA",
+  },
+  {
+    slug: "bressi-ranch",
+    name: "Bressi Ranch",
+    label: "Bressi Ranch, CA",
+  },
 ];
+
+export default serviceAreas;

@@ -55,69 +55,71 @@ const services = [
   <main class="bg-cf-page pb-16 pt-8 md:pb-24 md:pt-10">
     <div class="mx-auto flex max-w-6xl flex-col gap-12 px-4 md:px-6">
       <!-- HERO -->
-      <section class="grid gap-8 rounded-3xl bg-gradient-to-br from-cf-heroStart to-cf-heroEnd p-8 text-white shadow-soft md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] md:p-10">
-        <div class="space-y-4 md:space-y-5">
-          <p class="eyebrow text-cf-heroEyebrow">
-            Local handyman services in North County
-          </p>
-          <h1 class="text-h1 font-semibold leading-tight">
-            Handyman services for small to medium home projects
-          </h1>
-          <p class="max-w-xl text-body-md text-white/90">
-            Focused visits that bundle several small to medium jobs into a single, tidy service
-            window. Clear expectations, realistic timing, and small punch lists for
-            homeowners in Carlsbad, CA and nearby North County San Diego communities.
-          </p>
+      <section class="rounded-3xl bg-gradient-to-br from-cf-heroStart to-cf-heroEnd p-[1px] shadow-soft">
+        <div class="grid gap-8 rounded-3xl bg-white/95 p-8 text-cf-text md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] md:p-10">
+          <div class="space-y-4 md:space-y-5">
+            <p class="eyebrow text-cf-heroEyebrow">
+              Local handyman services in North County
+            </p>
+            <h1 class="text-h1 font-semibold leading-tight">
+              Handyman services for small to medium home projects
+            </h1>
+            <p class="max-w-xl text-body-md text-cf-textMuted">
+              Focused visits that bundle several small to medium jobs into a single, tidy service
+              window. Clear expectations, realistic timing, and small punch lists for
+              homeowners in Carlsbad, CA and nearby North County San Diego communities.
+            </p>
 
-          <ul class="mt-4 space-y-2 text-sm text-white/90">
-            <li>✔ Best fit for small to medium projects that do not require a full-scope contractor.</li>
-            <li>✔ Visits are scoped to keep travel time reasonable and maximize time spent on repairs and improvements.</li>
-            <li>✔ Tidy job sites with surfaces protected and cleanup before leaving.</li>
-          </ul>
+            <ul class="mt-4 space-y-2 text-sm text-cf-textMuted">
+              <li>✔ Best fit for small to medium projects that do not require a full-scope contractor.</li>
+              <li>✔ Visits are scoped to keep travel time reasonable and maximize time spent on repairs and improvements.</li>
+              <li>✔ Tidy job sites with surfaces protected and cleanup before leaving.</li>
+            </ul>
 
-          <div class="mt-5 flex flex-wrap gap-3">
-            <a
-              href="#services"
-              class="btn btn-primary btn-lg"
-            >
-              View services
-            </a>
-            <a
-              href="/service-areas/"
-              class="btn btn-ghost-light btn-lg"
-            >
-              View service areas
-            </a>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <a
+                href="#services"
+                class="btn btn-primary btn-lg"
+              >
+                View services
+              </a>
+              <a
+                href="/service-areas/"
+                class="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-cf-accentBlue shadow-soft hover:bg-cf-bg"
+              >
+                View service areas
+              </a>
+            </div>
           </div>
-        </div>
 
-        <aside class="card bg-white/95 p-6 text-left text-cf-text shadow-soft backdrop-blur">
-          <p class="eyebrow text-cf-textMuted">How visits work</p>
-          <h2 class="mt-1 text-lg font-semibold">
-            One visit for punch lists, repairs, and small projects
-          </h2>
-          <p class="mt-2 text-sm text-cf-textMuted">
-            Share your punch list, photos, and timing. You will receive a clear outline of what
-            fits into one visit and realistic expectations for time on site.
-          </p>
-          <ol class="mt-4 space-y-3 text-sm text-cf-textMuted">
-            <li>
-              <span class="font-semibold text-cf-text">1. Plan the visit.</span>
-              {" "}
-              We confirm the scope, visit window, and any materials you will provide.
-            </li>
-            <li>
-              <span class="font-semibold text-cf-text">2. Complete the work.</span>
-              {" "}
-              We focus on the most important items first so the visit is productive.
-            </li>
-            <li>
-              <span class="font-semibold text-cf-text">3. Wrap up cleanly.</span>
-              {" "}
-              Surfaces are protected, the area is tidied, and next steps are explained.
-            </li>
-          </ol>
-        </aside>
+          <aside class="card bg-cf-bg p-6 text-left text-cf-text shadow-soft">
+            <p class="eyebrow text-cf-textMuted">How visits work</p>
+            <h2 class="mt-1 text-lg font-semibold">
+              One visit for punch lists, repairs, and small projects
+            </h2>
+            <p class="mt-2 text-sm text-cf-textMuted">
+              Share your punch list, photos, and timing. You will receive a clear outline of what
+              fits into one visit and realistic expectations for time on site.
+            </p>
+            <ol class="mt-4 space-y-3 text-sm text-cf-textMuted">
+              <li>
+                <span class="font-semibold text-cf-text">1. Plan the visit.</span>
+                {" "}
+                We confirm the scope, visit window, and any materials you will provide.
+              </li>
+              <li>
+                <span class="font-semibold text-cf-text">2. Complete the work.</span>
+                {" "}
+                We focus on the most important items first so the visit is productive.
+              </li>
+              <li>
+                <span class="font-semibold text-cf-text">3. Wrap up cleanly.</span>
+                {" "}
+                Surfaces are protected, the area is tidied, and next steps are explained.
+              </li>
+            </ol>
+          </aside>
+        </div>
       </section>
 
       <!-- SERVICES GRID -->
@@ -157,7 +159,7 @@ const services = [
                 </a>
                 <a
                   href={`${service.slug}#request`}
-                  class="btn btn-primary btn-sm"
+                  class="btn btn-primary btn-sm whitespace-nowrap text-xs"
                 >
                   Request this service
                 </a>

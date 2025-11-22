@@ -5,7 +5,7 @@ import { serviceAreas } from "../data/service-areas";
 <header class="sticky top-0 z-40 border-b border-cf-borderSubtle bg-gradient-to-b from-white/95 via-cf-card/95 to-white/95 shadow-sm backdrop-blur">
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4">
     <a href="/" class="flex items-center gap-3">
-      <div class="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full bg-cf-card sm:h-12 sm:w-12">
+      <div class="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-cf-card sm:h-14 sm:w-14">
         <picture>
           <source
             srcset="
@@ -32,81 +32,90 @@ import { serviceAreas } from "../data/service-areas";
           />
         </picture>
       </div>
-      <div class="flex flex-col">
-        <span class="text-sm font-semibold tracking-tight text-cf-text">
+      <div class="flex flex-col leading-tight">
+        <span class="text-sm font-semibold tracking-tight text-cf-text md:text-base">
           Carlsbad Fix It
         </span>
-        <span class="text-xs text-cf-textMuted">
+        <span class="text-[11px] text-cf-textMuted md:text-xs">
           Local handyman in Carlsbad, CA
         </span>
       </div>
     </a>
 
     <div class="flex items-center gap-3">
-      <nav class="hidden items-center gap-6 text-sm font-medium text-cf-textMuted md:flex">
+      <nav class="hidden items-center gap-6 md:flex">
         <div class="relative group">
-          <button
-            type="button"
-            class="inline-flex items-center gap-1 text-sm font-medium text-cf-textMuted hover:text-cf-accentBlue"
+          <a
+            href="/services/"
+            class="inline-flex items-center gap-1 text-sm font-medium text-cf-text hover:text-cf-accentBlue transition-colors focus:outline-none"
           >
             <span>Services</span>
             <span class="inline-flex h-4 w-4 items-center justify-center text-[10px]">
               ▾
             </span>
-          </button>
-          <div
-            class="invisible absolute left-0 top-full z-20 mt-3 w-56 rounded-2xl bg-white p-3 text-sm text-cf-text opacity-0 shadow-xl ring-1 ring-cf-borderSubtle transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
-          >
-            <ul class="space-y-1">
-              {services.map((service) => (
-                <li>
-                  <a
-                    href={`/services/${service.slug}/`}
-                    class="block rounded-lg px-3 py-2 text-sm text-cf-text hover:bg-cf-sandSoft hover:text-cf-text"
-                  >
-                    {service.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
+          </a>
+          <div class="absolute left-0 top-full z-20 hidden pt-2 group-hover:block group-focus-within:block">
+            <div class="w-56 rounded-xl border border-cf-borderSubtle bg-white/95 p-2 text-xs text-cf-text shadow-lg">
+              <ul class="space-y-0.5">
+                {services.map((service) => (
+                  <li>
+                    <a
+                      href={`/services/${service.slug}/`}
+                      class="block rounded-lg px-3 py-1.5 text-xs text-cf-text hover:bg-cf-sandSoft hover:text-cf-text"
+                    >
+                      {service.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
         <div class="relative group">
-          <button
-            type="button"
-            class="inline-flex items-center gap-1 text-sm font-medium text-cf-textMuted hover:text-cf-accentBlue"
+          <a
+            href="/service-areas/"
+            class="inline-flex items-center gap-1 text-sm font-medium text-cf-text hover:text-cf-accentBlue transition-colors focus:outline-none"
           >
             <span>Service areas</span>
             <span class="inline-flex h-4 w-4 items-center justify-center text-[10px]">
               ▾
             </span>
-          </button>
-          <div
-            class="invisible absolute left-0 top-full z-20 mt-3 w-64 rounded-2xl bg-white p-3 text-sm text-cf-text opacity-0 shadow-xl ring-1 ring-cf-borderSubtle transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
-          >
-            <ul class="space-y-1">
-              {serviceAreas.map((area) => (
-                <li>
-                  <a
-                    href={`/service-areas/${area.slug}/`}
-                    class="block rounded-lg px-3 py-2 text-sm text-cf-text hover:bg-cf-sandSoft hover:text-cf-text"
-                  >
-                    {area.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+          </a>
+          <div class="absolute left-0 top-full z-20 hidden pt-2 group-hover:block group-focus-within:block">
+            <div class="w-64 rounded-xl border border-cf-borderSubtle bg-white/95 p-2 text-xs text-cf-text shadow-lg">
+              <ul class="space-y-0.5">
+                {serviceAreas.map((area) => (
+                  <li>
+                    <a
+                      href={`/service-areas/${area.slug}/`}
+                      class="block rounded-lg px-3 py-1.5 text-xs text-cf-text hover:bg-cf-sandSoft hover:text-cf-text"
+                    >
+                      {area.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
-        <a href="/about/" class="hover:text-cf-accentBlue">
+        <a
+          href="/about/"
+          class="text-sm font-medium text-cf-text hover:text-cf-accentBlue transition-colors"
+        >
           About
         </a>
-        <a href="/faq/" class="hover:text-cf-accentBlue">
+        <a
+          href="/faq/"
+          class="text-sm font-medium text-cf-text hover:text-cf-accentBlue transition-colors"
+        >
           FAQ
         </a>
-        <a href="/contact/" class="hover:text-cf-accentBlue">
+        <a
+          href="/contact/"
+          class="text-sm font-medium text-cf-text hover:text-cf-accentBlue transition-colors"
+        >
           Contact
         </a>
       </nav>
@@ -114,11 +123,11 @@ import { serviceAreas } from "../data/service-areas";
       <div class="hidden items-center gap-3 md:flex">
         <a
           href="tel:+18082266681"
-          class="text-xs font-medium text-cf-textMuted"
+          class="inline-flex h-10 items-center rounded-full bg-cf-accentBlue px-4 text-sm font-semibold text-white shadow-sm hover:bg-cf-accentBlue/90"
         >
           (808) 226-6681
         </a>
-        <a href="/contact/" class="btn-primary text-xs">
+        <a href="/contact/" class="btn-primary h-10 text-sm">
           Request a quote
         </a>
       </div>

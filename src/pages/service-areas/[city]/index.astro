@@ -63,6 +63,7 @@ const description = `Local handyman help for small to medium projects in ${city.
     {breadcrumbJsonLd}
   </script>
 
+  <!-- HERO -->
   <section class="rounded-3xl bg-white p-6 shadow-card md:p-8">
     <div class="grid gap-10 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1.2fr)] lg:items-center">
       <div class="space-y-5">
@@ -107,13 +108,16 @@ const description = `Local handyman help for small to medium projects in ${city.
           <a href="#city-form" class="btn-primary">
             Request an estimate
           </a>
-          <a href="tel:18082266681" class="btn-outline">
+          <a href="tel:+18082266681" class="btn-outline">
             Call or text (808) 226-6681
           </a>
         </div>
       </div>
 
-      <aside id="city-form" class="rounded-2xl bg-cf-sandSoft p-5 text-cf-text shadow-cta sm:p-6">
+      <aside
+        id="city-form"
+        class="rounded-2xl bg-cf-sandSoft p-5 text-cf-text shadow-cta sm:p-6"
+      >
         <QuickEstimateCard
           eyebrow="Get your estimate started"
           title={`Request your free estimate in ${city.label}`}
@@ -124,6 +128,7 @@ const description = `Local handyman help for small to medium projects in ${city.
     </div>
   </section>
 
+  <!-- SERVICES GRID -->
   <section class="mt-8 rounded-3xl bg-cf-sandSoft p-6 md:p-8">
     <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
       <div class="space-y-2">
@@ -148,10 +153,10 @@ const description = `Local handyman help for small to medium projects in ${city.
               {service.shortDescription}
             </p>
           </div>
-          <div class="mt-4 flex items-center justify-between text-[11px]">
+          <div class="mt-4 flex items-center justify-between gap-2 text-[11px]">
             <a
               href={`/service-areas/${city.slug}/${service.slug}/`}
-              class="btn-primary"
+              class="btn-primary h-8 px-4 text-[11px]"
             >
               Learn more
             </a>
@@ -164,8 +169,9 @@ const description = `Local handyman help for small to medium projects in ${city.
     </div>
   </section>
 
+  <!-- COVERAGE / POPULAR PROJECTS / USE CASES -->
   <section class="mt-8 rounded-3xl bg-white p-6 shadow-soft md:p-8">
-    <div class="grid gap-8 lg:grid-cols-[minmax(0,1.8fr)_minmax(0,1.4fr)] lg:items-start">
+    <div class="grid gap-8 lg:grid-cols-2 lg:items-start">
       <div class="space-y-3">
         <p class="eyebrow text-cf-textMuted">Coverage</p>
         <h2 class="text-h2 font-semibold text-cf-text">
@@ -209,13 +215,13 @@ const description = `Local handyman help for small to medium projects in ${city.
         )}
       </div>
 
-      <div class="space-y-4">
+      <div class="space-y-4 lg:grid lg:grid-cols-2 lg:items-start lg:gap-4">
         {popularProjects.length > 0 && (
-          <section class="rounded-2xl bg-cf-sandSoft p-5">
+          <section class="rounded-2xl bg-cf-sandSoft p-5 lg:col-span-2">
             <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
               Popular projects in {city.label}
             </p>
-            <div class="mt-3 space-y-3">
+            <div class="mt-3 grid gap-3 md:grid-cols-2">
               {popularProjects.map((project) => (
                 <div class="rounded-2xl bg-white p-4 text-xs text-cf-text shadow-soft">
                   <h3 class="text-sm font-semibold text-cf-text">
@@ -248,7 +254,7 @@ const description = `Local handyman help for small to medium projects in ${city.
           </p>
         </section>
 
-        <section class="rounded-2xl bg-cf-card p-5 text-xs text-cf-text shadow-soft">
+        <section class="rounded-2xl bg-cf-card p-5 text-xs text-cf-text shadow-soft lg:col-span-2">
           <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
             What homeowners say in {city.label}
           </p>

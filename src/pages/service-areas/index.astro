@@ -63,47 +63,59 @@ const areas = [
 
 <BaseLayout
   title="Handyman service areas in North County San Diego"
-  description="Local handyman visits based in Carlsbad, CA and serving nearby North County San Diego communities. Travel is kept reasonable so more of your visit goes toward actual repair and improvement work."
+  description="Local handyman visits based in Carlsbad, CA and serving nearby North County San Diego communities. Travel is scoped so more of your visit goes toward actual repair and improvement work, with clear expectations about availability in each area."
 >
   <main class="bg-cf-page pb-16 pt-8 md:pb-24 md:pt-10">
     <div class="mx-auto flex max-w-6xl flex-col gap-12 px-4 md:px-6">
       <!-- HERO -->
-      <section class="rounded-3xl bg-gradient-to-br from-cf-heroStart to-cf-heroEnd p-8 text-white shadow-soft md:p-10">
-        <div class="space-y-4">
-          <p class="eyebrow text-cf-heroEyebrow">
-            Where we offer handyman visits
-          </p>
-          <h1 class="text-h1 font-semibold leading-tight">
-            Handyman service areas in North County San Diego
-          </h1>
-          <p class="max-w-2xl text-body-md text-white/90">
-            Visits are focused in North County communities. Travel is kept
-            reasonable so more of your visit goes toward actual repair and
-            improvement work. Availability in each area depends on scheduling
-            and project scope.
-          </p>
+      <section class="rounded-3xl bg-gradient-to-br from-cf-heroStart to-cf-heroEnd p-[1px] shadow-soft">
+        <div class="rounded-3xl bg-white/95 p-8 text-cf-text md:p-10">
+          <div class="space-y-4">
+            <p class="eyebrow text-cf-heroEyebrow">
+              Where we offer handyman visits
+            </p>
+            <h1 class="text-h1 font-semibold leading-tight">
+              Handyman service areas in North County San Diego
+            </h1>
+            <p class="max-w-2xl text-body-md text-cf-textMuted">
+              Visits are focused in North County communities based in and around Carlsbad, CA. Travel is scoped so more of your visit goes toward actual repair and improvement work, with clear expectations about availability in each area and the types of projects that are a good fit.
+            </p>
 
-          <div class="mt-4 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-wide text-white/80">
-            <span class="rounded-full bg-white/10 px-3 py-1 backdrop-blur">Carlsbad, CA</span>
-            <span class="rounded-full bg-white/10 px-3 py-1 backdrop-blur">Oceanside, CA</span>
-            <span class="rounded-full bg-white/10 px-3 py-1 backdrop-blur">Encinitas, CA</span>
-            <span class="rounded-full bg-white/10 px-3 py-1 backdrop-blur">Vista, CA</span>
-            <span class="rounded-full bg-white/10 px-3 py-1 backdrop-blur">San Marcos, CA</span>
+            <div class="mt-4 flex flex-wrap gap-2 text-[11px] font-semibold uppercase tracking-wide text-cf-textMuted">
+              <span class="rounded-full bg-cf-bg px-3 py-1">Carlsbad, CA</span>
+              <span class="rounded-full bg-cf-bg px-3 py-1">Oceanside, CA</span>
+              <span class="rounded-full bg-cf-bg px-3 py-1">Encinitas, CA</span>
+              <span class="rounded-full bg-cf-bg px-3 py-1">Vista, CA</span>
+              <span class="rounded-full bg-cf-bg px-3 py-1">San Marcos, CA</span>
+            </div>
+
+            <div class="mt-5 flex flex-wrap gap-3">
+              <a
+                href="/services/"
+                class="btn btn-primary btn-lg"
+              >
+                View handyman services
+              </a>
+              <a
+                href="#areas"
+                class="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-cf-accentBlue shadow-soft hover:bg-cf-bg"
+              >
+                Browse service areas
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- COVERAGE GRID -->
-      <section class="space-y-6">
+      <section id="areas" class="space-y-6">
         <header class="space-y-2">
           <p class="eyebrow">Neighborhood coverage</p>
           <h2 class="text-h2 font-semibold text-cf-text">
             Local option for small home projects
           </h2>
           <p class="max-w-2xl text-body-sm text-cf-textMuted">
-            Each area below includes a mix of neighborhoods typically included, and the types of
-            properties that are a good fit. Most projects are scoped so they can be completed in a
-            single visit wherever possible, with larger projects broken into clear phases.
+            Each area below includes a mix of neighborhoods typically included, and the types of properties that are a good fit. Most projects are scoped so they can be completed in a single visit wherever possible, with larger projects broken into clear phases when needed.
           </p>
         </header>
 
@@ -142,9 +154,9 @@ const areas = [
                 </a>
                 <a
                   href={`${area.slug}#request`}
-                  class="btn btn-primary btn-sm"
+                  class="btn btn-primary btn-sm whitespace-nowrap text-xs"
                 >
-                  Request a visit
+                  Request visit
                 </a>
               </div>
             </article>

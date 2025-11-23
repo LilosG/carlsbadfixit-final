@@ -130,12 +130,18 @@ const faqItems = [
   description={`${service.shortDescription} Available for homeowners in ${area.label} and nearby North County San Diego communities.`}
   canonical={canonicalUrl}
 >
-  <script type="application/ld+json" slot="head" is:inline>
-    {serviceJsonLd}
-  </script>
-  <script type="application/ld+json" slot="head" is:inline>
-    {breadcrumbJsonLd}
-  </script>
+  <script
+    type="application/ld+json"
+    slot="head"
+    is:inline
+    set:html={serviceJsonLd}
+  ></script>
+  <script
+    type="application/ld+json"
+    slot="head"
+    is:inline
+    set:html={breadcrumbJsonLd}
+  ></script>
 
   <section class="space-y-10">
     <section class="rounded-3xl bg-cf-card px-6 py-8 shadow-card md:px-8">
@@ -303,7 +309,6 @@ const faqItems = [
           You will receive clear next steps, timing, and a no-obligation estimate before anything is scheduled.
         </p>
 
-        <!-- polished 3-card pricing row -->
         <div class="mt-4 grid gap-4 text-sm sm:grid-cols-3">
           <div class="group rounded-2xl bg-white/90 p-4 shadow-soft ring-1 ring-white/60 transition-transform transition-shadow hover:-translate-y-0.5 hover:shadow-md">
             <p class="text-[11px] font-semibold uppercase tracking-wide text-cf-textMuted">

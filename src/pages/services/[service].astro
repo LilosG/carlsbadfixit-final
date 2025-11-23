@@ -133,10 +133,10 @@ const description = `Local help with ${service.name.toLowerCase()} projects in $
 ---
 
 <BaseLayout title={title} description={description}>
-  <script type="application/ld+json" slot="head">
+  <script type="application/ld+json" slot="head" is:inline>
     {serviceJsonLd}
   </script>
-  <script type="application/ld+json" slot="head">
+  <script type="application/ld+json" slot="head" is:inline>
     {breadcrumbJsonLd}
   </script>
 

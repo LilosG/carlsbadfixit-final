@@ -130,10 +130,10 @@ const faqItems = [
   description={`${service.shortDescription} Available for homeowners in ${area.label} and nearby North County San Diego communities.`}
   canonical={canonicalUrl}
 >
-  <script type="application/ld+json" slot="head">
+  <script type="application/ld+json" slot="head" is:inline>
     {serviceJsonLd}
   </script>
-  <script type="application/ld+json" slot="head">
+  <script type="application/ld+json" slot="head" is:inline>
     {breadcrumbJsonLd}
   </script>
 

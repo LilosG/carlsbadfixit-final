@@ -18,6 +18,15 @@ export type ServiceArea = {
 
 const SITE_URL = "https://carlsbadfixit.com";
 
+// Canonical business logo / brand image
+const BUSINESS_IMAGE_URL = new URL(
+  "/images/logo/logo-medium.png",
+  SITE_URL
+).toString();
+
+// Canonical Google Business Profile URL (Share -> Copy link)
+const GBP_URL = "https://maps.app.goo.gl/SLn6g6JEFRTLLWPRA";
+
 function getBusinessAddress() {
   return {
     "@type": "PostalAddress",
@@ -29,13 +38,35 @@ function getBusinessAddress() {
   };
 }
 
+function getOpeningHoursSpecification() {
+  return [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      opens: "08:00",
+      closes: "19:00"
+    }
+  ];
+}
+
 function getBusinessProvider() {
   return {
     "@type": "LocalBusiness",
     name: "Carlsbad Fix It",
     url: SITE_URL,
     address: getBusinessAddress(),
-    telephone: "+1-808-226-6681"
+    telephone: "+1-808-226-6681",
+    image: BUSINESS_IMAGE_URL,
+    openingHoursSpecification: getOpeningHoursSpecification(),
+    priceRange: "$$",
+    sameAs: [GBP_URL]
   };
 }
 
@@ -49,7 +80,11 @@ export function getLocalBusinessJsonLd(areaLabels: string[]) {
     description:
       "Local handyman for home repairs, installations, and maintenance in Carlsbad and nearby North County San Diego communities.",
     address: getBusinessAddress(),
-    areaServed: areaLabels
+    areaServed: areaLabels,
+    image: BUSINESS_IMAGE_URL,
+    openingHoursSpecification: getOpeningHoursSpecification(),
+    priceRange: "$$",
+    sameAs: [GBP_URL]
   };
 }
 

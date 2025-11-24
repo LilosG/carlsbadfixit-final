@@ -7,11 +7,9 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
   title="About Carlsbad Fix It"
   description="Carlsbad Fix It is a local handyman service focused on small to medium home projects in Carlsbad, CA and nearby North County San Diego communities."
 >
-  <main class="bg-cf-page pb-16 pt-8 md:pb-24 md:pt-10">
+  <div class="bg-cf-page pb-16 pt-8 md:pb-24 md:pt-10">
     <div class="mx-auto flex max-w-6xl flex-col gap-12 px-4 md:px-6">
-      <!-- HERO -->
       <section class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-cf-accentBlue via-sky-700 to-cf-primary p-8 text-white shadow-soft md:p-10">
-        <!-- soft glows -->
         <div class="pointer-events-none absolute inset-0 -z-10 opacity-30">
           <div class="absolute -left-32 -top-24 h-64 w-64 rounded-full bg-white/20 blur-3xl"></div>
           <div class="absolute bottom-[-6rem] right-[-4rem] h-72 w-72 rounded-full bg-amber-300/25 blur-3xl"></div>
@@ -86,7 +84,6 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
         </div>
       </section>
 
-      <!-- STORY / APPROACH -->
       <section class="grid gap-6 rounded-3xl bg-white p-6 shadow-soft md:grid-cols-2 md:p-8">
         <div class="space-y-3">
           <p class="eyebrow">How it started</p>
@@ -118,7 +115,6 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
         </div>
       </section>
 
-      <!-- VALUES -->
       <section class="rounded-3xl bg-white p-6 shadow-soft md:p-8">
         <header class="mb-4 space-y-1">
           <p class="eyebrow">What matters most</p>
@@ -160,7 +156,6 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
         </div>
       </section>
 
-      <!-- LOCAL MAP / GBP EMBED -->
       <section class="grid gap-6 rounded-3xl bg-white p-6 shadow-soft md:grid-cols-[minmax(0,1.4fr)_minmax(0,1.2fr)] md:p-8">
         <div class="space-y-3">
           <p class="eyebrow">Local to North County</p>
@@ -198,7 +193,6 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
         </div>
       </section>
 
-      <!-- CTA STRIP -->
       <div class="mt-10 md:mt-12">
         <PageCtaStrip
           eyebrow="Next steps"
@@ -207,5 +201,5 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
         />
       </div>
     </div>
-  </main>
+  </div>
 </BaseLayout>

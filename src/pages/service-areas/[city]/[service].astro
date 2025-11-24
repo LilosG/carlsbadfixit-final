@@ -7,6 +7,7 @@ import { moneyContent } from "../../../data/money-content";
 import QuickEstimateCard from "../../../components/QuickEstimateCard.astro";
 import ServiceCard from "../../../components/ServiceCard.astro";
 import PageCtaStrip from "../../../components/PageCtaStrip.astro";
+import { getCityServiceJsonLd, getBreadcrumbJsonLd } from "../../../lib/seo";
 
 export async function getStaticPaths() {
   const paths: { params: { city: string; service: string }; props: any }[] = [];
@@ -34,53 +35,18 @@ const siteUrl = Astro.site?.toString() ?? "https://carlsbadfixit.com";
 const urlPath = `/service-areas/${area.slug}/${service.slug}/`;
 const canonicalUrl = new URL(urlPath, siteUrl).toString();
 
-const serviceJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: `${service.name} in ${area.label}`,
-  description: `${service.shortDescription} Available for homeowners in ${area.label} and nearby neighborhoods.`,
-  areaServed: {
-    "@type": "Place",
-    name: area.label
-  },
-  provider: {
-    "@type": "HomeAndConstructionBusiness",
-    name: "Carlsbad Fix It",
-    url: siteUrl
-  },
-  url: canonicalUrl
-});
+const serviceJsonLd = JSON.stringify(
+  getCityServiceJsonLd(service, area)
+);
 
-const breadcrumbJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: `${siteUrl}/`
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Service areas",
-      item: `${siteUrl}/service-areas/`
-    },
-    {
-      "@type": "ListItem",
-      position: 3,
-      name: area.label,
-      item: `${siteUrl}/service-areas/${area.slug}/`
-    },
-    {
-      "@type": "ListItem",
-      position: 4,
-      name: `${service.name} in ${area.label}`,
-      item: canonicalUrl
-    }
-  ]
-});
+const breadcrumbJsonLd = JSON.stringify(
+  getBreadcrumbJsonLd([
+    { name: "Home", url: "/" },
+    { name: "Service areas", url: "/service-areas/" },
+    { name: area.label, url: `/service-areas/${area.slug}/` },
+    { name: `${service.name} in ${area.label}`, url: urlPath }
+  ])
+);
 
 const examples = service.examples ?? [];
 

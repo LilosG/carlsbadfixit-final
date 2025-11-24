@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageCtaStrip from "../../components/PageCtaStrip.astro";
+import { getCollectionPageJsonLd } from "../../lib/seo";
 
 const areas = [
   {
@@ -70,15 +71,34 @@ const areas = [
     ],
   },
 ];
+
+const serviceAreasCollectionJsonLd = JSON.stringify(
+  getCollectionPageJsonLd({
+    url: "/service-areas/",
+    name: "Handyman service areas in North County San Diego",
+    description:
+      "Local handyman visits based in Carlsbad, CA and serving nearby North County San Diego communities. Travel is scoped so more of your visit goes toward actual repair and improvement work, with clear expectations about availability in each area.",
+    items: areas.map((area) => ({
+      name: area.name,
+      url: area.slug,
+    })),
+  })
+);
 ---
 
 <BaseLayout
   title="Handyman service areas in North County San Diego"
   description="Local handyman visits based in Carlsbad, CA and serving nearby North County San Diego communities. Travel is scoped so more of your visit goes toward actual repair and improvement work, with clear expectations about availability in each area."
 >
-  <main class="bg-cf-page pb-16 pt-8 md:pb-24 md:pt-10">
+  <script
+    type="application/ld+json"
+    slot="head"
+    is:inline
+    set:html={serviceAreasCollectionJsonLd}
+  ></script>
+
+  <div class="bg-cf-page pb-16 pt-8 md:pb-24 md:pt-10">
     <div class="mx-auto flex max-w-6xl flex-col gap-12 px-4 md:px-6">
-      <!-- HERO -->
       <section class="rounded-3xl bg-gradient-to-br from-cf-heroStart to-cf-heroEnd p-[1px] shadow-soft">
         <div class="rounded-3xl bg-white/95 p-8 text-cf-text md:p-10">
           <div class="space-y-4">
@@ -118,7 +138,6 @@ const areas = [
         </div>
       </section>
 
-      <!-- COVERAGE GRID -->
       <section id="areas" class="space-y-6">
         <header class="space-y-2">
           <p class="eyebrow">Neighborhood coverage</p>
@@ -175,7 +194,6 @@ const areas = [
         </div>
       </section>
 
-      <!-- CTA STRIP -->
       <div class="mt-10 md:mt-12">
         <PageCtaStrip
           eyebrow="Next steps"
@@ -184,5 +202,5 @@ const areas = [
         />
       </div>
     </div>
-  </main>
+  </div>
 </BaseLayout>

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageCtaStrip from "../components/PageCtaStrip.astro";
+import { getFaqPageJsonLd } from "../lib/seo";
 
 const faqVisit = [
   {
@@ -55,15 +56,31 @@ const faqPricing = [
       "Payment is typically collected at the end of the visit. Common options include major credit cards and digital payments. Any details specific to your visit will be confirmed along with the estimate.",
   },
 ];
+
+const allFaqItems = [...faqVisit, ...faqScheduling, ...faqPricing];
+
+const faqJsonLd = JSON.stringify(
+  getFaqPageJsonLd(
+    allFaqItems,
+    "/faq/",
+    "Frequently asked questions about handyman visits"
+  )
+);
 ---
 
 <BaseLayout
   title="Frequently asked questions"
   description="Answers to common questions about handyman visits, scheduling, pricing, and what to expect when Carlsbad Fix It works in your home."
 >
-  <main class="bg-cf-page pb-16 pt-8 md:pb-24 md:pt-10">
+  <script
+    type="application/ld+json"
+    slot="head"
+    is:inline
+    set:html={faqJsonLd}
+  ></script>
+
+  <div class="bg-cf-page pb-16 pt-8 md:pb-24 md:pt-10">
     <div class="mx-auto flex max-w-5xl flex-col gap-12 px-4 md:px-6">
-      <!-- HERO -->
       <section class="rounded-3xl bg-white p-8 shadow-soft md:p-10">
         <div class="space-y-3">
           <p class="eyebrow">Questions from homeowners</p>
@@ -78,7 +95,6 @@ const faqPricing = [
         </div>
       </section>
 
-      <!-- FAQ GROUPS -->
       <section class="space-y-8">
         <div class="rounded-3xl bg-white p-6 shadow-soft md:p-8">
           <header class="mb-4 space-y-1">
@@ -147,7 +163,6 @@ const faqPricing = [
         </div>
       </section>
 
-      <!-- CTA STRIP -->
       <div class="mt-6 md:mt-10">
         <PageCtaStrip
           eyebrow="Still have questions?"
@@ -156,5 +171,5 @@ const faqPricing = [
         />
       </div>
     </div>
-  </main>
+  </div>
 </BaseLayout>

@@ -4,6 +4,7 @@ import { services } from "../data/services";
 import { serviceAreas } from "../data/service-areas";
 import ServiceCard from "../components/ServiceCard.astro";
 import AreaCard from "../components/AreaCard.astro";
+import { getLocalBusinessJsonLd } from "../lib/seo";
 
 const primaryArea = serviceAreas.find((area) => area.primary) ?? serviceAreas[0];
 
@@ -75,26 +76,9 @@ const featuredProjects = [
 const areasForGrid = serviceAreas;
 const servicesForGrid = services;
 
-const localBusinessSchema = {
-  "@context": "https://schema.org",
-  "@type": "HomeAndConstructionBusiness",
-  "name": "Carlsbad Fix It",
-  "url": "https://carlsbadfixit.com/",
-  "telephone": "+1-808-226-6681",
-  "description":
-    "Local handyman for home repairs, installations, and maintenance in Carlsbad and nearby North County San Diego communities.",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "3027 Greenwich St.",
-    "addressLocality": "Carlsbad",
-    "addressRegion": "CA",
-    "postalCode": "92010",
-    "addressCountry": "US"
-  },
-  "areaServed": serviceAreas.map((area) => area.label)
-};
-
-const localBusinessJsonLd = JSON.stringify(localBusinessSchema);
+const localBusinessJsonLd = JSON.stringify(
+  getLocalBusinessJsonLd(serviceAreas.map((area) => area.label))
+);
 ---
 
 <BaseLayout

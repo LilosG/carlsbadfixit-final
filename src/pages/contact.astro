@@ -3,12 +3,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PageCtaStrip from "../components/PageCtaStrip.astro";
 ---
 
-<BaseLayout>
-  <main class="bg-[#f4f7fb]">
-    <!-- Hero + main contact form -->
+<BaseLayout
+  title="Contact Carlsbad Fix It | Handyman in Carlsbad, CA"
+  description="Contact Carlsbad Fix It for local handyman services in Carlsbad and nearby North County San Diego. Share your project details, timing, and photos to receive a clear, no-obligation estimate."
+>
+  <div class="bg-[#f4f7fb]">
     <section class="mx-auto max-w-5xl px-4 pb-12 pt-10 md:px-6 md:pb-16 md:pt-12">
       <div class="grid items-start gap-8 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
-        <!-- Intro / expectations -->
         <article class="rounded-3xl bg-white p-6 shadow-[0_22px_45px_rgba(15,37,64,0.12)] md:p-8">
           <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7C8AA5]">
             Get in touch
@@ -41,7 +42,6 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
           </p>
         </article>
 
-        <!-- Contact form card -->
         <section class="rounded-3xl bg-white p-5 shadow-[0_22px_45px_rgba(15,37,64,0.16)] md:p-6">
           <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7C8AA5]">
             Request an estimate
@@ -135,7 +135,6 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
         </section>
       </div>
 
-      <!-- Secondary info row -->
       <section class="mt-8 grid gap-6 md:mt-10 md:grid-cols-2">
         <div class="rounded-3xl bg-white p-6 shadow-[0_16px_35px_rgba(15,37,64,0.10)]">
           <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7C8AA5]">
@@ -152,7 +151,7 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
           <dl class="mt-4 space-y-1 text-sm text-[#111827]">
             <div class="flex gap-2">
               <dt class="w-16 shrink-0 text-[#6B7280]">Phone</dt>
-              <dd>(808) 226-0681</dd>
+              <dd>(808) 226-6681</dd>
             </div>
             <div class="flex gap-2">
               <dt class="w-16 shrink-0 text-[#6B7280]">Email</dt>
@@ -186,5 +185,5 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
       title="Ready to schedule a handyman visit?"
       body="Share your punch list, preferred timing, and any helpful photos using the contact form. You will receive clear next steps and a no-obligation estimate for your home in Carlsbad, CA or a nearby North County community."
     />
-  </main>
+  </div>
 </BaseLayout>

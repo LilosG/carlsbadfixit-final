@@ -18,9 +18,41 @@ export type ServiceArea = {
 
 const SITE_URL = "https://carlsbadfixit.com";
 
-/**
- * BreadcrumbList JSON-LD
- */
+function getBusinessAddress() {
+  return {
+    "@type": "PostalAddress",
+    streetAddress: "3027 Greenwich St.",
+    addressLocality: "Carlsbad",
+    addressRegion: "CA",
+    postalCode: "92010",
+    addressCountry: "US"
+  };
+}
+
+function getBusinessProvider() {
+  return {
+    "@type": "LocalBusiness",
+    name: "Carlsbad Fix It",
+    url: SITE_URL,
+    address: getBusinessAddress(),
+    telephone: "+1-808-226-6681"
+  };
+}
+
+export function getLocalBusinessJsonLd(areaLabels: string[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    name: "Carlsbad Fix It",
+    url: SITE_URL,
+    telephone: "+1-808-226-6681",
+    description:
+      "Local handyman for home repairs, installations, and maintenance in Carlsbad and nearby North County San Diego communities.",
+    address: getBusinessAddress(),
+    areaServed: areaLabels
+  };
+}
+
 export function getBreadcrumbJsonLd(items: BreadcrumbItem[]) {
   return {
     "@context": "https://schema.org",
@@ -36,9 +68,6 @@ export function getBreadcrumbJsonLd(items: BreadcrumbItem[]) {
   };
 }
 
-/**
- * Service JSON-LD for /services/[service]
- */
 export function getServiceJsonLd(service: Service, area: ServiceArea) {
   const url = new URL(`/services/${service.slug}/`, SITE_URL).toString();
 
@@ -49,26 +78,10 @@ export function getServiceJsonLd(service: Service, area: ServiceArea) {
     description: service.shortDescription,
     url,
     areaServed: area.label,
-    provider: {
-      "@type": "LocalBusiness",
-      name: "Carlsbad Fix It",
-      url: SITE_URL,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "3027 Greenwich St.",
-        addressLocality: "Carlsbad",
-        addressRegion: "CA",
-        postalCode: "92010",
-        addressCountry: "US"
-      },
-      telephone: "+1-808-226-6681"
-    }
+    provider: getBusinessProvider()
   };
 }
 
-/**
- * Service JSON-LD for /service-areas/[city]/[service]
- */
 export function getCityServiceJsonLd(service: Service, area: ServiceArea) {
   const url = new URL(
     `/service-areas/${area.slug}/${service.slug}/`,
@@ -82,26 +95,10 @@ export function getCityServiceJsonLd(service: Service, area: ServiceArea) {
     description: service.shortDescription,
     url,
     areaServed: area.label,
-    provider: {
-      "@type": "LocalBusiness",
-      name: "Carlsbad Fix It",
-      url: SITE_URL,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "3027 Greenwich St.",
-        addressLocality: "Carlsbad",
-        addressRegion: "CA",
-        postalCode: "92010",
-        addressCountry: "US"
-      },
-      telephone: "+1-808-226-6681"
-    }
+    provider: getBusinessProvider()
   };
 }
 
-/**
- * FAQPage JSON-LD for /faq
- */
 export function getFaqPageJsonLd(
   faqs: { question: string; answer: string }[],
   pageUrl: string,
@@ -127,9 +124,6 @@ export function getFaqPageJsonLd(
   };
 }
 
-/**
- * Generic CollectionPage JSON-LD for list pages
- */
 export function getCollectionPageJsonLd(opts: {
   url: string;
   name: string;

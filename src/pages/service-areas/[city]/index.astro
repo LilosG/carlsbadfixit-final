@@ -5,7 +5,7 @@ import PageCtaStrip from "../../../components/PageCtaStrip.astro";
 import { services } from "../../../data/services";
 import { serviceAreas } from "../../../data/service-areas";
 import { cityContent } from "../../../data/city-content";
-import { getBreadcrumbJsonLd } from "../../../lib/seo";
+import { getBreadcrumbJsonLd, getLocalBusinessJsonLd } from "../../../lib/seo";
 
 export function getStaticPaths() {
   return serviceAreas.map((area) => ({
@@ -54,6 +54,10 @@ const breadcrumbJsonLd = JSON.stringify(
   ]),
 );
 
+const localBusinessJsonLd = JSON.stringify(
+  getLocalBusinessJsonLd([city.label])
+);
+
 const title = `Handyman services in ${city.label} | Carlsbad Fix It`;
 const description = `Local handyman help for small to medium projects in ${city.label} and nearby North County San Diego communities. Combine several tasks into a single, tidy visit with Carlsbad Fix It.`;
 ---
@@ -63,10 +67,15 @@ const description = `Local handyman help for small to medium projects in ${city.
     type="application/ld+json"
     slot="head"
     is:inline
+    set:html={localBusinessJsonLd}
+  ></script>
+  <script
+    type="application/ld+json"
+    slot="head"
+    is:inline
     set:html={breadcrumbJsonLd}
   ></script>
 
-  <!-- HERO -->
   <section class="rounded-3xl bg-white p-6 shadow-card md:p-8">
     <div class="grid gap-10 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1.2fr)] lg:items-center">
       <div class="space-y-5">
@@ -131,7 +140,6 @@ const description = `Local handyman help for small to medium projects in ${city.
     </div>
   </section>
 
-  <!-- SERVICES GRID -->
   <section class="mt-8 rounded-3xl bg-cf-sandSoft p-6 md:p-8">
     <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
       <div class="space-y-2">
@@ -172,7 +180,6 @@ const description = `Local handyman help for small to medium projects in ${city.
     </div>
   </section>
 
-  <!-- COVERAGE / POPULAR PROJECTS / USE CASES -->
   <section class="mt-8 rounded-3xl bg-white p-6 shadow-soft md:p-8">
     <div class="grid gap-8 lg:grid-cols-2 lg:items-start">
       <div class="space-y-3">

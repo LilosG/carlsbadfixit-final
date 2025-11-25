@@ -68,7 +68,12 @@ function getBusinessProvider() {
     logo: BUSINESS_IMAGE_URL,
     openingHoursSpecification: getOpeningHoursSpecification(),
     priceRange: "$$",
-    sameAs: [GBP_URL]
+    sameAs: [GBP_URL],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5.0",
+      reviewCount: 4
+    }
   };
 }
 

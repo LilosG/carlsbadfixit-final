@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import QuickEstimateCard from "../components/QuickEstimateCard.astro";
 import PageCtaStrip from "../components/PageCtaStrip.astro";
 ---
 
@@ -202,4 +203,50 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
       </div>
     </div>
   </div>
+
+  <section id="about-next-steps-form" class="mt-10 rounded-3xl bg-white p-6 shadow-soft md:p-8">
+    <div class="grid gap-8 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)] md:items-start">
+      <div class="space-y-3">
+        <p class="eyebrow text-cf-textMuted">Next steps</p>
+        <h2 class="text-h2 font-semibold text-cf-text">
+          Ready to talk about your project?
+        </h2>
+        <p class="text-body-sm text-cf-textMuted">
+          If the overview on this page sounds like a good fit, the next step is to share a short list of projects, your location,
+          and any helpful photos. You’ll receive clear next steps and, when possible, a no-obligation estimate.
+        </p>
+        <ul class="mt-2 space-y-2 text-xs text-cf-textMuted">
+          <li>Best for small to medium projects that can be grouped into one tidy visit.</li>
+          <li>Serving Carlsbad and nearby North County communities.</li>
+          <li>Clear expectations on timing, scope, and pricing before anything is scheduled.
+      <ul class="mt-4 space-y-2 text-sm text-cf-textMuted">
+        <li class="flex gap-2">
+          <span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-amber-400"></span>
+          <span>Best for small to medium projects that can be grouped into one tidy visit.</span>
+        </li>
+        <li class="flex gap-2">
+          <span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-amber-400"></span>
+          <span>Ideal if you have a short punch list, a few helpful photos, and a flexible visit window.</span>
+        </li>
+        <li class="flex gap-2">
+          <span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-amber-400"></span>
+          <span>You’ll usually receive clear next steps and timing during normal business hours.</span>
+        </li>
+      </ul>
+</li>
+        </ul>
+      </div>
+
+      <aside class="rounded-2xl bg-cf-sandSoft p-5 text-cf-text shadow-cta sm:p-6">
+        <QuickEstimateCard
+          eyebrow="Get your estimate started"
+          title="Share a few details about your project"
+          body="Tell us about your punch list, location, and timing preferences. You’ll receive clear next steps and a no-obligation estimate."
+          defaultCity="Carlsbad, CA"
+          submitLabel="Submit request"
+        />
+      </aside>
+    </div>
+  </section>
+
 </BaseLayout>

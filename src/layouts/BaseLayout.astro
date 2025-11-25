@@ -19,7 +19,7 @@ const {
   noIndex = false
 } = Astro.props;
 
-const siteUrl = Astro.site?.toString() ?? "https://carlsbadfixit.com";
+const siteUrl = Astro.site?.toString() ?? "https://www.carlsbadfixit.com";
 const defaultCanonical = new URL(Astro.url.pathname, siteUrl).toString();
 const canonicalUrl = canonical ?? defaultCanonical;
 const robots = noIndex ? "noindex,nofollow" : "index,follow";

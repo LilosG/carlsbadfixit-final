@@ -16,16 +16,16 @@ export type ServiceArea = {
   primary?: boolean;
 };
 
-const SITE_URL = "https://carlsbadfixit.com";
+const SITE_URL = "https://www.carlsbadfixit.com";
 
-// Canonical business logo / brand image
 const BUSINESS_IMAGE_URL = new URL(
   "/images/logo/logo-medium.png",
   SITE_URL
 ).toString();
 
-// Canonical Google Business Profile URL (Share -> Copy link)
 const GBP_URL = "https://maps.app.goo.gl/SLn6g6JEFRTLLWPRA";
+
+const BUSINESS_ID = `${SITE_URL}#local-business`;
 
 function getBusinessAddress() {
   return {
@@ -58,12 +58,14 @@ function getOpeningHoursSpecification() {
 
 function getBusinessProvider() {
   return {
-    "@type": "LocalBusiness",
+    "@type": "HomeAndConstructionBusiness",
+    "@id": BUSINESS_ID,
     name: "Carlsbad Fix It",
     url: SITE_URL,
     address: getBusinessAddress(),
     telephone: "+1-808-226-6681",
     image: BUSINESS_IMAGE_URL,
+    logo: BUSINESS_IMAGE_URL,
     openingHoursSpecification: getOpeningHoursSpecification(),
     priceRange: "$$",
     sameAs: [GBP_URL]
@@ -71,20 +73,15 @@ function getBusinessProvider() {
 }
 
 export function getLocalBusinessJsonLd(areaLabels: string[]) {
+  const business = getBusinessProvider();
+
   return {
     "@context": "https://schema.org",
-    "@type": "HomeAndConstructionBusiness",
-    name: "Carlsbad Fix It",
-    url: SITE_URL,
-    telephone: "+1-808-226-6681",
-    description:
-      "Local handyman for home repairs, installations, and maintenance in Carlsbad and nearby North County San Diego communities.",
-    address: getBusinessAddress(),
-    areaServed: areaLabels,
-    image: BUSINESS_IMAGE_URL,
-    openingHoursSpecification: getOpeningHoursSpecification(),
-    priceRange: "$$",
-    sameAs: [GBP_URL]
+    ...business,
+    areaServed: areaLabels.map((label) => ({
+      "@type": "Place",
+      name: label
+    }))
   };
 }
 
@@ -109,11 +106,18 @@ export function getServiceJsonLd(service: Service, area: ServiceArea) {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": `${url}#service`,
     name: service.name,
     description: service.shortDescription,
+    serviceType: service.name,
     url,
-    areaServed: area.label,
-    provider: getBusinessProvider()
+    areaServed: {
+      "@type": "Place",
+      name: area.label
+    },
+    provider: {
+      "@id": BUSINESS_ID
+    }
   };
 }
 
@@ -126,11 +130,18 @@ export function getCityServiceJsonLd(service: Service, area: ServiceArea) {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": `${url}#service`,
     name: `${service.name} in ${area.label}`,
     description: service.shortDescription,
+    serviceType: service.name,
     url,
-    areaServed: area.label,
-    provider: getBusinessProvider()
+    areaServed: {
+      "@type": "Place",
+      name: area.label
+    },
+    provider: {
+      "@id": BUSINESS_ID
+    }
   };
 }
 
@@ -146,6 +157,7 @@ export function getFaqPageJsonLd(
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "@id": `${url}#faq`,
     name: pageTitle,
     url,
     mainEntity: faqs.map((faq) => ({
@@ -172,6 +184,7 @@ export function getCollectionPageJsonLd(opts: {
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
+    "@id": `${url}#collection`,
     name: opts.name,
     description: opts.description,
     url,

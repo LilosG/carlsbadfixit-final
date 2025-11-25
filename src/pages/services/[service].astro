@@ -3,7 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { services } from "../../data/services";
 import { serviceAreas } from "../../data/service-areas";
 import { serviceContent } from "../../data/service-content";
-import { getServiceJsonLd, getBreadcrumbJsonLd } from "../../lib/seo";
+import { getServiceJsonLd, getBreadcrumbJsonLd, getFaqPageJsonLd } from "../../lib/seo";
 import QuickEstimateCard from "../../components/QuickEstimateCard.astro";
 import PageCtaStrip from "../../components/PageCtaStrip.astro";
 
@@ -75,6 +75,17 @@ const pricingParagraphs =
 
 const faqItems = content.faq ?? [];
 
+const serviceFaqJsonLd =
+  faqItems.length > 0
+    ? JSON.stringify(
+        getFaqPageJsonLd(
+          faqItems,
+          `/services/${service.slug}/`,
+          `Frequently asked questions about ${service.name.toLowerCase()} visits`
+        )
+      )
+    : null;
+
 const processSteps = [
   {
     step: "1",
@@ -145,6 +156,14 @@ const description = `Local help with ${service.name.toLowerCase()} projects in $
     is:inline
     set:html={breadcrumbJsonLd}
   ></script>
+  {serviceFaqJsonLd && (
+    <script
+      type="application/ld+json"
+      slot="head"
+      is:inline
+      set:html={serviceFaqJsonLd}
+    ></script>
+  )}
 
   <section class="rounded-3xl bg-gradient-to-br from-cf-accentBlue via-sky-700 to-cf-primary px-6 py-10 text-white shadow-card">
     <div class="pointer-events-none absolute inset-0 -z-10 opacity-25">

@@ -21,9 +21,24 @@ const primaryArea =
 
 const content = serviceContent[service.slug] ?? {};
 
-const serviceJsonLd = JSON.stringify(
-  getServiceJsonLd(service, primaryArea),
-);
+const allAreas = serviceAreas.map((area) => area.label);
+
+const serviceJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://www.carlsbadfixit.com/services/" + service.slug + "/#service",
+  name: service.name,
+  description: service.shortDescription,
+  serviceType: service.name,
+  url: "https://www.carlsbadfixit.com/services/" + service.slug + "/",
+  areaServed: allAreas.map((name) => ({
+    "@type": "Place",
+    name,
+  })),
+  provider: {
+    "@id": "https://www.carlsbadfixit.com#local-business",
+  },
+});
 
 const breadcrumbJsonLd = JSON.stringify(
   getBreadcrumbJsonLd([
@@ -183,38 +198,38 @@ const description = `Local help with ${service.name.toLowerCase()} projects in $
           </p>
         </div>
 
-        <ul class="grid gap-3 text-xs text-sky-50 sm:grid-cols-2">
+        <ul class="grid gap-3 text-sm md:text-base text-sky-50 sm:grid-cols-2">
           <li class="flex gap-2">
-            <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-amber-300/20 text-[10px] font-semibold text-amber-100">
+            <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-amber-300/25 text-[11px] font-semibold text-amber-100">
               ✓
             </span>
             <span>Licensed and insured local handyman based near {primaryArea.label}.</span>
           </li>
           <li class="flex gap-2">
-            <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-amber-300/20 text-[10px] font-semibold text-amber-100">
+            <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-amber-300/25 text-[11px] font-semibold text-amber-100">
               ✓
             </span>
             <span>Focused on small to medium projects that fit into clear service windows.</span>
           </li>
           <li class="flex gap-2">
-            <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-amber-300/20 text-[10px] font-semibold text-amber-100">
+            <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-amber-300/25 text-[11px] font-semibold text-amber-100">
               ✓
             </span>
             <span>Tidy job sites with surfaces protected and cleanup before leaving.</span>
           </li>
           <li class="flex gap-2">
-            <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-amber-300/20 text-[10px] font-semibold text-amber-100">
+            <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-amber-300/25 text-[11px] font-semibold text-amber-100">
               ✓
             </span>
             <span>Clear expectations on timing, scope, and pricing before work begins.</span>
           </li>
         </ul>
 
-        <div class="flex flex-wrap items-center gap-3 text-xs">
+        <div class="flex flex-wrap items-center gap-3 text-sm">
           <a href="#service-form" class="btn-primary">
             Request a {service.name.toLowerCase()} visit
           </a>
-          <a href="tel:+18082266681" data-ga-event="call_click" data-ga-label="site_phone" class="btn-outline">
+          <a href="tel:+18082266681" data-ga-event="call_click" data-ga-label="site_phone" class="inline-flex items-center justify-center rounded-full border border-cf-accentBlueSoft bg-gradient-to-r from-white to-cf-accentBlueSoft/40 px-5 py-2 text-sm font-semibold text-cf-accentBlue shadow-soft hover:from-white hover:to-cf-accentBlueSoft/70">
             Call or text (808) 226-6681
           </a>
         </div>

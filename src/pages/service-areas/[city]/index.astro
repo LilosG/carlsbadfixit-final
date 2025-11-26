@@ -89,38 +89,38 @@ const description = `Local handyman help for small to medium projects in ${city.
           </p>
         </div>
 
-        <ul class="grid gap-3 text-xs text-cf-textMuted sm:grid-cols-2">
+        <ul class="grid gap-3 md:gap-4 text-sm md:text-base text-cf-text sm:grid-cols-2">
           <li class="flex gap-2">
-            <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-cf-sand text-[10px] font-semibold text-cf-text">
+            <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-cf-sandSoft text-[11px] font-semibold text-cf-primary">
               ✓
             </span>
             <span>Licensed and insured local handyman serving {city.label} and nearby North County communities.</span>
           </li>
           <li class="flex gap-2">
-            <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-cf-sand text-[10px] font-semibold text-cf-text">
+            <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-cf-sandSoft text-[11px] font-semibold text-cf-primary">
               ✓
             </span>
             <span>Focused on small to medium home projects that fit into clear service windows.</span>
           </li>
           <li class="flex gap-2">
-            <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-cf-sand text-[10px] font-semibold text-cf-text">
+            <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-cf-sandSoft text-[11px] font-semibold text-cf-primary">
               ✓
             </span>
             <span>Tidy job sites with surfaces protected and cleanup before leaving.</span>
           </li>
           <li class="flex gap-2">
-            <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-cf-sand text-[10px] font-semibold text-cf-text">
+            <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-cf-sandSoft text-[11px] font-semibold text-cf-primary">
               ✓
             </span>
             <span>Clear expectations on scope, timing, and pricing before work begins.</span>
           </li>
         </ul>
 
-        <div class="flex flex-wrap items-center gap-3 text-xs">
+        <div class="flex flex-wrap items-center gap-3 text-sm">
           <a href="#city-form" class="btn-primary">
             Request an estimate
           </a>
-          <a href="tel:+18082266681" data-ga-event="call_click" data-ga-label="site_phone" class="btn-outline">
+          <a href="tel:+18082266681" data-ga-event="call_click" data-ga-label="site_phone" class="inline-flex items-center justify-center rounded-full border border-cf-accentBlueSoft bg-gradient-to-r from-white to-cf-accentBlueSoft/40 px-5 py-2 text-sm font-semibold text-cf-accentBlue shadow-soft hover:from-white hover:to-cf-accentBlueSoft/70">
             Call or text (808) 226-6681
           </a>
         </div>
@@ -214,7 +214,7 @@ const description = `Local handyman help for small to medium projects in ${city.
             <ul class="mt-2 grid gap-1 text-xs text-cf-textMuted sm:grid-cols-2">
               {propertyTypes.map((type) => (
                 <li class="flex gap-2">
-                  <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-cf-sand text-[10px] font-semibold text-cf-text">
+                  <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-cf-sandSoft text-[11px] font-semibold text-cf-primary">
                     •
                   </span>
                   <span>{type}</span>

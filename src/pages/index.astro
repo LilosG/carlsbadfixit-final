@@ -157,12 +157,12 @@ const localBusinessJsonLd = JSON.stringify(
           <p class="mt-1 text-xs text-cf-textMuted">
             Share a few details and we will follow up with clear next steps and a no-obligation estimate, usually within one business day.
           </p>
-          <form class="mt-4 grid gap-3" data-ga-form-event="estimate_request_submit" data-ga-label="home_hero_form">
+          <form action="https://formspree.io/f/mdkvzynw" method="POST" class="mt-4 grid gap-3" data-ga-form-event="estimate_request_submit" data-ga-label="home_hero_form">
             <div class="grid gap-3 sm:grid-cols-2">
               <div class="space-y-1">
                 <label for="hero-name" class="text-[11px] font-medium text-cf-text">Name</label>
                 <input
-                  id="hero-name"
+                  id="hero-name" name="name"
                   type="text"
                   class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs text-cf-text outline-none ring-cf-accentBlue focus:border-cf-accentBlue focus:ring-1"
                   placeholder="Your name"
@@ -171,7 +171,7 @@ const localBusinessJsonLd = JSON.stringify(
               <div class="space-y-1">
                 <label for="hero-phone" class="text-[11px] font-medium text-cf-text">Phone</label>
                 <input
-                  id="hero-phone"
+                  id="hero-phone" name="phone"
                   type="tel"
                   class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs text-cf-text outline-none ring-cf-accentBlue focus:border-cf-accentBlue focus:ring-1"
                   placeholder="Best number to reach you"
@@ -182,7 +182,7 @@ const localBusinessJsonLd = JSON.stringify(
               <div class="space-y-1">
                 <label for="hero-email" class="text-[11px] font-medium text-cf-text">Email</label>
                 <input
-                  id="hero-email"
+                  id="hero-email" name="email"
                   type="email"
                   class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs text-cf-text outline-none ring-cf-accentBlue focus:border-cf-accentBlue focus:ring-1"
                   placeholder="you@example.com"
@@ -191,7 +191,7 @@ const localBusinessJsonLd = JSON.stringify(
               <div class="space-y-1">
                 <label for="hero-city" class="text-[11px] font-medium text-cf-text">City</label>
                 <input
-                  id="hero-city"
+                  id="hero-city" name="city"
                   type="text"
                   class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs text-cf-text outline-none ring-cf-accentBlue focus:border-cf-accentBlue focus:ring-1"
                   placeholder={primaryArea.label}
@@ -201,7 +201,7 @@ const localBusinessJsonLd = JSON.stringify(
             <div class="space-y-1">
               <label for="hero-details" class="text-[11px] font-medium text-cf-text">Project details</label>
               <textarea
-                id="hero-details"
+                id="hero-details" name="details"
                 rows={3}
                 class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs text-cf-text outline-none ring-cf-accentBlue focus:border-cf-accentBlue focus:ring-1"
                 placeholder="Briefly describe the work you need help with"
@@ -426,11 +426,11 @@ const localBusinessJsonLd = JSON.stringify(
       <p class="text-sm text-slate-600">
         Tell us a bit about your project and where you are located. You will receive clear next steps and a no-obligation estimate.
       </p>
-      <form class="mt-2 grid gap-4 md:grid-cols-2" data-ga-form-event="estimate_request_submit" data-ga-label="home_inline_form">
+      <form action="https://formspree.io/f/mdkvzynw" method="POST" class="mt-2 grid gap-4 md:grid-cols-2" data-ga-form-event="estimate_request_submit" data-ga-label="home_inline_form">
         <div class="space-y-1 md:col-span-1">
           <label for="home-name" class="text-xs font-medium text-slate-800">Name</label>
           <input
-            id="home-name"
+            id="home-name" name="name"
             type="text"
             class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs outline-none ring-sky-500 focus:border-sky-500 focus:ring-1"
             placeholder="Your name"
@@ -439,7 +439,7 @@ const localBusinessJsonLd = JSON.stringify(
         <div class="space-y-1 md:col-span-1">
           <label for="home-phone" class="text-xs font-medium text-slate-800">Phone</label>
           <input
-            id="home-phone"
+            id="home-phone" name="phone"
             type="tel"
             class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs outline-none ring-sky-500 focus:border-sky-500 focus:ring-1"
             placeholder="Best number to reach you"
@@ -448,7 +448,7 @@ const localBusinessJsonLd = JSON.stringify(
         <div class="space-y-1 md:col-span-1">
           <label for="home-email" class="text-xs font-medium text-slate-800">Email</label>
           <input
-            id="home-email"
+            id="home-email" name="email"
             type="email"
             class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs outline-none ring-sky-500 focus:border-sky-500 focus:ring-1"
             placeholder="you@example.com"
@@ -457,7 +457,7 @@ const localBusinessJsonLd = JSON.stringify(
         <div class="space-y-1 md:col-span-1">
           <label for="home-city" class="text-xs font-medium text-slate-800">City</label>
           <input
-            id="home-city"
+            id="home-city" name="city"
             type="text"
             class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs outline-none ring-sky-500 focus:border-sky-500 focus:ring-1"
             placeholder={primaryArea.label}
@@ -466,7 +466,7 @@ const localBusinessJsonLd = JSON.stringify(
         <div class="space-y-1 md:col-span-2">
           <label for="home-details" class="text-xs font-medium text-slate-800">Project details</label>
           <textarea
-            id="home-details"
+            id="home-details" name="details"
             rows={4}
             class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs outline-none ring-sky-500 focus:border-sky-500 focus:ring-1"
             placeholder="Briefly describe the work you need help with"

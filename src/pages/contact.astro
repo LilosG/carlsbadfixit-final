@@ -54,8 +54,8 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
             what can be completed in a single visit.
           </p>
 
-          <form class="mt-4 space-y-3" data-ga-form-event="contact_form_submit" data-ga-label="contact_form">
-            <div class="grid gap-3 md:grid-cols-2">
+          <form action="https://formspree.io/f/mdkvzynw" method="POST" class="mt-4 space-y-3" data-ga-form-event="contact_form_submit" data-ga-label="contact_form">
+  <input type="hidden" name="_subject" value="New contact from Carlsbad Fix It contact page" /><div class="grid gap-3 md:grid-cols-2">
               <div>
                 <label class="block text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7C8AA5]">
                   Name
@@ -126,11 +126,6 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
             >
               Submit request
             </button>
-
-            <p class="pt-1 text-[11px] leading-relaxed text-[#9CA3AF]">
-              This form is a visual placeholder and will be connected to your preferred email or form
-              provider by your developer. You can also call or text directly if you prefer.
-            </p>
           </form>
         </section>
       </div>

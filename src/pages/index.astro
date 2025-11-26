@@ -56,21 +56,30 @@ const featuredProjects = [
   {
     title: "Carlsbad carpentry and drywall refresh",
     location: "Carlsbad",
-    summary: "Framed a small wall section, patched drywall, and installed new trim for a clean, updated look.",
-    url: "#"
+    summary:
+      "Framed a small wall section, patched drywall, and installed new trim for a clean, updated look.",
+    url: "/service-areas/carlsbad/carpentry-woodwork/",
+    image: "/images/projects/wood-counter-detail.jpg",
+    imageAlt: "Finished wood countertop detail in an updated kitchen",
   },
   {
-    title: "Oceanside lighting and TV setup",
+    title: "Oceanside kitchen & lighting refresh",
     location: "Oceanside",
-    summary: "Installed new lighting, mounted a TV, and organized cabling in a living room update.",
-    url: "#"
+    summary:
+      "Updated kitchen lighting and finishes to create a brighter, more open feel that connects to the living area.",
+    url: "/service-areas/oceanside/electrical/",
+    image: "/images/projects/kitchen-open-plan.jpg",
+    imageAlt: "Open plan kitchen and living area with updated lighting",
   },
   {
-    title: "Vista plumbing fixtures update",
+    title: "Vista electrical panel and outlet updates",
     location: "Vista",
-    summary: "Replaced faucets, shower heads, and a vanity to modernize a bathroom.",
-    url: "#"
-  }
+    summary:
+      "Updated an aging electrical panel and replaced outlets to safely support new fixtures and appliances.",
+    url: "/services/electrical/",
+    image: "/images/projects/electrical-panel.jpg",
+    imageAlt: "Updated electrical panel with clearly organized circuits",
+  },
 ];
 
 const areasForGrid = serviceAreas;
@@ -204,11 +213,7 @@ const localBusinessJsonLd = JSON.stringify(
             >
               Submit request
             </button>
-            <p class="text-[10px] text-cf-textMuted">
-              This form is a visual placeholder and will be connected to your preferred email or form provider.
-              You can also use the dedicated contact page for a full form.
-            </p>
-          </form>
+            </form>
         </div>
       </div>
     </div>
@@ -330,7 +335,7 @@ const localBusinessJsonLd = JSON.stringify(
     <div class="grid gap-5 md:grid-cols-3">
       {featuredProjects.map((project) => (
         <article class="flex flex-col rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-          <div class="aspect-video rounded-xl bg-slate-100"></div>
+          <figure class="aspect-video rounded-xl overflow-hidden bg-slate-100"><img src={project.image} alt={project.imageAlt} loading="lazy" class="h-full w-full object-cover" /></figure>
           <div class="mt-4 space-y-1">
             <h3 class="text-sm font-semibold text-slate-900">
               {project.title}
@@ -474,11 +479,7 @@ const localBusinessJsonLd = JSON.stringify(
           >
             Submit request
           </button>
-          <p class="mt-2 text-[11px] text-slate-500">
-            This form is a visual placeholder and will be connected to your preferred email or form provider.
-            You can also use the dedicated contact page for a full form.
-          </p>
-        </div>
+          </div>
       </form>
     </div>
     <aside class="space-y-4 rounded-3xl bg-amber-50 p-6">

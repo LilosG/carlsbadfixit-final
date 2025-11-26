@@ -41,12 +41,12 @@ const {
     </span>
   </div>
 
-  <form
+  <form action="https://formspree.io/f/mdkvzynw" method="POST"
     class="mt-3 space-y-3 text-xs"
     data-ga-form-event="estimate_request_submit"
     data-ga-label="quick_estimate_card"
   >
-    <div class="grid gap-3 md:grid-cols-2">
+  <input type="hidden" name="_subject" value="New quick estimate request from Carlsbad Fix It" /><div class="grid gap-3 md:grid-cols-2">
       <div class="space-y-1">
         <label for="qe-name" class="text-xs font-medium text-slate-800">Name</label>
         <input
@@ -77,7 +77,7 @@ const {
         Email <span class="font-normal text-slate-500">(optional)</span>
       </label>
       <input
-        id="qe-email"
+        id="qe-email" name="email"
         type="email"
         class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs text-slate-900 outline-none ring-cf-accentBlue focus:border-cf-accentBlue focus:ring-1"
         placeholder="you@example.com"
@@ -87,7 +87,7 @@ const {
     <div class="space-y-1">
       <label for="qe-city" class="text-xs font-medium text-slate-800">City</label>
       <input
-        id="qe-city"
+        id="qe-city" name="city"
         type="text"
         class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs text-slate-900 outline-none ring-cf-accentBlue focus:border-cf-accentBlue focus:ring-1"
         placeholder={defaultCity}
@@ -97,7 +97,7 @@ const {
     <div class="space-y-1">
       <label for="qe-details" class="text-xs font-medium text-slate-800">Project details</label>
       <textarea
-        id="qe-details"
+        id="qe-details" name="details"
         rows={4}
         class="w-full rounded-lg border border-slate-300 px-3 py-2 text-xs text-slate-900 outline-none ring-cf-accentBlue focus:border-cf-accentBlue focus:ring-1"
         placeholder="Briefly describe the work you need help with"
@@ -111,10 +111,6 @@ const {
       >
         {submitLabel}
       </button>
-      <p class="mt-2 text-[11px] text-slate-500">
-        This form is a visual placeholder and will be connected to your preferred email or form provider.
-        You can also use the main contact page or call or text directly.
-      </p>
     </div>
   </form>
 </div>

@@ -97,8 +97,8 @@ const serviceAreasCollectionJsonLd = JSON.stringify(
     set:html={serviceAreasCollectionJsonLd}
   ></script>
 
-  <div class="bg-cf-page">
-    <div class="mx-auto flex max-w-6xl flex-col gap-12">
+  <div class="bg-cf-page w-full">
+    <div class="mx-auto max-w-6xl">
       <section class="rounded-3xl bg-gradient-to-br from-cf-heroStart to-cf-heroEnd p-[1px] shadow-soft">
         <div class="rounded-3xl bg-white/95 p-8 text-cf-text md:p-10">
           <div class="space-y-4">
@@ -194,13 +194,11 @@ const serviceAreasCollectionJsonLd = JSON.stringify(
         </div>
       </section>
 
-      <div class="mt-10 md:mt-12">
-        <PageCtaStrip
-          eyebrow="Next steps"
-          title="Ready to see if your home is in our service area?"
-          body="Share your address or general neighborhood, a short list of projects, and any helpful photos. You will receive clear next steps and a no-obligation estimate for your home in Carlsbad, CA or a nearby community."
-        />
-      </div>
+      <PageCtaStrip
+        eyebrow="Next steps"
+        title="Ready to see if your home is in our service area?"
+        body="Share your address or general neighborhood, a short list of projects, and any helpful photos. You will receive clear next steps and a no-obligation estimate for your home in Carlsbad, CA or a nearby community."
+      />
     </div>
   </div>
 </BaseLayout>

@@ -107,7 +107,7 @@
   }
 
   section {
-    @apply py-section md:py-section-lg;
+    @apply py-section-sm md:py-section;
   }
 
   .eyebrow {

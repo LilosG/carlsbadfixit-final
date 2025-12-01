@@ -1,227 +1,165 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { services } from "../../data/services";
+import { serviceAreas } from "../../data/service-areas";
 import PageCtaStrip from "../../components/PageCtaStrip.astro";
-import { getCollectionPageJsonLd } from "../../lib/seo";
 
-const services = [
-  {
-    slug: "/services/carpentry-woodwork/",
-    name: "Carpentry & Woodwork",
-    summary:
-      "Framing, pegboards, fences, gates, trim, doors, shelves, and other small structures.",
-  },
-  {
-    slug: "/services/electrical/",
-    name: "Electrical",
-    summary:
-      "Lighting, outlets, switches, and small electrical projects around the home.",
-  },
-  {
-    slug: "/services/furniture-assembly-installation/",
-    name: "Furniture Assembly & Installation",
-    summary:
-      "Assembly and installation for home and office furniture, shelving, and wall décor.",
-  },
-  {
-    slug: "/services/plumbing-fixtures-repairs/",
-    name: "Plumbing Fixtures & Repairs",
-    summary:
-      "Small plumbing projects like faucets, sinks, disposals, toilets, and shower heads.",
-  },
-  {
-    slug: "/services/honey-do-lists-small-repairs/",
-    name: "Honey-Do Lists & Small Repairs",
-    summary:
-      "Tackle a list of small projects and fixes around the house in a single visit.",
-  },
-  {
-    slug: "/services/drywall-repair/",
-    name: "Drywall Repair",
-    summary:
-      "Patching holes, cracks, and dents in walls and ceilings with blended texture and paint.",
-  },
-  {
-    slug: "/services/tv-mounting/",
-    name: "TV Mounting",
-    summary:
-      "Safe, clean wall mounting for flat-screen TVs and media setups with hidden cabling when possible.",
-  },
-];
-
-const servicesCollectionJsonLd = JSON.stringify(
-  getCollectionPageJsonLd({
-    url: "/services/",
-    name: "Handyman services for small to medium home projects",
-    description:
-      "Local handyman services in Carlsbad, CA and nearby North County San Diego communities. Focused visits that group several small to medium projects into a single, tidy service window.",
-    items: services.map((service) => ({
-      name: service.name,
-      url: service.slug,
-    })),
-  })
-);
+const primaryArea = serviceAreas.find((area) => area.primary) ?? serviceAreas[0];
+const nearbyAreas = serviceAreas.filter((area) => !area.primary);
 ---
 
 <BaseLayout
-  title="Handyman services for small to medium home projects"
-  description="Local handyman services in Carlsbad, CA and nearby North County San Diego communities. Focused visits that group several small to medium projects into a single, tidy service window."
+  title="Handyman Services in Carlsbad & North County San Diego | Carlsbad Fix It"
+  description="Browse core handyman services from Carlsbad Fix It, including carpentry, electrical, plumbing fixture repairs, furniture assembly, honey-do lists, drywall repair, and TV mounting for homes in Carlsbad and North County San Diego."
 >
-  <script
-    type="application/ld+json"
-    slot="head"
-    is:inline
-    set:html={servicesCollectionJsonLd}
-  ></script>
-
-  <div class="bg-cf-page w-full">
-    <div class="mx-auto max-w-6xl">
-      <section class="rounded-3xl bg-gradient-to-br from-cf-heroStart to-cf-heroEnd p-[1px] shadow-soft">
-        <div class="grid gap-8 rounded-3xl bg-white/95 p-8 text-cf-text md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] md:p-10">
-          <div class="space-y-4 md:space-y-5">
-            <p class="eyebrow text-cf-heroEyebrow">
-              Local handyman services in North County
-            </p>
-            <h1 class="text-h1 font-semibold leading-tight">
-              Handyman services for small to medium home projects
-            </h1>
-            <p class="max-w-xl text-body-md text-cf-textMuted">
-              Focused visits that bundle several small to medium jobs into a single, tidy service
-              window. Clear expectations, realistic timing, and small punch lists for
-              homeowners in Carlsbad, CA and nearby North County San Diego communities.
-            </p>
-
-            <ul class="mt-4 space-y-2 text-sm text-cf-textMuted">
-              <li>✔ Best fit for small to medium projects that do not require a full-scope contractor.</li>
-              <li>✔ Visits are scoped to keep travel time reasonable and maximize time spent on repairs and improvements.</li>
-              <li>✔ Tidy job sites with surfaces protected and cleanup before leaving.</li>
-            </ul>
-
-            <div class="mt-5 flex flex-wrap gap-3">
-              <a
-                href="#services"
-                class="btn btn-primary btn-lg"
-              >
-                View services
-              </a>
-              <a
-                href="/service-areas/"
-                class="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-cf-accentBlue shadow-soft hover:bg-cf-bg"
-              >
-                View service areas
-              </a>
-            </div>
-          </div>
-
-          <aside class="card bg-cf-bg p-6 text-left text-cf-text shadow-soft">
-            <p class="eyebrow text-cf-textMuted">How visits work</p>
-            <h2 class="mt-1 text-lg font-semibold">
-              One visit for punch lists, repairs, and small projects
-            </h2>
-            <p class="mt-2 text-sm text-cf-textMuted">
-              Share your punch list, photos, and timing. You will receive a clear outline of what
-              fits into one visit and realistic expectations for time on site.
-            </p>
-            <ol class="mt-4 space-y-3 text-sm text-cf-textMuted">
-              <li>
-                <span class="font-semibold text-cf-text">1. Plan the visit.</span>
-                {" "}
-                We confirm the scope, visit window, and any materials you will provide.
-              </li>
-              <li>
-                <span class="font-semibold text-cf-text">2. Complete the work.</span>
-                {" "}
-                We focus on the most important items first so the visit is productive.
-              </li>
-              <li>
-                <span class="font-semibold text-cf-text">3. Wrap up cleanly.</span>
-                {" "}
-                Surfaces are protected, the area is tidied, and next steps are explained.
-              </li>
-            </ol>
-          </aside>
-        </div>
-      </section>
-
-      <section id="services" class="space-y-6">
-        <header class="space-y-2">
-          <p class="eyebrow">Services we offer</p>
-          <h2 class="text-h2 font-semibold text-cf-text">
-            Core handyman services available in North County
-          </h2>
+  <section class="rounded-3xl bg-white p-6 shadow-card md:p-8">
+    <div class="grid gap-10 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1.1fr)] lg:items-start">
+      <div class="space-y-5">
+        <div class="space-y-2">
+          <p class="eyebrow text-cf-textMuted">Services</p>
+          <h1 class="text-display font-semibold tracking-tight text-cf-text">
+            Handyman services for homes in {primaryArea.label} and North County
+          </h1>
           <p class="max-w-2xl text-body-sm text-cf-textMuted">
-            Each service is focused on a specific type of work with clear expectations for
-            what can be completed in a single visit. You can often combine several tasks
-            into one window when the work is in the same general area of the home.
+            Carlsbad Fix It focuses on small to medium home projects that fit into realistic service windows—carpentry, electrical, plumbing fixtures, furniture assembly, honey-do lists, drywall repair, and TV mounting across coastal North County San Diego.
           </p>
-        </header>
-
-        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <article class="card flex h-full flex-col justify-between">
-              <div class="space-y-2">
-                <p class="text-[11px] font-semibold uppercase tracking-wide text-cf-textMuted">
-                  Handyman service
-                </p>
-                <h3 class="text-base font-semibold text-cf-text">
-                  {service.name}
-                </h3>
-                <p class="text-sm text-cf-textMuted">
-                  {service.summary}
-                </p>
-              </div>
-              <div class="mt-4 flex items-center justify-between gap-3">
-                <a
-                  href={service.slug}
-                  class="text-sm font-semibold text-cf-link hover:underline"
-                >
-                  View service details
-                </a>
-                <a
-                  href={`${service.slug}#request`}
-                  class="btn btn-primary btn-sm whitespace-nowrap text-xs"
-                >
-                  Request this service
-                </a>
-              </div>
-            </article>
-          ))}
         </div>
-      </section>
 
-      <section class="rounded-3xl bg-white p-6 shadow-soft md:p-8">
-        <div class="grid gap-6 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] md:items-start">
-          <div class="space-y-2">
-            <p class="eyebrow">Where we work</p>
-            <h2 class="text-h2 font-semibold text-cf-text">
-              Serving Carlsbad and nearby North County communities
-            </h2>
-            <p class="max-w-2xl text-body-sm text-cf-textMuted">
-              Travel is kept reasonable so more of your visit goes toward actual repair and
-              improvement work. Availability in each area depends on scheduling and overall
-              project scope.
-            </p>
-          </div>
-          <div class="space-y-3 text-sm text-cf-textMuted">
-            <p class="font-semibold text-cf-text">
-              Common areas we visit
-            </p>
-            <p>
-              Carlsbad, Oceanside, Encinitas, Vista, and San Marcos, CA. Other nearby
-              communities may be available depending on the schedule.
-            </p>
-            <p>
-              During booking, you will receive a clear confirmation of whether your address
-              is in the regular service area and what travel expectations look like.
-            </p>
+        <ul class="grid gap-3 text-sm text-cf-textMuted sm:grid-cols-2">
+          <li class="flex gap-2">
+            <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-cf-sandSoft text-[11px] font-semibold text-cf-primary">
+              ✓
+            </span>
+            <span>Licensed and insured local handyman based in {primaryArea.label}.</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-cf-sandSoft text-[11px] font-semibold text-cf-primary">
+              ✓
+            </span>
+            <span>Visits scoped so projects fit into clear, realistic service windows.</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-cf-sandSoft text-[11px] font-semibold text-cf-primary">
+              ✓
+            </span>
+            <span>Ideal for lists of small to medium projects instead of full remodels.</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-cf-sandSoft text-[11px] font-semibold text-cf-primary">
+              ✓
+            </span>
+            <span>Serving {primaryArea.label} plus nearby areas like {nearbyAreas.map((a) => a.name).join(", ")}.</span>
+          </li>
+        </ul>
+
+        <div class="flex flex-wrap items-center gap-3 text-sm">
+          <a href="/contact/" class="btn-primary">
+            Request an estimate
+          </a>
+          <a
+            href="tel:+18082266681"
+            data-ga-event="call_click"
+            data-ga-label="site_phone"
+            class="inline-flex items-center justify-center rounded-full border border-cf-accentBlueSoft bg-gradient-to-r from-white to-cf-accentBlueSoft/40 px-5 py-2 text-sm font-semibold text-cf-accentBlue shadow-soft hover:from-white hover:to-cf-accentBlueSoft/70"
+          >
+            Call or text (808) 226-6681
+          </a>
+        </div>
+      </div>
+
+      <aside class="space-y-4 rounded-3xl bg-cf-sandSoft p-5 text-sm text-cf-text shadow-soft">
+        <p class="eyebrow text-cf-textMuted">Where we work</p>
+        <h2 class="text-lg font-semibold text-cf-text">
+          Focused on small home projects in North County San Diego
+        </h2>
+        <p class="text-body-sm text-cf-textMuted">
+          Most visits start in {primaryArea.label} and nearby neighborhoods, with service available in other coastal and inland communities when travel still allows a realistic service window.
+        </p>
+        <div class="mt-3">
+          <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
+            Primary service area
+          </p>
+          <p class="mt-1 text-sm text-cf-text">
+            {primaryArea.label}
+          </p>
+        </div>
+        <div class="mt-3">
+          <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
+            Also serving
+          </p>
+          <div class="mt-2 flex flex-wrap gap-2 text-[11px]">
+            {nearbyAreas.map((area) => (
+              <a
+                href={`/service-areas/${area.slug}/`}
+                class="inline-flex items-center rounded-full bg-white px-3 py-1 text-cf-text shadow-soft hover:bg-cf-sandSoft"
+              >
+                {area.label}
+              </a>
+            ))}
           </div>
         </div>
-      </section>
-
-      <PageCtaStrip
-        eyebrow="Next steps"
-        title="Ready to schedule a handyman visit?"
-        body="Share your punch list, preferred timing, and any helpful photos. You will receive clear next steps and a no-obligation estimate for your home in Carlsbad, CA and nearby North County communities."
-      />
+      </aside>
     </div>
-  </div>
+  </section>
+
+  <section class="mt-8 rounded-3xl bg-cf-sandSoft p-6 md:p-8">
+    <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+      <div class="space-y-2">
+        <p class="eyebrow text-cf-textMuted">Core services</p>
+        <h2 class="text-h2 font-semibold text-cf-text">
+          Handyman services you can book with Carlsbad Fix It
+        </h2>
+        <p class="max-w-2xl text-body-sm text-cf-textMuted">
+          These services reflect the projects North County homeowners call about most. You can book a single service or combine several small tasks into the same visit when they fit in the same service window.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {services.map((service) => (
+        <article class="flex h-full flex-col justify-between rounded-2xl bg-white p-5 text-sm text-cf-text shadow-soft">
+          <div class="space-y-2">
+            <h3 class="text-sm font-semibold text-cf-text">
+              {service.name}
+            </h3>
+            <p class="text-xs text-cf-textMuted">
+              {service.shortDescription}
+            </p>
+            {service.examples && service.examples.length > 0 && (
+              <ul class="mt-3 space-y-1 text-[11px] text-cf-textMuted">
+                {service.examples.slice(0, 3).map((example) => (
+                  <li class="flex gap-2">
+                    <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-cf-sandSoft text-[9px] font-semibold text-cf-primary">
+                      •
+                    </span>
+                    <span>{example}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+          <div class="mt-4 flex flex-wrap items-center gap-2 text-[11px]">
+            <a
+              href={`/services/${service.slug}/`}
+              class="btn-primary h-8 px-4 text-[11px]"
+            >
+              View service details
+            </a>
+            <a
+              href={`/service-areas/${primaryArea.slug}/${service.slug}/`}
+              class="inline-flex h-8 items-center rounded-full bg-cf-sandSoft px-3 text-[11px] font-semibold text-cf-text hover:bg-cf-card"
+            >
+              View local availability
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <PageCtaStrip
+    eyebrow="Next steps"
+    title={`Ready to schedule a handyman visit in ${primaryArea.label} or nearby?`}
+    body={`Share your punch list, preferred timing, and any helpful photos. You will receive clear next steps and a no-obligation estimate for small to medium projects in ${primaryArea.label} and other North County communities.`}
+  />
 </BaseLayout>

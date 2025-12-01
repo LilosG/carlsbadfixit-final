@@ -1,11 +1,11 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { services } from "../../data/services";
-import { serviceAreas } from "../../data/service-areas";
-import { serviceContent } from "../../data/service-content";
-import { getServiceJsonLd, getBreadcrumbJsonLd, getFaqPageJsonLd } from "../../lib/seo";
 import QuickEstimateCard from "../../components/QuickEstimateCard.astro";
 import PageCtaStrip from "../../components/PageCtaStrip.astro";
+import { services } from "../../data/services";
+import { serviceAreas } from "../../data/service-areas";
+import { cityContent } from "../../data/city-content";
+import { moneyContent } from "../../data/money-content";
 
 export function getStaticPaths() {
   return services.map((service) => ({
@@ -16,396 +16,444 @@ export function getStaticPaths() {
 
 const { service } = Astro.props;
 
+// Primary / default area = Carlsbad
 const primaryArea =
   serviceAreas.find((area) => area.primary) ?? serviceAreas[0];
 
-const content = serviceContent[service.slug] ?? {};
+const primaryCityKey = primaryArea.slug;
 
-const allAreas = serviceAreas.map((area) => area.label);
+// Money / “what this visit includes” content for the primary city
+const moneyEntry =
+  (moneyContent[primaryCityKey] &&
+    moneyContent[primaryCityKey][service.slug]) ||
+  {};
 
-const serviceJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "@id": "https://www.carlsbadfixit.com/services/" + service.slug + "/#service",
-  name: service.name,
-  description: service.shortDescription,
-  serviceType: service.name,
-  url: "https://www.carlsbadfixit.com/services/" + service.slug + "/",
-  areaServed: allAreas.map((name) => ({
-    "@type": "Place",
-    name,
-  })),
-  provider: {
-    "@id": "https://www.carlsbadfixit.com#local-business",
-  },
-});
+const introText =
+  moneyEntry.intro ??
+  `Local ${service.name.toLowerCase()} visits in ${primaryArea.label} focused on small to medium projects that fit into a clear service window.`;
 
-const breadcrumbJsonLd = JSON.stringify(
-  getBreadcrumbJsonLd([
-    { name: "Home", url: "/" },
-    { name: "Services", url: "/services/" },
-    { name: service.name, url: `/services/${service.slug}/` },
-  ]),
-);
+const schedulingNote =
+  moneyEntry.schedulingNote ??
+  "Visits are scoped so as much meaningful work as possible fits into a single, clearly defined service window.";
 
-const intro =
-  content.intro ??
-  `${service.shortDescription} Visits are scoped as small to medium projects that fit into a clear service window with tidy work and clear communication.`;
+const fitGood: string[] = moneyEntry.fitGood ?? [];
+const fitNotGood: string[] = moneyEntry.fitNotGood ?? [];
 
-const overviewParagraphs = [
-  intro,
-  `${service.name} visits are built around a focused punch list so the most important items can be completed safely and efficiently in a single visit whenever possible. Related tasks in the same area of the home are grouped together so more gets done without multiple trips.`,
-];
+const localNote =
+  moneyEntry.localNote ??
+  `Most visits in ${primaryArea.label} are planned so travel time stays reasonable and more of your visit can be spent on actual repair and improvement work.`;
 
-const typicalHeading =
-  content.typicalProjectsHeading ??
-  `Typical ${service.name.toLowerCase()} projects`;
+const audienceNotes = moneyEntry.audienceNotes ?? {};
+const reviewSnippet = moneyEntry.reviewSnippet;
 
-const typicalIntro =
-  content.typicalProjectsIntro ??
-  `Examples of ${service.name.toLowerCase()} projects that are a good fit for a handyman visit. The exact scope is tailored to your home, access, and priorities.`;
+const primaryCityContent = cityContent[primaryCityKey] ?? {};
+const coverageNeighborhoods: string[] = primaryCityContent.neighborhoods ?? [];
 
-const typicalColumns =
-  content.typicalProjectsColumns && content.typicalProjectsColumns.length > 0
-    ? content.typicalProjectsColumns
-    : [
-        {
-          title: service.name,
-          items: service.examples ?? [],
-        },
-      ];
+const serviceExamples = service.examples ?? [];
 
-const pricingHeading =
-  content.pricingHeading ??
-  `How pricing works for ${service.name.toLowerCase()} visits`;
+// FAQ content by service slug – localized to North County / primary area
+const faqByService: Record<string, { question: string; answer: string }[]> = {
+  "carpentry-woodwork": [
+    {
+      question: "What size carpentry projects are a good fit for a handyman visit?",
+      answer:
+        "Most visits focus on trim, doors, fences, gates, and small framing or storage projects that can be completed in a clear service window. Larger, multi-room remodels, built-ins that require a shop, or structural changes are usually better suited for a full-service contractor."
+    },
+    {
+      question: "Do I need to buy my own materials for carpentry projects?",
+      answer:
+        "You are welcome to provide your own fixtures and materials, or we can source common items locally in Carlsbad and the surrounding North County area. For more specialized lumber or hardware, we will confirm options and availability before your visit."
+    },
+    {
+      question: "Can you help with both interior and exterior wood repairs?",
+      answer:
+        "Yes. Typical visits combine interior trim and door work with small exterior items such as fence sections and gates, as long as everything fits safely into the scheduled time and does not require major structural work or permits."
+    }
+  ],
+  electrical: [
+    {
+      question: "What kinds of electrical work are included in a typical visit?",
+      answer:
+        "Most visits focus on swapping existing light fixtures and fans, adding dimmers and smart switches where wiring allows, and troubleshooting simple issues at a single light, switch, or outlet. Anything that involves new circuits, main panels, or whole-home rewiring is referred to a licensed electrical contractor."
+    },
+    {
+      question: "Do I need to provide my own light fixtures or fans?",
+      answer:
+        "Many homeowners in ${primaryArea.label} prefer to choose their own fixtures and fans. As long as they are compatible with the existing electrical boxes and locations, we are happy to install them and make sure everything is secure and tidy."
+    },
+    {
+      question: "Can you handle emergency electrical problems?",
+      answer:
+        "No. Emergency issues such as burning smells, repeated breaker trips, or loss of power to major areas of the home should be handled by a licensed electrician or your utility provider. Our visits are best for planned upgrades and non-urgent, small electrical fixes."
+    }
+  ],
+  "furniture-assembly-installation": [
+    {
+      question: "What types of furniture and installations can you help with?",
+      answer:
+        "Typical visits include assembling flat-pack furniture, desks, beds, and storage, anchoring tall pieces to walls, and installing shelves, artwork, and simple wall décor. We focus on safe, tidy installs that are ready for daily use."
+    },
+    {
+      question: "Can you help decide where furniture and wall décor should go?",
+      answer:
+        "If you have a general idea of where things should go, we can help fine-tune placement so it feels centered and practical in the space. For full interior design services, we recommend working with a designer first and then bringing us in for the install work."
+    },
+    {
+      question: "Do you remove packaging and leftover materials?",
+      answer:
+        "Yes. Packaging from new furniture and fixtures is collected and staged neatly for your regular trash and recycling service. If a project generates unusually large amounts of material, we will discuss disposal options ahead of time."
+    }
+  ],
+  "plumbing-fixtures-repairs": [
+    {
+      question: "What plumbing work is included in a typical visit?",
+      answer:
+        "Visits are focused on visible fixtures and small leak repairs such as faucet swaps, disposer replacements, running toilets, and accessible drain and supply line issues. Slab leaks, sewer line work, and anything that requires opening large sections of walls are referred to a licensed plumber."
+    },
+    {
+      question: "Should I buy my own faucets and fixtures first?",
+      answer:
+        "Most homeowners in ${primaryArea.label} prefer to select their own faucets, disposers, and trim that match the rest of the home. If you have questions about compatibility before you purchase, you can always share a few photos and we will confirm what will work best."
+    },
+    {
+      question: "Can you work on plumbing in rental properties and small businesses?",
+      answer:
+        "Yes. Many visits are scheduled for smaller rental homes and local businesses that need basic fixture repairs and replacements to keep kitchens, baths, and break areas presentable."
+    }
+  ],
+  "honey-do-lists-small-repairs": [
+    {
+      question: "How many items can we include in one honey-do visit?",
+      answer:
+        "Most visits are built around a prioritized list of small to medium tasks that can be completed safely within the scheduled time. We group items by room or area so the highest-value fixes are handled first, and anything that does not fit can be clearly noted for a future visit."
+    },
+    {
+      question: "What are examples of tasks that fit well into a honey-do list?",
+      answer:
+        "Common items include tightening loose hardware, adjusting doors, patching small wall dings, swapping a few fixtures, and touching up caulk or weatherstripping. The goal is to clear the list of small issues that make everyday living more frustrating than it needs to be."
+    },
+    {
+      question: "Is a honey-do visit a good fit before listing a home for sale?",
+      answer:
+        "Yes. Many North County homeowners schedule a focused visit before listing to tidy obvious cosmetic issues—wall dings, crooked hardware, small repairs—so showings feel cleaner and buyers can focus on the strengths of the home."
+    }
+  ],
+  "drywall-repair": [
+    {
+      question: "What size drywall repairs are a good fit?",
+      answer:
+        "Most visits cover small to medium wall and ceiling damage such as moving-related holes, cracks along seams, and a few larger patches from previous work. Extensive damage, full-room skim coats, or multi-room remodel work is usually better handled by a dedicated drywall crew."
+    },
+    {
+      question: "Can you match my existing wall texture and paint?",
+      answer:
+        "We blend new texture into the surrounding area so repairs do not jump out at a glance. Paint touch-up can often be completed when matching paint is available; otherwise we will discuss options based on the existing finish and your goals for the space."
+    },
+    {
+      question: "Do you handle stains from active leaks?",
+      answer:
+        "We can repair and refinish drywall after the underlying plumbing or roof issue has been properly fixed and dried out. Active leaks or suspected mold issues should be addressed by a licensed plumber, roofer, or remediation specialist before cosmetic repairs are scheduled."
+    }
+  ],
+  "tv-mounting": [
+    {
+      question: "What do I need to have ready for a TV mounting visit?",
+      answer:
+        "Have the TV, wall mount, and any key components such as a soundbar or streaming device on site. We will confirm mounting locations, find studs or appropriate anchors, and make sure everything is secure and positioned for comfortable viewing."
+    },
+    {
+      question: "Can you hide all of the cables inside the wall?",
+      answer:
+        "In many cases we can route and conceal cabling using surface channels or in-wall rated kits designed for low-voltage and power. The exact approach depends on your wall construction, outlet locations, and the components you are using."
+    },
+    {
+      question: "Is TV mounting a good fit for rental properties?",
+      answer:
+        "Yes. Solidly mounted TVs with tidy cabling are a common request in rental homes and small multifamily units around ${primaryArea.label}. We focus on safe installs that balance guest comfort with practical long-term maintenance."
+    }
+  ]
+};
 
-const pricingParagraphs =
-  content.pricingParagraphs && content.pricingParagraphs.length > 0
-    ? content.pricingParagraphs
-    : [
-        `Most ${service.name.toLowerCase()} visits are scoped as a minimum service window so there is enough time to complete the work, test everything, and clean up before leaving.`,
-        "When your list is larger or spread across several rooms, the visit may be quoted as a half day or broken into clear phases so you always know what is planned.",
-        "Photos of the existing conditions are very helpful. When you request an estimate, include close-up photos along with a wider view that shows how the area fits into the rest of the space.",
-      ];
+const faqItems = faqByService[service.slug] ?? [];
 
-const faqItems = content.faq ?? [];
-
-const serviceFaqJsonLd =
-  faqItems.length > 0
-    ? JSON.stringify(
-        getFaqPageJsonLd(
-          faqItems,
-          `/services/${service.slug}/`,
-          `Frequently asked questions about ${service.name.toLowerCase()} visits`
-        )
-      )
-    : null;
-
-const processSteps = [
-  {
-    step: "1",
-    title: "Share your project list",
-    body: `Send your list, location in ${primaryArea.name}, and any helpful photos using the online form or by email.`,
-  },
-  {
-    step: "2",
-    title: "Review your estimate and plan",
-    body: "You will receive a clear outline of what is included, expected service time, and the earliest available visit.",
-  },
-  {
-    step: "3",
-    title: "We complete the work and clean up",
-    body: "We arrive within your service window, complete as much as safely possible, and leave your home tidy before heading out.",
-  },
-];
-
-const reviews = [
-  {
-    quote:
-      "They handled our list of small repairs and fixture swaps in one visit. Everything looked neat and was cleaned up before they left.",
-    name: "Sarah M.",
-    location: "Carlsbad, CA",
-    role: "Homeowner",
-  },
-  {
-    quote:
-      "Clear estimate, on-time arrival, and professional work. It was easy to combine a few projects into one service visit.",
-    name: "David R.",
-    location: "Encinitas, CA",
-    role: "Homeowner",
-  },
-  {
-    quote:
-      "Reliable help for small repair lists between tenants. Communication is solid and the work is always tidy.",
-    name: "Rachel K.",
-    location: "Vista, CA",
-    role: "Small landlord",
-  },
-];
-
-const navItems = [
-  { id: "overview", label: "Overview" },
-  { id: "projects", label: "Typical projects" },
-  { id: "pricing", label: "Pricing & scheduling" },
-  { id: "process", label: "How it works" },
-  { id: "areas", label: "Service areas" },
-  { id: "reviews", label: "Reviews" },
-  { id: "faq", label: "FAQ" },
-];
-
-const title = `${service.name} handyman services in ${primaryArea.label} | Carlsbad Fix It`;
-
-const description = `Local help with ${service.name.toLowerCase()} projects in ${primaryArea.label} and nearby North County communities. Small to medium projects, tidy work, and clear communication from Carlsbad Fix It.`;
+const title = `${service.name} in ${primaryArea.label} | Carlsbad Fix It`;
+const description = `${service.name} visits in ${primaryArea.label} for small to medium projects that fit into a clear service window, handled by a licensed and insured local handyman.`;
 ---
 
 <BaseLayout title={title} description={description}>
-  <script
-    type="application/ld+json"
-    slot="head"
-    is:inline
-    set:html={serviceJsonLd}
-  ></script>
-  <script
-    type="application/ld+json"
-    slot="head"
-    is:inline
-    set:html={breadcrumbJsonLd}
-  ></script>
-  {serviceFaqJsonLd && (
-    <script
-      type="application/ld+json"
-      slot="head"
-      is:inline
-      set:html={serviceFaqJsonLd}
-    ></script>
-  )}
-
-  <section class="rounded-3xl bg-gradient-to-br from-cf-accentBlue via-sky-700 to-cf-primary px-6 py-10 text-white shadow-card">
-    <div class="pointer-events-none absolute inset-0 -z-10 opacity-25">
+  {/* HERO – polished blue gradient with CTA card */}
+  <section class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-cf-accentBlue via-sky-700 to-cf-primary px-6 py-8 text-white shadow-soft md:px-10 md:py-10">
+    <div class="pointer-events-none absolute inset-0 opacity-25">
       <div class="absolute -left-32 -top-24 h-72 w-72 rounded-full bg-white/15 blur-3xl"></div>
       <div class="absolute bottom-[-6rem] right-[-4rem] h-80 w-80 rounded-full bg-amber-300/25 blur-3xl"></div>
     </div>
 
-    <div class="relative z-10 grid gap-10 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1.2fr)] lg:items-center">
+    <div class="relative z-10 grid gap-10 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1.1fr)] lg:items-start">
       <div class="space-y-6">
-        <div class="space-y-2">
-          <p class="eyebrow text-amber-200">Handyman service for North County homes</p>
-          <h1 class="text-display font-semibold tracking-tight text-white">
-            {service.name} for North County homes
-          </h1>
-          <p class="max-w-xl text-sm text-sky-100">
-            Clean, code-conscious help with small {service.name.toLowerCase()} projects so your home feels brighter, safer, and easier to use.
-          </p>
-        </div>
-
-        <ul class="grid gap-3 text-sm md:text-base text-sky-50 sm:grid-cols-2">
-          <li class="flex gap-2">
-            <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-amber-300/25 text-[11px] font-semibold text-amber-100">
-              ✓
-            </span>
-            <span>Licensed and insured local handyman based near {primaryArea.label}.</span>
-          </li>
-          <li class="flex gap-2">
-            <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-amber-300/25 text-[11px] font-semibold text-amber-100">
-              ✓
-            </span>
-            <span>Focused on small to medium projects that fit into clear service windows.</span>
-          </li>
-          <li class="flex gap-2">
-            <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-amber-300/25 text-[11px] font-semibold text-amber-100">
-              ✓
-            </span>
-            <span>Tidy job sites with surfaces protected and cleanup before leaving.</span>
-          </li>
-          <li class="flex gap-2">
-            <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-amber-300/25 text-[11px] font-semibold text-amber-100">
-              ✓
-            </span>
-            <span>Clear expectations on timing, scope, and pricing before work begins.</span>
-          </li>
-        </ul>
-
-        <div class="flex flex-wrap items-center gap-3 text-sm">
-          <a href="#service-form" class="btn-primary">
-            Request a {service.name.toLowerCase()} visit
-          </a>
-          <a href="tel:+18082266681" data-ga-event="call_click" data-ga-label="site_phone" class="inline-flex items-center justify-center rounded-full border border-cf-accentBlueSoft bg-gradient-to-r from-white to-cf-accentBlueSoft/40 px-5 py-2 text-sm font-semibold text-cf-accentBlue shadow-soft hover:from-white hover:to-cf-accentBlueSoft/70">
-            Call or text (808) 226-6681
-          </a>
-        </div>
-      </div>
-
-      <aside id="service-form" class="rounded-2xl bg-white p-5 text-cf-text shadow-cta sm:p-6">
-        <QuickEstimateCard
-          eyebrow="Quick request"
-          title={`Request your ${service.name.toLowerCase()} visit`}
-          body={`Share your location, a short list of ${service.name.toLowerCase()} tasks, and any helpful photos. You will receive clear next steps and timing before anything is scheduled.`}
-          defaultService={service.name}
-          defaultCity={primaryArea.label}
-        />
-      </aside>
-    </div>
-  </section>
-
-  <nav class="mt-6 overflow-x-auto">
-    <ul class="flex gap-2 text-xs text-cf-textMuted">
-      {navItems.map((item) => (
-        <li>
-          <a
-            href={`#${item.id}`}
-            class="inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-medium text-slate-700 shadow-soft hover:border-sky-300 hover:text-sky-800"
-          >
-            {item.label}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </nav>
-
-  <section
-    id="overview"
-    class="rounded-3xl bg-white p-6 shadow-soft md:p-8"
-  >
-    <div class="grid gap-8 md:grid-cols-[minmax(0,1.8fr)_minmax(0,1.3fr)] md:items-start">
-      <div class="space-y-3">
-        <p class="eyebrow">What we do during a visit</p>
-        <h2 class="text-h2 font-semibold text-cf-text">
-          {service.name} focused on small to medium projects
-        </h2>
-        <div class="space-y-3 text-body-sm text-cf-textMuted">
-          {overviewParagraphs.map((paragraph) => (
-            <p>{paragraph}</p>
-          ))}
-        </div>
-      </div>
-
-      <aside class="space-y-3 rounded-2xl bg-cf-sandSoft p-5 text-sm text-cf-text">
-        <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
-          A good fit for this service
+        <p class="eyebrow text-amber-200">Core service</p>
+        <h1 class="text-display font-semibold tracking-tight text-white">
+          {service.name} in {primaryArea.label}
+        </h1>
+        <p class="max-w-2xl text-body-sm text-sky-50">
+          {introText}
         </p>
-        <p class="text-sm">
-          Smaller, tidy projects that can be completed in a focused visit. The goal is to leave things safe, functional, and ready for daily use.
-        </p>
-        <ul class="mt-2 space-y-2 text-xs text-cf-textMuted">
-          <li>Lists that combine a few related tasks in the same area.</li>
-          <li>Updates that improve lighting, comfort, or day-to-day usability.</li>
-          <li>Repair work that does not require a full remodel or major trades.</li>
-        </ul>
-      </aside>
-    </div>
-  </section>
 
-  <section
-    id="projects"
-    class="rounded-3xl bg-cf-sandSoft p-6 md:p-8"
-  >
-    <div class="space-y-2">
-      <p class="eyebrow">Typical projects</p>
-      <h2 class="text-h2 font-semibold text-cf-text">
-        {typicalHeading}
-      </h2>
-      <p class="text-body-sm text-cf-textMuted">{typicalIntro}</p>
-    </div>
-
-    <div class="mt-6 grid gap-6 md:grid-cols-2">
-      {typicalColumns.map((column) => (
-        <div class="rounded-2xl bg-white/80 p-5 shadow-soft">
-          <h3 class="text-sm font-semibold text-cf-text">
-            {column.title}
-          </h3>
-          <ul class="mt-3 space-y-2 text-xs text-cf-textMuted">
-            {column.items.map((item) => (
-              <li class="flex gap-2">
-                <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-cf-sand text-[10px] font-semibold text-cf-text">
-                  •
+        {serviceExamples.length > 0 && (
+          <div class="grid gap-3 text-sm text-sky-50 md:grid-cols-2">
+            {serviceExamples.slice(0, 4).map((example) => (
+              <div class="flex items-start gap-2">
+                <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-amber-300/20 text-[11px] font-semibold text-amber-100">
+                  ✓
                 </span>
-                <span>{item}</span>
-              </li>
+                <span class="leading-snug">{example}</span>
+              </div>
             ))}
-          </ul>
-        </div>
-      ))}
-    </div>
-  </section>
+          </div>
+        )}
 
-  <section
-    id="pricing"
-    class="rounded-3xl bg-white p-6 shadow-soft md:p-8"
-  >
-    <div class="grid gap-8 md:grid-cols-[minmax(0,1.8fr)_minmax(0,1.3fr)] md:items-start">
-      <div class="space-y-3">
-        <p class="eyebrow">Pricing and scheduling</p>
-        <h2 class="text-h2 font-semibold text-cf-text">
-          {pricingHeading}
-        </h2>
-        <div class="space-y-3 text-body-sm text-cf-textMuted">
-          {pricingParagraphs.map((paragraph) => (
-            <p>{paragraph}</p>
-          ))}
+        <div class="flex flex-wrap items-center gap-3">
+          <a href="#service-form" class="btn-primary text-sm">
+            Request an estimate
+          </a>
+          <a
+            href="tel:+18082266681"
+            data-ga-event="call_click"
+            data-ga-label="site_phone"
+            class="inline-flex items-center justify-center rounded-full border border-cf-accentBlueSoft bg-gradient-to-r from-white to-cf-accentBlueSoft/40 px-5 py-2 text-sm font-semibold text-cf-accentBlue shadow-soft hover:from-white hover:to-cf-accentBlueSoft/70"
+          >
+            Call or text{" "}
+            <span class="ml-1 font-semibold text-cf-accentBlue hover:underline">
+              (808) 226-6681
+            </span>
+          </a>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-sky-100 md:text-sm">
+          <div class="inline-flex items-center gap-2">
+            <span class="h-2 w-2 rounded-full bg-emerald-300"></span>
+            <span>Licensed and insured handyman</span>
+          </div>
+          <div class="inline-flex items-center gap-2">
+            <span class="h-2 w-2 rounded-full bg-amber-300"></span>
+            <span>Based in Carlsbad, serving North County San Diego</span>
+          </div>
+          <div class="inline-flex items-center gap-2">
+            <span class="h-2 w-2 rounded-full bg-sky-300"></span>
+            <span>Focused on small to medium home projects</span>
+          </div>
         </div>
       </div>
 
-      <aside class="space-y-3 rounded-2xl bg-cf-sandSoft p-5 text-xs text-cf-textMuted">
-        <p class="text-xs font-semibold uppercase tracking-wide text-sky-700">
-          When we will refer you out
-        </p>
-        <p>
-          Larger projects, significant code issues, or work that requires permits and multiple trades are usually better handled by a full-service contractor.
-        </p>
-        <ul class="mt-2 space-y-2">
-          <li>Major structural changes or full-room remodels.</li>
-          <li>Emergency repairs such as active leaks or urgent electrical issues.</li>
-          <li>Projects that require specialized equipment or large crews.</li>
-        </ul>
+      <aside class="flex justify-end">
+        <div
+          id="service-form"
+          class="w-full max-w-md rounded-3xl bg-white p-5 text-cf-text shadow-soft sm:p-6"
+        >
+          <QuickEstimateCard
+            eyebrow="Get your estimate started"
+            title={`Request your ${service.name.toLowerCase()} visit`}
+            body={`Share your location in ${primaryArea.label} or a nearby city, a short list of ${service.name.toLowerCase()} tasks, and any helpful photos. You will receive clear next steps and a no-obligation estimate.`}
+            defaultCity={primaryArea.label}
+          />
+        </div>
       </aside>
     </div>
   </section>
 
-  <section
-    id="process"
-    class="rounded-3xl bg-white p-6 shadow-soft md:p-8"
-  >
-    <div class="space-y-2">
-      <p class="eyebrow">How it works</p>
+  {/* WHAT WE DO DURING A VISIT / TYPICAL VISIT */}
+  <section class="mt-8 rounded-3xl bg-amber-50 p-6 md:p-8">
+    <div class="space-y-3">
+      <p class="eyebrow text-cf-textMuted">Typical visit</p>
       <h2 class="text-h2 font-semibold text-cf-text">
-        A simple 3-step process for {service.name.toLowerCase()} visits
+        What a typical {service.name.toLowerCase()} visit includes
       </h2>
-      <p class="text-body-sm text-cf-textMuted">
-        Clear communication and a tidy result from first message through the final walkthrough.
+      <p class="max-w-3xl text-body-sm text-cf-textMuted">
+        Each visit is scoped so as much meaningful work as possible fits into a clear
+        service window. Here are common tasks homeowners ask for in{" "}
+        {primaryArea.label} and nearby North County communities.
       </p>
     </div>
 
-    <div class="mt-6 grid gap-6 md:grid-cols-3">
-      {processSteps.map((step) => (
-        <div class="group h-full rounded-2xl border border-cf-borderSubtle bg-gradient-to-b from-white to-cf-card/80 p-5 shadow-soft transition-transform duration-150 group-hover:-translate-y-0.5 group-hover:shadow-card">
-          <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-sky-700">
-            <span class="flex h-7 w-7 items-center justify-center rounded-full bg-sky-100 text-[11px] text-sky-700 shadow-inner">
-              {step.step}
-            </span>
-            <span>Step {step.step}</span>
+    {fitGood.length > 0 && (
+      <div class="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {fitGood.map((item) => (
+          <div class="flex h-full flex-col justify-center rounded-3xl bg-white p-4 text-sm text-cf-text shadow-soft md:p-5">
+            <p>{item}</p>
           </div>
-          <h3 class="mt-3 text-sm font-semibold text-cf-text">
-            {step.title}
-          </h3>
-          <p class="mt-2 text-xs text-cf-textMuted">
-            {step.body}
-          </p>
-        </div>
-      ))}
+        ))}
+      </div>
+    )}
+
+    {localNote && (
+      <div class="mt-6 rounded-2xl bg-white/70 p-4 text-sm text-cf-textMuted shadow-soft md:p-5">
+        <p>{localNote}</p>
+      </div>
+    )}
+  </section>
+
+  {/* PRICING / SCHEDULING + WHEN NOT A GOOD FIT */}
+  <section class="mt-8 grid gap-6 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1.1fr)] md:items-start">
+    <div class="space-y-4 rounded-3xl bg-white p-6 shadow-soft md:p-8">
+      <p class="eyebrow text-cf-textMuted">Pricing &amp; scheduling</p>
+      <h2 class="text-h2 font-semibold text-cf-text">
+        How {service.name.toLowerCase()} visits are scheduled
+      </h2>
+      <p class="text-body-sm text-cf-textMuted">
+        {schedulingNote}
+      </p>
+      <p class="text-body-sm text-cf-textMuted">
+        You will always receive clear expectations on scope, timing, and pricing before
+        work begins. When several tasks are in the same area of the home, they are often
+        combined into a single visit to keep disruption low and results high.
+      </p>
+    </div>
+
+    <aside class="space-y-4 rounded-3xl bg-cf-sandSoft p-6 md:p-7">
+      <p class="eyebrow text-cf-textMuted">When this is not a good fit</p>
+      <h2 class="text-lg font-semibold text-cf-text">
+        Projects better suited for a larger contractor
+      </h2>
+      {fitNotGood.length > 0 ? (
+        <ul class="mt-3 space-y-2 text-sm text-cf-textMuted">
+          {fitNotGood.map((item) => (
+            <li class="flex gap-2">
+              <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-white text-[11px] font-semibold text-cf-primary">
+                ✕
+              </span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="mt-3 text-sm text-cf-textMuted">
+          Very large projects, major structural changes, or anything requiring extensive
+          permitting is usually better handled by a full-service contractor. We are happy
+          to help you decide what makes the most sense once we see your list.
+        </p>
+      )}
+      <p class="mt-3 text-xs text-cf-textMuted">
+        If your project looks better suited to a specialty trade or larger crew, we will
+        be honest about that up front so you do not waste time or budget.
+      </p>
+    </aside>
+  </section>
+
+  {/* HOW IT WORKS – 3-step process */}
+  <section class="mt-8 rounded-3xl bg-white p-6 shadow-soft md:p-8">
+    <div class="space-y-3">
+      <p class="eyebrow text-cf-textMuted">How it works</p>
+      <h2 class="text-h2 font-semibold text-cf-text">
+        A simple 3-step process for {service.name.toLowerCase()} visits
+      </h2>
+      <p class="max-w-3xl text-body-sm text-cf-textMuted">
+        Clear communication and tidy work from the first message through the final
+        walkthrough. The goal is to keep your project moving without surprises.
+      </p>
+    </div>
+    <div class="mt-5 grid gap-4 md:grid-cols-3">
+      <div class="rounded-3xl bg-cf-sandSoft p-5 text-sm text-cf-text shadow-soft">
+        <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
+          Step 1
+        </p>
+        <h3 class="mt-1 font-semibold">
+          Share your project list and photos
+        </h3>
+        <p class="mt-2 text-sm text-cf-textMuted">
+          Send a brief description of the work, a few photos, and your location in{" "}
+          {primaryArea.label} or another North County city. This helps confirm that a
+          handyman visit is the right fit.
+        </p>
+      </div>
+      <div class="rounded-3xl bg-cf-sandSoft p-5 text-sm text-cf-text shadow-soft">
+        <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
+          Step 2
+        </p>
+        <h3 class="mt-1 font-semibold">
+          Review your estimate and schedule
+        </h3>
+        <p class="mt-2 text-sm text-cf-textMuted">
+          You will receive clear expectations on what can be completed, how long the
+          visit will take, and how material costs will be handled before you commit to
+          anything.
+        </p>
+      </div>
+      <div class="rounded-3xl bg-cf-sandSoft p-5 text-sm text-cf-text shadow-soft">
+        <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
+          Step 3
+        </p>
+        <h3 class="mt-1 font-semibold">
+          We complete the visit and clean up
+        </h3>
+        <p class="mt-2 text-sm text-cf-textMuted">
+          Work is completed with careful protection, tidy work areas, and a final
+          walkthrough so you know what was finished and where to look if any questions
+          come up later.
+        </p>
+      </div>
     </div>
   </section>
 
-  <section
-    id="areas"
-    class="rounded-3xl bg-white p-6 shadow-soft md:p-8"
-  >
+  {/* AUDIENCE NOTES – who this helps */}
+  <section class="mt-8 rounded-3xl bg-white p-6 shadow-soft md:p-8">
+    <div class="grid gap-6 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1.2fr)] md:items-start">
+      <div class="space-y-3">
+        <p class="eyebrow text-cf-textMuted">Where this helps most</p>
+        <h2 class="text-h2 font-semibold text-cf-text">
+          {service.name} help for North County homeowners and property owners
+        </h2>
+        <p class="text-body-sm text-cf-textMuted">
+          Many visits are scheduled in {primaryArea.label} and nearby communities such as{" "}
+          {serviceAreas
+            .filter((a) => a.slug !== primaryCityKey)
+            .map((a) => a.name)
+            .join(", ")}
+          . Availability in each area depends on schedule and project mix.
+        </p>
+      </div>
+
+      <div class="space-y-3 rounded-3xl bg-cf-sandSoft p-5 text-sm text-cf-text md:p-6">
+        <div class="space-y-2">
+          <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
+            Homeowners
+          </p>
+          <p class="text-sm text-cf-textMuted">
+            {audienceNotes.homeowners ??
+              "Focused on small to medium projects that make everyday living easier—tightening up details, improving comfort, and handling the list of small tasks that never seems to shrink."}
+          </p>
+        </div>
+        <div class="space-y-2">
+          <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
+            Rentals &amp; small portfolios
+          </p>
+          <p class="text-sm text-cf-textMuted">
+            {audienceNotes.rentals ??
+              "Turnover touch-ups and small repairs for smaller rental homes, ADUs, and long-term rentals so units feel clean, functional, and ready for the next lease or stay."}
+          </p>
+        </div>
+        <div class="space-y-2">
+          <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
+            Local businesses
+          </p>
+          <p class="text-sm text-cf-textMuted">
+            {audienceNotes.businesses ??
+              "Light repairs and improvement projects for offices, studios, and storefronts that want a tidy result without a large project crew on site."}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* COVERAGE / SERVICE AREAS */}
+  <section class="mt-8 rounded-3xl bg-cf-sandSoft p-6 md:p-8">
     <div class="space-y-3">
-      <p class="eyebrow">Service areas</p>
+      <p class="eyebrow text-cf-textMuted">Coverage</p>
       <h2 class="text-h2 font-semibold text-cf-text">
         Where we offer {service.name.toLowerCase()} services
       </h2>
-      <p class="text-body-sm text-cf-textMuted">
-        Carlsbad Fix It is based in {primaryArea.label} with select availability in nearby North County San Diego communities. Availability in each area depends on schedule and project scope.
+      <p class="max-w-3xl text-body-sm text-cf-textMuted">
+        Carlsbad Fix It is based in {primaryArea.label} with carefully selected
+        availability in nearby North County San Diego communities. Travel is planned so
+        most of your visit can be spent on actual work instead of time on the road.
       </p>
     </div>
 
@@ -413,81 +461,87 @@ const description = `Local help with ${service.name.toLowerCase()} projects in $
       {serviceAreas.map((area) => (
         <a
           href={`/service-areas/${area.slug}/${service.slug}/`}
-          class="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-semibold text-slate-700 shadow-soft hover:border-sky-300 hover:bg-sky-50 hover:text-sky-800"
+          class="inline-flex items-center rounded-full bg-white px-3 py-1 text-cf-text shadow-soft hover:bg-cf-card"
         >
           {service.name} in {area.label}
         </a>
       ))}
     </div>
-  </section>
 
-  <section
-    id="reviews"
-    class="rounded-3xl bg-white p-6 shadow-soft md:p-8"
-  >
-    <div class="space-y-2">
-      <p class="eyebrow">What homeowners say</p>
-      <h2 class="text-h2 font-semibold text-cf-text">
-        Tidy, professional {service.name.toLowerCase()} visits
-      </h2>
-      <p class="text-body-sm text-cf-textMuted">
-        These short quotes are representative of the experience Carlsbad Fix It aims to deliver on every visit.
-      </p>
-    </div>
-
-    <div class="mt-6 grid gap-6 md:grid-cols-3">
-      {reviews.map((review) => (
-        <figure class="flex h-full flex-col justify-between rounded-2xl bg-cf-card p-5 shadow-soft">
-          <blockquote class="text-sm text-cf-textMuted">
-            “{review.quote}”
-          </blockquote>
-          <figcaption class="mt-4 text-xs">
-            <p class="font-semibold text-cf-text">{review.name}</p>
-            <p class="text-cf-textMuted">
-              {review.location}
-              {review.role ? ` · ${review.role}` : ""}
-            </p>
-          </figcaption>
-        </figure>
-      ))}
-    </div>
-  </section>
-
-  {faqItems.length > 0 && (
-    <section
-      id="faq"
-      class="rounded-3xl bg-white p-6 shadow-soft md:p-8"
-    >
-      <div class="space-y-2">
-        <p class="eyebrow">Questions from homeowners</p>
-        <h2 class="text-h2 font-semibold text-cf-text">
-          Frequently asked questions about {service.name.toLowerCase()} visits
-        </h2>
-        <p class="text-body-sm text-cf-textMuted">
-          A few common questions that come up when homeowners request{" "}
-          {service.name.toLowerCase()} help. If you do not see your question
-          here, you can always add it to your estimate request.
+    {coverageNeighborhoods.length > 0 && (
+      <div class="mt-5">
+        <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
+          Neighborhoods often served in {primaryArea.label}
         </p>
+        <div class="mt-2 flex flex-wrap gap-2 text-[11px] text-cf-text">
+          {coverageNeighborhoods.map((name) => (
+            <span class="inline-flex items-center rounded-full bg-white px-3 py-1 shadow-soft">
+              {name}
+            </span>
+          ))}
+        </div>
       </div>
+    )}
+  </section>
 
+  {/* TESTIMONIALS – from moneyContent primary city snippet if present */}
+  {reviewSnippet && (
+    <section class="mt-8 rounded-3xl bg-white p-6 shadow-soft md:p-8">
+      <div class="space-y-4">
+        <div class="space-y-2">
+          <p class="eyebrow text-cf-textMuted">
+            {primaryArea.name} reviews
+          </p>
+          <h2 class="text-h2 font-semibold text-cf-text">
+            What homeowners say about {service.name.toLowerCase()} visits
+          </h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          <figure class="rounded-3xl bg-cf-card p-5 text-sm shadow-soft md:p-6">
+            <p class="text-[13px] italic text-cf-textMuted">
+              “{reviewSnippet.quote}”
+            </p>
+            <figcaption class="mt-3 text-sm text-cf-text">
+              <p class="font-semibold">{reviewSnippet.name}</p>
+              <p class="text-cf-textMuted">
+                {reviewSnippet.location}
+                {reviewSnippet.role ? " · " + reviewSnippet.role : ""}
+              </p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {/* FAQ */}
+  {faqItems.length > 0 && (
+    <section id="faq" class="mt-8 rounded-3xl bg-white p-6 shadow-soft md:p-8">
+      <div class="space-y-3">
+        <p class="eyebrow text-cf-textMuted">
+          Questions from North County homeowners
+        </p>
+        <h2 class="text-h2 font-semibold text-cf-text">
+          Frequently asked questions about {service.name.toLowerCase()}
+        </h2>
+      </div>
       <div class="mt-4 space-y-3">
         {faqItems.map((item) => (
           <details class="card">
             <summary class="cursor-pointer text-sm font-semibold text-cf-text">
               {item.question}
             </summary>
-            <p class="mt-2 text-sm text-cf-textMuted">
-              {item.answer}
-            </p>
+            <p class="mt-2 text-sm text-cf-textMuted">{item.answer}</p>
           </details>
         ))}
       </div>
     </section>
   )}
 
+  {/* BOTTOM CTA – global */}
   <PageCtaStrip
     eyebrow="Next steps"
     title={`Ready to schedule ${service.name.toLowerCase()} help?`}
-    body="Share your punch list, preferred timing, and any helpful photos. You will receive clear next steps and a no-obligation estimate."
+    body={`Share your location, preferred timing, and a short list of ${service.name.toLowerCase()} projects. You will receive clear next steps and a no-obligation estimate.`}
   />
 </BaseLayout>

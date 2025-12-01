@@ -23,6 +23,7 @@ const siteUrl = Astro.site?.toString() ?? "https://www.carlsbadfixit.com";
 const defaultCanonical = new URL(Astro.url.pathname, siteUrl).toString();
 const canonicalUrl = canonical ?? defaultCanonical;
 const robots = noIndex ? "noindex,nofollow" : "index,follow";
+const defaultOgImage = new URL("/images/logo/logo-medium.png", siteUrl).toString();
 ---
 <html lang="en">
   <head>
@@ -37,10 +38,12 @@ const robots = noIndex ? "noindex,nofollow" : "index,follow";
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={defaultOgImage} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={defaultOgImage} />
 
     <link
       rel="icon"

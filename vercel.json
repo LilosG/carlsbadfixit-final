@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/book-online",
+      "destination": "/contact",
+      "permanent": true
+    }
+  ]
+}

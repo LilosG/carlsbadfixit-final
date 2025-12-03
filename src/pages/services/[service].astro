@@ -6,6 +6,12 @@ import { services } from "../../data/services";
 import { serviceAreas } from "../../data/service-areas";
 import { cityContent } from "../../data/city-content";
 import { moneyContent } from "../../data/money-content";
+import {
+  getLocalBusinessJsonLd,
+  getServiceJsonLd,
+  getBreadcrumbJsonLd,
+  getFaqPageJsonLd
+} from "../../lib/seo";
 
 export function getStaticPaths() {
   return services.map((service) => ({
@@ -178,9 +184,67 @@ const faqItems = faqByService[service.slug] ?? [];
 
 const title = `${service.name} in ${primaryArea.label} | Carlsbad Fix It`;
 const description = `${service.name} visits in ${primaryArea.label} for small to medium projects that fit into a clear service window, handled by a licensed and insured local handyman.`;
+
+// JSON-LD for money pages
+const breadcrumbJsonLd = JSON.stringify(
+  getBreadcrumbJsonLd([
+    { name: "Home", url: "/" },
+    { name: "Services", url: "/services/" },
+    {
+      name: service.name,
+      url: `/services/${service.slug}/`
+    }
+  ])
+);
+
+const localBusinessJsonLd = JSON.stringify(
+  getLocalBusinessJsonLd([primaryArea.label])
+);
+
+const serviceJsonLd = JSON.stringify(
+  getServiceJsonLd(service, primaryArea)
+);
+
+const faqJsonLd =
+  faqItems.length > 0
+    ? JSON.stringify(
+        getFaqPageJsonLd(
+          faqItems,
+          `/services/${service.slug}/`,
+          title
+        )
+      )
+    : null;
+
 ---
 
 <BaseLayout title={title} description={description}>
+  <script
+    type="application/ld+json"
+    slot="head"
+    is:inline
+    set:html={localBusinessJsonLd}
+  ></script>
+  <script
+    type="application/ld+json"
+    slot="head"
+    is:inline
+    set:html={breadcrumbJsonLd}
+  ></script>
+  <script
+    type="application/ld+json"
+    slot="head"
+    is:inline
+    set:html={serviceJsonLd}
+  ></script>
+  {faqJsonLd && (
+    <script
+      type="application/ld+json"
+      slot="head"
+      is:inline
+      set:html={faqJsonLd}
+    ></script>
+  )}
   {/* HERO – polished blue gradient with CTA card */}
   <section class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-cf-accentBlue via-sky-700 to-cf-primary px-6 py-8 text-white shadow-soft md:px-10 md:py-10">
     <div class="pointer-events-none absolute inset-0 opacity-25">

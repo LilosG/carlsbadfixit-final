@@ -158,7 +158,7 @@ const localBusinessJsonLd = JSON.stringify(
           <p class="mt-1 text-xs text-cf-textMuted">
             Share a few details and we will follow up with clear next steps and a no-obligation estimate, usually within one business day.
           </p>
-          <form action="https://formspree.io/f/mdkvzynw" method="POST" class="mt-4 grid gap-3" data-ga-form-event="estimate_request_submit" data-ga-label="home_hero_form">
+          <form action="https://formspree.io/f/mdkvzynw" method="POST" class="mt-4 grid gap-3" data-ga-form-event="estimate_request_submit" id="hero-estimate-form" data-ga-lead="true" data-ga-form-name="Estimate Request" data-ga-location="home_hero_form" data-ga-label="home_hero_form">
             <div class="grid gap-3 sm:grid-cols-2">
               <div class="space-y-1">
                 <label for="hero-name" class="text-[11px] font-medium text-cf-text">Name</label>
@@ -429,7 +429,7 @@ const localBusinessJsonLd = JSON.stringify(
       <p class="text-sm text-slate-600">
         Tell us a bit about your project and where you are located. You will receive clear next steps and a no-obligation estimate.
       </p>
-      <form action="https://formspree.io/f/mdkvzynw" method="POST" class="mt-2 grid gap-4 md:grid-cols-2" data-ga-form-event="estimate_request_submit" data-ga-label="home_inline_form">
+      <form action="https://formspree.io/f/mdkvzynw" method="POST" class="mt-2 grid gap-4 md:grid-cols-2" data-ga-form-event="estimate_request_submit" id="inline-estimate-form" data-ga-lead="true" data-ga-form-name="Estimate Request" data-ga-location="home_inline_form" data-ga-label="home_inline_form">
         <div class="space-y-1 md:col-span-1">
           <label for="home-name" class="text-xs font-medium text-slate-800">Name</label>
           <input

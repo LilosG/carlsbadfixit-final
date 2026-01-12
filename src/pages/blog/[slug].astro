@@ -1,0 +1,210 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageCtaStrip from "../../components/PageCtaStrip.astro";
+import { services } from "../../data/services";
+import { serviceAreas } from "../../data/service-areas";
+import { getArticleJsonLd, getBreadcrumbJsonLd } from "../../lib/seo";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const siteUrl = Astro.site?.toString() ?? "https://www.carlsbadfixit.com";
+const canonicalUrl =
+  post.data.canonical ?? new URL(`/blog/${post.slug}/`, siteUrl).toString();
+const ogImageUrl = post.data.image
+  ? new URL(post.data.image, siteUrl).toString()
+  : undefined;
+
+const wordCount = post.body.split(/\s+/).filter(Boolean).length;
+const readingTimeMinutes = Math.max(1, Math.round(wordCount / 200));
+
+const postServices = new Set(post.data.services as string[]);
+const postAreas = new Set(post.data.serviceAreas as string[]);
+
+const serviceLinks = services.filter((service) =>
+  postServices.has(service.slug),
+);
+const areaLinks = serviceAreas.filter((area) => postAreas.has(area.slug));
+const localLinks = areaLinks.flatMap((area) =>
+  serviceLinks.map((service) => ({
+    label: `${service.name} in ${area.label}`,
+    href: `/service-areas/${area.slug}/${service.slug}/`,
+  })),
+);
+
+const articleJsonLd = JSON.stringify(
+  getArticleJsonLd({
+    title: post.data.title,
+    description: post.data.description,
+    url: canonicalUrl,
+    datePublished: post.data.pubDate.toISOString(),
+    dateModified: post.data.updatedDate?.toISOString(),
+    image: ogImageUrl,
+    tags: post.data.tags,
+  }),
+);
+
+const breadcrumbJsonLd = JSON.stringify(
+  getBreadcrumbJsonLd([
+    { name: "Home", url: "/" },
+    { name: "Blog", url: "/blog/" },
+    { name: post.data.title, url: `/blog/${post.slug}/` },
+  ]),
+);
+---
+
+<BaseLayout
+  title={`${post.data.title} | Carlsbad Fix It`}
+  description={post.data.description}
+  canonical={canonicalUrl}
+  ogType="article"
+  ogImage={ogImageUrl}
+>
+  <script
+    type="application/ld+json"
+    slot="head"
+    is:inline
+    set:html={articleJsonLd}
+  />
+  <script
+    type="application/ld+json"
+    slot="head"
+    is:inline
+    set:html={breadcrumbJsonLd}
+  />
+  <meta
+    property="article:published_time"
+    content={post.data.pubDate.toISOString()}
+    slot="head"
+  />
+  {
+    post.data.updatedDate && (
+      <meta
+        property="article:modified_time"
+        content={post.data.updatedDate.toISOString()}
+        slot="head"
+      />
+    )
+  }
+
+  <article class="shadow-soft rounded-3xl bg-white p-6 md:p-8">
+    <div class="space-y-4">
+      <p class="eyebrow text-cf-textMuted">Local homeowner guide</p>
+      <h1 class="text-h1 text-cf-text font-semibold">
+        {post.data.title}
+      </h1>
+      <p class="text-body-sm text-cf-textMuted">{post.data.description}</p>
+      <div class="text-cf-textMuted flex flex-wrap items-center gap-3 text-xs">
+        <span>{post.data.pubDate.toLocaleDateString("en-US")}</span>
+        <span>{readingTimeMinutes} min read</span>
+        {
+          post.data.tags.length > 0 && (
+            <div class="flex flex-wrap gap-2">
+              {post.data.tags.map((tag) => (
+                <span class="badge-muted">{tag}</span>
+              ))}
+            </div>
+          )
+        }
+      </div>
+    </div>
+
+    <div class="blog-content text-cf-textMuted mt-6 space-y-5 text-sm">
+      <Content />
+    </div>
+  </article>
+
+  {
+    (serviceLinks.length > 0 || areaLinks.length > 0) && (
+      <section class="mt-6 grid gap-4 md:grid-cols-2">
+        {serviceLinks.length > 0 && (
+          <div class="card">
+            <p class="text-cf-textMuted text-xs font-semibold tracking-wide uppercase">
+              Related services
+            </p>
+            <h2 class="text-cf-text mt-2 text-base font-semibold">
+              Schedule the right handyman visit
+            </h2>
+            <ul class="text-cf-textMuted mt-3 space-y-2 text-sm">
+              {serviceLinks.map((service) => (
+                <li>
+                  <a
+                    href={`/services/${service.slug}/`}
+                    class="text-cf-accentBlue font-semibold hover:underline"
+                  >
+                    {service.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {areaLinks.length > 0 && (
+          <div class="card">
+            <p class="text-cf-textMuted text-xs font-semibold tracking-wide uppercase">
+              Service areas
+            </p>
+            <h2 class="text-cf-text mt-2 text-base font-semibold">
+              Local coverage for your neighborhood
+            </h2>
+            <ul class="text-cf-textMuted mt-3 space-y-2 text-sm">
+              {areaLinks.map((area) => (
+                <li>
+                  <a
+                    href={`/service-areas/${area.slug}/`}
+                    class="text-cf-accentBlue font-semibold hover:underline"
+                  >
+                    Handyman in {area.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </section>
+    )
+  }
+
+  {
+    localLinks.length > 0 && (
+      <section class="bg-cf-sandSoft text-cf-text mt-6 rounded-3xl p-6 text-sm">
+        <p class="text-cf-textMuted text-xs font-semibold tracking-wide uppercase">
+          Local service pages
+        </p>
+        <h2 class="text-cf-text mt-2 text-lg font-semibold">
+          Explore service details by city
+        </h2>
+        <div class="mt-4 flex flex-wrap gap-2 text-xs">
+          {localLinks.slice(0, 6).map((link) => (
+            <a
+              href={link.href}
+              class="text-cf-accentBlue shadow-soft hover:bg-cf-card rounded-full bg-white px-3 py-1 font-semibold"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <PageCtaStrip
+    eyebrow="Ready for a visit?"
+    title="Turn this plan into a finished project"
+    body="Share your punch list, photos, and location for a clear, no-obligation estimate in Carlsbad, Oceanside, or Encinitas."
+    primaryHref="/contact/"
+    primaryLabel="Request an estimate"
+    secondaryHref="/service-areas/"
+    secondaryLabel="View service areas"
+  />
+</BaseLayout>

@@ -10,6 +10,8 @@ export interface Props {
   description?: string;
   canonical?: string;
   noIndex?: boolean;
+  ogType?: string;
+  ogImage?: string;
 }
 
 const {
@@ -17,6 +19,8 @@ const {
   description = "Local handyman for home repairs, installations, and maintenance in Carlsbad, California.",
   canonical,
   noIndex = false,
+  ogType = "website",
+  ogImage,
 } = Astro.props;
 
 const siteUrl = Astro.site?.toString() ?? "https://www.carlsbadfixit.com";
@@ -27,6 +31,7 @@ const defaultOgImage = new URL(
   "/images/logo/logo-medium.png",
   siteUrl,
 ).toString();
+const ogImageUrl = ogImage ?? defaultOgImage;
 ---
 
 <html lang="en">
@@ -40,16 +45,16 @@ const defaultOgImage = new URL(
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:image" content={defaultOgImage} />
+    <meta property="og:image" content={ogImageUrl} />
     <meta property="og:site_name" content="Carlsbad Fix It" />
     <meta property="og:locale" content="en_US" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={defaultOgImage} />
+    <meta name="twitter:image" content={ogImageUrl} />
 
     <link
       rel="icon"

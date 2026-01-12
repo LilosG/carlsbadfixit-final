@@ -178,4 +178,32 @@
   .text-body-sm {
     @apply text-cf-textMuted text-sm leading-relaxed;
   }
+
+  .blog-content h2 {
+    @apply text-h2 text-cf-text font-semibold;
+  }
+
+  .blog-content h3 {
+    @apply text-h3 text-cf-text font-semibold;
+  }
+
+  .blog-content p {
+    @apply text-cf-textMuted text-sm leading-relaxed;
+  }
+
+  .blog-content ul {
+    @apply text-cf-textMuted list-disc pl-5 text-sm;
+  }
+
+  .blog-content ol {
+    @apply text-cf-textMuted list-decimal pl-5 text-sm;
+  }
+
+  .blog-content a {
+    @apply text-cf-accentBlue font-semibold hover:underline;
+  }
+
+  .blog-content strong {
+    @apply text-cf-text;
+  }
 }

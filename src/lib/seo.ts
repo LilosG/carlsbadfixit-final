@@ -16,6 +16,16 @@ export type ServiceArea = {
   primary?: boolean;
 };
 
+export type ArticleMeta = {
+  title: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  dateModified?: string;
+  image?: string;
+  tags?: string[];
+};
+
 const SITE_URL = "https://www.carlsbadfixit.com";
 
 const BUSINESS_IMAGE_URL = new URL(
@@ -201,5 +211,30 @@ export function getCollectionPageJsonLd(opts: {
         ? item.url
         : new URL(item.url, SITE_URL).toString(),
     })),
+  };
+}
+
+export function getArticleJsonLd(meta: ArticleMeta) {
+  const url = meta.url.startsWith("http")
+    ? meta.url
+    : new URL(meta.url, SITE_URL).toString();
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: meta.title,
+    description: meta.description,
+    url,
+    datePublished: meta.datePublished,
+    dateModified: meta.dateModified ?? meta.datePublished,
+    image: meta.image ? [meta.image] : undefined,
+    author: {
+      "@id": BUSINESS_ID,
+    },
+    publisher: {
+      "@id": BUSINESS_ID,
+    },
+    keywords:
+      meta.tags && meta.tags.length > 0 ? meta.tags.join(", ") : undefined,
   };
 }

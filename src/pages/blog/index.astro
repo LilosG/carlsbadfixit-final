@@ -1,34 +1,181 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageCtaStrip from "../../components/PageCtaStrip.astro";
+import { getCollectionPageJsonLd } from "../../lib/seo";
+import { serviceAreas } from "../../data/service-areas";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const featured = posts.filter((post) => post.data.featured).slice(0, 2);
+const remaining = posts.filter((post) => !post.data.featured);
+const areaLabels = new Map(serviceAreas.map((area) => [area.slug, area.label]));
+
+const collectionJsonLd = JSON.stringify(
+  getCollectionPageJsonLd({
+    url: "/blog/",
+    name: "Home maintenance tips for North County San Diego",
+    description:
+      "Local handyman insights for Carlsbad, Oceanside, and Encinitas homeowners. Practical repair tips and project planning guidance that make it easier to schedule the right visit.",
+    items: posts.map((post) => ({
+      name: post.data.title,
+      url: `/blog/${post.slug}/`,
+    })),
+  }),
+);
 ---
 
 <BaseLayout
-  title="Home Maintenance Tips | Carlsbad Fix It Blog"
-  description="Articles and checklists to help Carlsbad homeowners stay on top of small home repairs and maintenance."
+  title="Home Maintenance Tips for Carlsbad, Oceanside & Encinitas | Carlsbad Fix It"
+  description="Local handyman insights for North County San Diego homeowners. Practical tips, checklists, and planning guidance for small repair projects in Carlsbad, Oceanside, and Encinitas."
 >
-  <section class="space-y-6">
-    <div class="space-y-2">
-      <p class="text-xs font-semibold tracking-wide text-sky-700 uppercase">
-        Blog
-      </p>
-      <h1 class="text-3xl font-semibold tracking-tight text-slate-900">
-        Home maintenance tips and ideas
-      </h1>
-      <p class="max-w-2xl text-sm text-slate-600">
-        Future posts will cover seasonal maintenance checklists, small repair
-        guides, and ideas for keeping your home in great shape between larger
-        projects.
-      </p>
-    </div>
+  <script
+    type="application/ld+json"
+    slot="head"
+    is:inline
+    set:html={collectionJsonLd}
+  />
+
+  <section class="shadow-card rounded-3xl bg-white p-6 md:p-8">
     <div
-      class="rounded-3xl border border-dashed border-slate-300 bg-white p-6 text-sm text-slate-600"
+      class="grid gap-8 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] md:items-center"
     >
-      Articles on small home projects and maintenance in North County San Diego
-      are in progress. In the meantime, you can request an estimate or browse
-      services and service areas.
+      <div class="space-y-4">
+        <p class="eyebrow text-cf-textMuted">Blog</p>
+        <h1 class="text-h1 text-cf-text font-semibold">
+          Home maintenance tips for North County San Diego
+        </h1>
+        <p class="text-body-sm text-cf-textMuted">
+          Practical, contractor-informed guidance for homeowners in Carlsbad,
+          Oceanside, and Encinitas. Use these checklists and insights to plan
+          small repair projects, prioritize punch lists, and schedule visits
+          with clear expectations.
+        </p>
+        <div class="flex flex-wrap gap-3 text-xs">
+          <span class="badge">Carlsbad, CA</span>
+          <span class="badge">Oceanside, CA</span>
+          <span class="badge">Encinitas, CA</span>
+        </div>
+      </div>
+      <aside
+        class="bg-cf-sandSoft text-cf-text shadow-soft rounded-3xl p-5 text-sm"
+      >
+        <p
+          class="text-cf-textMuted text-xs font-semibold tracking-wide uppercase"
+        >
+          Looking for help now?
+        </p>
+        <h2 class="text-cf-text mt-2 text-lg font-semibold">
+          Request a handyman visit with a clear plan
+        </h2>
+        <p class="text-cf-textMuted mt-2 text-sm">
+          Share a short list of tasks, your location, and timing preferences.
+          You will receive clear next steps before scheduling.
+        </p>
+        <div class="mt-4 flex flex-wrap gap-2 text-xs">
+          <a href="/contact/" class="btn-primary text-xs">
+            Request an estimate
+          </a>
+          <a href="/services/" class="btn-outline text-xs"> Browse services </a>
+        </div>
+      </aside>
     </div>
   </section>
 
-  <PageCtaStrip />
+  {
+    featured.length > 0 && (
+      <section class="mt-6 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <p class="eyebrow text-cf-textMuted">Featured guides</p>
+            <h2 class="text-h2 text-cf-text font-semibold">
+              Start with our most practical reads
+            </h2>
+          </div>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          {featured.map((post) => (
+            <article class="card flex h-full flex-col">
+              <p class="text-cf-textMuted text-xs font-semibold tracking-wide uppercase">
+                {post.data.tags?.[0] ?? "Home maintenance"}
+              </p>
+              <h3 class="text-cf-text mt-2 text-lg font-semibold">
+                <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+              </h3>
+              <p class="text-cf-textMuted mt-2 text-sm">
+                {post.data.description}
+              </p>
+              <div class="text-cf-textMuted mt-4 flex flex-wrap items-center gap-3 text-xs">
+                <span>{post.data.pubDate.toLocaleDateString("en-US")}</span>
+                {post.data.serviceAreas.length > 0 && (
+                  <span>
+                    Local to{" "}
+                    {post.data.serviceAreas
+                      .map((slug) => areaLabels.get(slug) ?? slug)
+                      .join(", ")}
+                  </span>
+                )}
+              </div>
+              <a
+                href={`/blog/${post.slug}/`}
+                class="text-cf-accentBlue mt-4 text-sm font-semibold hover:underline"
+              >
+                Read the guide →
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <section class="mt-6 space-y-4">
+    <div>
+      <p class="eyebrow text-cf-textMuted">All posts</p>
+      <h2 class="text-h2 text-cf-text font-semibold">
+        Tips, checklists, and local project planning
+      </h2>
+    </div>
+
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {
+        remaining.map((post) => (
+          <article class="card flex h-full flex-col justify-between">
+            <div class="space-y-3">
+              <div class="text-cf-textMuted flex flex-wrap gap-2 text-[11px] tracking-wide uppercase">
+                {post.data.tags.slice(0, 2).map((tag) => (
+                  <span class="badge-muted">{tag}</span>
+                ))}
+              </div>
+              <h3 class="text-cf-text text-base font-semibold">
+                <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+              </h3>
+              <p class="text-cf-textMuted text-sm">{post.data.description}</p>
+            </div>
+            <div class="text-cf-textMuted mt-4 flex items-center justify-between text-xs">
+              <span>{post.data.pubDate.toLocaleDateString("en-US")}</span>
+              <a
+                href={`/blog/${post.slug}/`}
+                class="text-cf-accentBlue font-semibold hover:underline"
+              >
+                Read more
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <PageCtaStrip
+    eyebrow="Need a local handyman?"
+    title="Schedule a focused visit for your home"
+    body="Use the blog as a planning tool, then share your punch list and location for a clear, no-obligation estimate."
+    primaryHref="/contact/"
+    primaryLabel="Request an estimate"
+    secondaryHref="/service-areas/"
+    secondaryLabel="View service areas"
+  />
 </BaseLayout>

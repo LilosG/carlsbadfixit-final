@@ -8,188 +8,236 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
   title="About Carlsbad Fix It"
   description="Carlsbad Fix It is a local handyman service focused on small to medium home projects in Carlsbad, CA and nearby North County San Diego communities."
 >
-  <div class="bg-cf-page pb-16 pt-8 md:pb-24 md:pt-10">
+  <div class="bg-cf-page pt-8 pb-16 md:pt-10 md:pb-24">
     <div class="mx-auto flex max-w-6xl flex-col gap-12 px-4 md:px-6">
-      <section class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-cf-accentBlue via-sky-700 to-cf-primary p-8 text-white shadow-soft md:p-10">
+      <section
+        class="from-cf-accentBlue to-cf-primary shadow-soft relative overflow-hidden rounded-3xl bg-gradient-to-br via-sky-700 p-8 text-white md:p-10"
+      >
         <div class="pointer-events-none absolute inset-0 -z-10 opacity-30">
-          <div class="absolute -left-32 -top-24 h-64 w-64 rounded-full bg-white/20 blur-3xl"></div>
-          <div class="absolute bottom-[-6rem] right-[-4rem] h-72 w-72 rounded-full bg-amber-300/25 blur-3xl"></div>
+          <div
+            class="absolute -top-24 -left-32 h-64 w-64 rounded-full bg-white/20 blur-3xl"
+          >
+          </div>
+          <div
+            class="absolute right-[-4rem] bottom-[-6rem] h-72 w-72 rounded-full bg-amber-300/25 blur-3xl"
+          >
+          </div>
         </div>
 
-        <div class="relative z-10 grid gap-8 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] md:items-start">
+        <div
+          class="relative z-10 grid gap-8 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] md:items-start"
+        >
           <div class="space-y-4 md:space-y-5">
-            <p class="eyebrow text-amber-200">
-              About the company
-            </p>
-            <h1 class="text-h1 font-semibold leading-tight text-white">
+            <p class="eyebrow text-amber-200">About the company</p>
+            <h1 class="text-h1 leading-tight font-semibold text-white">
               Local handyman help for small to medium home projects
             </h1>
-            <p class="max-w-xl text-body-md text-sky-100">
-              Carlsbad Fix It focuses on tidy, well-planned visits for homeowners who want
-              clear expectations, careful work, and reliable follow-through for repairs and
-              improvements around the home.
+            <p class="text-body-md max-w-xl text-sky-100">
+              Carlsbad Fix It focuses on tidy, well-planned visits for
+              homeowners who want clear expectations, careful work, and reliable
+              follow-through for repairs and improvements around the home.
             </p>
 
             <ul class="mt-4 space-y-2 text-sm text-sky-50">
               <li class="flex gap-2">
-                <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-amber-300/30 text-[10px] font-semibold text-amber-100">
+                <span
+                  class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-amber-300/30 text-[10px] font-semibold text-amber-100"
+                >
                   ✓
                 </span>
-                <span>Based in Carlsbad, CA and focused on North County neighborhoods.</span>
+                <span
+                  >Based in Carlsbad, CA and focused on North County
+                  neighborhoods.</span
+                >
               </li>
               <li class="flex gap-2">
-                <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-amber-300/30 text-[10px] font-semibold text-amber-100">
+                <span
+                  class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-amber-300/30 text-[10px] font-semibold text-amber-100"
+                >
                   ✓
                 </span>
-                <span>Best fit for punch lists, repairs, and projects that fit into a single visit.</span>
+                <span
+                  >Best fit for punch lists, repairs, and projects that fit into
+                  a single visit.</span
+                >
               </li>
               <li class="flex gap-2">
-                <span class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-amber-300/30 text-[10px] font-semibold text-amber-100">
+                <span
+                  class="mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-amber-300/30 text-[10px] font-semibold text-amber-100"
+                >
                   ✓
                 </span>
-                <span>Surfaces protected, details handled, and cleanup before leaving.</span>
+                <span
+                  >Surfaces protected, details handled, and cleanup before
+                  leaving.</span
+                >
               </li>
             </ul>
           </div>
 
-          <aside class="card bg-white/95 p-6 text-left text-cf-text shadow-soft backdrop-blur md:p-7">
+          <aside
+            class="card text-cf-text shadow-soft bg-white/95 p-6 text-left backdrop-blur md:p-7"
+          >
             <p class="eyebrow text-cf-textMuted">What homeowners can expect</p>
             <h2 class="mt-1 text-lg font-semibold">
               A clear plan before work begins
             </h2>
-            <p class="mt-2 text-sm text-cf-textMuted">
-              Every visit starts with a focused punch list and realistic timing. You will know
-              which items are the priority, what can be completed in one visit, and any steps
-              that may need a follow-up appointment.
+            <p class="text-cf-textMuted mt-2 text-sm">
+              Every visit starts with a focused punch list and realistic timing.
+              You will know which items are the priority, what can be completed
+              in one visit, and any steps that may need a follow-up appointment.
             </p>
-            <ol class="mt-4 space-y-3 text-sm text-cf-textMuted">
+            <ol class="text-cf-textMuted mt-4 space-y-3 text-sm">
               <li>
-                <span class="font-semibold text-cf-text">1. Understand the project.</span>
+                <span class="text-cf-text font-semibold"
+                  >1. Understand the project.</span
+                >
                 {" "}
-                You share your list, photos, and timing so we can plan the visit around the most
-                important items.
+                You share your list, photos, and timing so we can plan the visit around
+                the most important items.
               </li>
               <li>
-                <span class="font-semibold text-cf-text">2. Protect the space.</span>
+                <span class="text-cf-text font-semibold"
+                  >2. Protect the space.</span
+                >
                 {" "}
-                Floors, counters, and nearby surfaces are protected as needed before work begins.
+                Floors, counters, and nearby surfaces are protected as needed before
+                work begins.
               </li>
               <li>
-                <span class="font-semibold text-cf-text">3. Leave things tidy.</span>
+                <span class="text-cf-text font-semibold"
+                  >3. Leave things tidy.</span
+                >
                 {" "}
-                Work areas are cleaned up, and a quick walkthrough explains what was completed
-                and any recommended next steps.
+                Work areas are cleaned up, and a quick walkthrough explains what was
+                completed and any recommended next steps.
               </li>
             </ol>
           </aside>
         </div>
       </section>
 
-      <section class="grid gap-6 rounded-3xl bg-white p-6 shadow-soft md:grid-cols-2 md:p-8">
+      <section
+        class="shadow-soft grid gap-6 rounded-3xl bg-white p-6 md:grid-cols-2 md:p-8"
+      >
         <div class="space-y-3">
           <p class="eyebrow">How it started</p>
-          <h2 class="text-h2 font-semibold text-cf-text">
+          <h2 class="text-h2 text-cf-text font-semibold">
             Built around practical, repeatable visits
           </h2>
           <p class="text-body-sm text-cf-textMuted">
-            Carlsbad Fix It grew out of repeat requests from homeowners who needed help with
-            projects that were too small for a general contractor but too involved for a
-            quick DIY fix. The focus is on work that can be planned carefully, completed
-            cleanly, and repeated reliably from home to home.
+            Carlsbad Fix It grew out of repeat requests from homeowners who
+            needed help with projects that were too small for a general
+            contractor but too involved for a quick DIY fix. The focus is on
+            work that can be planned carefully, completed cleanly, and repeated
+            reliably from home to home.
           </p>
           <p class="text-body-sm text-cf-textMuted">
-            Most visits combine several tasks—like drywall touch-ups, fixture swaps, and
-            small carpentry repairs—so more progress is made each time we are in your home.
+            Most visits combine several tasks—like drywall touch-ups, fixture
+            swaps, and small carpentry repairs—so more progress is made each
+            time we are in your home.
           </p>
         </div>
 
-        <div class="space-y-3 text-sm text-cf-textMuted">
-          <p class="font-semibold text-cf-text">
+        <div class="text-cf-textMuted space-y-3 text-sm">
+          <p class="text-cf-text font-semibold">
             A calm, professional experience
           </p>
           <ul class="space-y-2">
             <li>• Respectful of your time, schedule, and home.</li>
             <li>• Clear communication before, during, and after the visit.</li>
-            <li>• Honest feedback when a project is better suited for a specialist or licensed trade contractor.</li>
-            <li>• Focus on quality and safety over rushing to fit too much into one visit.</li>
+            <li>
+              • Honest feedback when a project is better suited for a specialist
+              or licensed trade contractor.
+            </li>
+            <li>
+              • Focus on quality and safety over rushing to fit too much into
+              one visit.
+            </li>
           </ul>
         </div>
       </section>
 
-      <section class="rounded-3xl bg-white p-6 shadow-soft md:p-8">
+      <section class="shadow-soft rounded-3xl bg-white p-6 md:p-8">
         <header class="mb-4 space-y-1">
           <p class="eyebrow">What matters most</p>
-          <h2 class="text-h2 font-semibold text-cf-text">
+          <h2 class="text-h2 text-cf-text font-semibold">
             How we approach each project
           </h2>
         </header>
 
         <div class="grid gap-4 md:grid-cols-3">
           <article class="card">
-            <h3 class="text-sm font-semibold text-cf-text">
+            <h3 class="text-cf-text text-sm font-semibold">
               Clear expectations
             </h3>
-            <p class="mt-2 text-sm text-cf-textMuted">
-              You will know what is included in a visit, how long it is expected to take,
-              and which items are the priority so there are no surprises.
+            <p class="text-cf-textMuted mt-2 text-sm">
+              You will know what is included in a visit, how long it is expected
+              to take, and which items are the priority so there are no
+              surprises.
             </p>
           </article>
 
           <article class="card">
-            <h3 class="text-sm font-semibold text-cf-text">
+            <h3 class="text-cf-text text-sm font-semibold">
               Respect for your home
             </h3>
-            <p class="mt-2 text-sm text-cf-textMuted">
-              Surfaces are protected where needed, materials are handled carefully, and work
-              areas are cleaned up before leaving.
+            <p class="text-cf-textMuted mt-2 text-sm">
+              Surfaces are protected where needed, materials are handled
+              carefully, and work areas are cleaned up before leaving.
             </p>
           </article>
 
           <article class="card">
-            <h3 class="text-sm font-semibold text-cf-text">
+            <h3 class="text-cf-text text-sm font-semibold">
               Reliable follow-through
             </h3>
-            <p class="mt-2 text-sm text-cf-textMuted">
-              From the first message to the final walkthrough, the goal is a calm, professional
-              experience with clear communication at each step.
+            <p class="text-cf-textMuted mt-2 text-sm">
+              From the first message to the final walkthrough, the goal is a
+              calm, professional experience with clear communication at each
+              step.
             </p>
           </article>
         </div>
       </section>
 
-      <section class="grid gap-6 rounded-3xl bg-white p-6 shadow-soft md:grid-cols-[minmax(0,1.4fr)_minmax(0,1.2fr)] md:p-8">
+      <section
+        class="shadow-soft grid gap-6 rounded-3xl bg-white p-6 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1.2fr)] md:p-8"
+      >
         <div class="space-y-3">
           <p class="eyebrow">Local to North County</p>
-          <h2 class="text-h2 font-semibold text-cf-text">
+          <h2 class="text-h2 text-cf-text font-semibold">
             Based in Carlsbad, CA
           </h2>
           <p class="text-body-sm text-cf-textMuted">
-            Carlsbad Fix It is a neighborhood-focused service, with most visits scheduled
-            in Carlsbad and nearby North County San Diego communities. Keeping the service
-            area tight means more of each visit goes toward actual repair and improvement
-            work instead of driving.
+            Carlsbad Fix It is a neighborhood-focused service, with most visits
+            scheduled in Carlsbad and nearby North County San Diego communities.
+            Keeping the service area tight means more of each visit goes toward
+            actual repair and improvement work instead of driving.
           </p>
           <p class="text-body-sm text-cf-textMuted">
-            The map highlights the general service area and is connected to the Google Business
-            Profile for local reviews, directions, and contact details.
+            The map highlights the general service area and is connected to the
+            Google Business Profile for local reviews, directions, and contact
+            details.
           </p>
         </div>
 
         <div class="space-y-3">
-          <div class="overflow-hidden rounded-2xl border border-cf-borderSubtle bg-cf-card shadow-soft">
+          <div
+            class="border-cf-borderSubtle bg-cf-card shadow-soft overflow-hidden rounded-2xl border"
+          >
             <div class="aspect-[4/3] w-full">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30766351.379905254!2d-129.07963999736705!3d29.789218146246608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6cca91e010c60503%3A0xf7ff7d5cbbb4631c!2sCarlsbad%20Fix%20It!5e1!3m2!1sen!2sus!4v1763832981062!5m2!1sen!2sus"
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
                 allowfullscreen
-                class="h-full w-full border-0"
-              ></iframe>
+                class="h-full w-full border-0"></iframe>
             </div>
           </div>
-          <p class="text-[11px] text-cf-textMuted">
-            Map shown for general location and service area context. Exact visit availability
-            depends on schedule and project scope.
+          <p class="text-cf-textMuted text-[11px]">
+            Map shown for general location and service area context. Exact visit
+            availability depends on schedule and project scope.
           </p>
         </div>
       </section>
@@ -204,36 +252,56 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
 
       <section
         id="about-next-steps-form"
-        class="mt-6 rounded-3xl bg-white p-6 shadow-soft md:mt-8 md:p-8"
+        class="shadow-soft mt-6 rounded-3xl bg-white p-6 md:mt-8 md:p-8"
       >
-        <div class="grid gap-8 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)] md:items-start">
+        <div
+          class="grid gap-8 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.1fr)] md:items-start"
+        >
           <div class="space-y-3">
             <p class="eyebrow text-cf-textMuted">Next steps</p>
-            <h2 class="text-h2 font-semibold text-cf-text">
+            <h2 class="text-h2 text-cf-text font-semibold">
               Ready to talk about your project?
             </h2>
             <p class="text-body-sm text-cf-textMuted">
-              If the overview on this page sounds like a good fit, the next step is to share a short list of projects,
-              your location, and any helpful photos. You’ll receive clear next steps and, when possible, a
-              no-obligation estimate.
+              If the overview on this page sounds like a good fit, the next step
+              is to share a short list of projects, your location, and any
+              helpful photos. You’ll receive clear next steps and, when
+              possible, a no-obligation estimate.
             </p>
-            <ul class="mt-4 space-y-2 text-sm text-cf-textMuted">
+            <ul class="text-cf-textMuted mt-4 space-y-2 text-sm">
               <li class="flex gap-2">
-                <span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-amber-400"></span>
-                <span>Best for small to medium projects that can be grouped into one tidy visit.</span>
+                <span
+                  class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-amber-400"
+                ></span>
+                <span
+                  >Best for small to medium projects that can be grouped into
+                  one tidy visit.</span
+                >
               </li>
               <li class="flex gap-2">
-                <span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-amber-400"></span>
-                <span>Ideal if you have a short punch list, a few helpful photos, and a flexible visit window.</span>
+                <span
+                  class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-amber-400"
+                ></span>
+                <span
+                  >Ideal if you have a short punch list, a few helpful photos,
+                  and a flexible visit window.</span
+                >
               </li>
               <li class="flex gap-2">
-                <span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-amber-400"></span>
-                <span>You’ll usually receive clear next steps and timing during normal business hours.</span>
+                <span
+                  class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-amber-400"
+                ></span>
+                <span
+                  >You’ll usually receive clear next steps and timing during
+                  normal business hours.</span
+                >
               </li>
             </ul>
           </div>
 
-          <aside class="rounded-2xl bg-cf-sandSoft p-5 text-cf-text shadow-cta sm:p-6">
+          <aside
+            class="bg-cf-sandSoft text-cf-text shadow-cta rounded-2xl p-5 sm:p-6"
+          >
             <QuickEstimateCard
               eyebrow="Get your estimate started"
               title="Share a few details about your project"

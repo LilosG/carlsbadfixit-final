@@ -63,8 +63,8 @@ const faqJsonLd = JSON.stringify(
   getFaqPageJsonLd(
     allFaqItems,
     "/faq/",
-    "Frequently asked questions about handyman visits"
-  )
+    "Frequently asked questions about handyman visits",
+  ),
 );
 ---
 
@@ -77,88 +77,88 @@ const faqJsonLd = JSON.stringify(
     slot="head"
     is:inline
     set:html={faqJsonLd}
-  ></script>
+  />
 
-  <div class="bg-cf-page pb-16 pt-8 md:pb-24 md:pt-10">
+  <div class="bg-cf-page pt-8 pb-16 md:pt-10 md:pb-24">
     <div class="mx-auto flex max-w-5xl flex-col gap-12 px-4 md:px-6">
-      <section class="rounded-3xl bg-white p-8 shadow-soft md:p-10">
+      <section class="shadow-soft rounded-3xl bg-white p-8 md:p-10">
         <div class="space-y-3">
           <p class="eyebrow">Questions from homeowners</p>
-          <h1 class="text-h1 font-semibold text-cf-text">
+          <h1 class="text-h1 text-cf-text font-semibold">
             Frequently asked questions about handyman visits
           </h1>
-          <p class="max-w-2xl text-body-md text-cf-textMuted">
-            A few of the questions that come up most often when homeowners schedule small
-            to medium home projects. If you do not see your question here, you can always
-            add it to your estimate request.
+          <p class="text-body-md text-cf-textMuted max-w-2xl">
+            A few of the questions that come up most often when homeowners
+            schedule small to medium home projects. If you do not see your
+            question here, you can always add it to your estimate request.
           </p>
         </div>
       </section>
 
       <section class="space-y-8">
-        <div class="rounded-3xl bg-white p-6 shadow-soft md:p-8">
+        <div class="shadow-soft rounded-3xl bg-white p-6 md:p-8">
           <header class="mb-4 space-y-1">
             <p class="eyebrow">Planning a visit</p>
-            <h2 class="text-h2 font-semibold text-cf-text">
+            <h2 class="text-h2 text-cf-text font-semibold">
               About projects and visits
             </h2>
           </header>
 
           <div class="space-y-3">
-            {faqVisit.map((item) => (
-              <details class="card">
-                <summary class="cursor-pointer text-sm font-semibold text-cf-text">
-                  {item.question}
-                </summary>
-                <p class="mt-2 text-sm text-cf-textMuted">
-                  {item.answer}
-                </p>
-              </details>
-            ))}
+            {
+              faqVisit.map((item) => (
+                <details class="card">
+                  <summary class="text-cf-text cursor-pointer text-sm font-semibold">
+                    {item.question}
+                  </summary>
+                  <p class="text-cf-textMuted mt-2 text-sm">{item.answer}</p>
+                </details>
+              ))
+            }
           </div>
         </div>
 
-        <div class="rounded-3xl bg-white p-6 shadow-soft md:p-8">
+        <div class="shadow-soft rounded-3xl bg-white p-6 md:p-8">
           <header class="mb-4 space-y-1">
             <p class="eyebrow">Scheduling</p>
-            <h2 class="text-h2 font-semibold text-cf-text">
+            <h2 class="text-h2 text-cf-text font-semibold">
               Service area and timing
             </h2>
           </header>
 
           <div class="space-y-3">
-            {faqScheduling.map((item) => (
-              <details class="card">
-                <summary class="cursor-pointer text-sm font-semibold text-cf-text">
-                  {item.question}
-                </summary>
-                <p class="mt-2 text-sm text-cf-textMuted">
-                  {item.answer}
-                </p>
-              </details>
-            ))}
+            {
+              faqScheduling.map((item) => (
+                <details class="card">
+                  <summary class="text-cf-text cursor-pointer text-sm font-semibold">
+                    {item.question}
+                  </summary>
+                  <p class="text-cf-textMuted mt-2 text-sm">{item.answer}</p>
+                </details>
+              ))
+            }
           </div>
         </div>
 
-        <div class="rounded-3xl bg-white p-6 shadow-soft md:p-8">
+        <div class="shadow-soft rounded-3xl bg-white p-6 md:p-8">
           <header class="mb-4 space-y-1">
             <p class="eyebrow">Pricing</p>
-            <h2 class="text-h2 font-semibold text-cf-text">
+            <h2 class="text-h2 text-cf-text font-semibold">
               Costs, estimates, and payment
             </h2>
           </header>
 
           <div class="space-y-3">
-            {faqPricing.map((item) => (
-              <details class="card">
-                <summary class="cursor-pointer text-sm font-semibold text-cf-text">
-                  {item.question}
-                </summary>
-                <p class="mt-2 text-sm text-cf-textMuted">
-                  {item.answer}
-                </p>
-              </details>
-            ))}
+            {
+              faqPricing.map((item) => (
+                <details class="card">
+                  <summary class="text-cf-text cursor-pointer text-sm font-semibold">
+                    {item.question}
+                  </summary>
+                  <p class="text-cf-textMuted mt-2 text-sm">{item.answer}</p>
+                </details>
+              ))
+            }
           </div>
         </div>
       </section>

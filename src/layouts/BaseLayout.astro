@@ -16,15 +16,19 @@ const {
   title = "Carlsbad Fix It | Handyman Services in Carlsbad, CA",
   description = "Local handyman for home repairs, installations, and maintenance in Carlsbad, California.",
   canonical,
-  noIndex = false
+  noIndex = false,
 } = Astro.props;
 
 const siteUrl = Astro.site?.toString() ?? "https://www.carlsbadfixit.com";
 const defaultCanonical = new URL(Astro.url.pathname, siteUrl).toString();
 const canonicalUrl = canonical ?? defaultCanonical;
-const robots = noIndex ? "noindex,nofollow" : "index,follow";
-const defaultOgImage = new URL("/images/logo/logo-medium.png", siteUrl).toString();
+const robots = noIndex ? "noindex,follow" : "index,follow";
+const defaultOgImage = new URL(
+  "/images/logo/logo-medium.png",
+  siteUrl,
+).toString();
 ---
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -39,6 +43,8 @@ const defaultOgImage = new URL("/images/logo/logo-medium.png", siteUrl).toString
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={defaultOgImage} />
+    <meta property="og:site_name" content="Carlsbad Fix It" />
+    <meta property="og:locale" content="en_US" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
@@ -57,25 +63,27 @@ const defaultOgImage = new URL("/images/logo/logo-medium.png", siteUrl).toString
       sizes="96x96"
       href="/images/logo/logo-medium.png"
     />
-    <link
-      rel="apple-touch-icon"
-      href="/images/logo/logo-large.png"
-    />
+    <link rel="apple-touch-icon" href="/images/logo/logo-large.png" />
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8L6X2ZZ5JH"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-8L6X2ZZ5JH"
+      is:inline></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-8L6X2ZZ5JH');
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-8L6X2ZZ5JH");
     </script>
     <script is:inline>
-      document.addEventListener('DOMContentLoaded', () => {
-        if (typeof window.gtag !== 'function') return;
+      document.addEventListener("DOMContentLoaded", () => {
+        if (typeof window.gtag !== "function") return;
 
         const sendEvent = (name, category, label) => {
-          window.gtag('event', name, {
+          window.gtag("event", name, {
             event_category: category,
             event_label: label,
             page_location: window.location.href,
@@ -85,20 +93,20 @@ const defaultOgImage = new URL("/images/logo/logo-medium.png", siteUrl).toString
         };
 
         // Click events
-        document.querySelectorAll('[data-ga-event]').forEach((el) => {
-          el.addEventListener('click', () => {
-            const name = el.dataset.gaEvent || 'custom_click';
-            const category = el.dataset.gaCategory || 'cta';
+        document.querySelectorAll("[data-ga-event]").forEach((el) => {
+          el.addEventListener("click", () => {
+            const name = el.dataset.gaEvent || "custom_click";
+            const category = el.dataset.gaCategory || "cta";
             const label = el.dataset.gaLabel || window.location.pathname;
             sendEvent(name, category, label);
           });
         });
 
         // Form submit events
-        document.querySelectorAll('[data-ga-form-event]').forEach((form) => {
-          form.addEventListener('submit', () => {
-            const name = form.dataset.gaFormEvent || 'form_submit';
-            const category = form.dataset.gaCategory || 'form';
+        document.querySelectorAll("[data-ga-form-event]").forEach((form) => {
+          form.addEventListener("submit", () => {
+            const name = form.dataset.gaFormEvent || "form_submit";
+            const category = form.dataset.gaCategory || "form";
             const label = form.dataset.gaLabel || window.location.pathname;
             sendEvent(name, category, label);
           });
@@ -108,17 +116,23 @@ const defaultOgImage = new URL("/images/logo/logo-medium.png", siteUrl).toString
 
     <slot name="head" />
 
-    <script src="https://analytics.ahrefs.com/analytics.js" data-key="wkBUuhMf8Osy6n8MvgXn6w" async></script>
+    <script
+      src="https://analytics.ahrefs.com/analytics.js"
+      data-key="wkBUuhMf8Osy6n8MvgXn6w"
+      async
+      is:inline></script>
   </head>
   <body class="pb-16 sm:pb-0">
     <SiteHeader />
     <TrustStrip />
-    <main class="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 py-8 md:gap-10 md:py-10">
+    <main
+      class="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 py-8 md:gap-10 md:py-10"
+    >
       <slot />
     </main>
     <SiteFooter />
     <MobileStickyCta />
     <!-- GA4 lead + call tracking -->
-  <script src="/ga-lead-forms.js" defer></script>
-</body>
+    <script src="/ga-lead-forms.js" defer is:inline></script>
+  </body>
 </html>

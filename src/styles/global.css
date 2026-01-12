@@ -38,7 +38,8 @@
   --spacing-section-lg: 6rem;
 
   /* Fonts */
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  --font-sans:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 
   /* Type scale */
@@ -67,7 +68,7 @@
   }
 
   body {
-    @apply min-h-screen bg-cf-bg text-cf-text antialiased font-sans flex flex-col;
+    @apply bg-cf-bg text-cf-text flex min-h-screen flex-col font-sans antialiased;
   }
 
   main {
@@ -75,23 +76,23 @@
   }
 
   h1 {
-    @apply text-h1 font-semibold tracking-tight text-cf-text;
+    @apply text-h1 text-cf-text font-semibold tracking-tight;
   }
 
   h2 {
-    @apply text-h2 font-semibold tracking-tight text-cf-text;
+    @apply text-h2 text-cf-text font-semibold tracking-tight;
   }
 
   h3 {
-    @apply text-h3 font-semibold tracking-tight text-cf-text;
+    @apply text-h3 text-cf-text font-semibold tracking-tight;
   }
 
   h4 {
-    @apply text-lg font-semibold tracking-tight text-cf-text;
+    @apply text-cf-text text-lg font-semibold tracking-tight;
   }
 
   p {
-    @apply text-base leading-relaxed text-cf-textMuted;
+    @apply text-cf-textMuted text-base leading-relaxed;
   }
 
   a {
@@ -103,7 +104,7 @@
   }
 
   a:focus-visible {
-    @apply outline-none ring-2 ring-offset-2 ring-cf-primaryDark;
+    @apply ring-cf-primaryDark ring-2 ring-offset-2 outline-none;
   }
 
   section {
@@ -111,7 +112,7 @@
   }
 
   .eyebrow {
-    @apply text-xs font-semibold tracking-[0.16em] uppercase text-cf-accentBlue;
+    @apply text-cf-accentBlue text-xs font-semibold tracking-[0.16em] uppercase;
   }
 }
 
@@ -123,31 +124,31 @@
   .btn-secondary,
   .btn-outline,
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-pill border border-transparent px-5 py-2.5 text-sm font-semibold tracking-tight shadow-soft transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-cf-primaryDark disabled:cursor-not-allowed disabled:opacity-60;
+    @apply rounded-pill shadow-soft focus-visible:ring-cf-primaryDark inline-flex items-center justify-center gap-2 border border-transparent px-5 py-2.5 text-sm font-semibold tracking-tight transition-all duration-150 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-60;
   }
 
   .btn-primary {
-    @apply text-white bg-gradient-to-r from-cf-primary to-cf-warning shadow-cta hover:from-cf-primaryDark hover:to-cf-primaryDark;
+    @apply from-cf-primary to-cf-warning shadow-cta hover:from-cf-primaryDark hover:to-cf-primaryDark bg-gradient-to-r text-white;
   }
 
   .btn-secondary {
-    @apply bg-cf-card text-cf-text border border-cf-borderSubtle hover:bg-cf-bg;
+    @apply bg-cf-card text-cf-text border-cf-borderSubtle hover:bg-cf-bg border;
   }
 
   .btn-outline {
-    @apply bg-transparent text-cf-text border border-cf-borderSubtle hover:bg-cf-card;
+    @apply text-cf-text border-cf-borderSubtle hover:bg-cf-card border bg-transparent;
   }
 
   .btn-ghost {
-    @apply border-none shadow-none bg-transparent text-cf-accentBlue hover:bg-cf-accentBlueSoft;
+    @apply text-cf-accentBlue hover:bg-cf-accentBlueSoft border-none bg-transparent shadow-none;
   }
 
   .card {
-    @apply bg-cf-card rounded-card border border-cf-borderSubtle shadow-soft p-6;
+    @apply bg-cf-card rounded-card border-cf-borderSubtle shadow-soft border p-6;
   }
 
   .card-soft {
-    @apply bg-cf-sandSoft rounded-card border border-transparent shadow-soft p-6;
+    @apply bg-cf-sandSoft rounded-card shadow-soft border border-transparent p-6;
   }
 
   .section-shell {
@@ -159,22 +160,22 @@
   }
 
   .section-title {
-    @apply text-h1 font-semibold text-cf-text;
+    @apply text-h1 text-cf-text font-semibold;
   }
 
   .section-subtitle {
-    @apply text-base text-cf-textMuted;
+    @apply text-cf-textMuted text-base;
   }
 
   .badge {
-    @apply inline-flex items-center rounded-pill bg-cf-accentBlueSoft px-3 py-1 text-xs font-medium text-cf-accentBlue;
+    @apply rounded-pill bg-cf-accentBlueSoft text-cf-accentBlue inline-flex items-center px-3 py-1 text-xs font-medium;
   }
 
   .badge-muted {
-    @apply inline-flex items-center rounded-pill bg-cf-sandSoft px-3 py-1 text-xs font-medium text-cf-textMuted;
+    @apply rounded-pill bg-cf-sandSoft text-cf-textMuted inline-flex items-center px-3 py-1 text-xs font-medium;
   }
 
   .text-body-sm {
-    @apply text-sm leading-relaxed text-cf-textMuted;
+    @apply text-cf-textMuted text-sm leading-relaxed;
   }
 }

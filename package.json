@@ -7,7 +7,12 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "postbuild": "node scripts/add-structured-data.mjs"
+    "astro:check": "astro check",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --max-warnings=0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run astro:check && npm run typecheck && npm run lint && npm run format:check"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.17",
@@ -15,6 +20,17 @@
     "tailwindcss": "^4.1.17"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.17"
+    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/check": "^0.9.4",
+    "@tailwindcss/postcss": "^4.1.17",
+    "@typescript-eslint/eslint-plugin": "^8.44.0",
+    "@typescript-eslint/parser": "^8.44.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-astro": "^1.4.0",
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.6.14",
+    "typescript": "^5.9.2"
   }
 }

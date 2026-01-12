@@ -3,55 +3,60 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { services } from "../data/services";
 import { serviceAreas } from "../data/service-areas";
 
-const primaryArea = serviceAreas.find((area) => area.primary) ?? serviceAreas[0];
+const primaryArea =
+  serviceAreas.find((area) => area.primary) ?? serviceAreas[0];
 const popularServices = services.slice(0, 3);
 ---
+
 <BaseLayout
   title="Page not found | Carlsbad Fix It"
   description="The page you are looking for could not be found. Browse handyman services and service areas for Carlsbad Fix It."
+  noIndex={true}
 >
   <section class="space-y-6">
     <h1 class="text-3xl font-semibold tracking-tight text-slate-900">
       Page not found
     </h1>
     <p class="max-w-2xl text-base text-slate-600">
-      The page you requested does not exist or may have been moved. You can return home, browse services, or jump to your local service area.
+      The page you requested does not exist or may have been moved. You can
+      return home, browse services, or jump to your local service area.
     </p>
     <div class="flex flex-wrap items-center gap-3">
-      <a href="/" class="btn-primary">
-        Back to home
-      </a>
-      <a href="/services/" class="btn-outline">
-        Browse handyman services
-      </a>
-      <a href="/service-areas/" class="btn-outline">
-        View service areas
-      </a>
+      <a href="/" class="btn-primary"> Back to home </a>
+      <a href="/services/" class="btn-outline"> Browse handyman services </a>
+      <a href="/service-areas/" class="btn-outline"> View service areas </a>
     </div>
     <div class="grid gap-6 md:grid-cols-2">
       <div class="space-y-3">
-        <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-700">
+        <h2
+          class="text-sm font-semibold tracking-wide text-slate-700 uppercase"
+        >
           Popular services
         </h2>
         <ul class="space-y-1 text-sm text-slate-600">
-          {popularServices.map((service) => (
-            <li>
-              <a
-                href={"/services/" + service.slug + "/"}
-                class="underline-offset-2 hover:text-sky-700 hover:underline"
-              >
-                {service.name}
-              </a>
-            </li>
-          ))}
+          {
+            popularServices.map((service) => (
+              <li>
+                <a
+                  href={"/services/" + service.slug + "/"}
+                  class="underline-offset-2 hover:text-sky-700 hover:underline"
+                >
+                  {service.name}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
       <div class="space-y-3">
-        <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-700">
+        <h2
+          class="text-sm font-semibold tracking-wide text-slate-700 uppercase"
+        >
           Primary service area
         </h2>
         <p class="text-sm text-slate-600">
-          Carlsbad Fix It is based in {primaryArea.label} with select availability in nearby North County San Diego communities.
+          Carlsbad Fix It is based in {primaryArea.label} with select availability
+          in nearby North County San Diego communities.
         </p>
         <a
           href={"/service-areas/" + primaryArea.slug + "/"}

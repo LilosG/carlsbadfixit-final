@@ -1,14 +1,20 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from "astro/config";
+import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
   // Canonical production URL (used by Astro for sitemap, canonical helpers, etc.)
-  site: 'https://www.carlsbadfixit.com',
+  site: "https://www.carlsbadfixit.com",
   // Match your /services/, /contact/, etc. URL style
-  trailingSlash: 'always',
+  trailingSlash: "always",
+  integrations: [
+    sitemap({
+      filter: (page) => !page.includes("404"),
+    }),
+  ],
   vite: {
-    plugins: [tailwindcss()]
-  }
+    plugins: [tailwindcss()],
+  },
 });

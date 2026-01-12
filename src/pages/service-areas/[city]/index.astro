@@ -34,14 +34,13 @@ const businessNote =
   content.businessNote ??
   "Light repairs and small improvement projects for local offices, studios, and storefronts that want a tidy result with minimal disruption.";
 
-const reviewSnippet =
-  content.reviewSnippet ?? {
-    quote:
-      "They handled drywall repairs, a few trim fixes, and a new light in one visit. Everything looked neat and was cleaned up before they left.",
-    name: "Sarah M.",
-    location: `${city.label}, CA`,
-    role: "Homeowner",
-  };
+const reviewSnippet = content.reviewSnippet ?? {
+  quote:
+    "They handled drywall repairs, a few trim fixes, and a new light in one visit. Everything looked neat and was cleaned up before they left.",
+  name: "Sarah M.",
+  location: `${city.label}, CA`,
+  role: "Homeowner",
+};
 
 const servicesTitle = `Handyman services available in ${city.label}`;
 const coverageTitle = `A local option for small home projects in ${city.label}, CA`;
@@ -55,7 +54,7 @@ const breadcrumbJsonLd = JSON.stringify(
 );
 
 const localBusinessJsonLd = JSON.stringify(
-  getLocalBusinessJsonLd([city.label])
+  getLocalBusinessJsonLd([city.label]),
 );
 
 const title = `Handyman services in ${city.label} | Carlsbad Fix It`;
@@ -68,59 +67,86 @@ const description = `Local handyman help for small to medium projects in ${city.
     slot="head"
     is:inline
     set:html={localBusinessJsonLd}
-  ></script>
+  />
   <script
     type="application/ld+json"
     slot="head"
     is:inline
     set:html={breadcrumbJsonLd}
-  ></script>
+  />
 
-  <section class="rounded-3xl bg-white p-6 shadow-card md:p-8">
-    <div class="grid gap-10 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1.2fr)] lg:items-center">
+  <section class="shadow-card rounded-3xl bg-white p-6 md:p-8">
+    <div
+      class="grid gap-10 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1.2fr)] lg:items-center"
+    >
       <div class="space-y-5">
         <div class="space-y-2">
           <p class="eyebrow text-cf-textMuted">Service area</p>
-          <h1 class="text-display font-semibold tracking-tight text-cf-text">
+          <h1 class="text-display text-cf-text font-semibold tracking-tight">
             Handyman services in {city.label}
           </h1>
-          <p class="max-w-xl text-body-sm text-cf-textMuted">
+          <p class="text-body-sm text-cf-textMuted max-w-xl">
             {intro}
           </p>
         </div>
 
-        <ul class="grid gap-3 md:gap-4 text-sm md:text-base text-cf-text sm:grid-cols-2">
+        <ul
+          class="text-cf-text grid gap-3 text-sm sm:grid-cols-2 md:gap-4 md:text-base"
+        >
           <li class="flex gap-2">
-            <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-cf-sandSoft text-[11px] font-semibold text-cf-primary">
+            <span
+              class="bg-cf-sandSoft text-cf-primary mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full text-[11px] font-semibold"
+            >
               ✓
             </span>
-            <span>Licensed and insured local handyman serving {city.label} and nearby North County communities.</span>
+            <span
+              >Licensed and insured local handyman serving {city.label} and nearby
+              North County communities.</span
+            >
           </li>
           <li class="flex gap-2">
-            <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-cf-sandSoft text-[11px] font-semibold text-cf-primary">
+            <span
+              class="bg-cf-sandSoft text-cf-primary mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full text-[11px] font-semibold"
+            >
               ✓
             </span>
-            <span>Focused on small to medium home projects that fit into clear service windows.</span>
+            <span
+              >Focused on small to medium home projects that fit into clear
+              service windows.</span
+            >
           </li>
           <li class="flex gap-2">
-            <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-cf-sandSoft text-[11px] font-semibold text-cf-primary">
+            <span
+              class="bg-cf-sandSoft text-cf-primary mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full text-[11px] font-semibold"
+            >
               ✓
             </span>
-            <span>Tidy job sites with surfaces protected and cleanup before leaving.</span>
+            <span
+              >Tidy job sites with surfaces protected and cleanup before
+              leaving.</span
+            >
           </li>
           <li class="flex gap-2">
-            <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-cf-sandSoft text-[11px] font-semibold text-cf-primary">
+            <span
+              class="bg-cf-sandSoft text-cf-primary mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full text-[11px] font-semibold"
+            >
               ✓
             </span>
-            <span>Clear expectations on scope, timing, and pricing before work begins.</span>
+            <span
+              >Clear expectations on scope, timing, and pricing before work
+              begins.</span
+            >
           </li>
         </ul>
 
         <div class="flex flex-wrap items-center gap-3 text-sm">
-          <a href="#city-form" class="btn-primary">
-            Request an estimate
-          </a>
-          <a href="tel:+18082266681" data-ga-event="call_click" data-ga-label="site_phone" class="inline-flex items-center justify-center rounded-full border border-cf-accentBlueSoft bg-gradient-to-r from-white to-cf-accentBlueSoft/40 px-5 py-2 text-sm font-semibold text-cf-accentBlue shadow-soft hover:from-white hover:to-cf-accentBlueSoft/70">
+          <a href="#city-form" class="btn-primary"> Request an estimate </a>
+          <a
+            href="tel:+18082266681"
+            data-ga-event="call_click"
+            data-ga-label="site_phone"
+            class="border-cf-accentBlueSoft to-cf-accentBlueSoft/40 text-cf-accentBlue shadow-soft hover:to-cf-accentBlueSoft/70 inline-flex items-center justify-center rounded-full border bg-gradient-to-r from-white px-5 py-2 text-sm font-semibold hover:from-white"
+          >
             Call or text (808) 226-6681
           </a>
         </div>
@@ -128,7 +154,7 @@ const description = `Local handyman help for small to medium projects in ${city.
 
       <aside
         id="city-form"
-        class="rounded-2xl bg-cf-sandSoft p-5 text-cf-text shadow-cta sm:p-6"
+        class="bg-cf-sandSoft text-cf-text shadow-cta rounded-2xl p-5 sm:p-6"
       >
         <QuickEstimateCard
           eyebrow="Get your estimate started"
@@ -140,138 +166,157 @@ const description = `Local handyman help for small to medium projects in ${city.
     </div>
   </section>
 
-  <section class="rounded-3xl bg-cf-sandSoft p-6 md:p-8">
-    <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+  <section class="bg-cf-sandSoft rounded-3xl p-6 md:p-8">
+    <div
+      class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between"
+    >
       <div class="space-y-2">
         <p class="eyebrow text-cf-textMuted">Services in {city.label}</p>
-        <h2 class="text-h2 font-semibold text-cf-text">
+        <h2 class="text-h2 text-cf-text font-semibold">
           {servicesTitle}
         </h2>
-        <p class="max-w-2xl text-body-sm text-cf-textMuted">
-          Core handyman services focused on the small to medium projects homeowners in {city.label} call about most. You can also combine several tasks into a single visit.
+        <p class="text-body-sm text-cf-textMuted max-w-2xl">
+          Core handyman services focused on the small to medium projects
+          homeowners in {city.label} call about most. You can also combine several
+          tasks into a single visit.
         </p>
       </div>
     </div>
 
     <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {services.map((service) => (
-        <article class="flex h-full flex-col justify-between rounded-2xl bg-white p-5 text-sm text-cf-text shadow-soft">
-          <div class="space-y-2">
-            <h3 class="text-sm font-semibold text-cf-text">
-              {service.name}
-            </h3>
-            <p class="text-xs text-cf-textMuted">
-              {service.shortDescription}
-            </p>
-          </div>
-          <div class="mt-4 flex items-center justify-between gap-2 text-[11px]">
-            <a
-              href={`/service-areas/${city.slug}/${service.slug}/`}
-              class="btn-primary h-8 px-4 text-[11px]"
-            >
-              Learn more
-            </a>
-            <span class="text-cf-textMuted">
-              In {city.label}
-            </span>
-          </div>
-        </article>
-      ))}
+      {
+        services.map((service) => (
+          <article class="text-cf-text shadow-soft flex h-full flex-col justify-between rounded-2xl bg-white p-5 text-sm">
+            <div class="space-y-2">
+              <h3 class="text-cf-text text-sm font-semibold">{service.name}</h3>
+              <p class="text-cf-textMuted text-xs">
+                {service.shortDescription}
+              </p>
+            </div>
+            <div class="mt-4 flex items-center justify-between gap-2 text-[11px]">
+              <a
+                href={`/service-areas/${city.slug}/${service.slug}/`}
+                class="btn-primary h-8 px-4 text-[11px]"
+              >
+                Learn more
+              </a>
+              <span class="text-cf-textMuted">In {city.label}</span>
+            </div>
+          </article>
+        ))
+      }
     </div>
   </section>
 
-  <section class="rounded-3xl bg-white p-6 shadow-soft md:p-8">
+  <section class="shadow-soft rounded-3xl bg-white p-6 md:p-8">
     <div class="grid gap-8 lg:grid-cols-2 lg:items-start">
       <div class="space-y-3">
         <p class="eyebrow text-cf-textMuted">Coverage</p>
-        <h2 class="text-h2 font-semibold text-cf-text">
+        <h2 class="text-h2 text-cf-text font-semibold">
           {coverageTitle}
         </h2>
         <p class="text-body-sm text-cf-textMuted">
-          Most visits in {city.label} are scheduled to keep travel time reasonable and maximize time spent on actual repair and improvement work. Projects are scoped so they fit into a single visit whenever possible, with larger projects broken into clear phases.
+          Most visits in {city.label} are scheduled to keep travel time reasonable
+          and maximize time spent on actual repair and improvement work. Projects
+          are scoped so they fit into a single visit whenever possible, with larger
+          projects broken into clear phases.
         </p>
 
-        {neighborhoods.length > 0 && (
-          <div class="mt-4">
-            <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
-              Neighborhoods often served
-            </p>
-            <div class="mt-2 flex flex-wrap gap-2 text-[11px]">
-              {neighborhoods.map((name) => (
-                <span class="inline-flex items-center rounded-full bg-cf-sandSoft px-3 py-1 text-cf-text">
-                  {name}
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {propertyTypes.length > 0 && (
-          <div class="mt-4">
-            <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
-              Typical property types
-            </p>
-            <ul class="mt-2 grid gap-1 text-xs text-cf-textMuted sm:grid-cols-2">
-              {propertyTypes.map((type) => (
-                <li class="flex gap-2">
-                  <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-cf-sandSoft text-[11px] font-semibold text-cf-primary">
-                    •
+        {
+          neighborhoods.length > 0 && (
+            <div class="mt-4">
+              <p class="text-cf-textMuted text-xs font-semibold tracking-wide uppercase">
+                Neighborhoods often served
+              </p>
+              <div class="mt-2 flex flex-wrap gap-2 text-[11px]">
+                {neighborhoods.map((name) => (
+                  <span class="bg-cf-sandSoft text-cf-text inline-flex items-center rounded-full px-3 py-1">
+                    {name}
                   </span>
-                  <span>{type}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+                ))}
+              </div>
+            </div>
+          )
+        }
+
+        {
+          propertyTypes.length > 0 && (
+            <div class="mt-4">
+              <p class="text-cf-textMuted text-xs font-semibold tracking-wide uppercase">
+                Typical property types
+              </p>
+              <ul class="text-cf-textMuted mt-2 grid gap-1 text-xs sm:grid-cols-2">
+                {propertyTypes.map((type) => (
+                  <li class="flex gap-2">
+                    <span class="bg-cf-sandSoft text-cf-primary mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full text-[11px] font-semibold">
+                      •
+                    </span>
+                    <span>{type}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )
+        }
       </div>
 
       <div class="space-y-4 lg:grid lg:grid-cols-2 lg:items-start lg:gap-4">
-        {popularProjects.length > 0 && (
-          <section class="rounded-2xl bg-cf-sandSoft p-5 lg:col-span-2">
-            <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
-              Popular projects in {city.label}
-            </p>
-            <div class="mt-3 grid gap-3 md:grid-cols-2">
-              {popularProjects.map((project) => (
-                <div class="rounded-2xl bg-white p-4 text-xs text-cf-text shadow-soft">
-                  <h3 class="text-sm font-semibold text-cf-text">
-                    {project.title}
-                  </h3>
-                  <p class="mt-1 text-xs text-cf-textMuted">
-                    {project.summary}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
+        {
+          popularProjects.length > 0 && (
+            <section class="bg-cf-sandSoft rounded-2xl p-5 lg:col-span-2">
+              <p class="text-cf-textMuted text-xs font-semibold tracking-wide uppercase">
+                Popular projects in {city.label}
+              </p>
+              <div class="mt-3 grid gap-3 md:grid-cols-2">
+                {popularProjects.map((project) => (
+                  <div class="text-cf-text shadow-soft rounded-2xl bg-white p-4 text-xs">
+                    <h3 class="text-cf-text text-sm font-semibold">
+                      {project.title}
+                    </h3>
+                    <p class="text-cf-textMuted mt-1 text-xs">
+                      {project.summary}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )
+        }
 
-        <section class="rounded-2xl bg-cf-sandSoft p-5 text-xs text-cf-text">
-          <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
+        <section class="bg-cf-sandSoft text-cf-text rounded-2xl p-5 text-xs">
+          <p
+            class="text-cf-textMuted text-xs font-semibold tracking-wide uppercase"
+          >
             For small rentals
           </p>
-          <p class="mt-2 text-cf-textMuted">
+          <p class="text-cf-textMuted mt-2">
             {landlordNote}
           </p>
         </section>
 
-        <section class="rounded-2xl bg-cf-sandSoft p-5 text-xs text-cf-text">
-          <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
+        <section class="bg-cf-sandSoft text-cf-text rounded-2xl p-5 text-xs">
+          <p
+            class="text-cf-textMuted text-xs font-semibold tracking-wide uppercase"
+          >
             For local businesses
           </p>
-          <p class="mt-2 text-cf-textMuted">
+          <p class="text-cf-textMuted mt-2">
             {businessNote}
           </p>
         </section>
 
-        <section class="rounded-2xl bg-cf-card p-5 text-xs text-cf-text shadow-soft lg:col-span-2">
-          <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
+        <section
+          class="bg-cf-card text-cf-text shadow-soft rounded-2xl p-5 text-xs lg:col-span-2"
+        >
+          <p
+            class="text-cf-textMuted text-xs font-semibold tracking-wide uppercase"
+          >
             What homeowners say in {city.label}
           </p>
-          <p class="mt-2 text-sm text-cf-textMuted">
+          <p class="text-cf-textMuted mt-2 text-sm">
             “{reviewSnippet.quote}”
           </p>
-          <p class="mt-3 text-xs text-cf-textMuted">
+          <p class="text-cf-textMuted mt-3 text-xs">
             {reviewSnippet.name}
             {reviewSnippet.location ? ` · ${reviewSnippet.location}` : ""}
             {reviewSnippet.role ? ` · ${reviewSnippet.role}` : ""}

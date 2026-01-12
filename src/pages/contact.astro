@@ -7,60 +7,78 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
   title="Contact Carlsbad Fix It | Handyman in Carlsbad, CA"
   description="Contact Carlsbad Fix It for local handyman services in Carlsbad and nearby North County San Diego. Share your project details, timing, and photos to receive a clear, no-obligation estimate."
 >
-  <div class="bg-cf-page pb-16 pt-8 md:pb-24 md:pt-12">
+  <div class="bg-cf-page pt-8 pb-16 md:pt-12 md:pb-24">
     <div class="mx-auto flex max-w-6xl flex-col gap-10 px-4 md:px-6">
       <!-- TOP GRID: INTRO + FORM -->
-      <section class="grid gap-8 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:items-start">
-        <article class="rounded-3xl bg-white p-6 shadow-card md:p-8">
+      <section
+        class="grid gap-8 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:items-start"
+      >
+        <article class="shadow-card rounded-3xl bg-white p-6 md:p-8">
           <p class="eyebrow text-cf-textMuted">Get in touch</p>
-          <h1 class="mt-2 text-h2 font-semibold leading-snug text-cf-text md:text-h1">
+          <h1
+            class="text-h2 text-cf-text md:text-h1 mt-2 leading-snug font-semibold"
+          >
             Contact Carlsbad Fix It for handyman help
           </h1>
-          <p class="mt-4 text-body-sm text-cf-textMuted">
-            Share a short list of projects, your preferred timing, and any helpful photos.
-            You will receive a reply during normal business hours with clear next steps
-            and, when possible, a no-obligation estimate for your visit.
+          <p class="text-body-sm text-cf-textMuted mt-4">
+            Share a short list of projects, your preferred timing, and any
+            helpful photos. You will receive a reply during normal business
+            hours with clear next steps and, when possible, a no-obligation
+            estimate for your visit.
           </p>
 
-          <ul class="mt-4 space-y-2 text-sm text-cf-textMuted">
+          <ul class="text-cf-textMuted mt-4 space-y-2 text-sm">
             <li class="flex gap-2">
-              <span class="mt-[6px] inline-block h-1.5 w-1.5 rounded-full bg-amber-400" />
+              <span
+                class="mt-[6px] inline-block h-1.5 w-1.5 rounded-full bg-amber-400"
+              ></span>
               <span>
-                Local handyman services for small to medium home projects in Carlsbad and nearby
-                North County communities.
+                Local handyman services for small to medium home projects in
+                Carlsbad and nearby North County communities.
               </span>
             </li>
             <li class="flex gap-2">
-              <span class="mt-[6px] inline-block h-1.5 w-1.5 rounded-full bg-amber-400" />
+              <span
+                class="mt-[6px] inline-block h-1.5 w-1.5 rounded-full bg-amber-400"
+              ></span>
               <span>
-                Most visits group several related tasks into a single, tidy service window.
+                Most visits group several related tasks into a single, tidy
+                service window.
               </span>
             </li>
             <li class="flex gap-2">
-              <span class="mt-[6px] inline-block h-1.5 w-1.5 rounded-full bg-amber-400" />
+              <span
+                class="mt-[6px] inline-block h-1.5 w-1.5 rounded-full bg-amber-400"
+              ></span>
               <span>
-                Clear expectations about scope, timing, and pricing before anything is scheduled.
+                Clear expectations about scope, timing, and pricing before
+                anything is scheduled.
               </span>
             </li>
           </ul>
 
-          <p class="mt-4 text-xs text-cf-textMuted">
-            Messages are reviewed during normal business hours. You will usually receive
-            a reply with next steps or follow-up questions before scheduling a visit.
+          <p class="text-cf-textMuted mt-4 text-xs">
+            Messages are reviewed during normal business hours. You will usually
+            receive a reply with next steps or follow-up questions before
+            scheduling a visit.
           </p>
         </article>
 
-        <section class="rounded-3xl bg-white p-5 shadow-card md:p-6">
+        <section class="shadow-card rounded-3xl bg-white p-5 md:p-6">
           <p class="eyebrow text-cf-textMuted">Request an estimate</p>
-          <h2 class="mt-1 text-base font-semibold text-cf-text md:text-lg">
+          <h2 class="text-cf-text mt-1 text-base font-semibold md:text-lg">
             Share a few details about your project
           </h2>
-          <p class="mt-2 text-[13px] leading-relaxed text-cf-textMuted">
-            A brief description and a couple of photos (if you have them) help set clear
-            expectations for what can be completed in a single visit.
+          <p class="text-cf-textMuted mt-2 text-[13px] leading-relaxed">
+            A brief description and a couple of photos (if you have them) help
+            set clear expectations for what can be completed in a single visit.
           </p>
 
-          <form id="contact-form" data-ga-lead="true" data-ga-form-name="Contact Form" data-ga-location="contact_page_main"
+          <form
+            id="contact-form"
+            data-ga-lead="true"
+            data-ga-form-name="Contact Form"
+            data-ga-location="contact_page_main"
             action="https://formspree.io/f/mdkvzynw"
             method="POST"
             class="mt-4 space-y-3"
@@ -75,7 +93,9 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
 
             <div class="grid gap-3 md:grid-cols-2">
               <div>
-                <label class="block text-[11px] font-semibold uppercase tracking-[0.18em] text-cf-textMuted">
+                <label
+                  class="text-cf-textMuted block text-[11px] font-semibold tracking-[0.18em] uppercase"
+                >
                   Name
                 </label>
                 <input
@@ -83,11 +103,13 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
                   name="name"
                   autocomplete="name"
                   placeholder="Your name"
-                  class="mt-1 w-full rounded-xl border border-cf-borderSubtle bg-white px-3 py-2 text-sm text-cf-text shadow-sm placeholder:text-cf-textMuted/70 focus:border-cf-accentBlue focus:outline-none focus:ring-2 focus:ring-cf-accentBlue/15"
+                  class="border-cf-borderSubtle text-cf-text placeholder:text-cf-textMuted/70 focus:border-cf-accentBlue focus:ring-cf-accentBlue/15 mt-1 w-full rounded-xl border bg-white px-3 py-2 text-sm shadow-sm focus:ring-2 focus:outline-none"
                 />
               </div>
               <div>
-                <label class="block text-[11px] font-semibold uppercase tracking-[0.18em] text-cf-textMuted">
+                <label
+                  class="text-cf-textMuted block text-[11px] font-semibold tracking-[0.18em] uppercase"
+                >
                   Phone
                 </label>
                 <input
@@ -95,26 +117,32 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
                   name="phone"
                   autocomplete="tel"
                   placeholder="Best number to reach you"
-                  class="mt-1 w-full rounded-xl border border-cf-borderSubtle bg-white px-3 py-2 text-sm text-cf-text shadow-sm placeholder:text-cf-textMuted/70 focus:border-cf-accentBlue focus:outline-none focus:ring-2 focus:ring-cf-accentBlue/15"
+                  class="border-cf-borderSubtle text-cf-text placeholder:text-cf-textMuted/70 focus:border-cf-accentBlue focus:ring-cf-accentBlue/15 mt-1 w-full rounded-xl border bg-white px-3 py-2 text-sm shadow-sm focus:ring-2 focus:outline-none"
                 />
               </div>
             </div>
 
             <div>
-              <label class="block text-[11px] font-semibold uppercase tracking-[0.18em] text-cf-textMuted">
-                Email <span class="font-normal normal-case text-cf-textMuted">(optional)</span>
+              <label
+                class="text-cf-textMuted block text-[11px] font-semibold tracking-[0.18em] uppercase"
+              >
+                Email <span class="text-cf-textMuted font-normal normal-case"
+                  >(optional)</span
+                >
               </label>
               <input
                 type="email"
                 name="email"
                 autocomplete="email"
                 placeholder="you@example.com"
-                class="mt-1 w-full rounded-xl border border-cf-borderSubtle bg-white px-3 py-2 text-sm text-cf-text shadow-sm placeholder:text-cf-textMuted/70 focus:border-cf-accentBlue focus:outline-none focus:ring-2 focus:ring-cf-accentBlue/15"
+                class="border-cf-borderSubtle text-cf-text placeholder:text-cf-textMuted/70 focus:border-cf-accentBlue focus:ring-cf-accentBlue/15 mt-1 w-full rounded-xl border bg-white px-3 py-2 text-sm shadow-sm focus:ring-2 focus:outline-none"
               />
             </div>
 
             <div>
-              <label class="block text-[11px] font-semibold uppercase tracking-[0.18em] text-cf-textMuted">
+              <label
+                class="text-cf-textMuted block text-[11px] font-semibold tracking-[0.18em] uppercase"
+              >
                 City
               </label>
               <input
@@ -122,25 +150,27 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
                 name="city"
                 autocomplete="address-level2"
                 placeholder="Carlsbad, CA"
-                class="mt-1 w-full rounded-xl border border-cf-borderSubtle bg-white px-3 py-2 text-sm text-cf-text shadow-sm placeholder:text-cf-textMuted/70 focus:border-cf-accentBlue focus:outline-none focus:ring-2 focus:ring-cf-accentBlue/15"
+                class="border-cf-borderSubtle text-cf-text placeholder:text-cf-textMuted/70 focus:border-cf-accentBlue focus:ring-cf-accentBlue/15 mt-1 w-full rounded-xl border bg-white px-3 py-2 text-sm shadow-sm focus:ring-2 focus:outline-none"
               />
             </div>
 
             <div>
-              <label class="block text-[11px] font-semibold uppercase tracking-[0.18em] text-cf-textMuted">
+              <label
+                class="text-cf-textMuted block text-[11px] font-semibold tracking-[0.18em] uppercase"
+              >
                 Project details
               </label>
               <textarea
                 name="details"
                 rows="4"
                 placeholder="Briefly describe the work you need help with and any timing constraints."
-                class="mt-1 w-full rounded-xl border border-cf-borderSubtle bg-white px-3 py-2 text-sm text-cf-text shadow-sm placeholder:text-cf-textMuted/70 focus:border-cf-accentBlue focus:outline-none focus:ring-2 focus:ring-cf-accentBlue/15"
+                class="border-cf-borderSubtle text-cf-text placeholder:text-cf-textMuted/70 focus:border-cf-accentBlue focus:ring-cf-accentBlue/15 mt-1 w-full rounded-xl border bg-white px-3 py-2 text-sm shadow-sm focus:ring-2 focus:outline-none"
               ></textarea>
             </div>
 
             <button
               type="submit"
-              class="flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-[#FFB547] to-[#FF6A3D] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(255,122,69,0.55)] transition hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-[#FF8A4A]"
+              class="flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-[#FFB547] to-[#FF6A3D] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(255,122,69,0.55)] transition hover:brightness-105 focus:ring-2 focus:ring-[#FF8A4A] focus:ring-offset-2 focus:ring-offset-white focus:outline-none"
             >
               Submit request
             </button>
@@ -149,24 +179,27 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
       </section>
 
       <!-- SECOND GRID: REACH US / REPLY EXPECTATIONS -->
-      <section class="grid gap-6 rounded-3xl bg-white p-6 shadow-soft md:grid-cols-2 md:p-8">
+      <section
+        class="shadow-soft grid gap-6 rounded-3xl bg-white p-6 md:grid-cols-2 md:p-8"
+      >
         <div class="space-y-3">
           <p class="eyebrow text-cf-textMuted">How to reach us</p>
-          <h2 class="text-base font-semibold text-cf-text md:text-lg">
+          <h2 class="text-cf-text text-base font-semibold md:text-lg">
             Call, text, or email about your project
           </h2>
-          <p class="text-sm leading-relaxed text-cf-textMuted">
-            The contact form is usually the best way to share photos and a clear punch list.
-            If you prefer, you can call or text with a brief description and we will follow
-            up with any details needed to schedule a visit.
+          <p class="text-cf-textMuted text-sm leading-relaxed">
+            The contact form is usually the best way to share photos and a clear
+            punch list. If you prefer, you can call or text with a brief
+            description and we will follow up with any details needed to
+            schedule a visit.
           </p>
-          <dl class="mt-2 space-y-1 text-sm text-cf-text">
+          <dl class="text-cf-text mt-2 space-y-1 text-sm">
             <div class="flex gap-2">
-              <dt class="w-16 shrink-0 text-cf-textMuted">Phone</dt>
+              <dt class="text-cf-textMuted w-16 shrink-0">Phone</dt>
               <dd>(808) 226-6681</dd>
             </div>
             <div class="flex gap-2">
-              <dt class="w-16 shrink-0 text-cf-textMuted">Email</dt>
+              <dt class="text-cf-textMuted w-16 shrink-0">Email</dt>
               <dd>carlsbadfixit@gmail.com</dd>
             </div>
           </dl>
@@ -174,18 +207,19 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
 
         <div class="space-y-3">
           <p class="eyebrow text-cf-textMuted">When we typically reply</p>
-          <h2 class="text-base font-semibold text-cf-text md:text-lg">
+          <h2 class="text-cf-text text-base font-semibold md:text-lg">
             What to expect after you reach out
           </h2>
-          <p class="text-sm leading-relaxed text-cf-textMuted">
-            Messages are answered during normal business hours on weekdays.
-            If you reach out in the evening or on a weekend, you will usually
+          <p class="text-cf-textMuted text-sm leading-relaxed">
+            Messages are answered during normal business hours on weekdays. If
+            you reach out in the evening or on a weekend, you will usually
             receive a reply the next business day.
           </p>
-          <p class="text-sm leading-relaxed text-cf-textMuted">
-            For urgent safety issues such as active leaks, electrical burning smells,
-            or similar emergencies, contact the appropriate licensed trade contractor
-            or emergency services before scheduling a handyman visit.
+          <p class="text-cf-textMuted text-sm leading-relaxed">
+            For urgent safety issues such as active leaks, electrical burning
+            smells, or similar emergencies, contact the appropriate licensed
+            trade contractor or emergency services before scheduling a handyman
+            visit.
           </p>
         </div>
       </section>

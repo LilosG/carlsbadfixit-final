@@ -260,29 +260,29 @@ export const cityContent: Record<string, CityContent> = {
       {
         title: "Punch-list visits between life stages",
         summary:
-          "Clearing a mixed list of repairs before new babies, guests, or busy seasons so the house feels caught up and ready to enjoy."
+          "Clearing a mixed list of repairs before new babies, guests, or busy seasons so the house feels caught up and ready to enjoy.",
       },
       {
         title: "Fixture and hardware updates",
         summary:
-          "Swapping dated faucets, lights, and cabinet hardware so builder-grade spaces feel more finished without a full remodel."
+          "Swapping dated faucets, lights, and cabinet hardware so builder-grade spaces feel more finished without a full remodel.",
       },
       {
         title: "Fence, gate, and exterior touch-ups",
         summary:
-          "Tuning up small fence sections, gate latches, and other obvious exterior wear so front and side yards feel tidy again."
-      }
+          "Tuning up small fence sections, gate latches, and other obvious exterior wear so front and side yards feel tidy again.",
+      },
     ],
     neighborhoods: [
       "Bressi Ranch",
       "Robertson Ranch",
-      "La Costa Greens and nearby communities"
+      "La Costa Greens and nearby communities",
     ],
     propertyTypes: [
       "Single-family homes",
       "Townhomes and condos",
       "Smaller rental homes",
-      "Home offices and studios"
+      "Home offices and studios",
     ],
     landlordNote:
       "Useful for owners of a few Bressi Ranch rentals who need punch-list style visits between tenants instead of coordinating a full remodel crew.",
@@ -293,8 +293,7 @@ export const cityContent: Record<string, CityContent> = {
         "They helped us knock out a list of small repairs and fixture upgrades so the house felt ready for company again.",
       name: "Megan D.",
       location: "Bressi Ranch, CA",
-      role: "Homeowner"
-    }
+      role: "Homeowner",
+    },
   },
-
 };

@@ -82,7 +82,7 @@ const serviceAreasCollectionJsonLd = JSON.stringify(
       name: area.name,
       url: area.slug,
     })),
-  })
+  }),
 );
 ---
 
@@ -95,41 +95,47 @@ const serviceAreasCollectionJsonLd = JSON.stringify(
     slot="head"
     is:inline
     set:html={serviceAreasCollectionJsonLd}
-  ></script>
+  />
 
   <div class="bg-cf-page w-full">
     <div class="mx-auto max-w-6xl">
-      <section class="rounded-3xl bg-gradient-to-br from-cf-heroStart to-cf-heroEnd p-[1px] shadow-soft">
-        <div class="rounded-3xl bg-white/95 p-8 text-cf-text md:p-10">
+      <section
+        class="from-cf-heroStart to-cf-heroEnd shadow-soft rounded-3xl bg-gradient-to-br p-[1px]"
+      >
+        <div class="text-cf-text rounded-3xl bg-white/95 p-8 md:p-10">
           <div class="space-y-4">
             <p class="eyebrow text-cf-heroEyebrow">
               Where we offer handyman visits
             </p>
-            <h1 class="text-h1 font-semibold leading-tight">
+            <h1 class="text-h1 leading-tight font-semibold">
               Handyman service areas in North County San Diego
             </h1>
-            <p class="max-w-2xl text-body-md text-cf-textMuted">
-              Visits are focused in North County communities based in and around Carlsbad, CA. Travel is scoped so more of your visit goes toward actual repair and improvement work, with clear expectations about availability in each area and the types of projects that are a good fit.
+            <p class="text-body-md text-cf-textMuted max-w-2xl">
+              Visits are focused in North County communities based in and around
+              Carlsbad, CA. Travel is scoped so more of your visit goes toward
+              actual repair and improvement work, with clear expectations about
+              availability in each area and the types of projects that are a
+              good fit.
             </p>
 
-            <div class="mt-4 flex flex-wrap gap-2 text-[11px] font-semibold uppercase tracking-wide text-cf-textMuted">
-              <span class="rounded-full bg-cf-bg px-3 py-1">Carlsbad, CA</span>
-              <span class="rounded-full bg-cf-bg px-3 py-1">Oceanside, CA</span>
-              <span class="rounded-full bg-cf-bg px-3 py-1">Encinitas, CA</span>
-              <span class="rounded-full bg-cf-bg px-3 py-1">Vista, CA</span>
-              <span class="rounded-full bg-cf-bg px-3 py-1">San Marcos, CA</span>
+            <div
+              class="text-cf-textMuted mt-4 flex flex-wrap gap-2 text-[11px] font-semibold tracking-wide uppercase"
+            >
+              <span class="bg-cf-bg rounded-full px-3 py-1">Carlsbad, CA</span>
+              <span class="bg-cf-bg rounded-full px-3 py-1">Oceanside, CA</span>
+              <span class="bg-cf-bg rounded-full px-3 py-1">Encinitas, CA</span>
+              <span class="bg-cf-bg rounded-full px-3 py-1">Vista, CA</span>
+              <span class="bg-cf-bg rounded-full px-3 py-1">San Marcos, CA</span
+              >
             </div>
 
             <div class="mt-5 flex flex-wrap gap-3">
-              <a
-                href="/services/"
-                class="btn btn-primary btn-lg"
-              >
+              <a href="/services/" class="btn btn-primary btn-lg">
                 View handyman services
               </a>
               <a
                 href="#areas"
-                class="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-cf-accentBlue shadow-soft hover:bg-cf-bg"
+                class="text-cf-accentBlue shadow-soft hover:bg-cf-bg inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold"
               >
                 Browse service areas
               </a>
@@ -141,56 +147,59 @@ const serviceAreasCollectionJsonLd = JSON.stringify(
       <section id="areas" class="space-y-6">
         <header class="space-y-2">
           <p class="eyebrow">Neighborhood coverage</p>
-          <h2 class="text-h2 font-semibold text-cf-text">
+          <h2 class="text-h2 text-cf-text font-semibold">
             Local option for small home projects
           </h2>
-          <p class="max-w-2xl text-body-sm text-cf-textMuted">
-            Each area below includes a mix of neighborhoods typically included, and the types of properties that are a good fit. Most projects are scoped so they can be completed in a single visit wherever possible, with larger projects broken into clear phases when needed.
+          <p class="text-body-sm text-cf-textMuted max-w-2xl">
+            Each area below includes a mix of neighborhoods typically included,
+            and the types of properties that are a good fit. Most projects are
+            scoped so they can be completed in a single visit wherever possible,
+            with larger projects broken into clear phases when needed.
           </p>
         </header>
 
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {areas.map((area) => (
-            <article class="card flex h-full flex-col justify-between">
-              <div class="space-y-2">
-                <p class="text-[11px] font-semibold uppercase tracking-wide text-cf-textMuted">
-                  Service area
-                </p>
-                <h3 class="text-base font-semibold text-cf-text">
-                  {area.name}
-                </h3>
-                <p class="text-sm text-cf-textMuted">
-                  {area.summary}
-                </p>
-
-                <div class="mt-3 space-y-1">
-                  <p class="text-[11px] font-semibold uppercase tracking-wide text-cf-textMuted">
-                    Popular services in this area
+          {
+            areas.map((area) => (
+              <article class="card flex h-full flex-col justify-between">
+                <div class="space-y-2">
+                  <p class="text-cf-textMuted text-[11px] font-semibold tracking-wide uppercase">
+                    Service area
                   </p>
-                  <ul class="space-y-1 text-sm text-cf-textMuted">
-                    {area.popularProjects.map((project) => (
-                      <li>• {project}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+                  <h3 class="text-cf-text text-base font-semibold">
+                    {area.name}
+                  </h3>
+                  <p class="text-cf-textMuted text-sm">{area.summary}</p>
 
-              <div class="mt-4 flex items-center justify-between gap-3">
-                <a
-                  href={area.slug}
-                  class="text-sm font-semibold text-cf-link hover:underline"
-                >
-                  View details for {area.name}
-                </a>
-                <a
-                  href={`${area.slug}#request`}
-                  class="btn btn-primary btn-sm whitespace-nowrap text-xs"
-                >
-                  Request visit
-                </a>
-              </div>
-            </article>
-          ))}
+                  <div class="mt-3 space-y-1">
+                    <p class="text-cf-textMuted text-[11px] font-semibold tracking-wide uppercase">
+                      Popular services in this area
+                    </p>
+                    <ul class="text-cf-textMuted space-y-1 text-sm">
+                      {area.popularProjects.map((project) => (
+                        <li>• {project}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="mt-4 flex items-center justify-between gap-3">
+                  <a
+                    href={area.slug}
+                    class="text-cf-link text-sm font-semibold hover:underline"
+                  >
+                    View details for {area.name}
+                  </a>
+                  <a
+                    href={`${area.slug}#request`}
+                    class="btn btn-primary btn-sm text-xs whitespace-nowrap"
+                  >
+                    Request visit
+                  </a>
+                </div>
+              </article>
+            ))
+          }
         </div>
       </section>
 

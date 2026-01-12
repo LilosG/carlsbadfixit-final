@@ -20,7 +20,7 @@ const SITE_URL = "https://www.carlsbadfixit.com";
 
 const BUSINESS_IMAGE_URL = new URL(
   "/images/logo/logo-medium.png",
-  SITE_URL
+  SITE_URL,
 ).toString();
 
 const GBP_URL = "https://maps.app.goo.gl/SLn6g6JEFRTLLWPRA";
@@ -34,7 +34,7 @@ function getBusinessAddress() {
     addressLocality: "Carlsbad",
     addressRegion: "CA",
     postalCode: "92010",
-    addressCountry: "US"
+    addressCountry: "US",
   };
 }
 
@@ -48,11 +48,11 @@ function getOpeningHoursSpecification() {
         "Wednesday",
         "Thursday",
         "Friday",
-        "Saturday"
+        "Saturday",
       ],
       opens: "08:00",
-      closes: "19:00"
-    }
+      closes: "19:00",
+    },
   ];
 }
 
@@ -66,14 +66,15 @@ function getBusinessProvider() {
     telephone: "+1-808-226-6681",
     image: BUSINESS_IMAGE_URL,
     logo: BUSINESS_IMAGE_URL,
+    hasMap: GBP_URL,
     openingHoursSpecification: getOpeningHoursSpecification(),
     priceRange: "$$",
     sameAs: [GBP_URL],
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "5.0",
-      reviewCount: 4
-    }
+      reviewCount: 4,
+    },
   };
 }
 
@@ -85,8 +86,8 @@ export function getLocalBusinessJsonLd(areaLabels: string[]) {
     ...business,
     areaServed: areaLabels.map((label) => ({
       "@type": "Place",
-      name: label
-    }))
+      name: label,
+    })),
   };
 }
 
@@ -100,8 +101,8 @@ export function getBreadcrumbJsonLd(items: BreadcrumbItem[]) {
       name: item.name,
       item: item.url.startsWith("http")
         ? item.url
-        : new URL(item.url, SITE_URL).toString()
-    }))
+        : new URL(item.url, SITE_URL).toString(),
+    })),
   };
 }
 
@@ -118,18 +119,18 @@ export function getServiceJsonLd(service: Service, area: ServiceArea) {
     url,
     areaServed: {
       "@type": "Place",
-      name: area.label
+      name: area.label,
     },
     provider: {
-      "@id": BUSINESS_ID
-    }
+      "@id": BUSINESS_ID,
+    },
   };
 }
 
 export function getCityServiceJsonLd(service: Service, area: ServiceArea) {
   const url = new URL(
     `/service-areas/${area.slug}/${service.slug}/`,
-    SITE_URL
+    SITE_URL,
   ).toString();
 
   return {
@@ -142,18 +143,18 @@ export function getCityServiceJsonLd(service: Service, area: ServiceArea) {
     url,
     areaServed: {
       "@type": "Place",
-      name: area.label
+      name: area.label,
     },
     provider: {
-      "@id": BUSINESS_ID
-    }
+      "@id": BUSINESS_ID,
+    },
   };
 }
 
 export function getFaqPageJsonLd(
   faqs: { question: string; answer: string }[],
   pageUrl: string,
-  pageTitle: string
+  pageTitle: string,
 ) {
   const url = pageUrl.startsWith("http")
     ? pageUrl
@@ -170,9 +171,9 @@ export function getFaqPageJsonLd(
       name: faq.question,
       acceptedAnswer: {
         "@type": "Answer",
-        text: faq.answer
-      }
-    }))
+        text: faq.answer,
+      },
+    })),
   };
 }
 
@@ -198,7 +199,7 @@ export function getCollectionPageJsonLd(opts: {
       name: item.name,
       url: item.url.startsWith("http")
         ? item.url
-        : new URL(item.url, SITE_URL).toString()
-    }))
+        : new URL(item.url, SITE_URL).toString(),
+    })),
   };
 }

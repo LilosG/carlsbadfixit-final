@@ -2,10 +2,17 @@
 import { services } from "../data/services";
 import { serviceAreas } from "../data/service-areas";
 ---
-<header class="sticky top-0 z-40 border-b border-cf-borderSubtle bg-gradient-to-b from-white/95 via-cf-card/95 to-white/95 shadow-sm backdrop-blur">
-  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4">
+
+<header
+  class="border-cf-borderSubtle via-cf-card/95 sticky top-0 z-40 border-b bg-gradient-to-b from-white/95 to-white/95 shadow-sm backdrop-blur"
+>
+  <div
+    class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4"
+  >
     <a href="/" class="flex items-center gap-3">
-      <div class="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-cf-card sm:h-14 sm:w-14">
+      <div
+        class="bg-cf-card flex h-12 w-12 items-center justify-center overflow-hidden rounded-full sm:h-14 sm:w-14"
+      >
         <picture>
           <source
             srcset="
@@ -33,10 +40,12 @@ import { serviceAreas } from "../data/service-areas";
         </picture>
       </div>
       <div class="flex flex-col leading-tight">
-        <span class="text-sm font-semibold tracking-tight text-cf-text md:text-base">
+        <span
+          class="text-cf-text text-sm font-semibold tracking-tight md:text-base"
+        >
           Carlsbad Fix It
         </span>
-        <span class="text-[11px] text-cf-textMuted md:text-xs">
+        <span class="text-cf-textMuted text-[11px] md:text-xs">
           Local handyman in Carlsbad, CA
         </span>
       </div>
@@ -44,57 +53,73 @@ import { serviceAreas } from "../data/service-areas";
 
     <div class="flex items-center gap-3">
       <nav class="hidden items-center gap-6 md:flex">
-        <div class="relative group">
+        <div class="group relative">
           <a
             href="/services/"
-            class="inline-flex items-center gap-1 text-sm font-medium text-cf-text hover:text-cf-accentBlue transition-colors focus:outline-none"
+            class="text-cf-text hover:text-cf-accentBlue inline-flex items-center gap-1 text-sm font-medium transition-colors focus:outline-none"
           >
             <span>Services</span>
-            <span class="inline-flex h-4 w-4 items-center justify-center text-[10px]">
+            <span
+              class="inline-flex h-4 w-4 items-center justify-center text-[10px]"
+            >
               ▾
             </span>
           </a>
-          <div class="absolute left-0 top-full z-20 hidden pt-2 group-hover:block group-focus-within:block">
-            <div class="w-56 rounded-xl border border-cf-borderSubtle bg-white/95 p-2 text-xs text-cf-text shadow-lg">
+          <div
+            class="absolute top-full left-0 z-20 hidden pt-2 group-focus-within:block group-hover:block"
+          >
+            <div
+              class="border-cf-borderSubtle text-cf-text w-56 rounded-xl border bg-white/95 p-2 text-xs shadow-lg"
+            >
               <ul class="space-y-0.5">
-                {services.map((service) => (
-                  <li>
-                    <a
-                      href={`/services/${service.slug}/`}
-                      class="block rounded-lg px-3 py-1.5 text-xs text-cf-text hover:bg-cf-sandSoft hover:text-cf-text"
-                    >
-                      {service.name}
-                    </a>
-                  </li>
-                ))}
+                {
+                  services.map((service) => (
+                    <li>
+                      <a
+                        href={`/services/${service.slug}/`}
+                        class="text-cf-text hover:bg-cf-sandSoft hover:text-cf-text block rounded-lg px-3 py-1.5 text-xs"
+                      >
+                        {service.name}
+                      </a>
+                    </li>
+                  ))
+                }
               </ul>
             </div>
           </div>
         </div>
 
-        <div class="relative group">
+        <div class="group relative">
           <a
             href="/service-areas/"
-            class="inline-flex items-center gap-1 text-sm font-medium text-cf-text hover:text-cf-accentBlue transition-colors focus:outline-none"
+            class="text-cf-text hover:text-cf-accentBlue inline-flex items-center gap-1 text-sm font-medium transition-colors focus:outline-none"
           >
             <span>Service areas</span>
-            <span class="inline-flex h-4 w-4 items-center justify-center text-[10px]">
+            <span
+              class="inline-flex h-4 w-4 items-center justify-center text-[10px]"
+            >
               ▾
             </span>
           </a>
-          <div class="absolute left-0 top-full z-20 hidden pt-2 group-hover:block group-focus-within:block">
-            <div class="w-64 rounded-xl border border-cf-borderSubtle bg-white/95 p-2 text-xs text-cf-text shadow-lg">
+          <div
+            class="absolute top-full left-0 z-20 hidden pt-2 group-focus-within:block group-hover:block"
+          >
+            <div
+              class="border-cf-borderSubtle text-cf-text w-64 rounded-xl border bg-white/95 p-2 text-xs shadow-lg"
+            >
               <ul class="space-y-0.5">
-                {serviceAreas.map((area) => (
-                  <li>
-                    <a
-                      href={`/service-areas/${area.slug}/`}
-                      class="block rounded-lg px-3 py-1.5 text-xs text-cf-text hover:bg-cf-sandSoft hover:text-cf-text"
-                    >
-                      {area.label}
-                    </a>
-                  </li>
-                ))}
+                {
+                  serviceAreas.map((area) => (
+                    <li>
+                      <a
+                        href={`/service-areas/${area.slug}/`}
+                        class="text-cf-text hover:bg-cf-sandSoft hover:text-cf-text block rounded-lg px-3 py-1.5 text-xs"
+                      >
+                        {area.label}
+                      </a>
+                    </li>
+                  ))
+                }
               </ul>
             </div>
           </div>
@@ -102,19 +127,19 @@ import { serviceAreas } from "../data/service-areas";
 
         <a
           href="/about/"
-          class="text-sm font-medium text-cf-text hover:text-cf-accentBlue transition-colors"
+          class="text-cf-text hover:text-cf-accentBlue text-sm font-medium transition-colors"
         >
           About
         </a>
         <a
           href="/faq/"
-          class="text-sm font-medium text-cf-text hover:text-cf-accentBlue transition-colors"
+          class="text-cf-text hover:text-cf-accentBlue text-sm font-medium transition-colors"
         >
           FAQ
         </a>
         <a
           href="/contact/"
-          class="text-sm font-medium text-cf-text hover:text-cf-accentBlue transition-colors"
+          class="text-cf-text hover:text-cf-accentBlue text-sm font-medium transition-colors"
         >
           Contact
         </a>
@@ -122,81 +147,98 @@ import { serviceAreas } from "../data/service-areas";
 
       <div class="hidden items-center gap-3 md:flex">
         <a
-          href="tel:+18082266681" data-ga-event="call_click" data-ga-label="site_phone"
-          class="inline-flex h-10 items-center rounded-full bg-cf-accentBlue px-4 text-sm font-semibold text-white shadow-sm hover:bg-cf-accentBlue/90"
+          href="tel:+18082266681"
+          data-ga-event="call_click"
+          data-ga-label="site_phone"
+          class="bg-cf-accentBlue hover:bg-cf-accentBlue/90 inline-flex h-10 items-center rounded-full px-4 text-sm font-semibold text-white shadow-sm"
         >
           (808) 226-6681
         </a>
-        <a href="/contact/" class="btn-primary h-10 text-sm" data-ga-event="request_quote_click" data-ga-label="header_cta">
+        <a
+          href="/contact/"
+          class="btn-primary h-10 text-sm"
+          data-ga-event="request_quote_click"
+          data-ga-label="header_cta"
+        >
           Request a quote
         </a>
       </div>
 
       <details class="relative md:hidden">
-        <summary class="flex cursor-pointer items-center gap-2 rounded-full border border-cf-borderSubtle bg-white px-3 py-1.5 text-xs font-medium text-cf-text shadow-sm">
+        <summary
+          class="border-cf-borderSubtle text-cf-text flex cursor-pointer items-center gap-2 rounded-full border bg-white px-3 py-1.5 text-xs font-medium shadow-sm"
+        >
           <span class="sr-only">Toggle navigation</span>
           <span class="flex h-4 w-4 flex-col justify-between">
-            <span class="h-[2px] w-full rounded-full bg-cf-text"></span>
-            <span class="h-[2px] w-full rounded-full bg-cf-text"></span>
-            <span class="h-[2px] w-full rounded-full bg-cf-text"></span>
+            <span class="bg-cf-text h-[2px] w-full rounded-full"></span>
+            <span class="bg-cf-text h-[2px] w-full rounded-full"></span>
+            <span class="bg-cf-text h-[2px] w-full rounded-full"></span>
           </span>
           <span>Menu</span>
         </summary>
         <div
-          class="absolute right-0 mt-3 w-64 rounded-2xl bg-white p-3 text-sm text-cf-text shadow-xl ring-1 ring-cf-borderSubtle"
+          class="text-cf-text ring-cf-borderSubtle absolute right-0 mt-3 w-64 rounded-2xl bg-white p-3 text-sm shadow-xl ring-1"
         >
-          <div class="mb-3 border-b border-cf-borderSubtle pb-3">
-            <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
+          <div class="border-cf-borderSubtle mb-3 border-b pb-3">
+            <p
+              class="text-cf-textMuted text-xs font-semibold tracking-wide uppercase"
+            >
               Services
             </p>
             <ul class="mt-2 space-y-1">
-              {services.map((service) => (
-                <li>
-                  <a
-                    href={`/services/${service.slug}/`}
-                    class="block rounded-lg px-3 py-1.5 text-sm text-cf-text hover:bg-cf-sandSoft"
-                  >
-                    {service.name}
-                  </a>
-                </li>
-              ))}
+              {
+                services.map((service) => (
+                  <li>
+                    <a
+                      href={`/services/${service.slug}/`}
+                      class="text-cf-text hover:bg-cf-sandSoft block rounded-lg px-3 py-1.5 text-sm"
+                    >
+                      {service.name}
+                    </a>
+                  </li>
+                ))
+              }
             </ul>
           </div>
 
-          <div class="mb-3 border-b border-cf-borderSubtle pb-3">
-            <p class="text-xs font-semibold uppercase tracking-wide text-cf-textMuted">
+          <div class="border-cf-borderSubtle mb-3 border-b pb-3">
+            <p
+              class="text-cf-textMuted text-xs font-semibold tracking-wide uppercase"
+            >
               Service areas
             </p>
             <ul class="mt-2 space-y-1">
-              {serviceAreas.map((area) => (
-                <li>
-                  <a
-                    href={`/service-areas/${area.slug}/`}
-                    class="block rounded-lg px-3 py-1.5 text-sm text-cf-text hover:bg-cf-sandSoft"
-                  >
-                    {area.label}
-                  </a>
-                </li>
-              ))}
+              {
+                serviceAreas.map((area) => (
+                  <li>
+                    <a
+                      href={`/service-areas/${area.slug}/`}
+                      class="text-cf-text hover:bg-cf-sandSoft block rounded-lg px-3 py-1.5 text-sm"
+                    >
+                      {area.label}
+                    </a>
+                  </li>
+                ))
+              }
             </ul>
           </div>
 
-          <div class="mb-3 border-b border-cf-borderSubtle pb-3 space-y-1">
+          <div class="border-cf-borderSubtle mb-3 space-y-1 border-b pb-3">
             <a
               href="/about/"
-              class="block rounded-lg px-3 py-1.5 text-sm text-cf-text hover:bg-cf-sandSoft"
+              class="text-cf-text hover:bg-cf-sandSoft block rounded-lg px-3 py-1.5 text-sm"
             >
               About
             </a>
             <a
               href="/faq/"
-              class="block rounded-lg px-3 py-1.5 text-sm text-cf-text hover:bg-cf-sandSoft"
+              class="text-cf-text hover:bg-cf-sandSoft block rounded-lg px-3 py-1.5 text-sm"
             >
               FAQ
             </a>
             <a
               href="/contact/"
-              class="block rounded-lg px-3 py-1.5 text-sm text-cf-text hover:bg-cf-sandSoft"
+              class="text-cf-text hover:bg-cf-sandSoft block rounded-lg px-3 py-1.5 text-sm"
             >
               Contact
             </a>
@@ -204,8 +246,10 @@ import { serviceAreas } from "../data/service-areas";
 
           <div class="space-y-2">
             <a
-              href="tel:+18082266681" data-ga-event="call_click" data-ga-label="site_phone"
-              class="block text-xs font-medium text-cf-textMuted"
+              href="tel:+18082266681"
+              data-ga-event="call_click"
+              data-ga-label="site_phone"
+              class="text-cf-textMuted block text-xs font-medium"
             >
               Call or text (808) 226-6681
             </a>

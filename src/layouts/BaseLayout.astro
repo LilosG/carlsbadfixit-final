@@ -70,12 +70,26 @@ const ogImageUrl = ogImage ?? defaultOgImage;
     />
     <link rel="apple-touch-icon" href="/images/logo/logo-large.png" />
 
-    <!-- Google tag (gtag.js) -->
+    <!-- Google Tag Manager - Partytown enabled for performance -->
+    <script type="text/partytown" is:inline>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-XXXXXXX");
+    </script>
+    <!-- Fallback: Direct GA4 with Partytown -->
     <script
+      type="text/partytown"
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-8L6X2ZZ5JH"
       is:inline></script>
-    <script is:inline>
+    <script type="text/partytown" is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
@@ -83,7 +97,7 @@ const ogImageUrl = ogImage ?? defaultOgImage;
       gtag("js", new Date());
       gtag("config", "G-8L6X2ZZ5JH");
     </script>
-    <script is:inline>
+    <script type="text/partytown" is:inline>
       document.addEventListener("DOMContentLoaded", () => {
         if (typeof window.gtag !== "function") return;
 
@@ -122,12 +136,21 @@ const ogImageUrl = ogImage ?? defaultOgImage;
     <slot name="head" />
 
     <script
+      type="text/partytown"
       src="https://analytics.ahrefs.com/analytics.js"
       data-key="wkBUuhMf8Osy6n8MvgXn6w"
       async
       is:inline></script>
   </head>
   <body class="pb-16 sm:pb-0">
+    <!-- Google Tag Manager (noscript) - Fallback for users without JavaScript -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    >
     <SiteHeader />
     <TrustStrip />
     <main

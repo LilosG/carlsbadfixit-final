@@ -15,13 +15,14 @@
     "check": "npm run astro:check && npm run typecheck && npm run lint && npm run format:check"
   },
   "dependencies": {
+    "@astrojs/partytown": "^2.1.4",
     "@tailwindcss/vite": "^4.1.17",
     "astro": "^5.15.9",
     "tailwindcss": "^4.1.17"
   },
   "devDependencies": {
-    "@astrojs/sitemap": "^3.6.0",
     "@astrojs/check": "^0.9.4",
+    "@astrojs/sitemap": "^3.6.0",
     "@tailwindcss/postcss": "^4.1.17",
     "@typescript-eslint/eslint-plugin": "^8.44.0",
     "@typescript-eslint/parser": "^8.44.0",

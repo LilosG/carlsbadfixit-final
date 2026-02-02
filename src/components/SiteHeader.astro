@@ -53,10 +53,14 @@ import { serviceAreas } from "../data/service-areas";
 
     <div class="flex items-center gap-3">
       <nav class="hidden items-center gap-6 md:flex">
-        <div class="group relative">
+        <div class="group relative" data-dropdown="services">
           <a
             href="/services/"
-            class="text-cf-text hover:text-cf-accentBlue inline-flex items-center gap-1 text-sm font-medium transition-colors focus:outline-none"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="services-menu"
+            data-dropdown-trigger
+            class="text-cf-text hover:text-cf-accentBlue focus-visible:ring-cf-accentBlue/30 inline-flex items-center gap-1 text-sm font-medium transition-colors focus:outline-none focus-visible:rounded-full focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
           >
             <span>Services</span>
             <span
@@ -66,7 +70,9 @@ import { serviceAreas } from "../data/service-areas";
             </span>
           </a>
           <div
-            class="absolute top-full left-0 z-20 hidden pt-2 group-focus-within:block group-hover:block"
+            id="services-menu"
+            class="absolute top-full left-0 z-20 hidden pt-2 group-focus-within:block group-hover:block group-data-[open=true]:block"
+            data-dropdown-menu
           >
             <div
               class="border-cf-borderSubtle text-cf-text w-56 rounded-xl border bg-white/95 p-2 text-xs shadow-lg"
@@ -89,10 +95,14 @@ import { serviceAreas } from "../data/service-areas";
           </div>
         </div>
 
-        <div class="group relative">
+        <div class="group relative" data-dropdown="service-areas">
           <a
             href="/service-areas/"
-            class="text-cf-text hover:text-cf-accentBlue inline-flex items-center gap-1 text-sm font-medium transition-colors focus:outline-none"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="service-areas-menu"
+            data-dropdown-trigger
+            class="text-cf-text hover:text-cf-accentBlue focus-visible:ring-cf-accentBlue/30 inline-flex items-center gap-1 text-sm font-medium transition-colors focus:outline-none focus-visible:rounded-full focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
           >
             <span>Service areas</span>
             <span
@@ -102,7 +112,9 @@ import { serviceAreas } from "../data/service-areas";
             </span>
           </a>
           <div
-            class="absolute top-full left-0 z-20 hidden pt-2 group-focus-within:block group-hover:block"
+            id="service-areas-menu"
+            class="absolute top-full left-0 z-20 hidden pt-2 group-focus-within:block group-hover:block group-data-[open=true]:block"
+            data-dropdown-menu
           >
             <div
               class="border-cf-borderSubtle text-cf-text w-64 rounded-xl border bg-white/95 p-2 text-xs shadow-lg"
@@ -154,6 +166,8 @@ import { serviceAreas } from "../data/service-areas";
       <div class="hidden items-center gap-3 md:flex">
         <a
           href="tel:+18082266681"
+          data-ga-call="true"
+          data-ga-location="header_desktop"
           data-ga-event="call_click"
           data-ga-label="site_phone"
           class="bg-cf-accentBlue hover:bg-cf-accentBlue/90 inline-flex h-10 items-center rounded-full px-4 text-sm font-semibold text-white shadow-sm"
@@ -259,6 +273,8 @@ import { serviceAreas } from "../data/service-areas";
           <div class="space-y-2">
             <a
               href="tel:+18082266681"
+              data-ga-call="true"
+              data-ga-location="header_mobile"
               data-ga-event="call_click"
               data-ga-label="site_phone"
               class="text-cf-textMuted block text-xs font-medium"

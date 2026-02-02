@@ -76,49 +76,8 @@ const ogImageUrl = ogImage ?? defaultOgImage;
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-8L6X2ZZ5JH"
       is:inline></script>
-    <script type="text/partytown" is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-8L6X2ZZ5JH");
-    </script>
-    <script type="text/partytown" is:inline>
-      document.addEventListener("DOMContentLoaded", () => {
-        if (typeof window.gtag !== "function") return;
-
-        const sendEvent = (name, category, label) => {
-          window.gtag("event", name, {
-            event_category: category,
-            event_label: label,
-            page_location: window.location.href,
-            page_path: window.location.pathname,
-            page_title: document.title,
-          });
-        };
-
-        // Click events
-        document.querySelectorAll("[data-ga-event]").forEach((el) => {
-          el.addEventListener("click", () => {
-            const name = el.dataset.gaEvent || "custom_click";
-            const category = el.dataset.gaCategory || "cta";
-            const label = el.dataset.gaLabel || window.location.pathname;
-            sendEvent(name, category, label);
-          });
-        });
-
-        // Form submit events
-        document.querySelectorAll("[data-ga-form-event]").forEach((form) => {
-          form.addEventListener("submit", () => {
-            const name = form.dataset.gaFormEvent || "form_submit";
-            const category = form.dataset.gaCategory || "form";
-            const label = form.dataset.gaLabel || window.location.pathname;
-            sendEvent(name, category, label);
-          });
-        });
-      });
-    </script>
+    <script type="text/partytown" src="/ga-init.js" is:inline></script>
+    <script type="text/partytown" src="/ga-events.js" is:inline></script>
 
     <slot name="head" />
 
@@ -141,5 +100,6 @@ const ogImageUrl = ogImage ?? defaultOgImage;
     <MobileStickyCta />
     <!-- GA4 lead + call tracking -->
     <script src="/ga-lead-forms.js" defer is:inline></script>
+    <script src="/nav-dropdowns.js" defer is:inline></script>
   </body>
 </html>

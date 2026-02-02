@@ -50,6 +50,7 @@ const articleJsonLd = JSON.stringify(
     dateModified: post.data.updatedDate?.toISOString(),
     image: ogImageUrl,
     tags: post.data.tags,
+    authorName: post.data.author,
   }),
 );
 
@@ -105,7 +106,15 @@ const breadcrumbJsonLd = JSON.stringify(
       <p class="text-body-sm text-cf-textMuted">{post.data.description}</p>
       <div class="text-cf-textMuted flex flex-wrap items-center gap-3 text-xs">
         <span>{post.data.pubDate.toLocaleDateString("en-US")}</span>
+        <span>By {post.data.author}</span>
         <span>{readingTimeMinutes} min read</span>
+        {
+          post.data.updatedDate && (
+            <span>
+              Updated {post.data.updatedDate.toLocaleDateString("en-US")}
+            </span>
+          )
+        }
         {
           post.data.tags.length > 0 && (
             <div class="flex flex-wrap gap-2">
@@ -117,6 +126,19 @@ const breadcrumbJsonLd = JSON.stringify(
         }
       </div>
     </div>
+
+    {
+      post.data.image && (
+        <figure class="shadow-soft overflow-hidden rounded-3xl">
+          <img
+            src={post.data.image}
+            alt={post.data.imageAlt ?? post.data.title}
+            loading="lazy"
+            class="h-full w-full object-cover"
+          />
+        </figure>
+      )
+    }
 
     <div class="blog-content text-cf-textMuted mt-6 space-y-5 text-sm">
       <Content />

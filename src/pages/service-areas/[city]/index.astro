@@ -2,6 +2,7 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import QuickEstimateCard from "../../../components/QuickEstimateCard.astro";
 import PageCtaStrip from "../../../components/PageCtaStrip.astro";
+import EeatTrustBlock from "../../../components/EeatTrustBlock.astro";
 import { services } from "../../../data/services";
 import { serviceAreas } from "../../../data/service-areas";
 import { cityContent } from "../../../data/city-content";
@@ -21,6 +22,7 @@ const content = cityContent[city.slug] ?? {};
 const intro =
   content.intro ??
   `Local handyman services for homeowners in ${city.label} and nearby neighborhoods. Typical visits combine several small repair or improvement tasks into a tidy service window.`;
+const longTailNote = `If you are searching for a handyman in ${city.label}, Carlsbad Fix It focuses on small to medium home projects with clear expectations and tidy results.`;
 
 const neighborhoods = content.neighborhoods ?? [];
 const propertyTypes = content.propertyTypes ?? [];
@@ -88,6 +90,9 @@ const description = `Local handyman help for small to medium projects in ${city.
           <p class="text-body-sm text-cf-textMuted max-w-xl">
             {intro}
           </p>
+          <p class="text-body-sm text-cf-textMuted max-w-xl">
+            {longTailNote}
+          </p>
         </div>
 
         <ul
@@ -143,6 +148,8 @@ const description = `Local handyman help for small to medium projects in ${city.
           <a href="#city-form" class="btn-primary"> Request an estimate </a>
           <a
             href="tel:+18082266681"
+            data-ga-call="true"
+            data-ga-location="service_area_city_call"
             data-ga-event="call_click"
             data-ga-label="site_phone"
             class="border-cf-accentBlueSoft to-cf-accentBlueSoft/40 text-cf-accentBlue shadow-soft hover:to-cf-accentBlueSoft/70 inline-flex items-center justify-center rounded-full border bg-gradient-to-r from-white px-5 py-2 text-sm font-semibold hover:from-white"
@@ -164,6 +171,14 @@ const description = `Local handyman help for small to medium projects in ${city.
         />
       </aside>
     </div>
+  </section>
+
+  <section class="mt-8">
+    <EeatTrustBlock
+      locationLabel={`${city.label} and nearby North County communities`}
+      heading={`Trusted handyman visits in ${city.label}`}
+      body={`Carlsbad Fix It provides small to medium home repair visits in ${city.label} with careful planning, clear communication, and tidy work areas. Each visit is scoped to fit into a predictable service window.`}
+    />
   </section>
 
   <section class="bg-cf-sandSoft rounded-3xl p-6 md:p-8">
@@ -205,6 +220,44 @@ const description = `Local handyman help for small to medium projects in ${city.
           </article>
         ))
       }
+    </div>
+  </section>
+
+  <section class="shadow-soft mt-8 rounded-3xl bg-white p-6 md:p-8">
+    <div
+      class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between"
+    >
+      <div class="space-y-2">
+        <p class="eyebrow text-cf-textMuted">Explore more</p>
+        <h2 class="text-h2 text-cf-text font-semibold">
+          Helpful links for {city.label} homeowners
+        </h2>
+        <p class="text-body-sm text-cf-textMuted max-w-2xl">
+          Compare service availability across nearby cities, review core
+          services, or learn more about how Carlsbad Fix It plans each visit.
+        </p>
+      </div>
+    </div>
+    <div class="mt-4 flex flex-wrap gap-3 text-sm">
+      <a href="/services/" class="btn-primary">Browse services</a>
+      <a
+        href="/service-areas/"
+        class="bg-cf-sandSoft text-cf-text hover:bg-cf-card inline-flex items-center rounded-full px-4 py-2 font-semibold"
+      >
+        View all service areas
+      </a>
+      <a
+        href="/about/"
+        class="bg-cf-sandSoft text-cf-text hover:bg-cf-card inline-flex items-center rounded-full px-4 py-2 font-semibold"
+      >
+        About the company
+      </a>
+      <a
+        href="/contact/"
+        class="text-cf-accentBlue hover:text-cf-accentBlue/80 inline-flex items-center font-semibold"
+      >
+        Request a quote
+      </a>
     </div>
   </section>
 

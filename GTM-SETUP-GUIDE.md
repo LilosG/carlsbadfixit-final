@@ -5,6 +5,7 @@ This guide explains your current analytics setup and optional Google Tag Manager
 ## Current Status - GA4 Direct Implementation ✅
 
 Your site is **already configured and working** with:
+
 - ✅ Google Analytics 4 (GA4) with measurement ID: `G-8L6X2ZZ5JH`
 - ✅ Partytown integration (scripts run in web worker for performance)
 - ✅ Lead form tracking (`generate_lead` events)
@@ -41,10 +42,12 @@ Replace `GTM-XXXXXXX` in the following files:
 **File: `src/layouts/BaseLayout.astro`**
 
 Find and replace **both occurrences** of `GTM-XXXXXXX`:
+
 - Line 84: In the GTM script initialization
 - Line 149: In the noscript iframe
 
 Example:
+
 ```javascript
 // Change this:
 })(window, document, "script", "dataLayer", "GTM-XXXXXXX");
@@ -66,12 +69,14 @@ Example:
 Create these tags in GTM to maintain your current tracking:
 
 #### A. Generate Lead Event
+
 - **Tag Type**: Google Analytics: GA4 Event
 - **Configuration Tag**: (Select your GA4 Config tag)
 - **Event Name**: `generate_lead`
 - **Trigger**: Custom Event = `generate_lead`
 
 #### B. Click to Call Event
+
 - **Tag Type**: Google Analytics: GA4 Event
 - **Configuration Tag**: (Select your GA4 Config tag)
 - **Event Name**: `click_to_call`
@@ -91,6 +96,7 @@ Create these tags in GTM to maintain your current tracking:
 Your current **GA4 direct implementation** is perfect for most businesses because:
 
 **Benefits:**
+
 - ✅ Simpler setup (no GTM UI required)
 - ✅ Already working with all tracking (leads, calls, events)
 - ✅ Full Partytown performance optimization
@@ -98,6 +104,7 @@ Your current **GA4 direct implementation** is perfect for most businesses becaus
 - ✅ Easier to maintain and debug
 
 **When to Consider GTM Container:**
+
 - You have a marketing team that needs to add/modify tags without code changes
 - You need advanced tag management (A/B testing tools, marketing pixels, etc.)
 - You want tag firing rules and debugging interface
@@ -107,16 +114,19 @@ Your current **GA4 direct implementation** is perfect for most businesses becaus
 ## What Changed and Why
 
 ### ✅ Partytown Integration
+
 - **What**: Moves third-party scripts to web worker
 - **Why**: Prevents deprecated API warnings, improves performance by 30-50%
 - **Impact**: Analytics scripts no longer block main thread
 
 ### ✅ Content Security Policy
+
 - **What**: Security headers that control script execution
 - **Why**: Modern web security best practice, prevents XSS attacks
 - **Impact**: Better security posture, more trust signals for users
 
 ### ✅ H1 Standardization
+
 - **What**: Removed responsive font-size changes on H1 elements
 - **Why**: Prevents browser deprecation warnings, better semantics
 - **Impact**: One less PageSpeed Insights warning, better accessibility
@@ -136,6 +146,7 @@ Your current **GA4 direct implementation** is perfect for most businesses becaus
 ## Support
 
 If you need help with GTM setup:
+
 - [GTM Quick Start Guide](https://support.google.com/tagmanager/answer/6103696)
 - [GTM for GA4](https://support.google.com/tagmanager/answer/9442095)
 

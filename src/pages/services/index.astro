@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { services } from "../../data/services";
 import { serviceAreas } from "../../data/service-areas";
 import PageCtaStrip from "../../components/PageCtaStrip.astro";
+import EeatTrustBlock from "../../components/EeatTrustBlock.astro";
 
 const primaryArea =
   serviceAreas.find((area) => area.primary) ?? serviceAreas[0];
@@ -84,6 +85,8 @@ const nearbyAreas = serviceAreas.filter((area) => !area.primary);
           <a href="/contact/" class="btn-primary"> Request an estimate </a>
           <a
             href="tel:+18082266681"
+            data-ga-call="true"
+            data-ga-location="services_index_call"
             data-ga-event="call_click"
             data-ga-label="site_phone"
             class="border-cf-accentBlueSoft to-cf-accentBlueSoft/40 text-cf-accentBlue shadow-soft hover:to-cf-accentBlueSoft/70 inline-flex items-center justify-center rounded-full border bg-gradient-to-r from-white px-5 py-2 text-sm font-semibold hover:from-white"
@@ -136,6 +139,14 @@ const nearbyAreas = serviceAreas.filter((area) => !area.primary);
         </div>
       </aside>
     </div>
+  </section>
+
+  <section class="mt-8">
+    <EeatTrustBlock
+      locationLabel={`${primaryArea.label} and nearby North County communities`}
+      heading="Handyman services with clear expectations"
+      body="Carlsbad Fix It focuses on small to medium projects that can be completed in a predictable service window. You will receive clear scope, timing, and pricing before work begins."
+    />
   </section>
 
   <section class="bg-cf-sandSoft mt-8 rounded-3xl p-6 md:p-8">
@@ -192,6 +203,30 @@ const nearbyAreas = serviceAreas.filter((area) => !area.primary);
               </a>
             </div>
           </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="shadow-soft mt-8 rounded-3xl bg-white p-6 md:p-8">
+    <div class="space-y-2">
+      <p class="eyebrow text-cf-textMuted">Service areas</p>
+      <h2 class="text-h2 text-cf-text font-semibold">
+        Handyman availability across North County San Diego
+      </h2>
+      <p class="text-body-sm text-cf-textMuted max-w-2xl">
+        Explore local coverage and find the right service area for your home.
+      </p>
+    </div>
+    <div class="mt-4 flex flex-wrap gap-2 text-[11px]">
+      {
+        serviceAreas.map((area) => (
+          <a
+            href={`/service-areas/${area.slug}/`}
+            class="text-cf-text shadow-soft hover:bg-cf-sandSoft inline-flex items-center rounded-full bg-white px-3 py-1"
+          >
+            {area.label}
+          </a>
         ))
       }
     </div>

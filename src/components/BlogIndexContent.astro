@@ -1,0 +1,146 @@
+---
+export interface Props {
+  featuredPosts: Array<{
+    slug: string;
+    data: {
+      title: string;
+      description: string;
+      pubDate: Date;
+      tags: string[];
+      serviceAreas: string[];
+    };
+  }>;
+  remainingPosts: Array<{
+    slug: string;
+    data: {
+      title: string;
+      description: string;
+      pubDate: Date;
+      tags: string[];
+    };
+  }>;
+  areaLabels: Map<string, string>;
+  pagination?: {
+    currentPage: number;
+    totalPages: number;
+    prevUrl?: string;
+    nextUrl?: string;
+  };
+}
+
+const { featuredPosts, remainingPosts, areaLabels, pagination } = Astro.props;
+---
+
+{
+  featuredPosts.length > 0 && (
+    <section class="mt-6 space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <p class="eyebrow text-cf-textMuted">Featured guides</p>
+          <h2 class="text-h2 text-cf-text font-semibold">
+            Start with our most practical reads
+          </h2>
+        </div>
+      </div>
+      <div class="grid gap-4 md:grid-cols-2">
+        {featuredPosts.map((post) => (
+          <article class="card flex h-full flex-col">
+            <p class="text-cf-textMuted text-xs font-semibold tracking-wide uppercase">
+              {post.data.tags?.[0] ?? "Home maintenance"}
+            </p>
+            <h3 class="text-cf-text mt-2 text-lg font-semibold">
+              <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+            </h3>
+            <p class="text-cf-textMuted mt-2 text-sm">
+              {post.data.description}
+            </p>
+            <div class="text-cf-textMuted mt-4 flex flex-wrap items-center gap-3 text-xs">
+              <span>{post.data.pubDate.toLocaleDateString("en-US")}</span>
+              {post.data.serviceAreas.length > 0 && (
+                <span>
+                  Local to{" "}
+                  {post.data.serviceAreas
+                    .map((slug) => areaLabels.get(slug) ?? slug)
+                    .join(", ")}
+                </span>
+              )}
+            </div>
+            <a
+              href={`/blog/${post.slug}/`}
+              class="text-cf-accentBlue mt-4 text-sm font-semibold hover:underline"
+            >
+              Read the guide →
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+<section class="mt-6 space-y-4">
+  <div>
+    <p class="eyebrow text-cf-textMuted">All posts</p>
+    <h2 class="text-h2 text-cf-text font-semibold">
+      Tips, checklists, and local project planning
+    </h2>
+  </div>
+
+  <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    {
+      remainingPosts.map((post) => (
+        <article class="card flex h-full flex-col justify-between">
+          <div class="space-y-3">
+            <div class="text-cf-textMuted flex flex-wrap gap-2 text-[11px] tracking-wide uppercase">
+              {post.data.tags.slice(0, 2).map((tag) => (
+                <span class="badge-muted">{tag}</span>
+              ))}
+            </div>
+            <h3 class="text-cf-text text-base font-semibold">
+              <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+            </h3>
+            <p class="text-cf-textMuted text-sm">{post.data.description}</p>
+          </div>
+          <div class="text-cf-textMuted mt-4 flex items-center justify-between text-xs">
+            <span>{post.data.pubDate.toLocaleDateString("en-US")}</span>
+            <a
+              href={`/blog/${post.slug}/`}
+              class="text-cf-accentBlue font-semibold hover:underline"
+            >
+              Read more
+            </a>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+
+  {
+    pagination && pagination.totalPages > 1 && (
+      <nav
+        class="mt-6 flex flex-wrap items-center justify-between gap-3 text-sm"
+        aria-label="Blog pagination"
+      >
+        <div class="flex gap-2">
+          {pagination.prevUrl ? (
+            <a href={pagination.prevUrl} class="btn-outline text-xs">
+              ← Previous
+            </a>
+          ) : (
+            <span class="text-cf-textMuted text-xs">← Previous</span>
+          )}
+          {pagination.nextUrl ? (
+            <a href={pagination.nextUrl} class="btn-outline text-xs">
+              Next →
+            </a>
+          ) : (
+            <span class="text-cf-textMuted text-xs">Next →</span>
+          )}
+        </div>
+        <p class="text-cf-textMuted text-xs">
+          Page {pagination.currentPage} of {pagination.totalPages}
+        </p>
+      </nav>
+    )
+  }
+</section>

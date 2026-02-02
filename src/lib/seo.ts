@@ -24,6 +24,7 @@ export type ArticleMeta = {
   dateModified?: string;
   image?: string;
   tags?: string[];
+  authorName?: string;
 };
 
 const SITE_URL = "https://www.carlsbadfixit.com";
@@ -228,9 +229,14 @@ export function getArticleJsonLd(meta: ArticleMeta) {
     datePublished: meta.datePublished,
     dateModified: meta.dateModified ?? meta.datePublished,
     image: meta.image ? [meta.image] : undefined,
-    author: {
-      "@id": BUSINESS_ID,
-    },
+    author: meta.authorName
+      ? {
+          "@type": "Person",
+          name: meta.authorName,
+        }
+      : {
+          "@id": BUSINESS_ID,
+        },
     publisher: {
       "@id": BUSINESS_ID,
     },

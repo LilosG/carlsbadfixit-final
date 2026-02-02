@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageCtaStrip from "../../components/PageCtaStrip.astro";
+import EeatTrustBlock from "../../components/EeatTrustBlock.astro";
 import { getCollectionPageJsonLd } from "../../lib/seo";
 
 const areas = [
@@ -202,6 +203,14 @@ const serviceAreasCollectionJsonLd = JSON.stringify(
           }
         </div>
       </section>
+
+      <div class="mt-10">
+        <EeatTrustBlock
+          locationLabel="Carlsbad and nearby North County communities"
+          heading="Local handyman help with clear expectations"
+          body="Carlsbad Fix It keeps service areas intentionally focused so each visit is efficient, tidy, and easy to schedule. You will receive a clear scope of work, realistic timing, and upfront expectations before we arrive."
+        />
+      </div>
 
       <PageCtaStrip
         eyebrow="Next steps"

@@ -1,37 +1,48 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
+import type { PaginateFunction } from "astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageCtaStrip from "../../components/PageCtaStrip.astro";
+import BlogIndexContent from "../../components/BlogIndexContent.astro";
 import { getCollectionPageJsonLd } from "../../lib/seo";
 import { serviceAreas } from "../../data/service-areas";
-import BlogIndexContent from "../../components/BlogIndexContent.astro";
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+type BlogPost = CollectionEntry<"blog">;
+type PaginatedPage<T> = {
+  data: T[];
+  currentPage: number;
+  lastPage: number;
+  url: {
+    prev?: string;
+    next?: string;
+  };
+};
 
-const pageSize = 9;
-const featured = posts.filter((post) => post.data.featured).slice(0, 2);
-const remaining = posts.filter((post) => !post.data.featured);
-const pagedRemaining = remaining.slice(0, pageSize);
-const totalPages = Math.ceil(remaining.length / pageSize);
-const pagination =
-  totalPages > 1
-    ? {
-        currentPage: 1,
-        totalPages,
-        nextUrl: "/blog/2/",
-      }
-    : undefined;
+export async function getStaticPaths({
+  paginate,
+}: {
+  paginate: PaginateFunction;
+}) {
+  const posts = (await getCollection("blog")).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  );
+  const remaining = posts.filter((post) => !post.data.featured);
+
+  return paginate(remaining, { pageSize: 9 }).filter(
+    (page) => page.params.page !== "1",
+  );
+}
+
+const { page } = Astro.props as { page: PaginatedPage<BlogPost> };
 const areaLabels = new Map(serviceAreas.map((area) => [area.slug, area.label]));
 
 const collectionJsonLd = JSON.stringify(
   getCollectionPageJsonLd({
-    url: "/blog/",
-    name: "Home maintenance tips for North County San Diego",
+    url: `/blog/${page.currentPage}/`,
+    name: `Home maintenance tips for North County San Diego (Page ${page.currentPage})`,
     description:
       "Local handyman insights for Carlsbad, Oceanside, and Encinitas homeowners. Practical repair tips and project planning guidance that make it easier to schedule the right visit.",
-    items: posts.map((post) => ({
+    items: page.data.map((post: BlogPost) => ({
       name: post.data.title,
       url: `/blog/${post.slug}/`,
     })),
@@ -40,8 +51,8 @@ const collectionJsonLd = JSON.stringify(
 ---
 
 <BaseLayout
-  title="Home Maintenance Tips for Carlsbad, Oceanside & Encinitas | Carlsbad Fix It"
-  description="Local handyman insights for North County San Diego homeowners. Practical tips, checklists, and planning guidance for small repair projects in Carlsbad, Oceanside, and Encinitas."
+  title={`Home Maintenance Tips for North County San Diego | Page ${page.currentPage}`}
+  description="Local handyman insights for North County San Diego homeowners. Practical tips, checklists, and planning guidance for small repair projects."
 >
   <script
     type="application/ld+json"
@@ -97,10 +108,15 @@ const collectionJsonLd = JSON.stringify(
   </section>
 
   <BlogIndexContent
-    featuredPosts={featured}
-    remainingPosts={pagedRemaining}
+    featuredPosts={[]}
+    remainingPosts={page.data}
     areaLabels={areaLabels}
-    pagination={pagination}
+    pagination={{
+      currentPage: page.currentPage,
+      totalPages: page.lastPage,
+      prevUrl: page.url.prev ?? undefined,
+      nextUrl: page.url.next ?? undefined,
+    }}
   />
 
   <PageCtaStrip

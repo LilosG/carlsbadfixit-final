@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import QuickEstimateCard from "../../components/QuickEstimateCard.astro";
 import PageCtaStrip from "../../components/PageCtaStrip.astro";
+import EeatTrustBlock from "../../components/EeatTrustBlock.astro";
 import { services } from "../../data/services";
 import { serviceAreas } from "../../data/service-areas";
 import { cityContent } from "../../data/city-content";
@@ -37,6 +38,7 @@ const moneyEntry =
 const introText =
   moneyEntry.intro ??
   `Local ${service.name.toLowerCase()} visits in ${primaryArea.label} focused on small to medium projects that fit into a clear service window.`;
+const longTailNote = `${service.name} handyman services in ${primaryArea.label} are ideal for homeowners who want clear scope, careful work, and a tidy finish on smaller projects.`;
 
 const schedulingNote =
   moneyEntry.schedulingNote ??
@@ -271,6 +273,9 @@ const faqJsonLd =
         <p class="text-body-sm max-w-2xl text-sky-50">
           {introText}
         </p>
+        <p class="text-body-sm max-w-2xl text-sky-50">
+          {longTailNote}
+        </p>
 
         {
           serviceExamples.length > 0 && (
@@ -293,6 +298,8 @@ const faqJsonLd =
           </a>
           <a
             href="tel:+18082266681"
+            data-ga-call="true"
+            data-ga-location="service_page_hero_call"
             data-ga-event="call_click"
             data-ga-label="site_phone"
             class="border-cf-accentBlueSoft to-cf-accentBlueSoft/40 text-cf-accentBlue shadow-soft hover:to-cf-accentBlueSoft/70 inline-flex items-center justify-center rounded-full border bg-gradient-to-r from-white px-5 py-2 text-sm font-semibold hover:from-white"
@@ -336,6 +343,14 @@ const faqJsonLd =
         </div>
       </aside>
     </div>
+  </section>
+
+  <section class="mt-8">
+    <EeatTrustBlock
+      locationLabel={`${primaryArea.label} and nearby North County communities`}
+      heading={`${service.name} visits with local expertise`}
+      body={`Carlsbad Fix It provides focused ${service.name.toLowerCase()} visits that fit into a clear service window. Each visit is planned around realistic timing, tidy work areas, and clear communication from start to finish.`}
+    />
   </section>
 
   {/* WHAT WE DO DURING A VISIT / TYPICAL VISIT */}
@@ -559,6 +574,40 @@ const faqJsonLd =
     </div>
   </section>
 
+  <section class="shadow-soft mt-8 rounded-3xl bg-white p-6 md:p-8">
+    <div class="space-y-2">
+      <p class="eyebrow text-cf-textMuted">Related services</p>
+      <h2 class="text-h2 text-cf-text font-semibold">
+        Other handyman services homeowners pair with {
+          service.name.toLowerCase()
+        }
+      </h2>
+      <p class="text-body-sm text-cf-textMuted max-w-3xl">
+        Many visits combine a few small tasks in the same area of the home.
+        These related services are commonly scheduled alongside{" "}
+        {service.name.toLowerCase()} projects.
+      </p>
+    </div>
+    <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        services
+          .filter((item) => item.slug !== service.slug)
+          .slice(0, 3)
+          .map((item) => (
+            <a
+              href={`/services/${item.slug}/`}
+              class="text-cf-text shadow-soft hover:bg-cf-sandSoft flex flex-col gap-1 rounded-2xl bg-white p-4 text-sm"
+            >
+              <span class="font-semibold">{item.name}</span>
+              <span class="text-cf-textMuted text-xs">
+                {item.shortDescription}
+              </span>
+            </a>
+          ))
+      }
+    </div>
+  </section>
+
   {/* COVERAGE / SERVICE AREAS */}
   <section class="bg-cf-sandSoft mt-8 rounded-3xl p-6 md:p-8">
     <div class="space-y-3">
@@ -662,6 +711,31 @@ const faqJsonLd =
       </section>
     )
   }
+
+  <section class="shadow-soft mt-8 rounded-3xl bg-white p-6 md:p-8">
+    <div class="space-y-2">
+      <p class="eyebrow text-cf-textMuted">Local availability</p>
+      <h2 class="text-h2 text-cf-text font-semibold">
+        {service.name} service areas in North County
+      </h2>
+      <p class="text-body-sm text-cf-textMuted max-w-2xl">
+        Choose your city to view local {service.name.toLowerCase()} availability and
+        nearby neighborhood coverage.
+      </p>
+    </div>
+    <div class="mt-4 flex flex-wrap gap-2 text-[11px]">
+      {
+        serviceAreas.map((area) => (
+          <a
+            href={`/service-areas/${area.slug}/${service.slug}/`}
+            class="text-cf-text shadow-soft hover:bg-cf-sandSoft inline-flex items-center rounded-full bg-white px-3 py-1"
+          >
+            {area.label}
+          </a>
+        ))
+      }
+    </div>
+  </section>
 
   {/* BOTTOM CTA – global */}
   <PageCtaStrip

@@ -5,6 +5,7 @@ import { services } from "../data/services";
 import { serviceAreas } from "../data/service-areas";
 import ServiceCard from "../components/ServiceCard.astro";
 import AreaCard from "../components/AreaCard.astro";
+import SectionIntro from "../components/SectionIntro.astro";
 import { getLocalBusinessJsonLd } from "../lib/seo";
 import { businessProfile, forms } from "../data/site-config";
 import { homeProcessSteps } from "../data/process-steps";
@@ -216,14 +217,12 @@ const localBusinessJsonLd = JSON.stringify(
 
   <section class="rounded-3xl bg-amber-50 p-6 md:p-8">
     <div class="mx-auto max-w-5xl space-y-6">
-      <div class="space-y-2 text-center">
-        <p class="eyebrow">Services</p>
-        <h2>Expert handyman services</h2>
-        <p class="text-sm text-slate-600">
-          Core services built around what North County homeowners request most,
-          with room for custom projects and punch lists.
-        </p>
-      </div>
+      <SectionIntro
+        eyebrow="Services"
+        title="Expert handyman services"
+        description="Core services built around what North County homeowners request most, with room for custom projects and punch lists."
+        align="center"
+      />
       <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {
           servicesForGrid.map((service) => (
@@ -239,14 +238,12 @@ const localBusinessJsonLd = JSON.stringify(
   </section>
 
   <section class="space-y-6">
-    <div class="space-y-2 text-center">
-      <p class="eyebrow">How we work</p>
-      <h2>A simple, four-step process</h2>
-      <p class="text-sm text-slate-600">
-        Clear communication, tidy work, and a dependable experience from first
-        call to final walkthrough.
-      </p>
-    </div>
+    <SectionIntro
+      eyebrow="How we work"
+      title="A simple, four-step process"
+      description="Clear communication, tidy work, and a dependable experience from first call to final walkthrough."
+      align="center"
+    />
     <div class="grid gap-5 md:grid-cols-4">
       {
         processSteps.map((item) => (
@@ -264,14 +261,12 @@ const localBusinessJsonLd = JSON.stringify(
 
   <section class="rounded-3xl bg-orange-50 px-4 py-8 sm:px-6 md:px-8">
     <div class="mx-auto max-w-5xl space-y-6">
-      <div class="space-y-2 text-center">
-        <p class="eyebrow">Results</p>
-        <h2>Real results you can see</h2>
-        <p class="text-sm text-slate-600">
-          Attention to detail and consistent quality on every project, large or
-          small.
-        </p>
-      </div>
+      <SectionIntro
+        eyebrow="Results"
+        title="Real results you can see"
+        description="Attention to detail and consistent quality on every project, large or small."
+        align="center"
+      />
       <div class="relative mx-auto max-w-3xl">
         <div
           class="flex overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm"
@@ -367,13 +362,12 @@ const localBusinessJsonLd = JSON.stringify(
   </section>
 
   <section class="space-y-6">
-    <div class="space-y-2 text-center">
-      <p class="eyebrow">Testimonials</p>
-      <h2>What our customers say</h2>
-      <p class="text-sm text-slate-600">
-        Real feedback from North County homeowners and property owners.
-      </p>
-    </div>
+    <SectionIntro
+      eyebrow="Testimonials"
+      title="What our customers say"
+      description="Real feedback from North County homeowners and property owners."
+      align="center"
+    />
     <p class="mt-1 text-center text-xs text-slate-700">
       Looking for ideas between handyman visits? Explore the <a
         href="/blog/"
@@ -406,14 +400,12 @@ const localBusinessJsonLd = JSON.stringify(
 
   <section class="rounded-3xl bg-amber-50 p-6 md:p-8">
     <div class="mx-auto max-w-5xl space-y-6">
-      <div class="space-y-2 text-center">
-        <p class="eyebrow">Service areas</p>
-        <h2>Proudly serving North County San Diego</h2>
-        <p class="text-sm text-slate-600">
-          Local service for coastal and nearby inland communities. If you do not
-          see your city listed, you can still reach out to check availability.
-        </p>
-      </div>
+      <SectionIntro
+        eyebrow="Service areas"
+        title="Proudly serving North County San Diego"
+        description="Local service for coastal and nearby inland communities. If you do not see your city listed, you can still reach out to check availability."
+        align="center"
+      />
       <div class="grid gap-4 md:grid-cols-3">
         {areasForGrid.map((area) => <AreaCard area={area} />)}
       </div>

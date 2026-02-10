@@ -3,6 +3,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import QuickEstimateCard from "../../../components/QuickEstimateCard.astro";
 import PageCtaStrip from "../../../components/PageCtaStrip.astro";
 import EeatTrustBlock from "../../../components/EeatTrustBlock.astro";
+import SectionIntro from "../../../components/SectionIntro.astro";
 import { services } from "../../../data/services";
 import { serviceAreas } from "../../../data/service-areas";
 import { cityContent } from "../../../data/city-content";
@@ -186,17 +187,13 @@ const description = `Local handyman help for small to medium projects in ${city.
     <div
       class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between"
     >
-      <div class="space-y-2">
-        <p class="eyebrow text-cf-textMuted">Services in {city.label}</p>
-        <h2 class="text-h2 text-cf-text font-semibold">
-          {servicesTitle}
-        </h2>
-        <p class="text-body-sm text-cf-textMuted max-w-2xl">
-          Core handyman services focused on the small to medium projects
-          homeowners in {city.label} call about most. You can also combine several
-          tasks into a single visit.
-        </p>
-      </div>
+      <SectionIntro
+        eyebrow={"Services in " + city.label}
+        title={servicesTitle}
+        description={"Core handyman services focused on the small to medium projects homeowners in " +
+          city.label +
+          " call about most. You can also combine several tasks into a single visit."}
+      />
     </div>
 
     <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -228,16 +225,11 @@ const description = `Local handyman help for small to medium projects in ${city.
     <div
       class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between"
     >
-      <div class="space-y-2">
-        <p class="eyebrow text-cf-textMuted">Explore more</p>
-        <h2 class="text-h2 text-cf-text font-semibold">
-          Helpful links for {city.label} homeowners
-        </h2>
-        <p class="text-body-sm text-cf-textMuted max-w-2xl">
-          Compare service availability across nearby cities, review core
-          services, or learn more about how Carlsbad Fix It plans each visit.
-        </p>
-      </div>
+      <SectionIntro
+        eyebrow="Explore more"
+        title={"Helpful links for " + city.label + " homeowners"}
+        description="Compare service availability across nearby cities, review core services, or learn more about how Carlsbad Fix It plans each visit."
+      />
     </div>
     <div class="mt-4 flex flex-wrap gap-3 text-sm">
       <a href="/services/" class="btn-primary">Browse services</a>
@@ -265,16 +257,14 @@ const description = `Local handyman help for small to medium projects in ${city.
   <section class="shadow-soft rounded-3xl bg-white p-6 md:p-8">
     <div class="grid gap-8 lg:grid-cols-2 lg:items-start">
       <div class="space-y-3">
-        <p class="eyebrow text-cf-textMuted">Coverage</p>
-        <h2 class="text-h2 text-cf-text font-semibold">
-          {coverageTitle}
-        </h2>
-        <p class="text-body-sm text-cf-textMuted">
-          Most visits in {city.label} are scheduled to keep travel time reasonable
-          and maximize time spent on actual repair and improvement work. Projects
-          are scoped so they fit into a single visit whenever possible, with larger
-          projects broken into clear phases.
-        </p>
+        <SectionIntro
+          eyebrow="Coverage"
+          title={coverageTitle}
+          description={"Most visits in " +
+            city.label +
+            " are scheduled to keep travel time reasonable and maximize time spent on actual repair and improvement work. Projects are scoped so they fit into a single visit whenever possible, with larger projects broken into clear phases."}
+          maxWidthClass="max-w-none"
+        />
 
         {
           neighborhoods.length > 0 && (

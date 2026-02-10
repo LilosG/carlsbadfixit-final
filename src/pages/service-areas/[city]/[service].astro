@@ -18,7 +18,9 @@ import {
   getFaqPageJsonLd,
 } from "../../../lib/seo";
 import { getFaqItemsForService } from "../../../data/faqs";
-import { businessProfile } from "../../../data/site-config";
+import ServiceExampleList from "../../../components/ServiceExampleList.astro";
+import PhoneCtaPill from "../../../components/PhoneCtaPill.astro";
+import HeroTrustBadges from "../../../components/HeroTrustBadges.astro";
 
 export function getStaticPaths() {
   const paths: {
@@ -176,56 +178,16 @@ const faqJsonLd =
           {longTailNote}
         </p>
 
-        {
-          serviceExamples.length > 0 && (
-            <div class="grid gap-3 text-sm text-sky-50 md:grid-cols-2">
-              {serviceExamples.slice(0, 4).map((example) => (
-                <div class="flex items-start gap-2">
-                  <span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-amber-300/20 text-[11px] font-semibold text-amber-100">
-                    ✓
-                  </span>
-                  <span class="leading-snug">{example}</span>
-                </div>
-              ))}
-            </div>
-          )
-        }
+        <ServiceExampleList examples={serviceExamples} />
 
         <div class="flex flex-wrap items-center gap-3">
           <a href="#city-service-form" class="btn-primary text-sm">
             Request an estimate
           </a>
-          <a
-            href={businessProfile.contact.phoneHref}
-            data-ga-call="true"
-            data-ga-location="service_area_service_call"
-            data-ga-event="call_click"
-            data-ga-label="site_phone"
-            class="border-cf-accentBlueSoft to-cf-accentBlueSoft/40 text-cf-accentBlue shadow-soft hover:to-cf-accentBlueSoft/70 inline-flex items-center justify-center rounded-full border bg-gradient-to-r from-white px-5 py-2 text-sm font-semibold hover:from-white"
-          >
-            Call or text{" "}
-            <span class="text-cf-accentBlue ml-1 font-semibold hover:underline">
-              {businessProfile.contact.phoneDisplay}
-            </span>
-          </a>
+          <PhoneCtaPill gaLocation="service_area_service_call" />
         </div>
 
-        <div
-          class="flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-sky-100 md:text-sm"
-        >
-          <div class="inline-flex items-center gap-2">
-            <span class="h-2 w-2 rounded-full bg-emerald-300"></span>
-            <span>Licensed and insured handyman</span>
-          </div>
-          <div class="inline-flex items-center gap-2">
-            <span class="h-2 w-2 rounded-full bg-amber-300"></span>
-            <span>Based in Carlsbad, serving North County San Diego</span>
-          </div>
-          <div class="inline-flex items-center gap-2">
-            <span class="h-2 w-2 rounded-full bg-sky-300"></span>
-            <span>Focused on small to medium home projects</span>
-          </div>
-        </div>
+        <HeroTrustBadges />
       </div>
 
       <aside class="flex justify-end">

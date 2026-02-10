@@ -1,0 +1,23 @@
+---
+import { businessProfile } from "../data/site-config";
+
+export interface Props {
+  gaLocation: string;
+}
+
+const { gaLocation } = Astro.props;
+---
+
+<a
+  href={businessProfile.contact.phoneHref}
+  data-ga-call="true"
+  data-ga-location={gaLocation}
+  data-ga-event="call_click"
+  data-ga-label="site_phone"
+  class="border-cf-accentBlueSoft to-cf-accentBlueSoft/40 text-cf-accentBlue shadow-soft hover:to-cf-accentBlueSoft/70 inline-flex items-center justify-center rounded-full border bg-gradient-to-r from-white px-5 py-2 text-sm font-semibold hover:from-white"
+>
+  Call or text
+  <span class="text-cf-accentBlue ml-1 font-semibold hover:underline">
+    {businessProfile.contact.phoneDisplay}
+  </span>
+</a>

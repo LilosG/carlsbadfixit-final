@@ -6,85 +6,18 @@ import { serviceAreas } from "../data/service-areas";
 import ServiceCard from "../components/ServiceCard.astro";
 import AreaCard from "../components/AreaCard.astro";
 import { getLocalBusinessJsonLd } from "../lib/seo";
+import { businessProfile, forms } from "../data/site-config";
+import { homeProcessSteps } from "../data/process-steps";
+import { homeTestimonials } from "../data/testimonials";
+import { homeFeaturedProjects } from "../data/projects";
 
 const primaryArea =
   serviceAreas.find((area) => area.primary) ?? serviceAreas[0];
 
-const processSteps = [
-  {
-    step: "1",
-    title: "Request an estimate",
-    body: "Share your punch list or project details online and include photos if you can.",
-  },
-  {
-    step: "2",
-    title: "Schedule your service",
-    body: "Pick a time that works for you and get clear expectations before we arrive.",
-  },
-  {
-    step: "3",
-    title: "We fix it right",
-    body: "Professional, tidy work with attention to detail on every task.",
-  },
-  {
-    step: "4",
-    title: "Final walkthrough",
-    body: "Review the work together and make sure everything looks and works as it should.",
-  },
-];
-
-const testimonials = [
-  {
-    name: "Sarah M.",
-    location: "Carlsbad, CA",
-    text: "Showed up on time, fixed our drywall and a few small items in one visit. Very easy to work with.",
-    source: "Homeowner",
-  },
-  {
-    name: "David R.",
-    location: "Encinitas, CA",
-    text: "Clear estimate, no surprises, and everything was cleaned up before they left. Highly recommend.",
-    source: "Homeowner",
-  },
-  {
-    name: "Rachel K.",
-    location: "Vista, CA",
-    text: "Our go-to for small repairs and maintenance between tenants. Reliable and professional.",
-    source: "Small landlord",
-  },
-];
-
-const featuredProjects = [
-  {
-    title: "Carlsbad carpentry and drywall refresh",
-    location: "Carlsbad",
-    summary:
-      "Framed a small wall section, patched drywall, and installed new trim for a clean, updated look.",
-    url: "/service-areas/carlsbad/carpentry-woodwork/",
-    image: "/images/projects/wood-counter-detail.jpg",
-    imageAlt: "Finished wood countertop detail in an updated kitchen",
-  },
-  {
-    title: "Oceanside kitchen & lighting refresh",
-    location: "Oceanside",
-    summary:
-      "Updated kitchen lighting and finishes to create a brighter, more open feel that connects to the living area.",
-    url: "/service-areas/oceanside/electrical/",
-    image: "/images/projects/kitchen-open-plan.jpg",
-    imageAlt: "Open plan kitchen and living area with updated lighting",
-  },
-  {
-    title: "Vista electrical panel and outlet updates",
-    location: "Vista",
-    summary:
-      "Updated an aging electrical panel and replaced outlets to safely support new fixtures and appliances.",
-    url: "/services/electrical/",
-    image: "/images/projects/electrical-panel.jpg",
-    imageAlt: "Updated electrical panel with clearly organized circuits",
-  },
-];
-
 const areasForGrid = serviceAreas;
+const processSteps = homeProcessSteps;
+const testimonials = homeTestimonials;
+const featuredProjects = homeFeaturedProjects;
 const servicesForGrid = services;
 
 const localBusinessJsonLd = JSON.stringify(
@@ -140,7 +73,7 @@ const localBusinessJsonLd = JSON.stringify(
             Request an estimate
           </a>
           <a
-            href="tel:+18082266681"
+            href={businessProfile.contact.phoneHref}
             data-ga-call="true"
             data-ga-location="home_hero_call"
             data-ga-event="call_click"
@@ -149,7 +82,7 @@ const localBusinessJsonLd = JSON.stringify(
           >
             Call or text <span
               class="text-cf-accentBlue font-semibold hover:underline"
-              >(808) 226-6681</span
+              >{businessProfile.contact.phoneDisplay}</span
             >
           </a>
         </div>
@@ -189,7 +122,7 @@ const localBusinessJsonLd = JSON.stringify(
             a no-obligation estimate, usually within one business day.
           </p>
           <form
-            action="https://formspree.io/f/mdkvzynw"
+            action={forms.estimateRequestAction}
             method="POST"
             class="mt-4 grid gap-3"
             data-ga-form-event="estimate_request_submit"
@@ -502,7 +435,7 @@ const localBusinessJsonLd = JSON.stringify(
         receive clear next steps and a no-obligation estimate.
       </p>
       <form
-        action="https://formspree.io/f/mdkvzynw"
+        action={forms.estimateRequestAction}
         method="POST"
         class="mt-2 grid gap-4 md:grid-cols-2"
         data-ga-form-event="estimate_request_submit"
@@ -601,13 +534,13 @@ const localBusinessJsonLd = JSON.stringify(
         </p>
         <p class="mt-1 text-lg font-semibold text-sky-700">
           <a
-            href="tel:+18082266681"
+            href={businessProfile.contact.phoneHref}
             data-ga-call="true"
             data-ga-location="home_aside_call"
             data-ga-event="call_click"
             data-ga-label="site_phone"
             class="text-cf-accentBlue font-semibold hover:underline"
-            >(808) 226-6681</a
+            >{businessProfile.contact.phoneDisplay}</a
           >
         </p>
         <p class="mt-1 text-[11px] text-slate-700">

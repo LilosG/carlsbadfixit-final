@@ -1,5 +1,6 @@
 ---
-
+import { footerSections } from "../data/navigation";
+import { businessProfile } from "../data/site-config";
 ---
 
 <footer class="border-cf-footerMuted bg-cf-footer text-cf-textMuted border-t">
@@ -31,7 +32,7 @@
               />
               <img
                 src="/images/logo/logo-medium.png"
-                alt="Carlsbad Fix It"
+                alt={businessProfile.name}
                 class="h-full w-full object-contain"
                 loading="lazy"
               />
@@ -42,10 +43,10 @@
               href="/"
               class="text-sm font-semibold tracking-tight text-white md:text-base"
             >
-              Carlsbad Fix It
+              {businessProfile.name}
             </a>
             <span class="text-cf-textMuted text-[11px] md:text-xs">
-              Local handyman in Carlsbad, CA
+              {businessProfile.tagline}
             </span>
           </div>
         </div>
@@ -54,70 +55,33 @@
           communities with small home repairs and improvements.
         </p>
         <p class="text-cf-textMuted text-xs">
-          3027 Greenwich St, Carlsbad, CA 92010
+          {businessProfile.address.streetAddress}, {
+            businessProfile.address.addressLocality
+          }, {businessProfile.address.addressRegion}
+          {businessProfile.address.postalCode}
         </p>
       </div>
 
       <div
         class="flex flex-1 flex-wrap gap-8 md:gap-10 md:border-l md:border-white/5 md:pl-10"
       >
-        <div class="space-y-2">
-          <p
-            class="text-cf-textMuted text-[11px] font-semibold tracking-wide uppercase"
-          >
-            Site
-          </p>
-          <a
-            href="/services/"
-            class="text-cf-textMuted block text-[13px] underline-offset-4 hover:text-sky-300 hover:underline"
-          >
-            Services
-          </a>
-          <a
-            href="/service-areas/"
-            class="text-cf-textMuted block text-[13px] underline-offset-4 hover:text-sky-300 hover:underline"
-          >
-            Service areas
-          </a>
-          <a
-            href="/about/"
-            class="text-cf-textMuted block text-[13px] underline-offset-4 hover:text-sky-300 hover:underline"
-          >
-            About
-          </a>
-          <a
-            href="/contact/"
-            class="text-cf-textMuted block text-[13px] underline-offset-4 hover:text-sky-300 hover:underline"
-          >
-            Contact
-          </a>
-          <a
-            href="/blog/"
-            class="text-cf-textMuted block text-[13px] underline-offset-4 hover:text-sky-300 hover:underline"
-          >
-            Blog
-          </a>
-        </div>
-
-        <div class="space-y-2">
-          <p
-            class="text-cf-textMuted text-[11px] font-semibold tracking-wide uppercase"
-          >
-            Support
-          </p>
-          <a
-            href="/faq/"
-            class="text-cf-textMuted block text-[13px] underline-offset-4 hover:text-sky-300 hover:underline"
-          >
-            FAQ
-          </a>
-          <a
-            href="/who-we-work-with/"
-            class="text-cf-textMuted block text-[13px] underline-offset-4 hover:text-sky-300 hover:underline"
-          >
-            Who we work with
-          </a>
-        </div>
+        {
+          footerSections.map((section) => (
+            <div class="space-y-2">
+              <p class="text-cf-textMuted text-[11px] font-semibold tracking-wide uppercase">
+                {section.title}
+              </p>
+              {section.links.map((link) => (
+                <a
+                  href={link.href}
+                  class="text-cf-textMuted block text-[13px] underline-offset-4 hover:text-sky-300 hover:underline"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          ))
+        }
 
         <div class="space-y-3">
           <p
@@ -128,29 +92,37 @@
           <div class="space-y-1 text-sm">
             <p class="text-cf-textMuted">Call or text:</p>
             <a
-              href="tel:+18082266681"
+              href={businessProfile.contact.phoneHref}
               data-ga-call="true"
               data-ga-location="footer_call"
               data-ga-event="call_click"
               data-ga-label="site_phone"
               class="inline-flex items-center text-sm font-semibold text-sky-300 hover:text-sky-200"
             >
-              (808) 226-6681
+              {businessProfile.contact.phoneDisplay}
             </a>
           </div>
           <div class="space-y-1 text-sm">
             <p class="text-cf-textMuted">Email:</p>
             <a
-              href="mailto:carlsbadfixit@gmail.com"
+              href={`mailto:${businessProfile.contact.email}`}
               class="inline-flex items-center text-sm font-medium text-sky-300 hover:text-sky-200"
             >
-              carlsbadfixit@gmail.com
+              {businessProfile.contact.email}
             </a>
           </div>
           <p class="text-cf-textMuted text-xs">
             Typical response during normal business hours.
           </p>
-          <p class="text-cf-textMuted text-xs">Hours: Mon–Fri, 8am–5pm.</p>
+          <p class="text-cf-textMuted text-xs">
+            Hours: {businessProfile.hours[0].dayOfWeek.slice(0, 3)}–{
+              businessProfile.hours[
+                businessProfile.hours.length - 1
+              ].dayOfWeek.slice(0, 3)
+            }, {businessProfile.hours[0].opens.slice(0, 2)}am–{
+              businessProfile.hours[0].closes.slice(0, 2)
+            }pm.
+          </p>
         </div>
       </div>
     </div>
@@ -161,7 +133,8 @@
       class="text-cf-textMuted mx-auto flex max-w-6xl justify-center px-4 py-4 text-xs"
     >
       <p class="text-center">
-        © {new Date().getFullYear()} Carlsbad Fix It. All rights reserved.
+        © {new Date().getFullYear()}
+        {businessProfile.name}. All rights reserved.
         <span class="text-cf-borderSoft mx-1.5">•</span>
         Website designed by
         <a

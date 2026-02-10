@@ -1,5 +1,5 @@
 ---
-
+import { businessProfile } from "../data/site-config";
 ---
 
 <div
@@ -7,7 +7,7 @@
 >
   <div class="mx-auto flex max-w-6xl gap-3 px-4 py-3">
     <a
-      href="tel:+18082266681"
+      href={businessProfile.contact.phoneHref}
       data-ga-call="true"
       data-ga-location="mobile_sticky_call"
       data-ga-event="call_click"

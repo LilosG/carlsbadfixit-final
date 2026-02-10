@@ -1,3 +1,5 @@
+import { businessProfile, defaultSeo } from "../data/site-config";
+
 export type BreadcrumbItem = {
   name: string;
   url: string;
@@ -27,64 +29,54 @@ export type ArticleMeta = {
   authorName?: string;
 };
 
-const SITE_URL = "https://www.carlsbadfixit.com";
-
+const SITE_URL = defaultSeo.siteUrl;
 const BUSINESS_IMAGE_URL = new URL(
-  "/images/logo/logo-medium.png",
+  defaultSeo.defaultOgImagePath,
   SITE_URL,
 ).toString();
-
-const GBP_URL = "https://maps.app.goo.gl/SLn6g6JEFRTLLWPRA";
-
 const BUSINESS_ID = `${SITE_URL}#local-business`;
 
 function getBusinessAddress() {
+  const { address } = businessProfile;
+
   return {
     "@type": "PostalAddress",
-    streetAddress: "3027 Greenwich St.",
-    addressLocality: "Carlsbad",
-    addressRegion: "CA",
-    postalCode: "92010",
-    addressCountry: "US",
+    streetAddress: address.streetAddress,
+    addressLocality: address.addressLocality,
+    addressRegion: address.addressRegion,
+    postalCode: address.postalCode,
+    addressCountry: address.addressCountry,
   };
 }
 
 function getOpeningHoursSpecification() {
-  return [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-      ],
-      opens: "08:00",
-      closes: "19:00",
-    },
-  ];
+  return businessProfile.hours.map((hour) => ({
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: [hour.dayOfWeek],
+    opens: hour.opens,
+    closes: hour.closes,
+  }));
 }
 
 function getBusinessProvider() {
   return {
     "@type": "HomeAndConstructionBusiness",
     "@id": BUSINESS_ID,
-    name: "Carlsbad Fix It",
+    name: businessProfile.name,
     url: SITE_URL,
     address: getBusinessAddress(),
-    telephone: "+1-808-226-6681",
+    telephone: businessProfile.contact.phoneE164,
+    email: businessProfile.contact.email,
     image: BUSINESS_IMAGE_URL,
     logo: BUSINESS_IMAGE_URL,
-    hasMap: GBP_URL,
+    hasMap: businessProfile.mapUrl,
     openingHoursSpecification: getOpeningHoursSpecification(),
-    priceRange: "$$",
-    sameAs: [GBP_URL],
+    priceRange: businessProfile.priceRange,
+    sameAs: businessProfile.socialLinks.map((link) => link.href),
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "5.0",
-      reviewCount: 4,
+      ratingValue: businessProfile.aggregateRating.ratingValue,
+      reviewCount: businessProfile.aggregateRating.reviewCount,
     },
   };
 }

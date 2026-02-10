@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageCtaStrip from "../components/PageCtaStrip.astro";
+import { businessProfile, forms } from "../data/site-config";
 ---
 
 <BaseLayout
@@ -77,7 +78,7 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
             data-ga-lead="true"
             data-ga-form-name="Contact Form"
             data-ga-location="contact_page_main"
-            action="https://formspree.io/f/mdkvzynw"
+            action={forms.estimateRequestAction}
             method="POST"
             class="mt-4 space-y-3"
             data-ga-form-event="contact_form_submit"
@@ -86,7 +87,7 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
             <input
               type="hidden"
               name="_subject"
-              value="New contact from Carlsbad Fix It contact page"
+              value={forms.subjects.contact}
             />
 
             <div class="grid gap-3 md:grid-cols-2">
@@ -197,11 +198,11 @@ import PageCtaStrip from "../components/PageCtaStrip.astro";
           <dl class="text-cf-text mt-2 space-y-1 text-sm">
             <div class="flex gap-2">
               <dt class="text-cf-textMuted w-16 shrink-0">Phone</dt>
-              <dd>(808) 226-6681</dd>
+              <dd>{businessProfile.contact.phoneDisplay}</dd>
             </div>
             <div class="flex gap-2">
               <dt class="text-cf-textMuted w-16 shrink-0">Email</dt>
-              <dd>carlsbadfixit@gmail.com</dd>
+              <dd>{businessProfile.contact.email}</dd>
             </div>
           </dl>
         </div>

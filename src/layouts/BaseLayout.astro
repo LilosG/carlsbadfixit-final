@@ -4,6 +4,7 @@ import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import TrustStrip from "../components/TrustStrip.astro";
 import MobileStickyCta from "../components/MobileStickyCta.astro";
+import { defaultSeo } from "../data/site-config";
 
 export interface Props {
   title?: string;
@@ -15,20 +16,20 @@ export interface Props {
 }
 
 const {
-  title = "Carlsbad Fix It | Handyman Services in Carlsbad, CA",
-  description = "Local handyman for home repairs, installations, and maintenance in Carlsbad, California.",
+  title = defaultSeo.defaultTitle,
+  description = defaultSeo.defaultDescription,
   canonical,
   noIndex = false,
   ogType = "website",
   ogImage,
 } = Astro.props;
 
-const siteUrl = Astro.site?.toString() ?? "https://www.carlsbadfixit.com";
+const siteUrl = Astro.site?.toString() ?? defaultSeo.siteUrl;
 const defaultCanonical = new URL(Astro.url.pathname, siteUrl).toString();
 const canonicalUrl = canonical ?? defaultCanonical;
 const robots = noIndex ? "noindex,follow" : "index,follow";
 const defaultOgImage = new URL(
-  "/images/logo/logo-medium.png",
+  defaultSeo.defaultOgImagePath,
   siteUrl,
 ).toString();
 const ogImageUrl = ogImage ?? defaultOgImage;
@@ -49,12 +50,17 @@ const ogImageUrl = ogImage ?? defaultOgImage;
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={ogImageUrl} />
     <meta property="og:site_name" content="Carlsbad Fix It" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content={defaultSeo.ogLocale} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
+    {
+      defaultSeo.twitterHandle && (
+        <meta name="twitter:site" content={defaultSeo.twitterHandle} />
+      )
+    }
 
     <link
       rel="icon"

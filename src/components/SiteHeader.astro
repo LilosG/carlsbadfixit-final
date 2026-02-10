@@ -1,6 +1,8 @@
 ---
-import { services } from "../data/services";
+import { primaryNavLinks } from "../data/navigation";
 import { serviceAreas } from "../data/service-areas";
+import { services } from "../data/services";
+import { businessProfile } from "../data/site-config";
 ---
 
 <header
@@ -32,7 +34,7 @@ import { serviceAreas } from "../data/service-areas";
           />
           <img
             src="/images/logo/logo-medium.png"
-            alt="Carlsbad Fix It"
+            alt={businessProfile.name}
             class="h-full w-full object-contain"
             loading="eager"
             fetchpriority="high"
@@ -43,10 +45,10 @@ import { serviceAreas } from "../data/service-areas";
         <span
           class="text-cf-text text-sm font-semibold tracking-tight md:text-base"
         >
-          Carlsbad Fix It
+          {businessProfile.name}
         </span>
         <span class="text-cf-textMuted text-[11px] md:text-xs">
-          Local handyman in Carlsbad, CA
+          {businessProfile.tagline}
         </span>
       </div>
     </a>
@@ -137,42 +139,28 @@ import { serviceAreas } from "../data/service-areas";
           </div>
         </div>
 
-        <a
-          href="/about/"
-          class="text-cf-text hover:text-cf-accentBlue text-sm font-medium transition-colors"
-        >
-          About
-        </a>
-        <a
-          href="/faq/"
-          class="text-cf-text hover:text-cf-accentBlue text-sm font-medium transition-colors"
-        >
-          FAQ
-        </a>
-        <a
-          href="/blog/"
-          class="text-cf-text hover:text-cf-accentBlue text-sm font-medium transition-colors"
-        >
-          Blog
-        </a>
-        <a
-          href="/contact/"
-          class="text-cf-text hover:text-cf-accentBlue text-sm font-medium transition-colors"
-        >
-          Contact
-        </a>
+        {
+          primaryNavLinks.map((link) => (
+            <a
+              href={link.href}
+              class="text-cf-text hover:text-cf-accentBlue text-sm font-medium transition-colors"
+            >
+              {link.label}
+            </a>
+          ))
+        }
       </nav>
 
       <div class="hidden items-center gap-3 md:flex">
         <a
-          href="tel:+18082266681"
+          href={businessProfile.contact.phoneHref}
           data-ga-call="true"
           data-ga-location="header_desktop"
           data-ga-event="call_click"
           data-ga-label="site_phone"
           class="bg-cf-accentBlue hover:bg-cf-accentBlue/90 inline-flex h-10 items-center rounded-full px-4 text-sm font-semibold text-white shadow-sm"
         >
-          (808) 226-6681
+          {businessProfile.contact.phoneDisplay}
         </a>
         <a
           href="/contact/"
@@ -244,42 +232,28 @@ import { serviceAreas } from "../data/service-areas";
           </div>
 
           <div class="border-cf-borderSubtle mb-3 space-y-1 border-b pb-3">
-            <a
-              href="/about/"
-              class="text-cf-text hover:bg-cf-sandSoft block rounded-lg px-3 py-1.5 text-sm"
-            >
-              About
-            </a>
-            <a
-              href="/faq/"
-              class="text-cf-text hover:bg-cf-sandSoft block rounded-lg px-3 py-1.5 text-sm"
-            >
-              FAQ
-            </a>
-            <a
-              href="/blog/"
-              class="text-cf-text hover:bg-cf-sandSoft block rounded-lg px-3 py-1.5 text-sm"
-            >
-              Blog
-            </a>
-            <a
-              href="/contact/"
-              class="text-cf-text hover:bg-cf-sandSoft block rounded-lg px-3 py-1.5 text-sm"
-            >
-              Contact
-            </a>
+            {
+              primaryNavLinks.map((link) => (
+                <a
+                  href={link.href}
+                  class="text-cf-text hover:bg-cf-sandSoft block rounded-lg px-3 py-1.5 text-sm"
+                >
+                  {link.label}
+                </a>
+              ))
+            }
           </div>
 
           <div class="space-y-2">
             <a
-              href="tel:+18082266681"
+              href={businessProfile.contact.phoneHref}
               data-ga-call="true"
               data-ga-location="header_mobile"
               data-ga-event="call_click"
               data-ga-label="site_phone"
               class="text-cf-textMuted block text-xs font-medium"
             >
-              Call or text (808) 226-6681
+              Call or text {businessProfile.contact.phoneDisplay}
             </a>
             <a href="/contact/" class="btn-primary block text-center text-xs">
               Request a quote

@@ -1,0 +1,33 @@
+---
+export interface Props {
+  eyebrow: string;
+  title: string;
+  description?: string;
+  align?: "left" | "center";
+  maxWidthClass?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  description,
+  align = "left",
+  maxWidthClass = "max-w-2xl",
+} = Astro.props;
+
+const alignClass = align === "center" ? "text-center" : "text-left";
+const bodyClass =
+  align === "center" ? `${maxWidthClass} mx-auto` : maxWidthClass;
+---
+
+<div class:list={["space-y-2", alignClass]}>
+  <p class="eyebrow text-cf-textMuted">{eyebrow}</p>
+  <h2 class="text-h2 text-cf-text font-semibold">{title}</h2>
+  {
+    description && (
+      <p class:list={["text-body-sm text-cf-textMuted", bodyClass]}>
+        {description}
+      </p>
+    )
+  }
+</div>

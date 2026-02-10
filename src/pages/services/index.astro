@@ -4,6 +4,7 @@ import { services } from "../../data/services";
 import { serviceAreas } from "../../data/service-areas";
 import PageCtaStrip from "../../components/PageCtaStrip.astro";
 import EeatTrustBlock from "../../components/EeatTrustBlock.astro";
+import SectionIntro from "../../components/SectionIntro.astro";
 import { businessProfile } from "../../data/site-config";
 
 const primaryArea =
@@ -154,17 +155,11 @@ const nearbyAreas = serviceAreas.filter((area) => !area.primary);
     <div
       class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between"
     >
-      <div class="space-y-2">
-        <p class="eyebrow text-cf-textMuted">Core services</p>
-        <h2 class="text-h2 text-cf-text font-semibold">
-          Handyman services you can book with Carlsbad Fix It
-        </h2>
-        <p class="text-body-sm text-cf-textMuted max-w-2xl">
-          These services reflect the projects North County homeowners call about
-          most. You can book a single service or combine several small tasks
-          into the same visit when they fit in the same service window.
-        </p>
-      </div>
+      <SectionIntro
+        eyebrow="Core services"
+        title="Handyman services you can book with Carlsbad Fix It"
+        description="These services reflect the projects North County homeowners call about most. You can book a single service or combine several small tasks into the same visit when they fit in the same service window."
+      />
     </div>
 
     <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -210,15 +205,11 @@ const nearbyAreas = serviceAreas.filter((area) => !area.primary);
   </section>
 
   <section class="shadow-soft mt-8 rounded-3xl bg-white p-6 md:p-8">
-    <div class="space-y-2">
-      <p class="eyebrow text-cf-textMuted">Service areas</p>
-      <h2 class="text-h2 text-cf-text font-semibold">
-        Handyman availability across North County San Diego
-      </h2>
-      <p class="text-body-sm text-cf-textMuted max-w-2xl">
-        Explore local coverage and find the right service area for your home.
-      </p>
-    </div>
+    <SectionIntro
+      eyebrow="Service areas"
+      title="Handyman availability across North County San Diego"
+      description="Explore local coverage and find the right service area for your home."
+    />
     <div class="mt-4 flex flex-wrap gap-2 text-[11px]">
       {
         serviceAreas.map((area) => (

@@ -4,7 +4,7 @@ import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import TrustStrip from "../components/TrustStrip.astro";
 import MobileStickyCta from "../components/MobileStickyCta.astro";
-import { defaultSeo } from "../data/site-config";
+import { businessProfile, defaultSeo } from "../data/site-config";
 
 export interface Props {
   title?: string;
@@ -33,6 +33,63 @@ const defaultOgImage = new URL(
   siteUrl,
 ).toString();
 const ogImageUrl = ogImage ?? defaultOgImage;
+const businessId = `${siteUrl}#local-business`;
+const organizationId = `${siteUrl}#organization`;
+const websiteId = `${siteUrl}#website`;
+
+const organizationJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": organizationId,
+  name: businessProfile.name,
+  url: siteUrl,
+  logo: new URL(defaultSeo.defaultOgImagePath, siteUrl).toString(),
+  sameAs: businessProfile.socialLinks.map((link) => link.href),
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: businessProfile.contact.phoneE164,
+      email: businessProfile.contact.email,
+      contactType: "customer service",
+      areaServed: "US",
+      availableLanguage: ["en"],
+    },
+  ],
+});
+
+const websiteJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": websiteId,
+  url: siteUrl,
+  name: businessProfile.name,
+  description: defaultSeo.defaultDescription,
+  inLanguage: "en-US",
+  publisher: {
+    "@id": organizationId,
+  },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${siteUrl}/search/?q={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
+});
+
+const webpageJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${canonicalUrl}#webpage`,
+  url: canonicalUrl,
+  name: title,
+  description,
+  isPartOf: {
+    "@id": websiteId,
+  },
+  about: {
+    "@id": businessId,
+  },
+  inLanguage: "en-US",
+});
 ---
 
 <html lang="en">
@@ -75,6 +132,14 @@ const ogImageUrl = ogImage ?? defaultOgImage;
       href="/images/logo/logo-medium.png"
     />
     <link rel="apple-touch-icon" href="/images/logo/logo-large.png" />
+
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={organizationJsonLd}
+    />
+    <script type="application/ld+json" is:inline set:html={websiteJsonLd} />
+    <script type="application/ld+json" is:inline set:html={webpageJsonLd} />
 
     <!-- Google Analytics (GA4) with Partytown for performance -->
     <script

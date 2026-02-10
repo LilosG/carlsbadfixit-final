@@ -6,16 +6,50 @@ import PageCtaStrip from "../../components/PageCtaStrip.astro";
 import EeatTrustBlock from "../../components/EeatTrustBlock.astro";
 import SectionIntro from "../../components/SectionIntro.astro";
 import { businessProfile } from "../../data/site-config";
+import { getBreadcrumbJsonLd, getCollectionPageJsonLd } from "../../lib/seo";
 
 const primaryArea =
   serviceAreas.find((area) => area.primary) ?? serviceAreas[0];
 const nearbyAreas = serviceAreas.filter((area) => !area.primary);
+
+const servicesCollectionJsonLd = JSON.stringify(
+  getCollectionPageJsonLd({
+    url: "/services/",
+    name: "Handyman services in Carlsbad and North County San Diego",
+    description:
+      "Browse core handyman services from Carlsbad Fix It, including carpentry, electrical, plumbing fixture repairs, furniture assembly, honey-do lists, drywall repair, and TV mounting.",
+    items: services.map((service) => ({
+      name: service.name,
+      url: `/services//`,
+    })),
+  }),
+);
+
+const breadcrumbJsonLd = JSON.stringify(
+  getBreadcrumbJsonLd([
+    { name: "Home", url: "/" },
+    { name: "Services", url: "/services/" },
+  ]),
+);
 ---
 
 <BaseLayout
   title="Handyman Services in Carlsbad & North County San Diego | Carlsbad Fix It"
   description="Browse core handyman services from Carlsbad Fix It, including carpentry, electrical, plumbing fixture repairs, furniture assembly, honey-do lists, drywall repair, and TV mounting for homes in Carlsbad and North County San Diego."
 >
+  <script
+    type="application/ld+json"
+    slot="head"
+    is:inline
+    set:html={breadcrumbJsonLd}
+  />
+  <script
+    type="application/ld+json"
+    slot="head"
+    is:inline
+    set:html={servicesCollectionJsonLd}
+  />
+
   <section class="shadow-card rounded-3xl bg-white p-6 md:p-8">
     <div
       class="grid gap-10 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1.1fr)] lg:items-start"

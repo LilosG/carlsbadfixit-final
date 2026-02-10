@@ -2,7 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageCtaStrip from "../../components/PageCtaStrip.astro";
 import EeatTrustBlock from "../../components/EeatTrustBlock.astro";
-import { getCollectionPageJsonLd } from "../../lib/seo";
+import { getBreadcrumbJsonLd, getCollectionPageJsonLd } from "../../lib/seo";
 
 const areas = [
   {
@@ -85,6 +85,13 @@ const serviceAreasCollectionJsonLd = JSON.stringify(
     })),
   }),
 );
+
+const breadcrumbJsonLd = JSON.stringify(
+  getBreadcrumbJsonLd([
+    { name: "Home", url: "/" },
+    { name: "Service areas", url: "/service-areas/" },
+  ]),
+);
 ---
 
 <BaseLayout
@@ -96,6 +103,12 @@ const serviceAreasCollectionJsonLd = JSON.stringify(
     slot="head"
     is:inline
     set:html={serviceAreasCollectionJsonLd}
+  />
+  <script
+    type="application/ld+json"
+    slot="head"
+    is:inline
+    set:html={breadcrumbJsonLd}
   />
 
   <div class="bg-cf-page w-full">

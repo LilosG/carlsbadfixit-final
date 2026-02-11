@@ -2,12 +2,38 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import QuickEstimateCard from "../components/QuickEstimateCard.astro";
 import PageCtaStrip from "../components/PageCtaStrip.astro";
+import { serviceAreas } from "../data/service-areas";
+import { getBreadcrumbJsonLd, getLocalBusinessJsonLd } from "../lib/seo";
+
+const aboutBreadcrumbJsonLd = JSON.stringify(
+  getBreadcrumbJsonLd([
+    { name: "Home", url: "/" },
+    { name: "About", url: "/about/" },
+  ]),
+);
+
+const aboutLocalBusinessJsonLd = JSON.stringify(
+  getLocalBusinessJsonLd(serviceAreas.map((area) => area.label)),
+);
 ---
 
 <BaseLayout
   title="About Carlsbad Fix It"
   description="Carlsbad Fix It is a local handyman service focused on small to medium home projects in Carlsbad, CA and nearby North County San Diego communities."
 >
+  <script
+    type="application/ld+json"
+    slot="head"
+    is:inline
+    set:html={aboutBreadcrumbJsonLd}
+  />
+  <script
+    type="application/ld+json"
+    slot="head"
+    is:inline
+    set:html={aboutLocalBusinessJsonLd}
+  />
+
   <div class="bg-cf-page pt-8 pb-16 md:pt-10 md:pb-24">
     <div class="mx-auto flex max-w-6xl flex-col gap-12 px-4 md:px-6">
       <section

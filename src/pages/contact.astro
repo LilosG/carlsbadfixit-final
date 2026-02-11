@@ -2,12 +2,38 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageCtaStrip from "../components/PageCtaStrip.astro";
 import { businessProfile, forms } from "../data/site-config";
+import { serviceAreas } from "../data/service-areas";
+import { getBreadcrumbJsonLd, getLocalBusinessJsonLd } from "../lib/seo";
+
+const contactBreadcrumbJsonLd = JSON.stringify(
+  getBreadcrumbJsonLd([
+    { name: "Home", url: "/" },
+    { name: "Contact", url: "/contact/" },
+  ]),
+);
+
+const contactLocalBusinessJsonLd = JSON.stringify(
+  getLocalBusinessJsonLd(serviceAreas.map((area) => area.label)),
+);
 ---
 
 <BaseLayout
   title="Contact Carlsbad Fix It | Handyman in Carlsbad, CA"
   description="Contact Carlsbad Fix It for local handyman services in Carlsbad and nearby North County San Diego. Share your project details, timing, and photos to receive a clear, no-obligation estimate."
 >
+  <script
+    type="application/ld+json"
+    slot="head"
+    is:inline
+    set:html={contactBreadcrumbJsonLd}
+  />
+  <script
+    type="application/ld+json"
+    slot="head"
+    is:inline
+    set:html={contactLocalBusinessJsonLd}
+  />
+
   <div class="bg-cf-page pt-8 pb-16 md:pt-12 md:pb-24">
     <div class="mx-auto flex max-w-6xl flex-col gap-10 px-4 md:px-6">
       <!-- TOP GRID: INTRO + FORM -->

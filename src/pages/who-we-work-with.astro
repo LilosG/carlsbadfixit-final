@@ -1,12 +1,38 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageCtaStrip from "../components/PageCtaStrip.astro";
+import { serviceAreas } from "../data/service-areas";
+import { getBreadcrumbJsonLd, getLocalBusinessJsonLd } from "../lib/seo";
+
+const whoWeWorkWithBreadcrumbJsonLd = JSON.stringify(
+  getBreadcrumbJsonLd([
+    { name: "Home", url: "/" },
+    { name: "Who we work with", url: "/who-we-work-with/" },
+  ]),
+);
+
+const whoWeWorkWithLocalBusinessJsonLd = JSON.stringify(
+  getLocalBusinessJsonLd(serviceAreas.map((area) => area.label)),
+);
 ---
 
 <BaseLayout
   title="Who We Work With | Carlsbad Fix It"
   description="Carlsbad Fix It works with homeowners, small landlords, and local businesses that need reliable help with small repairs and projects."
 >
+  <script
+    type="application/ld+json"
+    slot="head"
+    is:inline
+    set:html={whoWeWorkWithBreadcrumbJsonLd}
+  />
+  <script
+    type="application/ld+json"
+    slot="head"
+    is:inline
+    set:html={whoWeWorkWithLocalBusinessJsonLd}
+  />
+
   <section class="space-y-6">
     <div class="space-y-2">
       <p class="text-xs font-semibold tracking-wide text-sky-700 uppercase">

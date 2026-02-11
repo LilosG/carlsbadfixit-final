@@ -1,7 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageCtaStrip from "../components/PageCtaStrip.astro";
-import { getFaqPageJsonLd } from "../lib/seo";
+import { serviceAreas } from "../data/service-areas";
+import {
+  getBreadcrumbJsonLd,
+  getFaqPageJsonLd,
+  getLocalBusinessJsonLd,
+} from "../lib/seo";
 
 const faqVisit = [
   {
@@ -59,6 +64,17 @@ const faqPricing = [
 
 const allFaqItems = [...faqVisit, ...faqScheduling, ...faqPricing];
 
+const faqBreadcrumbJsonLd = JSON.stringify(
+  getBreadcrumbJsonLd([
+    { name: "Home", url: "/" },
+    { name: "FAQ", url: "/faq/" },
+  ]),
+);
+
+const faqLocalBusinessJsonLd = JSON.stringify(
+  getLocalBusinessJsonLd(serviceAreas.map((area) => area.label)),
+);
+
 const faqJsonLd = JSON.stringify(
   getFaqPageJsonLd(
     allFaqItems,
@@ -77,6 +93,18 @@ const faqJsonLd = JSON.stringify(
     slot="head"
     is:inline
     set:html={faqJsonLd}
+  />
+  <script
+    type="application/ld+json"
+    slot="head"
+    is:inline
+    set:html={faqBreadcrumbJsonLd}
+  />
+  <script
+    type="application/ld+json"
+    slot="head"
+    is:inline
+    set:html={faqLocalBusinessJsonLd}
   />
 
   <div class="bg-cf-page pt-8 pb-16 md:pt-10 md:pb-24">

@@ -56,21 +56,25 @@ import { businessProfile } from "../data/site-config";
     <div class="flex items-center gap-3">
       <nav class="hidden items-center gap-6 md:flex">
         <div class="group relative" data-dropdown="services">
-          <a
-            href="/services/"
-            aria-haspopup="true"
-            aria-expanded="false"
-            aria-controls="services-menu"
-            data-dropdown-trigger
-            class="text-cf-text hover:text-cf-accentBlue focus-visible:ring-cf-accentBlue/30 inline-flex items-center gap-1 text-sm font-medium transition-colors focus:outline-none focus-visible:rounded-full focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-          >
-            <span>Services</span>
-            <span
-              class="inline-flex h-4 w-4 items-center justify-center text-[10px]"
+          <div class="inline-flex items-center gap-1">
+            <a
+              href="/services/"
+              class="text-cf-text hover:text-cf-accentBlue focus-visible:ring-cf-accentBlue/30 inline-flex items-center text-sm font-medium transition-colors focus:outline-none focus-visible:rounded-full focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+            >
+              <span>Services</span>
+            </a>
+            <button
+              type="button"
+              aria-label="Toggle services menu"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="services-menu"
+              data-dropdown-trigger
+              class="text-cf-text hover:text-cf-accentBlue focus-visible:ring-cf-accentBlue/30 inline-flex h-6 w-6 items-center justify-center rounded-full text-[10px] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               ▾
-            </span>
-          </a>
+            </button>
+          </div>
           <div
             id="services-menu"
             class="absolute top-full left-0 z-20 hidden pt-2 group-focus-within:block group-hover:block group-data-[open=true]:block"
@@ -98,21 +102,25 @@ import { businessProfile } from "../data/site-config";
         </div>
 
         <div class="group relative" data-dropdown="service-areas">
-          <a
-            href="/service-areas/"
-            aria-haspopup="true"
-            aria-expanded="false"
-            aria-controls="service-areas-menu"
-            data-dropdown-trigger
-            class="text-cf-text hover:text-cf-accentBlue focus-visible:ring-cf-accentBlue/30 inline-flex items-center gap-1 text-sm font-medium transition-colors focus:outline-none focus-visible:rounded-full focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-          >
-            <span>Service areas</span>
-            <span
-              class="inline-flex h-4 w-4 items-center justify-center text-[10px]"
+          <div class="inline-flex items-center gap-1">
+            <a
+              href="/service-areas/"
+              class="text-cf-text hover:text-cf-accentBlue focus-visible:ring-cf-accentBlue/30 inline-flex items-center text-sm font-medium transition-colors focus:outline-none focus-visible:rounded-full focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+            >
+              <span>Service areas</span>
+            </a>
+            <button
+              type="button"
+              aria-label="Toggle service areas menu"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="service-areas-menu"
+              data-dropdown-trigger
+              class="text-cf-text hover:text-cf-accentBlue focus-visible:ring-cf-accentBlue/30 inline-flex h-6 w-6 items-center justify-center rounded-full text-[10px] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               ▾
-            </span>
-          </a>
+            </button>
+          </div>
           <div
             id="service-areas-menu"
             class="absolute top-full left-0 z-20 hidden pt-2 group-focus-within:block group-hover:block group-data-[open=true]:block"

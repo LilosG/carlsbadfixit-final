@@ -573,30 +573,14 @@ const faqJsonLd =
       <a href={`/service-areas/${city.slug}/`} class="btn-primary">
         {city.label} service area
       </a>
-      <a
-        href={`/services/${service.slug}/`}
-        class="bg-cf-sandSoft text-cf-text hover:bg-cf-card inline-flex items-center rounded-full px-4 py-2 font-semibold"
-      >
+      <a href={`/services/${service.slug}/`} class="btn-pill-elevated">
         {service.name} overview
       </a>
-      <a
-        href="/services/"
-        class="bg-cf-sandSoft text-cf-text hover:bg-cf-card inline-flex items-center rounded-full px-4 py-2 font-semibold"
-      >
-        All services
-      </a>
-      <a
-        href="/service-areas/"
-        class="bg-cf-sandSoft text-cf-text hover:bg-cf-card inline-flex items-center rounded-full px-4 py-2 font-semibold"
-      >
+      <a href="/services/" class="btn-pill-elevated"> All services </a>
+      <a href="/service-areas/" class="btn-pill-elevated">
         All service areas
       </a>
-      <a
-        href="/contact/"
-        class="text-cf-accentBlue hover:text-cf-accentBlue/80 inline-flex items-center font-semibold"
-      >
-        Request a quote
-      </a>
+      <a href="/contact/" class="btn-pill-accent"> Request a quote </a>
     </div>
   </section>
 

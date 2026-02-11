@@ -29,20 +29,21 @@
     };
 
     trigger.addEventListener("click", (event) => {
-      if (event.metaKey || event.ctrlKey) return;
       event.preventDefault();
+      event.stopPropagation();
       toggle();
     });
 
     trigger.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        toggle();
-      }
-
       if (event.key === "Escape") {
         event.preventDefault();
         toggle(false);
+        return;
+      }
+
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggle();
       }
     });
   });

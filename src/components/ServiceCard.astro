@@ -39,16 +39,16 @@ const primaryServiceUrl =
   <p class="text-body-sm mt-2 flex-1">
     {service.shortDescription}
   </p>
-  <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-3 text-xs">
+  <div class="mt-4 flex items-center gap-3 border-t border-slate-100 pt-3 text-xs">
     <a
       href={primaryServiceUrl}
-      class="text-cf-accentBlue font-semibold underline-offset-2 hover:underline"
+      class="text-cf-accentBlue font-semibold underline-offset-2 hover:underline flex-1 min-w-0 truncate"
     >
       View {service.name.toLowerCase()} &rarr;
     </a>
     <a
       href={`/service-areas/${primaryAreaSlug}/${service.slug}/`}
-      class="text-cf-textMuted underline-offset-2 hover:underline"
+      class="text-cf-textMuted underline-offset-2 hover:underline shrink-0"
     >
       In {primaryAreaName}
     </a>

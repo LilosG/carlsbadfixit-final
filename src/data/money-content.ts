@@ -134,11 +134,11 @@ export const moneyContent: Record<string, Record<string, MoneyContentEntry>> = {
       intro:
         "Honey-do visits in Carlsbad are designed to clear a mixed list of small repairs and improvements in one trip, so you do not have to coordinate several separate service calls.",
       schedulingNote:
-        "These visits are booked with a clear service window and a prioritized list. Items in the same area of the home are grouped together first so the highest-value fixes are completed within the scheduled time.",
+        "These visits are booked with a every visit and a prioritized list. Items in the same area of the home are grouped together first so the highest-value fixes are completed within the scheduled time.",
       fitGood: [
         "A mixed list of small tasks like tightening hardware, adjusting doors, and swapping a few tired fixtures.",
         "Touch-ups before listing a Carlsbad home for sale—patching obvious wall damage, straightening hardware, and addressing small eyesores.",
-        "Move-in or post-remodel punch lists where you need a second set of hands to tidy details.",
+        "Move-in or post-remodel punch lists where you need a second set of hands to finishing details.",
         "Adding or adjusting simple storage such as closet rods, shelves, and hooks.",
         "Basic weatherstripping, caulking touch-ups, and other quick comfort or appearance upgrades.",
       ],
@@ -206,11 +206,11 @@ export const moneyContent: Record<string, Record<string, MoneyContentEntry>> = {
 
     "drywall-repair": {
       intro:
-        "Drywall repair visits in Carlsbad focus on small to medium wall and ceiling damage—holes, cracks, and previous patches—that need to blend back into the room.",
+        "Drywall repair visits in Carlsbad focus on wall and ceiling damage—holes, cracks, and previous patches—that need to blend back into the room.",
       schedulingNote:
         "Most Carlsbad drywall repairs are scoped so patching, texture, and basic touch-up can be completed in one or two passes. For larger areas or specialty textures, work may be broken into phases with clear expectations on drying time.",
       fitGood: [
-        "Patching small to medium drywall holes from door handles, accidents, or previous repairs.",
+        "Patching drywall holes from door handles, accidents, or previous repairs.",
         "Repairing cracks along seams, corners, and around doors or windows.",
         "Blending new texture into existing orange peel or knockdown walls on limited areas.",
         "Prepping repaired areas for paint so walls look smooth under typical lighting.",
@@ -263,9 +263,9 @@ export const moneyContent: Record<string, Record<string, MoneyContentEntry>> = {
         "Many Carlsbad homeowners mount TVs in living rooms, bonus rooms, and bedrooms to free up floor space and create a cleaner look, often pairing the visit with furniture assembly or minor cable management.",
       audienceNotes: {
         homeowners:
-          "Getting your TVs securely mounted, centered, and cable-managed so living spaces in your Carlsbad home feel tidy and intentional.",
+          "Getting your TVs securely mounted, centered, and cable-managed so living spaces in your Carlsbad home feel finished and intentional.",
         rentals:
-          "Mounting TVs and tidying cable runs in Carlsbad rentals so listings look clean and guest-friendly.",
+          "Mounting TVs and cleaning up cable runs in Carlsbad rentals so listings look clean and guest-friendly.",
         businesses:
           "Mounting TVs in waiting areas, break rooms, or small conference spaces without turning it into a big AV project.",
       },
@@ -394,7 +394,7 @@ export const moneyContent: Record<string, Record<string, MoneyContentEntry>> = {
       intro:
         "Honey-do visits in Oceanside are built for the mixed lists that pile up in coastal homes—sticky doors, tired fixtures, and small eyesores that never quite make it to the top of the list.",
       schedulingNote:
-        "These visits are scheduled with a clear service window and a prioritized list. Items in the same part of the home are grouped together first so the most important work is completed within the booked time.",
+        "These visits are scheduled with a every visit and a prioritized list. Items in the same part of the home are grouped together first so the most important work is completed within the booked time.",
       fitGood: [
         "A blended list of small tasks like tightening hardware, adjusting doors and gates, and swapping dated fixtures.",
         "Touch-ups before listing an Oceanside home as a rental or for sale.",
@@ -409,7 +409,7 @@ export const moneyContent: Record<string, Record<string, MoneyContentEntry>> = {
         "Oceanside homeowners often use a honey-do visit to catch up before guests arrive or before a busy rental season. Tackling the small, highly visible items first makes the home feel more cared for right away.",
       audienceNotes: {
         homeowners:
-          "Clearing the nagging list of small repairs and upgrades so your Oceanside home feels tidy and ready for everyday life or visitors.",
+          "Clearing the nagging list of small repairs and upgrades so your Oceanside home feels finished and ready for everyday life or visitors.",
         rentals:
           "Dialing in details between bookings—loose hardware, paint touch-ups, and small fixes that keep rentals reviewing well.",
         businesses:
@@ -465,7 +465,7 @@ export const moneyContent: Record<string, Record<string, MoneyContentEntry>> = {
       intro:
         "Drywall repair visits in Oceanside focus on patching and blending wall and ceiling damage so signs of previous repairs and moves do not distract from the space.",
       schedulingNote:
-        "Most Oceanside drywall work is scoped to handle a group of small to medium patches in the same area during one visit. Larger repairs may be broken into phases to allow for proper drying between coats.",
+        "Most Oceanside drywall work is scoped to handle a group of drywall patches in the same area during one visit. Larger repairs may be broken into phases to allow for proper drying between coats.",
       fitGood: [
         "Patching holes from accidents, wall anchors, or past TV mounts.",
         "Repairing cracks around doors, windows, and corners where movement has shown up.",
@@ -485,7 +485,7 @@ export const moneyContent: Record<string, Record<string, MoneyContentEntry>> = {
         homeowners:
           "Cleaning up drywall issues in the hallways, living areas, and bedrooms you notice most so your Oceanside home feels calmer and more finished.",
         rentals:
-          "Smoothing walls between guests so your listing photos and in-person showings look tidy.",
+          "Smoothing walls between guests so your listing photos and in-person showings look clean.",
         businesses:
           "Repairing small wall damage in Oceanside shops, studios, and offices so customer areas look well maintained.",
       },
@@ -579,7 +579,7 @@ export const moneyContent: Record<string, Record<string, MoneyContentEntry>> = {
       intro:
         "Electrical visits in Encinitas focus on lighting, fans, and small upgrades that make everyday spaces feel brighter and more comfortable without a full electrician crew.",
       schedulingNote:
-        "Most small electrical projects in Encinitas are scheduled in focused blocks so fixtures can be swapped, controls updated, and everything tested within a clear service window.",
+        "Most small electrical projects in Encinitas are scheduled in focused blocks so fixtures can be swapped, controls updated, and everything tested within a every visit.",
       fitGood: [
         "Replacing dated dining, kitchen, and entry fixtures with homeowner-supplied upgrades.",
         "Updating bedroom and living room ceiling fans where boxes are already properly supported.",
@@ -640,7 +640,7 @@ export const moneyContent: Record<string, Record<string, MoneyContentEntry>> = {
       },
       reviewSnippet: {
         quote:
-          "They took care of our dripping faucets and a running toilet in one visit and left everything tidy.",
+          "They took care of our dripping faucets and a running toilet in one visit and left everything clean.",
         name: "James P.",
         location: "Encinitas, CA",
         role: "Homeowner",
@@ -981,7 +981,7 @@ export const moneyContent: Record<string, Record<string, MoneyContentEntry>> = {
       schedulingNote:
         "Most Vista drywall work is scoped to take care of a set of patches in the same part of the home so patching, texture, and light touch-up can be completed efficiently.",
       fitGood: [
-        "Patching small to medium holes from accidents, installs, or old hardware.",
+        "Patching drywall holes from accidents, installs, or old hardware.",
         "Repairing cracks at corners, seams, and around windows or doors.",
         "Blending small areas of new texture into existing walls.",
         "Smoothing out rough or uneven older patches.",
@@ -1093,7 +1093,7 @@ export const moneyContent: Record<string, Record<string, MoneyContentEntry>> = {
       intro:
         "Electrical visits in San Marcos focus on lighting, fan, and small control upgrades in townhomes, condos, and single-family homes.",
       schedulingNote:
-        "Most small electrical projects in San Marcos are scheduled as tidy, focused visits that group fixtures in the same rooms or areas.",
+        "Most small electrical projects in San Marcos are scheduled as focused, professional visits that group fixtures in the same rooms or areas.",
       fitGood: [
         "Swapping out builder-basic fixtures for homeowner-selected options in dining, kitchen, or entry areas.",
         "Updating bedroom and living room ceiling fans to quieter, more efficient models.",
@@ -1236,7 +1236,7 @@ export const moneyContent: Record<string, Record<string, MoneyContentEntry>> = {
       intro:
         "Drywall repair visits in San Marcos focus on patching and blending damage so newer homes and condos stay looking fresh instead of scuffed and patched.",
       schedulingNote:
-        "Most drywall work in San Marcos is scoped to handle multiple small to medium repairs within the same visit, with clear expectations if a second pass is needed for drying time.",
+        "Most drywall work in San Marcos is scoped to handle multiple home repairs within the same visit, with clear expectations if a second pass is needed for drying time.",
       fitGood: [
         "Patching holes left behind by TV mounts, decor, and shelving.",
         "Repairing cracks at corners, stairwells, and around openings.",
@@ -1251,7 +1251,7 @@ export const moneyContent: Record<string, Record<string, MoneyContentEntry>> = {
         "Structural problems that continue to produce new cracks.",
       ],
       localNote:
-        "San Marcos has a large inventory of newer homes where a few highly visible repairs can dramatically improve how tidy a space feels.",
+        "San Marcos has a large inventory of newer homes where a few highly visible repairs can dramatically improve how finished a space feels.",
       audienceNotes: {
         homeowners:
           "Cleaning up drywall issues in the main living, kitchen, and hallway areas where you notice them daily.",
@@ -1434,7 +1434,7 @@ export const moneyContent: Record<string, Record<string, MoneyContentEntry>> = {
         "Emergency restoration work after major water or fire damage.",
       ],
       localNote:
-        "Bressi Ranch homeowners often use honey-do visits before big events, listing dates, or busy seasons so everything feels aligned with the neighborhood’s tidy standard.",
+        "Bressi Ranch homeowners often use honey-do visits before big events, listing dates, or busy seasons so everything feels aligned with the neighborhood’s finish level.",
       audienceNotes: {
         homeowners:
           "Clearing the list of small fixes so your Bressi Ranch home feels dialed in and guest-ready.",
@@ -1530,7 +1530,7 @@ export const moneyContent: Record<string, Record<string, MoneyContentEntry>> = {
       intro:
         "TV mounting visits in Bressi Ranch focus on clean, safe installs that match the organized, finished feel of the neighborhood homes.",
       schedulingNote:
-        "Most TV installs in Bressi Ranch are scoped to mount one or more TVs on interior walls, tidy the cabling, and confirm everything works before we leave.",
+        "Most TV installs in Bressi Ranch are scoped to mount one or more TVs on interior walls, clean up the cabling, and confirm everything works before we leave.",
       fitGood: [
         "Mounting TVs on interior drywall with accessible wood studs.",
         "Installing tilt or full-motion mounts in family rooms, lofts, and bedrooms.",
@@ -1548,7 +1548,7 @@ export const moneyContent: Record<string, Record<string, MoneyContentEntry>> = {
         "Bressi Ranch living spaces often benefit from wall-mounted TVs that keep floors open and lines clean, especially in open main-floor layouts.",
       audienceNotes: {
         homeowners:
-          "Mounting TVs so your Bressi Ranch living spaces feel tidy, open, and aligned with the rest of your home’s finish level.",
+          "Mounting TVs so your Bressi Ranch living spaces feel clean, open, and aligned with the rest of your home’s finish level.",
         rentals:
           "Installing mounted TVs in rentals so spaces are durable and easy to reset between occupants.",
         businesses:

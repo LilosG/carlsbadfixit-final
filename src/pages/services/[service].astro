@@ -41,12 +41,12 @@ const moneyEntry =
 
 const introText =
   moneyEntry.intro ??
-  `Local ${service.name.toLowerCase()} visits in ${primaryArea.label} focused on small to medium projects that fit into a clear service window.`;
-const longTailNote = `${service.name} handyman services in ${primaryArea.label} are ideal for homeowners who want clear scope, careful work, and a tidy finish on smaller projects.`;
+  `Local ${service.name.toLowerCase()} visits in ${primaryArea.label} focused on home repairs and improvements handled with clear timing and quality results.`;
+const longTailNote = `${service.name} handyman services in ${primaryArea.label} are ideal for homeowners who want clear scope, careful work, and a quality finish on every project.`;
 
 const schedulingNote =
   moneyEntry.schedulingNote ??
-  "Visits are scoped so as much meaningful work as possible fits into a single, clearly defined service window.";
+  "Visits are scoped so as much meaningful work as possible fits into a single, clearly defined visit.";
 
 const fitGood: string[] = moneyEntry.fitGood ?? [];
 const fitNotGood: string[] = moneyEntry.fitNotGood ?? [];
@@ -66,7 +66,7 @@ const serviceExamples = service.examples ?? [];
 const faqItems = getFaqItemsForService(service.slug);
 
 const title = `${service.name} in ${primaryArea.label} | Carlsbad Fix It`;
-const description = `${service.name} visits in ${primaryArea.label} for small to medium projects that fit into a clear service window, handled by a licensed and insured local handyman.`;
+const description = `${service.name} visits in ${primaryArea.label} for home repairs and improvements handled with clear timing and quality results, handled by a licensed and insured local handyman.`;
 
 // JSON-LD for money pages
 const breadcrumbJsonLd = JSON.stringify(
@@ -185,7 +185,7 @@ const faqJsonLd =
     <EeatTrustBlock
       locationLabel={`${primaryArea.label} and nearby North County communities`}
       heading={`${service.name} visits with local expertise`}
-      body={`Carlsbad Fix It provides focused ${service.name.toLowerCase()} visits that fit into a clear service window. Each visit is planned around realistic timing, tidy work areas, and clear communication from start to finish.`}
+      body={`Carlsbad Fix It provides focused ${service.name.toLowerCase()} visits that completed with clear timing and quality results. Each visit is planned around realistic timing, clean work areas, and clear communication from start to finish.`}
     />
   </section>
 
@@ -198,7 +198,7 @@ const faqJsonLd =
       </h2>
       <p class="text-body-sm text-cf-textMuted max-w-3xl">
         Each visit is scoped so as much meaningful work as possible fits into a
-        clear service window. Here are common tasks homeowners ask for in{" "}
+        every visit. Here are common tasks homeowners ask for in{" "}
         {primaryArea.label} and nearby North County communities.
       </p>
     </div>
@@ -286,7 +286,7 @@ const faqJsonLd =
         A simple 3-step process for {service.name.toLowerCase()} visits
       </h2>
       <p class="text-body-sm text-cf-textMuted max-w-3xl">
-        Clear communication and tidy work from the first message through the
+        Clear communication and quality work from the first message through the
         final walkthrough. The goal is to keep your project moving without
         surprises.
       </p>
@@ -333,7 +333,7 @@ const faqJsonLd =
         </p>
         <h3 class="mt-1 font-semibold">We complete the visit and clean up</h3>
         <p class="text-cf-textMuted mt-2 text-sm">
-          Work is completed with careful protection, tidy work areas, and a
+          Work is completed with careful protection, clean work areas, and a
           final walkthrough so you know what was finished and where to look if
           any questions come up later.
         </p>
@@ -376,7 +376,7 @@ const faqJsonLd =
           <p class="text-cf-textMuted text-sm">
             {
               audienceNotes.homeowners ??
-                "Focused on small to medium projects that make everyday living easier—tightening up details, improving comfort, and handling the list of small tasks that never seems to shrink."
+                "Focused on home repairs and improvements that make everyday living better—tightening up details, improving comfort, and handling the list of small tasks that never seems to shrink."
             }
           </p>
         </div>
@@ -402,7 +402,7 @@ const faqJsonLd =
           <p class="text-cf-textMuted text-sm">
             {
               audienceNotes.businesses ??
-                "Light repairs and improvement projects for offices, studios, and storefronts that want a tidy result without a large project crew on site."
+                "Light repairs and improvement projects for offices, studios, and storefronts that want a quality result without a large project crew on site."
             }
           </p>
         </div>

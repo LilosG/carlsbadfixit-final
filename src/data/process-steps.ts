@@ -18,7 +18,7 @@ export const homeProcessSteps: ProcessStep[] = [
   {
     step: "3",
     title: "We fix it right",
-    body: "Professional, tidy work with attention to detail on every task.",
+    body: "Professional, quality work with attention to detail on every task.",
   },
   {
     step: "4",

@@ -24,8 +24,8 @@ const content = cityContent[city.slug] ?? {};
 
 const intro =
   content.intro ??
-  `Local handyman services for homeowners in ${city.label} and nearby neighborhoods. Typical visits combine several small repair or improvement tasks into a tidy service window.`;
-const longTailNote = `If you are searching for a handyman in ${city.label}, Carlsbad Fix It focuses on small to medium home projects with clear expectations and tidy results.`;
+  `Local handyman services for homeowners in ${city.label} and nearby neighborhoods. Typical visits combine several small repair or improvement tasks into a single visit.`;
+const longTailNote = `If you are searching for a handyman in ${city.label}, Carlsbad Fix It focuses on home repairs and improvements with clear expectations and quality results.`;
 
 const neighborhoods = content.neighborhoods ?? [];
 const propertyTypes = content.propertyTypes ?? [];
@@ -37,7 +37,7 @@ const landlordNote =
 
 const businessNote =
   content.businessNote ??
-  "Light repairs and small improvement projects for local offices, studios, and storefronts that want a tidy result with minimal disruption.";
+  "Light repairs and small improvement projects for local offices, studios, and storefronts that want a quality result with minimal disruption.";
 
 const reviewSnippet = content.reviewSnippet ?? {
   quote:
@@ -63,7 +63,7 @@ const localBusinessJsonLd = JSON.stringify(
 );
 
 const title = `Handyman services in ${city.label} | Carlsbad Fix It`;
-const description = `Local handyman help for small to medium projects in ${city.label} and nearby North County San Diego communities. Combine several tasks into a single, tidy visit with Carlsbad Fix It.`;
+const description = `Local handyman help for home repairs and improvements in ${city.label} and nearby North County San Diego communities. Combine several tasks into a single professional visit with Carlsbad Fix It.`;
 
 const cityFaqItems = getFaqItemsForCity(city.slug);
 const faqJsonLd =
@@ -141,8 +141,8 @@ const faqJsonLd =
               ✓
             </span>
             <span
-              >Focused on small to medium home projects that fit into clear
-              service windows.</span
+              >Focused on home repairs and improvements that fit into clear
+              visits.</span
             >
           </li>
           <li class="flex gap-2">
@@ -202,7 +202,7 @@ const faqJsonLd =
     <EeatTrustBlock
       locationLabel={`${city.label} and nearby North County communities`}
       heading={`Trusted handyman visits in ${city.label}`}
-      body={`Carlsbad Fix It provides small to medium home repair visits in ${city.label} with careful planning, clear communication, and tidy work areas. Each visit is scoped to fit into a predictable service window.`}
+      body={`Carlsbad Fix It provides home repair and improvement visits in ${city.label} with careful planning, clear communication, and clean work areas. Each visit is scoped to completed on a reliable schedule.`}
     />
   </section>
 
@@ -213,7 +213,7 @@ const faqJsonLd =
       <SectionIntro
         eyebrow={"Services in " + city.label}
         title={servicesTitle}
-        description={"Core handyman services focused on the small to medium projects homeowners in " +
+        description={"Core handyman services focused on the home repairs and improvements homeowners in " +
           city.label +
           " call about most. You can also combine several tasks into a single visit."}
       />
@@ -276,7 +276,7 @@ const faqJsonLd =
           title={coverageTitle}
           description={"Most visits in " +
             city.label +
-            " are scheduled to keep travel time reasonable and maximize time spent on actual repair and improvement work. Projects are scoped so they fit into a single visit whenever possible, with larger projects broken into clear phases."}
+            " are scheduled to keep travel time reasonable and maximize time spent on actual repair and improvement work. Projects are scoped so they completed in a single visit whenever possible, with larger projects broken into clear phases."}
           maxWidthClass="max-w-none"
         />
 

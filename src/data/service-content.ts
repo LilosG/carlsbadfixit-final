@@ -20,7 +20,7 @@ export interface ServicePageContent {
 
 export const serviceContent: Record<string, ServicePageContent> = {
   "carpentry-woodwork": {
-    intro: `Small to medium carpentry projects that keep trim, doors, and wood surfaces looking tidy without the mess and cost of a full remodel. Great for punch-list style repairs and light improvements around the house.`,
+    intro: `Carpentry repairs and improvements that keep trim, doors, and wood surfaces looking sharp — from punch-list repairs to full room remodels.`,
     typicalProjectsHeading: "Typical carpentry and woodwork projects",
     typicalProjectsIntro: `Projects that repair or refresh existing woodwork instead of rebuilding your home from the studs. Many of these can be grouped into a single, well-planned visit.`,
     typicalProjectsColumns: [
@@ -67,7 +67,7 @@ export const serviceContent: Record<string, ServicePageContent> = {
       {
         question: "Can you build custom furniture or built-ins from scratch?",
         answer:
-          "Custom furniture and fully built-in cabinetry are usually better handled by a dedicated carpenter or cabinet shop. Our carpentry visits focus on small repairs and straightforward projects that fit into a single service window.",
+          "Custom furniture and fully built-in cabinetry are usually better handled by a dedicated carpenter or cabinet shop. Our carpentry visits focus on small repairs and straightforward projects that fit into a single visit.",
       },
       {
         question: "Do I need to buy materials ahead of time?",
@@ -374,7 +374,7 @@ export const serviceContent: Record<string, ServicePageContent> = {
   "tv-mounting": {
     intro: `Safe, clean TV mounting and basic media setup so cables are organized and screens are at a comfortable viewing height.`,
     typicalProjectsHeading: "Typical TV mounting projects",
-    typicalProjectsIntro: `Projects that use appropriate mounts and anchors for the wall type, with a focus on tidy cable routing and solid, level installation.`,
+    typicalProjectsIntro: `Projects that use appropriate mounts and anchors for the wall type, with a focus on clean cable routing and solid, level installation.`,
     typicalProjectsColumns: [
       {
         title: "Wall-mounted TVs",
@@ -419,7 +419,7 @@ export const serviceContent: Record<string, ServicePageContent> = {
       {
         question: "Can you hide all of the cables inside the wall?",
         answer:
-          "In many cases we can significantly tidy your cable situation with surface raceways and better routing. Full in-wall cable concealment or new in-wall power often requires additional planning and may need to follow specific electrical and building codes.",
+          "In many cases we can significantly clean up your cable situation with surface raceways and better routing. Full in-wall cable concealment or new in-wall power often requires additional planning and may need to follow specific electrical and building codes.",
       },
       {
         question: "Will you help set up the TV once it is mounted?",

@@ -79,7 +79,7 @@ export const services: Service[] = [
     shortDescription:
       "Patching holes, cracks, and dents in walls and ceilings with blending texture and paint.",
     examples: [
-      "Patch small to medium drywall holes",
+      "Patch drywall holes",
       "Repair cracks along seams and corners",
       "Fix door knob holes behind doors",
       "Blend new texture into existing walls",
@@ -96,7 +96,7 @@ export const services: Service[] = [
       "Install tilt or full-motion TV mounts",
       "Route and conceal surface wiring where possible",
       "Set up basic soundbars and small speakers",
-      "Secure cables and components for a tidy look",
+      "Secure cables and components for a clean, intentional look",
     ],
   },
 ];

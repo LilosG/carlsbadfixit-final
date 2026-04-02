@@ -23,7 +23,7 @@ export interface CityContent {
 export const cityContent: Record<string, CityContent> = {
   carlsbad: {
     intro:
-      "Local handyman services for homeowners in Carlsbad, CA and nearby neighborhoods. Typical visits combine carpentry, drywall repair, fixture swaps, and small repair items into a single, tidy service window.",
+      "Local handyman services for homeowners in Carlsbad, CA and nearby neighborhoods. Typical visits combine carpentry, drywall repair, fixture swaps, and small repair items into a single visit.",
     popularProjects: [
       {
         title: "Fence and gate repairs",
@@ -58,7 +58,7 @@ export const cityContent: Record<string, CityContent> = {
     landlordNote:
       "Helpful for small rental portfolios that need occasional drywall repairs, fixture swaps, or honey-do style lists between longer tenancies.",
     businessNote:
-      "Light repairs and small improvement projects for Carlsbad offices, studios, and storefronts that want a tidy result with minimal disruption.",
+      "Light repairs and small improvement projects for Carlsbad offices, studios, and storefronts that want a quality result with minimal disruption.",
     reviewSnippet: {
       quote:
         "They handled drywall repairs, a few trim fixes, and a new light in one visit. Everything looked great and was cleaned up before they left.",
@@ -70,7 +70,7 @@ export const cityContent: Record<string, CityContent> = {
 
   oceanside: {
     intro:
-      "Handyman visits for small to medium home projects in Oceanside, CA and nearby coastal neighborhoods. Visits are scoped so work can be completed in a clear service window with realistic timing.",
+      "Handyman visits for home repairs and improvements in Oceanside, CA and nearby coastal neighborhoods. Visits are scoped so work can be completed in a every visit with realistic timing.",
     popularProjects: [
       {
         title: "Coastal wear-and-tear repairs",
@@ -117,7 +117,7 @@ export const cityContent: Record<string, CityContent> = {
 
   encinitas: {
     intro:
-      "Handyman services for small and medium projects across Encinitas communities. Visits are planned around realistic timing, tidy work areas, and clear expectations on what will be completed.",
+      "Handyman services for small and medium projects across Encinitas communities. Visits are planned around realistic timing, clean work areas, and clear expectations on what will be completed.",
     popularProjects: [
       {
         title: "Interior carpentry and woodwork",
@@ -163,7 +163,7 @@ export const cityContent: Record<string, CityContent> = {
 
   vista: {
     intro:
-      "Handyman visits focused on small to medium home projects in Vista, CA and nearby neighborhoods. Many projects can be combined into a single visit wherever possible.",
+      "Handyman visits focused on home repairs and improvements in Vista, CA and nearby neighborhoods. Many projects can be combined into a single visit wherever possible.",
     popularProjects: [
       {
         title: "Honey-do lists and small repairs",
@@ -246,7 +246,7 @@ export const cityContent: Record<string, CityContent> = {
       "Light repairs and improvements for professional offices and studios in San Marcos that prefer small, clearly scoped visits.",
     reviewSnippet: {
       quote:
-        "Scheduling was easy, the work was tidy, and everything was wrapped up within the service window they promised.",
+        "Scheduling was easy, the work was tidy, and everything was wrapped up within the visit they promised.",
       name: "Lauren P.",
       location: "San Marcos, CA",
       role: "Homeowner",
@@ -255,7 +255,7 @@ export const cityContent: Record<string, CityContent> = {
 
   "bressi-ranch": {
     intro:
-      "Handyman visits for homes in Bressi Ranch and nearby parts of Carlsbad. Typical visits combine fixture swaps, drywall touch-ups, and small repairs into a single, tidy service window.",
+      "Handyman visits for homes in Bressi Ranch and nearby parts of Carlsbad. Typical visits combine fixture swaps, drywall touch-ups, and small repairs into a single visit.",
     popularProjects: [
       {
         title: "Punch-list visits between life stages",
@@ -270,7 +270,7 @@ export const cityContent: Record<string, CityContent> = {
       {
         title: "Fence, gate, and exterior touch-ups",
         summary:
-          "Tuning up small fence sections, gate latches, and other obvious exterior wear so front and side yards feel tidy again.",
+          "Tuning up small fence sections, gate latches, and other obvious exterior wear so front and side yards feel finished again.",
       },
     ],
     neighborhoods: [

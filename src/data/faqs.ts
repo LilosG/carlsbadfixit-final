@@ -15,7 +15,7 @@ export const serviceFaqs: ServiceFaqMap = {
       question:
         "What size carpentry projects are a good fit for a handyman visit?",
       answer:
-        "Most visits focus on trim, doors, fences, gates, and small framing or storage projects that can be completed in a clear service window. Larger, multi-room remodels, built-ins that require a shop, or structural changes are usually better suited for a full-service contractor.",
+        "Most visits focus on trim, doors, fences, gates, and small framing or storage projects that can be completed in a every visit. Larger, multi-room remodels, built-ins that require a shop, or structural changes are usually better suited for a full-service contractor.",
     },
     {
       question: "Do I need to buy my own materials for carpentry projects?",
@@ -38,7 +38,7 @@ export const serviceFaqs: ServiceFaqMap = {
     {
       question: "Do I need to provide my own light fixtures or fans?",
       answer:
-        "Many homeowners prefer to choose their own fixtures and fans. As long as they are compatible with the existing electrical boxes and locations, we are happy to install them and make sure everything is secure and tidy.",
+        "Many homeowners prefer to choose their own fixtures and fans. As long as they are compatible with the existing electrical boxes and locations, we are happy to install them and make sure everything is secure and clean.",
     },
     {
       question: "Can you handle emergency electrical problems?",
@@ -50,7 +50,7 @@ export const serviceFaqs: ServiceFaqMap = {
     {
       question: "What types of furniture and installations can you help with?",
       answer:
-        "Typical visits include assembling flat-pack furniture, desks, beds, and storage, anchoring tall pieces to walls, and installing shelves, artwork, and simple wall décor. We focus on safe, tidy installs that are ready for daily use.",
+        "Typical visits include assembling flat-pack furniture, desks, beds, and storage, anchoring tall pieces to walls, and installing shelves, artwork, and simple wall décor. We focus on safe, professional installs that are ready for daily use.",
     },
     {
       question: "Can you help decide where furniture and wall décor should go?",
@@ -85,7 +85,7 @@ export const serviceFaqs: ServiceFaqMap = {
     {
       question: "How many items can we include in one honey-do visit?",
       answer:
-        "Most visits are built around a prioritized list of small to medium tasks that can be completed safely within the scheduled time. We group items by room or area so the highest-value fixes are handled first, and anything that does not fit can be clearly noted for a future visit.",
+        "Most visits are built around a prioritized list of repair and improvement tasks that can be completed safely within the scheduled time. We group items by room or area so the highest-value fixes are handled first, and anything that does not fit can be clearly noted for a future visit.",
     },
     {
       question:
@@ -97,14 +97,14 @@ export const serviceFaqs: ServiceFaqMap = {
       question:
         "Is a honey-do visit a good fit before listing a home for sale?",
       answer:
-        "Yes. Many North County homeowners schedule a focused visit before listing to tidy obvious cosmetic issues such as wall dings, crooked hardware, and small repairs so showings feel cleaner and buyers can focus on the strengths of the home.",
+        "Yes. Many North County homeowners schedule a focused visit before listing to address cosmetic issues such as wall dings, crooked hardware, and small repairs so showings feel cleaner and buyers can focus on the strengths of the home.",
     },
   ],
   "drywall-repair": [
     {
       question: "What size drywall repairs are a good fit?",
       answer:
-        "Most visits cover small to medium wall and ceiling damage such as moving-related holes, cracks along seams, and a few larger patches from previous work. Extensive damage, full-room skim coats, or multi-room remodel work is usually better handled by a dedicated drywall crew.",
+        "Most visits cover wall and ceiling damage such as moving-related holes, cracks along seams, and a few larger patches from previous work. Extensive damage, full-room skim coats, or multi-room remodel work is usually better handled by a dedicated drywall crew.",
     },
     {
       question: "Can you match my existing wall texture and paint?",
@@ -131,7 +131,7 @@ export const serviceFaqs: ServiceFaqMap = {
     {
       question: "Is TV mounting a good fit for rental properties?",
       answer:
-        "Yes. Solidly mounted TVs with tidy cabling are a common request in rental homes and small multifamily units around North County. We focus on safe installs that balance guest comfort with practical long-term maintenance.",
+        "Yes. Solidly mounted TVs with clean cabling are a common request in rental homes and small multifamily units around North County. We focus on safe installs that balance guest comfort with practical long-term maintenance.",
     },
   ],
 };
@@ -148,7 +148,7 @@ export const cityFaqs: Record<string, FAQItem[]> = {
   carlsbad: [
     {
       question: "What kinds of home repairs does Carlsbad Fix It handle in Carlsbad?",
-      answer: "We handle small to medium home repair and improvement projects in Carlsbad including drywall patching, light fixture swaps, carpentry trim work, plumbing fixture replacements, TV mounting, furniture assembly, and honey-do lists. Most visits combine several tasks into a single service window.",
+      answer: "We handle home repair and improvement projects in Carlsbad including drywall patching, light fixture swaps, carpentry trim work, plumbing fixture replacements, TV mounting, furniture assembly, and honey-do lists. Most visits combine several tasks into a single visit.",
     },
     {
       question: "Do you serve neighborhoods like Aviara, Bressi Ranch, and La Costa in Carlsbad?",
@@ -166,7 +166,7 @@ export const cityFaqs: Record<string, FAQItem[]> = {
   oceanside: [
     {
       question: "What handyman services are available in Oceanside?",
-      answer: "Carlsbad Fix It provides small to medium home repair and improvement visits in Oceanside including carpentry, drywall repair, plumbing fixture replacements, electrical fixtures, furniture assembly, TV mounting, and honey-do lists. We serve both residential and small commercial properties.",
+      answer: "Carlsbad Fix It provides home repair and improvement visits in Oceanside including carpentry, drywall repair, plumbing fixture replacements, electrical fixtures, furniture assembly, TV mounting, and honey-do lists. We serve both residential and small commercial properties.",
     },
     {
       question: "Do you work in Fire Mountain, Eastside Oceanside, or near Camp Pendleton?",
@@ -174,7 +174,7 @@ export const cityFaqs: Record<string, FAQItem[]> = {
     },
     {
       question: "Are you available for rental property repairs in Oceanside?",
-      answer: "Yes. We handle turnover repairs, fixture swaps, drywall patches, and small maintenance tasks for rental property owners in Oceanside. Visits are scoped to fit into a clear service window so your unit is back on the market quickly.",
+      answer: "Yes. We handle turnover repairs, fixture swaps, drywall patches, and small maintenance tasks for rental property owners in Oceanside. Visits are scoped to completed with clear timing and quality results so your unit is back on the market quickly.",
     },
     {
       question: "How do I get an estimate for handyman work in Oceanside?",
@@ -184,7 +184,7 @@ export const cityFaqs: Record<string, FAQItem[]> = {
   encinitas: [
     {
       question: "What types of handyman projects do you handle in Encinitas?",
-      answer: "We handle small to medium home repair visits in Encinitas including drywall repair and texture blending, carpentry and trim work, plumbing fixture replacements, electrical fixtures, TV mounting, furniture assembly, and mixed punch lists. Most visits combine several tasks into one efficient appointment.",
+      answer: "We handle home repair and improvement visits in Encinitas including drywall repair and texture blending, carpentry and trim work, plumbing fixture replacements, electrical fixtures, TV mounting, furniture assembly, and mixed punch lists. Most visits combine several tasks into one efficient appointment.",
     },
     {
       question: "Do you serve Leucadia, Cardiff-by-the-Sea, and Olivenhain in Encinitas?",
@@ -202,7 +202,7 @@ export const cityFaqs: Record<string, FAQItem[]> = {
   vista: [
     {
       question: "What handyman services does Carlsbad Fix It provide in Vista?",
-      answer: "We provide small to medium home repair visits in Vista including carpentry and trim, drywall patching, light fixture and ceiling fan replacements, plumbing fixture swaps, furniture assembly, TV mounting, and honey-do style punch lists. Visits are scoped to fit into a clear service window.",
+      answer: "We provide home repair and improvement visits in Vista including carpentry and trim, drywall patching, light fixture and ceiling fan replacements, plumbing fixture swaps, furniture assembly, TV mounting, and honey-do style punch lists. Visits are scoped to completed with clear timing and quality results.",
     },
     {
       question: "Do you serve South Vista, Shadowridge, or Vista Village neighborhoods?",
@@ -220,7 +220,7 @@ export const cityFaqs: Record<string, FAQItem[]> = {
   "san-marcos": [
     {
       question: "What handyman services are available in San Marcos?",
-      answer: "Carlsbad Fix It provides small to medium repair and improvement visits in San Marcos including drywall repair, carpentry, plumbing fixtures, electrical fixtures, TV mounting, furniture assembly, and punch list visits. We serve both homeowners and small rental property owners.",
+      answer: "Carlsbad Fix It provides home repair and improvement visits in San Marcos including drywall repair, carpentry, plumbing fixtures, electrical fixtures, TV mounting, furniture assembly, and punch list visits. We serve both homeowners and small rental property owners.",
     },
     {
       question: "Do you work in communities like San Elijo Hills or near Cal State San Marcos?",
@@ -238,7 +238,7 @@ export const cityFaqs: Record<string, FAQItem[]> = {
   "bressi-ranch": [
     {
       question: "Does Carlsbad Fix It serve Bressi Ranch?",
-      answer: "Yes. We serve Bressi Ranch homeowners for small to medium home repair and improvement projects including drywall patching, carpentry, plumbing fixture replacements, electrical fixtures, TV mounting, furniture assembly, and honey-do lists. Bressi Ranch is part of our regular Carlsbad service area.",
+      answer: "Yes. We serve Bressi Ranch homeowners for home repair and improvement projects including drywall patching, carpentry, plumbing fixture replacements, electrical fixtures, TV mounting, furniture assembly, and honey-do lists. Bressi Ranch is part of our regular Carlsbad service area.",
     },
     {
       question: "What kinds of repairs are common in Bressi Ranch homes?",

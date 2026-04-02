@@ -254,8 +254,8 @@ const reviewsJsonLd = JSON.stringify(getReviewsJsonLd(testimonials));
     <div class="grid gap-5 md:grid-cols-4">
       {
         processSteps.map((item) => (
-          <div class="flex flex-col items-start rounded-2xl border border-slate-200 bg-white p-4 text-left shadow-sm">
-            <div class="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-full bg-sky-50 text-xs font-semibold text-sky-700">
+          <div class="card-elevated flex flex-col items-start text-left">
+            <div class="from-cf-accentBlue to-cf-primary mb-3 inline-flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br text-sm font-bold text-white shadow-md">
               {item.step}
             </div>
             <h3 class="text-sm font-semibold text-slate-900">{item.title}</h3>
@@ -336,7 +336,7 @@ const reviewsJsonLd = JSON.stringify(getReviewsJsonLd(testimonials));
     <div class="grid gap-5 md:grid-cols-3">
       {
         featuredProjects.map((project) => (
-          <article class="flex flex-col rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+          <article class="card-elevated flex flex-col">
             <figure class="aspect-video overflow-hidden rounded-xl bg-slate-100">
               <img
                 src={project.image}
@@ -385,7 +385,7 @@ const reviewsJsonLd = JSON.stringify(getReviewsJsonLd(testimonials));
     <div class="grid gap-5 md:grid-cols-3">
       {
         testimonials.map((t) => (
-          <article class="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+          <article class="card-elevated flex h-full flex-col">
             <div class="flex items-center gap-1 text-[11px] text-amber-500">
               <span>★</span>
               <span>★</span>

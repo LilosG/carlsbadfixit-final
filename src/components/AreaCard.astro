@@ -13,24 +13,24 @@ interface Props {
 const { area } = Astro.props;
 ---
 
-<article class="card-elevated group flex flex-col justify-between text-sm">
-  <div class="space-y-1.5">
-    <div class="flex items-center gap-2">
-      <span class="from-cf-accentBlue to-cf-primary inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-[11px] text-white shadow-sm">
+<article class="card-elevated group flex flex-col justify-between">
+  <div class="space-y-2">
+    <div class="flex items-center gap-3">
+      <span class="from-cf-accentBlue to-cf-primary inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-sm font-bold text-white shadow-md">
         ✦
       </span>
-      <h2 class="text-cf-text text-sm font-semibold">
+      <h2 class="text-cf-text text-base font-semibold leading-tight">
         <a href={"/service-areas/" + area.slug + "/"} class="group-hover:text-cf-primary transition-colors duration-150">
           {area.label}
         </a>
       </h2>
     </div>
-    <p class="text-body-sm pl-9">
+    <p class="text-body-sm pl-12">
       Home repairs and improvements for homeowners in {area.label} and nearby neighborhoods.
     </p>
   </div>
   <div class="mt-4 border-t border-slate-100 pt-3 text-xs">
-    
+    <a
       href={"/service-areas/" + area.slug + "/"}
       class="text-cf-accentBlue font-semibold underline-offset-2 hover:underline"
     >

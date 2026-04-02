@@ -20,9 +20,9 @@ const bodyClass =
   align === "center" ? `${maxWidthClass} mx-auto` : maxWidthClass;
 ---
 
-<div class:list={["space-y-2", alignClass]}>
+<div class:list={["space-y-1", alignClass]}>
   <p class="eyebrow">{eyebrow}</p>
-  <h2 class="text-h2 text-cf-text font-semibold">{title}</h2>
+  <h2 class="text-h2 text-cf-text font-bold tracking-tight">{title}</h2>
   {
     description && (
       <p class:list={["text-body-sm text-cf-textMuted", bodyClass]}>

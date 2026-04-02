@@ -1,4 +1,6 @@
 ---
+import { businessProfile } from "../data/site-config";
+
 export interface Props {
   locationLabel?: string;
   heading?: string;
@@ -7,29 +9,31 @@ export interface Props {
 
 const {
   locationLabel = "North County San Diego",
-  heading = "Local, licensed, and focused on small home projects",
+  heading = "Local, licensed, and built for North County homeowners",
   body = `Carlsbad Fix It provides professional handyman visits for homeowners who want clear expectations, quality work, and reliable follow-through. Each visit is planned around a realistic scope so you know exactly what will be completed.`,
 } = Astro.props;
 ---
 
-<section class="shadow-soft rounded-3xl bg-white p-6 md:p-8">
+<section class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-cf-accentBlue via-sky-700 to-cf-primary p-6 md:p-8 shadow-[0_20px_50px_rgba(0,112,201,0.30)]">
   <div class="space-y-4">
-    <div class="space-y-2">
-      <p class="eyebrow text-cf-textMuted">Experience &amp; trust</p>
-      <h2 class="text-h2 text-cf-text font-semibold">{heading}</h2>
-      <p class="text-body-sm text-cf-textMuted max-w-3xl">
+    <div class="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-white/10 blur-3xl" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-amber-300/20 blur-3xl" aria-hidden="true"></div>
+    <div class="relative z-10 space-y-2">
+      <p class="text-[11px] font-semibold tracking-[0.18em] uppercase text-sky-200">Experience &amp; trust</p>
+      <h2 class="text-h2 font-semibold text-white">{heading}</h2>
+      <p class="text-body-sm max-w-3xl text-sky-100">
         {body}
       </p>
     </div>
 
-    <ul class="text-cf-text grid gap-3 text-sm sm:grid-cols-2">
+    <ul class="relative z-10 grid gap-3 text-sm text-white sm:grid-cols-2">
       <li class="flex gap-2">
         <span
-          class="bg-cf-sandSoft text-cf-primary mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full text-[11px] font-semibold"
+          class="from-cf-primary to-cf-warning mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-[11px] font-bold text-white shadow-sm"
         >
           ✓
         </span>
-        <span>Licensed and insured local handyman serving {locationLabel}.</span
+        <span class="text-sky-50">Licensed and insured local handyman serving {locationLabel}.</span
         >
       </li>
       <li class="flex gap-2">
@@ -38,28 +42,34 @@ const {
         >
           ✓
         </span>
-        <span>Clear scope, timing, and pricing before work begins.</span>
+        <span class="text-sky-50">Clear scope, timing, and pricing before work begins.</span>
       </li>
       <li class="flex gap-2">
         <span
-          class="bg-cf-sandSoft text-cf-primary mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full text-[11px] font-semibold"
+          class="from-cf-primary to-cf-warning mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-[11px] font-bold text-white shadow-sm"
         >
           ✓
         </span>
-        <span>Surfaces protected, clean work areas, and a quality finish.</span>
+        <span class="text-sky-50">Surfaces protected, clean work areas, and a quality finish.</span>
       </li>
       <li class="flex gap-2">
         <span
-          class="bg-cf-sandSoft text-cf-primary mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full text-[11px] font-semibold"
+          class="from-cf-primary to-cf-warning mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-[11px] font-bold text-white shadow-sm"
         >
           ✓
         </span>
-        <span>Honest guidance when a specialist is the better fit.</span>
+        <span class="text-sky-50">Honest guidance when a specialist is the better fit.</span>
       </li>
     </ul>
 
-    <div class="flex flex-wrap gap-3 text-sm">
-      <a href="/about/" class="btn-primary"> About Carlsbad Fix It </a>
+    <div class="relative z-10 flex flex-wrap gap-3 text-sm">
+      <a href="/contact/" class="btn-primary"> Request an estimate </a>
+      <a
+        href={businessProfile.contact.phoneHref}
+        class="border-cf-accentBlueSoft to-cf-accentBlueSoft/40 text-cf-accentBlue shadow-soft hover:to-cf-accentBlueSoft/70 inline-flex items-center justify-center rounded-full border bg-gradient-to-r from-white px-5 py-2 font-semibold hover:from-white"
+      >
+        Call or text {businessProfile.contact.phoneDisplay}
+      </a>
       <a
         href="/services/"
         class="bg-cf-sandSoft text-cf-text hover:bg-cf-card inline-flex items-center rounded-full px-4 py-2 font-semibold"
@@ -67,16 +77,10 @@ const {
         Explore services
       </a>
       <a
-        href="/service-areas/"
-        class="bg-cf-sandSoft text-cf-text hover:bg-cf-card inline-flex items-center rounded-full px-4 py-2 font-semibold"
-      >
-        View service areas
-      </a>
-      <a
-        href="/contact/"
+        href="/about/"
         class="text-cf-accentBlue hover:text-cf-accentBlue/80 inline-flex items-center font-semibold"
       >
-        Request a quote
+        About us
       </a>
     </div>
   </div>

@@ -28,8 +28,9 @@
   --radius-section: 2rem;
 
   /* Shadows */
-  --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.06);
-  --shadow-card: 0 18px 45px rgba(15, 23, 42, 0.08);
+  --shadow-soft: 0 4px 16px rgba(15, 23, 42, 0.08);
+  --shadow-card: 0 12px 32px rgba(15, 23, 42, 0.10);
+  --shadow-card-hover: 0 20px 48px rgba(15, 23, 42, 0.14);
   --shadow-cta: 0 22px 55px rgba(255, 122, 26, 0.45);
 
   /* Spacing */
@@ -152,11 +153,19 @@
   }
 
   .card {
-    @apply bg-cf-card rounded-card border-cf-borderSubtle shadow-soft border p-6;
+    @apply bg-cf-card rounded-card border-cf-borderSubtle shadow-card border p-6 transition-all duration-200;
   }
 
   .card-soft {
-    @apply bg-cf-sandSoft rounded-card shadow-soft border border-transparent p-6;
+    @apply bg-cf-sandSoft rounded-card shadow-card border border-transparent p-6 transition-all duration-200;
+  }
+
+  .card-elevated {
+    @apply bg-cf-card rounded-card border-cf-borderSubtle border p-6 shadow-[0_12px_32px_rgba(15,23,42,0.10)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_20px_48px_rgba(15,23,42,0.14)] hover:border-slate-300;
+  }
+
+  .card-accent {
+    @apply bg-cf-card rounded-card border-cf-borderSubtle border p-6 shadow-[0_12px_32px_rgba(15,23,42,0.10)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_20px_48px_rgba(15,23,42,0.14)] border-l-4 border-l-cf-primary;
   }
 
   .section-shell {

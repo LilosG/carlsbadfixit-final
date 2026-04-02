@@ -40,13 +40,13 @@ const primaryServiceUrl =
     {service.shortDescription}
   </p>
   <div class="mt-4 flex items-center justify-between border-t border-slate-100 pt-3 text-xs">
-    
+    <a
       href={primaryServiceUrl}
       class="text-cf-accentBlue font-semibold underline-offset-2 hover:underline"
     >
       View {service.name.toLowerCase()} &rarr;
     </a>
-    
+    <a
       href={`/service-areas/${primaryAreaSlug}/${service.slug}/`}
       class="text-cf-textMuted underline-offset-2 hover:underline"
     >

@@ -41,4 +41,4 @@ If you have doors to adjust or wall dings to patch, consider pairing this with a
 
 ## Ready to schedule?
 
-Share your list and preferred timing through the [contact page](/contact/). A clear scope keeps the visit efficient and the results tidy.
+Share your list and preferred timing through the [contact page](/contact/). A clear scope keeps the visit efficient and the results clean.

@@ -1,6 +1,6 @@
 ---
 title: "How to Bundle a Honey-Do Visit in Carlsbad: A Room-by-Room Plan"
-description: "Plan a Carlsbad honey-do visit that fits a single service window. Use this room-by-room framework to prioritize tasks and avoid scope creep."
+description: "Plan a Carlsbad honey-do visit that fits a single scheduled visit. Use this room-by-room framework to prioritize tasks and avoid scope creep."
 pubDate: "2025-01-22"
 tags: ["honey-do list", "carlsbad", "visit planning", "home repairs"]
 serviceAreas: ["carlsbad"]
@@ -8,7 +8,7 @@ services: ["honey-do-lists-small-repairs"]
 featured: false
 ---
 
-A successful honey-do visit in Carlsbad is less about the number of tasks and more about grouping the right work in the same area of the home. Use this room-by-room plan to build a focused list that fits one service window and keeps your priorities front and center.
+A successful honey-do visit in Carlsbad is less about the number of tasks and more about grouping the right work in the same area of the home. Use this room-by-room plan to build a focused list that fits one scheduled visit and keeps your priorities front and center.
 
 ## Step 1: Pick the two rooms that matter most
 
@@ -60,4 +60,4 @@ Rank tasks as Must, Should, or Nice-to-have. If time runs short, the highest-val
 
 ## Ready to schedule?
 
-Review the [Carlsbad honey-do list service page](/service-areas/carlsbad/honey-do-lists-small-repairs/) and send your priority list. A tidy plan keeps the visit efficient and the outcome consistent.
+Review the [Carlsbad honey-do list service page](/service-areas/carlsbad/honey-do-lists-small-repairs/) and send your priority list. A clean plan keeps the visit efficient and the outcome consistent.

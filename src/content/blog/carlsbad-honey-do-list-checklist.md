@@ -8,7 +8,7 @@ services: ["honey-do-lists-small-repairs"]
 featured: true
 ---
 
-Spring in Carlsbad is the perfect time to clear the small repairs that pile up during busy seasons. A focused honey-do visit works best when the list is tight, grouped by room, and realistic for one service window. Use the checklist below to build a plan that fits a single visit and keeps your home feeling caught up.
+Spring in Carlsbad is the perfect time to clear the small repairs that pile up during busy seasons. A focused honey-do visit works best when the list is tight, grouped by room, and realistic for one scheduled visit. Use the checklist below to build a plan that fits a single visit and keeps your home feeling caught up.
 
 ## How to use this list
 
@@ -48,4 +48,4 @@ Most Carlsbad honey-do visits work best when the list stays in the 8 to 12 task 
 
 ## Ready to schedule?
 
-If you are in Carlsbad and want a clear plan, start with the [Carlsbad honey-do service page](/service-areas/carlsbad/honey-do-lists-small-repairs/) and share your prioritized list. A tidy visit plan makes it easier to stay on schedule and finish the highest-value fixes first.
+If you are in Carlsbad and want a clear plan, start with the [Carlsbad honey-do service page](/service-areas/carlsbad/honey-do-lists-small-repairs/) and share your prioritized list. A clean visit plan makes it easier to stay on schedule and finish the highest-value fixes first.

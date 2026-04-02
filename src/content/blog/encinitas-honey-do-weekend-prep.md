@@ -8,7 +8,7 @@ services: ["honey-do-lists-small-repairs"]
 featured: false
 ---
 
-If your weekends are packed, a single handyman visit can knock out the small issues that keep an Encinitas home from feeling finished. The goal is a short, realistic list that stays within one service window.
+If your weekends are packed, a single handyman visit can knock out the small issues that keep an Encinitas home from feeling finished. The goal is a short, realistic list that fits one scheduled visit.
 
 ## Weekend prep checklist
 
@@ -40,4 +40,4 @@ A strong visit usually covers 8 to 12 small tasks in one or two adjacent rooms. 
 
 ## Ready to book?
 
-Start with the [Encinitas honey-do list page](/service-areas/encinitas/honey-do-lists-small-repairs/) and share your priority list. A tidy plan keeps the visit smooth and on time.
+Start with the [Encinitas honey-do list page](/service-areas/encinitas/honey-do-lists-small-repairs/) and share your priority list. A clean plan keeps the visit smooth and on time.

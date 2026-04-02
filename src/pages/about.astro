@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import QuickEstimateCard from "../components/QuickEstimateCard.astro";
 import PageCtaStrip from "../components/PageCtaStrip.astro";
 import { serviceAreas } from "../data/service-areas";
-import { getBreadcrumbJsonLd, getLocalBusinessJsonLd } from "../lib/seo";
+import { getBreadcrumbJsonLd, getLocalBusinessStubJsonLd } from "../lib/seo";
 
 const aboutBreadcrumbJsonLd = JSON.stringify(
   getBreadcrumbJsonLd([
@@ -13,7 +13,7 @@ const aboutBreadcrumbJsonLd = JSON.stringify(
 );
 
 const aboutLocalBusinessJsonLd = JSON.stringify(
-  getLocalBusinessJsonLd(serviceAreas.map((area) => area.label)),
+  getLocalBusinessStubJsonLd(),
 );
 ---
 

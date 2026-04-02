@@ -11,7 +11,7 @@ import { serviceAreas } from "../../data/service-areas";
 import { cityContent } from "../../data/city-content";
 import { moneyContent } from "../../data/money-content";
 import {
-  getLocalBusinessJsonLd,
+  getLocalBusinessStubJsonLd,
   getServiceJsonLd,
   getBreadcrumbJsonLd,
   getFaqPageJsonLd,
@@ -81,7 +81,7 @@ const breadcrumbJsonLd = JSON.stringify(
 );
 
 const localBusinessJsonLd = JSON.stringify(
-  getLocalBusinessJsonLd([primaryArea.label]),
+  getLocalBusinessStubJsonLd(),
 );
 
 const serviceJsonLd = JSON.stringify(getServiceJsonLd(service, primaryArea));

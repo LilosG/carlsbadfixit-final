@@ -33,7 +33,7 @@ const defaultOgImage = new URL(
   siteUrl,
 ).toString();
 const ogImageUrl = ogImage ?? defaultOgImage;
-const businessId = `${siteUrl}#local-business`;
+const businessId = `${siteUrl}#localbusiness`;
 const organizationId = `${siteUrl}#organization`;
 const websiteId = `${siteUrl}#website`;
 
@@ -68,11 +68,7 @@ const websiteJsonLd = JSON.stringify({
   publisher: {
     "@id": organizationId,
   },
-  potentialAction: {
-    "@type": "SearchAction",
-    target: `${siteUrl}/search/?q={search_term_string}`,
-    "query-input": "required name=search_term_string",
-  },
+
 });
 
 const webpageJsonLd = JSON.stringify({
@@ -141,23 +137,18 @@ const webpageJsonLd = JSON.stringify({
     <script type="application/ld+json" is:inline set:html={websiteJsonLd} />
     <script type="application/ld+json" is:inline set:html={webpageJsonLd} />
 
-    <!-- Google Analytics (GA4) with Partytown for performance -->
-    <script
-      type="text/partytown"
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-8L6X2ZZ5JH"
-      is:inline></script>
-    <script type="text/partytown" src="/ga-init.js" is:inline></script>
-    <script type="text/partytown" src="/ga-events.js" is:inline></script>
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8L6X2ZZ5JH"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-8L6X2ZZ5JH');
+    </script>
 
     <slot name="head" />
 
-    <script
-      type="text/partytown"
-      src="https://analytics.ahrefs.com/analytics.js"
-      data-key="wkBUuhMf8Osy6n8MvgXn6w"
-      async
-      is:inline></script>
+    <script async src="https://analytics.ahrefs.com/analytics.js" data-key="wkBUuhMf8Osy6n8MvgXn6w"></script>
   </head>
   <body class="pb-16 sm:pb-0">
     <SiteHeader />

@@ -1,6 +1,8 @@
 ---
 import { footerSections } from "../data/navigation";
 import { businessProfile } from "../data/site-config";
+import { serviceAreas } from "../data/service-areas";
+import { services } from "../data/services";
 ---
 
 <footer class="border-cf-footerMuted bg-cf-footer text-cf-textMuted border-t">
@@ -82,6 +84,38 @@ import { businessProfile } from "../data/site-config";
             </div>
           ))
         }
+
+        <div class="space-y-2">
+          <p class="text-cf-textMuted text-[11px] font-semibold tracking-wide uppercase">
+            Services
+          </p>
+          {
+            services.map((service) => (
+              <a
+                href={`/services/${service.slug}/`}
+                class="text-cf-textMuted block text-[13px] underline-offset-4 hover:text-sky-300 hover:underline"
+              >
+                {service.name}
+              </a>
+            ))
+          }
+        </div>
+
+        <div class="space-y-2">
+          <p class="text-cf-textMuted text-[11px] font-semibold tracking-wide uppercase">
+            Service areas
+          </p>
+          {
+            serviceAreas.map((area) => (
+              <a
+                href={`/service-areas/${area.slug}/`}
+                class="text-cf-textMuted block text-[13px] underline-offset-4 hover:text-sky-300 hover:underline"
+              >
+                {area.label}
+              </a>
+            ))
+          }
+        </div>
 
         <div class="space-y-3">
           <p

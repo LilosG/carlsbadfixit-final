@@ -5,7 +5,7 @@ import { serviceAreas } from "../data/service-areas";
 import {
   getBreadcrumbJsonLd,
   getFaqPageJsonLd,
-  getLocalBusinessJsonLd,
+  getLocalBusinessStubJsonLd,
 } from "../lib/seo";
 
 const faqVisit = [
@@ -72,7 +72,7 @@ const faqBreadcrumbJsonLd = JSON.stringify(
 );
 
 const faqLocalBusinessJsonLd = JSON.stringify(
-  getLocalBusinessJsonLd(serviceAreas.map((area) => area.label)),
+  getLocalBusinessStubJsonLd(),
 );
 
 const faqJsonLd = JSON.stringify(

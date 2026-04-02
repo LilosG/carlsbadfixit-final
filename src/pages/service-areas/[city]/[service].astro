@@ -13,7 +13,7 @@ import type { ServiceArea } from "../../../data/service-areas";
 
 import {
   getBreadcrumbJsonLd,
-  getLocalBusinessJsonLd,
+  getLocalBusinessStubJsonLd,
   getCityServiceJsonLd,
   getFaqPageJsonLd,
 } from "../../../lib/seo";
@@ -99,7 +99,7 @@ const breadcrumbJsonLd = JSON.stringify(
 );
 
 const localBusinessJsonLd = JSON.stringify(
-  getLocalBusinessJsonLd([city.label]),
+  getLocalBusinessStubJsonLd(),
 );
 
 const serviceJsonLd = JSON.stringify(getCityServiceJsonLd(service, city));

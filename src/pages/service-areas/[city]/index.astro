@@ -7,7 +7,8 @@ import SectionIntro from "../../../components/SectionIntro.astro";
 import { services } from "../../../data/services";
 import { serviceAreas } from "../../../data/service-areas";
 import { cityContent } from "../../../data/city-content";
-import { getBreadcrumbJsonLd, getLocalBusinessJsonLd } from "../../../lib/seo";
+import { getBreadcrumbJsonLd, getLocalBusinessStubJsonLd, getFaqPageJsonLd } from "../../../lib/seo";
+import { getFaqItemsForCity } from "../../../data/faqs";
 import { businessProfile } from "../../../data/site-config";
 
 export function getStaticPaths() {
@@ -58,11 +59,23 @@ const breadcrumbJsonLd = JSON.stringify(
 );
 
 const localBusinessJsonLd = JSON.stringify(
-  getLocalBusinessJsonLd([city.label]),
+  getLocalBusinessStubJsonLd(),
 );
 
 const title = `Handyman services in ${city.label} | Carlsbad Fix It`;
 const description = `Local handyman help for small to medium projects in ${city.label} and nearby North County San Diego communities. Combine several tasks into a single, tidy visit with Carlsbad Fix It.`;
+
+const cityFaqItems = getFaqItemsForCity(city.slug);
+const faqJsonLd =
+  cityFaqItems.length > 0
+    ? JSON.stringify(
+        getFaqPageJsonLd(
+          cityFaqItems,
+          `/service-areas/${city.slug}/`,
+          title,
+        ),
+      )
+    : null;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -78,6 +91,16 @@ const description = `Local handyman help for small to medium projects in ${city.
     is:inline
     set:html={breadcrumbJsonLd}
   />
+  {
+    faqJsonLd && (
+      <script
+        type="application/ld+json"
+        slot="head"
+        is:inline
+        set:html={faqJsonLd}
+      />
+    )
+  }
 
   <section class="shadow-card rounded-3xl bg-white p-6 md:p-8">
     <div
@@ -364,6 +387,37 @@ const description = `Local handyman help for small to medium projects in ${city.
       </div>
     </div>
   </section>
+
+  {
+    cityFaqItems.length > 0 && (
+      <section
+        id="faq"
+        class="shadow-soft mt-8 rounded-3xl bg-white p-6 md:p-8"
+      >
+        <div class="space-y-3">
+          <p class="eyebrow text-cf-textMuted">
+            Questions from {city.label} homeowners
+          </p>
+          <h2 class="text-h2 text-cf-text font-semibold">
+            Frequently asked questions about handyman services in {city.label}
+          </h2>
+        </div>
+        <div class="mt-4 space-y-3">
+          {cityFaqItems.map((faq) => (
+            <details class="group bg-cf-sandSoft text-cf-text shadow-soft rounded-2xl p-4 text-sm">
+              <summary class="flex cursor-pointer items-center justify-between gap-3">
+                <span class="font-semibold">{faq.question}</span>
+                <span class="text-cf-primary ml-4 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white text-xs font-semibold group-open:rotate-45">
+                  +
+                </span>
+              </summary>
+              <p class="text-cf-textMuted mt-2 text-sm">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+    )
+  }
 
   <PageCtaStrip
     eyebrow={`Next steps in ${city.label}`}

@@ -34,7 +34,7 @@ const BUSINESS_IMAGE_URL = new URL(
   defaultSeo.defaultOgImagePath,
   SITE_URL,
 ).toString();
-const BUSINESS_ID = `${SITE_URL}#local-business`;
+const BUSINESS_ID = `${SITE_URL}#localbusiness`;
 
 function getBusinessAddress() {
   const { address } = businessProfile;
@@ -81,6 +81,23 @@ function getBusinessProvider() {
   };
 }
 
+export function getLocalBusinessStubJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": `${SITE_URL}#localbusiness`,
+  };
+}
+
+const AREA_SAME_AS: Record<string, string> = {
+  "Carlsbad, CA": "https://en.wikipedia.org/wiki/Carlsbad,_California",
+  "Oceanside, CA": "https://en.wikipedia.org/wiki/Oceanside,_California",
+  "Encinitas, CA": "https://en.wikipedia.org/wiki/Encinitas,_California",
+  "Vista, CA": "https://en.wikipedia.org/wiki/Vista,_California",
+  "San Marcos, CA": "https://en.wikipedia.org/wiki/San_Marcos,_California",
+  "Bressi Ranch, CA": "https://en.wikipedia.org/wiki/Bressi_Ranch,_California",
+};
+
 export function getLocalBusinessJsonLd(areaLabels: string[]) {
   const business = getBusinessProvider();
 
@@ -88,8 +105,9 @@ export function getLocalBusinessJsonLd(areaLabels: string[]) {
     "@context": "https://schema.org",
     ...business,
     areaServed: areaLabels.map((label) => ({
-      "@type": "Place",
+      "@type": "City",
       name: label,
+      ...(AREA_SAME_AS[label] ? { sameAs: AREA_SAME_AS[label] } : {}),
     })),
   };
 }
@@ -203,6 +221,37 @@ export function getCollectionPageJsonLd(opts: {
       url: item.url.startsWith("http")
         ? item.url
         : new URL(item.url, SITE_URL).toString(),
+    })),
+  };
+}
+
+export type TestimonialItem = {
+  name: string;
+  location: string;
+  text: string;
+  source?: string;
+};
+
+export function getReviewsJsonLd(testimonials: TestimonialItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": `${SITE_URL}#localbusiness`,
+    review: testimonials.map((t) => ({
+      "@type": "Review",
+      author: {
+        "@type": "Person",
+        name: t.name,
+      },
+      reviewBody: t.text,
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: "5",
+        bestRating: "5",
+      },
+      itemReviewed: {
+        "@id": `${SITE_URL}#localbusiness`,
+      },
     })),
   };
 }

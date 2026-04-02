@@ -12,6 +12,7 @@ export interface CityReviewSnippet {
 
 export interface CityContent {
   intro?: string;
+  processIntro?: string;
   popularProjects?: CityPopularProject[];
   neighborhoods?: string[];
   propertyTypes?: string[];
@@ -24,6 +25,8 @@ export const cityContent: Record<string, CityContent> = {
   carlsbad: {
     intro:
       "Local handyman services for homeowners in Carlsbad, CA and nearby neighborhoods. Typical visits combine carpentry, drywall repair, fixture swaps, and small repair items into a single visit.",
+    processIntro:
+      "Carlsbad visits are kept straightforward — share your list, get a clear estimate, and we handle the work in a single scheduled visit with no loose ends.",
     popularProjects: [
       {
         title: "Fence and gate repairs",
@@ -71,6 +74,8 @@ export const cityContent: Record<string, CityContent> = {
   oceanside: {
     intro:
       "Handyman visits for home repairs and improvements in Oceanside, CA and nearby coastal neighborhoods. Visits are scoped so work can be completed in a every visit with realistic timing.",
+    processIntro:
+      "Oceanside visits are scoped to fit your schedule — share your project list, confirm timing, and we arrive ready to work through everything cleanly in one trip.",
     popularProjects: [
       {
         title: "Coastal wear-and-tear repairs",
@@ -118,6 +123,8 @@ export const cityContent: Record<string, CityContent> = {
   encinitas: {
     intro:
       "Handyman services for small and medium projects across Encinitas communities. Visits are planned around realistic timing, clean work areas, and clear expectations on what will be completed.",
+    processIntro:
+      "Encinitas visits are planned around your home and schedule — we confirm the scope upfront, work cleanly through the list, and leave the space ready before we go.",
     popularProjects: [
       {
         title: "Interior carpentry and woodwork",
@@ -164,6 +171,8 @@ export const cityContent: Record<string, CityContent> = {
   vista: {
     intro:
       "Handyman visits focused on home repairs and improvements in Vista, CA and nearby neighborhoods. Many projects can be combined into a single visit wherever possible.",
+    processIntro:
+      "Vista visits are built around efficiency — send your list, get a realistic estimate, and we handle multiple repairs in one trip so you are not waiting on a series of small appointments.",
     popularProjects: [
       {
         title: "Honey-do lists and small repairs",
@@ -210,6 +219,8 @@ export const cityContent: Record<string, CityContent> = {
   "san-marcos": {
     intro:
       "Handyman services for townhomes, condos, and single-family homes in San Marcos, CA. Visits are scheduled to keep travel efficient and maximize time spent on actual repairs.",
+    processIntro:
+      "San Marcos visits are kept efficient and clear — share your project details, we confirm what fits in the visit, and the work gets done in one well-planned appointment.",
     popularProjects: [
       {
         title: "TV mounting and media walls",
@@ -256,6 +267,8 @@ export const cityContent: Record<string, CityContent> = {
   "bressi-ranch": {
     intro:
       "Handyman visits for homes in Bressi Ranch and nearby parts of Carlsbad. Typical visits combine fixture swaps, drywall touch-ups, and small repairs into a single visit.",
+    processIntro:
+      "Bressi Ranch visits are straightforward — share your punch list, we scope what can be handled in one visit, and work through it cleanly with no surprises on the day.",
     popularProjects: [
       {
         title: "Punch-list visits between life stages",

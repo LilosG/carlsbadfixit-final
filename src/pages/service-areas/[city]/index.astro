@@ -9,6 +9,7 @@ import { serviceAreas } from "../../../data/service-areas";
 import { cityContent } from "../../../data/city-content";
 import { getBreadcrumbJsonLd, getLocalBusinessStubJsonLd, getFaqPageJsonLd } from "../../../lib/seo";
 import { getFaqItemsForCity } from "../../../data/faqs";
+import { homeProcessSteps } from "../../../data/process-steps";
 import { businessProfile } from "../../../data/site-config";
 
 export function getStaticPaths() {
@@ -30,6 +31,10 @@ const longTailNote = `If you are searching for a handyman in ${city.label}, Carl
 const neighborhoods = content.neighborhoods ?? [];
 const propertyTypes = content.propertyTypes ?? [];
 const popularProjects = content.popularProjects ?? [];
+
+const processIntro =
+  content.processIntro ??
+  `A straightforward process built around your schedule and list of repairs in ${city.label}.`;
 
 const landlordNote =
   content.landlordNote ??
@@ -384,6 +389,27 @@ const faqJsonLd =
             {reviewSnippet.role ? ` · ${reviewSnippet.role}` : ""}
           </p>
         </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="shadow-soft mt-8 rounded-3xl bg-white p-6 md:p-8">
+    <div class="space-y-6">
+      <SectionIntro
+        eyebrow="How it works"
+        title={"A simple process for " + city.label + " homeowners"}
+        description={processIntro}
+      />
+      <div class="grid gap-5 md:grid-cols-4">
+        {homeProcessSteps.map((item) => (
+          <div class="card-elevated flex flex-col items-start text-left">
+            <div class="from-cf-accentBlue to-cf-primary mb-3 inline-flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br text-sm font-bold text-white shadow-md">
+              {item.step}
+            </div>
+            <h3 class="text-cf-text text-sm font-semibold">{item.title}</h3>
+            <p class="text-body-sm mt-2">{item.body}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>

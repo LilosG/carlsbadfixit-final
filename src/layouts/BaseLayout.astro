@@ -145,6 +145,29 @@ const webpageJsonLd = JSON.stringify({
       gtag('js', new Date());
       gtag('config', 'G-8L6X2ZZ5JH');
     </script>
+    <script is:inline>
+      document.addEventListener('click', function(e) {
+        var el = e.target.closest('a[href^="tel:"]');
+        if (!el) return;
+        if (typeof gtag === 'function') {
+          gtag('event', 'click_to_call', {
+            event_category: 'engagement',
+            event_label: el.href.replace('tel:', ''),
+          });
+        }
+      });
+
+      document.addEventListener('submit', function(e) {
+        var form = e.target.closest('form[data-ga-form-event]');
+        if (!form) return;
+        if (typeof gtag === 'function') {
+          gtag('event', form.dataset.gaFormEvent, {
+            event_category: 'lead',
+            event_label: form.dataset.gaFormName || form.id,
+          });
+        }
+      });
+    </script>
 
     <slot name="head" />
 

@@ -18,6 +18,9 @@ type PaginatedPage<T> = {
   };
 };
 
+const normalizeBlogPageUrl = (url?: string) =>
+  url === "/blog/1/" ? "/blog/" : url;
+
 export async function getStaticPaths({
   paginate,
 }: {
@@ -114,8 +117,8 @@ const collectionJsonLd = JSON.stringify(
     pagination={{
       currentPage: page.currentPage,
       totalPages: page.lastPage,
-      prevUrl: page.url.prev ?? undefined,
-      nextUrl: page.url.next ?? undefined,
+      prevUrl: normalizeBlogPageUrl(page.url.prev),
+      nextUrl: normalizeBlogPageUrl(page.url.next),
     }}
   />
 

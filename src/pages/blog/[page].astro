@@ -31,9 +31,7 @@ export async function getStaticPaths({
   );
   const remaining = posts.filter((post) => !post.data.featured);
 
-  return paginate(remaining, { pageSize: 9 }).filter(
-    (page) => page.params.page !== "1",
-  );
+  return paginate(remaining, { pageSize: 9 });
 }
 
 const { page } = Astro.props as { page: PaginatedPage<BlogPost> };
@@ -56,6 +54,7 @@ const collectionJsonLd = JSON.stringify(
 <BaseLayout
   title={`Home Maintenance Tips for North County San Diego | Page ${page.currentPage}`}
   description="Local handyman insights for North County San Diego homeowners. Practical tips, checklists, and planning guidance for small repair projects."
+  canonical={page.currentPage === 1 ? "https://www.carlsbadfixit.com/blog/" : undefined}
 >
   <script
     type="application/ld+json"

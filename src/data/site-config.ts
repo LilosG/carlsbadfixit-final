@@ -93,7 +93,7 @@ export const businessProfile: BusinessProfile = {
   priceRange: "$$",
   aggregateRating: {
     ratingValue: "5.0",
-    reviewCount: 4,
+    reviewCount: 6,
   },
   serviceAreaLabel: "Carlsbad and nearby North County San Diego communities",
   hours: [
@@ -127,10 +127,6 @@ export const businessProfile: BusinessProfile = {
     {
       label: "Google Business Profile",
       href: "https://maps.app.goo.gl/SLn6g6JEFRTLLWPRA",
-    },
-    {
-      label: "Lilos Growth",
-      href: "https://lilosgrowth.com",
     },
   ],
 };

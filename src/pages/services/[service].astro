@@ -65,8 +65,8 @@ const serviceExamples = service.examples ?? [];
 
 const faqItems = getFaqItemsForService(service.slug);
 
-const title = `${service.name} in ${primaryArea.label} | Carlsbad Fix It`;
-const description = `${service.name} visits in ${primaryArea.label} for home repairs and improvements handled with clear timing and quality results, handled by a licensed and insured local handyman.`;
+const title = `Carlsbad Handyman ${service.name} Services | Carlsbad Fix It`;
+const description = `Professional ${service.name.toLowerCase()} services in Carlsbad, CA and nearby North County San Diego. Licensed and insured local handyman with clear scope, honest pricing, and quality results on every visit.`;
 
 // JSON-LD for money pages
 const breadcrumbJsonLd = JSON.stringify(
@@ -144,7 +144,7 @@ const faqJsonLd =
       <div class="space-y-6">
         <p class="eyebrow text-amber-200">Core service</p>
         <h1 class="text-display font-semibold tracking-tight text-white">
-          {service.name} in {primaryArea.label}
+          {service.name} Services in {primaryArea.label}
         </h1>
         <p class="text-body-sm max-w-2xl text-sky-50">
           {introText}
@@ -458,14 +458,15 @@ const faqJsonLd =
       </p>
     </div>
 
-    <div class="mt-4 flex flex-wrap gap-2 text-xs">
+    <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {
         serviceAreas.map((area) => (
           <a
             href={`/service-areas/${area.slug}/${service.slug}/`}
-            class="text-cf-text shadow-soft hover:bg-cf-card inline-flex items-center rounded-full bg-white px-3 py-1"
+            class="card-elevated flex flex-col gap-1 text-sm"
           >
-            {service.name} in {area.label}
+            <span class="text-cf-text font-semibold">{service.name} in {area.label}</span>
+            <span class="text-cf-textMuted text-xs">View availability and local coverage in {area.name}</span>
           </a>
         ))
       }
@@ -547,31 +548,6 @@ const faqJsonLd =
       </section>
     )
   }
-
-  <section class="shadow-soft mt-8 rounded-3xl bg-white p-6 md:p-8">
-    <div class="space-y-2">
-      <p class="eyebrow text-cf-textMuted">Local availability</p>
-      <h2 class="text-h2 text-cf-text font-semibold">
-        {service.name} service areas in North County
-      </h2>
-      <p class="text-body-sm text-cf-textMuted max-w-2xl">
-        Choose your city to view local {service.name.toLowerCase()} availability and
-        nearby neighborhood coverage.
-      </p>
-    </div>
-    <div class="mt-4 flex flex-wrap gap-2 text-[11px]">
-      {
-        serviceAreas.map((area) => (
-          <a
-            href={`/service-areas/${area.slug}/${service.slug}/`}
-            class="text-cf-text shadow-soft hover:bg-cf-sandSoft inline-flex items-center rounded-full bg-white px-3 py-1"
-          >
-            {area.label}
-          </a>
-        ))
-      }
-    </div>
-  </section>
 
   {/* BOTTOM CTA – global */}
   <PageCtaStrip

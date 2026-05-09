@@ -84,7 +84,9 @@ const faqItems = getFaqItemsForService(service.slug);
 
 // SEO
 const title = `${service.name} in ${city.label} | Carlsbad Fix It`;
-const description = `${service.name} visits in ${city.label} for home repairs and improvements handled with clear timing and quality results, handled by a licensed and insured local handyman.`;
+const description = moneyEntry.intro
+  ? `${moneyEntry.intro.slice(0, 155).trimEnd()}${moneyEntry.intro.length > 155 ? "…" : ""}`
+  : `${service.name} visits in ${city.label} for home repairs and improvements. Licensed and insured local handyman serving ${city.label} and nearby North County San Diego.`;
 
 const breadcrumbJsonLd = JSON.stringify(
   getBreadcrumbJsonLd([

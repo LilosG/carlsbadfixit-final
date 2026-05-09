@@ -19,7 +19,7 @@ A focused visit can typically handle:
 - Toilet internal parts or a single toilet replacement
 - Shower head replacement
 
-For service details, see the [plumbing fixtures page](/services/plumbing-fixtures-repairs/) and local coverage in [Oceanside](/service-areas/oceanside/).
+For service details, see the [plumbing fixture service in Oceanside](/service-areas/oceanside/plumbing-fixtures-repairs/) and local coverage in [Oceanside](/service-areas/oceanside/).
 
 ## Suggested planning timeline
 

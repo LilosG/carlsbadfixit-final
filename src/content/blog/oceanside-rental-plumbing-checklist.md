@@ -18,7 +18,7 @@ Rental turnovers move fast in Oceanside, and plumbing issues are one of the most
 - Test shower heads for consistent pressure
 - Confirm kitchen disposer is running smoothly
 
-For a focused visit, review the [plumbing fixtures service page](/services/plumbing-fixtures-repairs/) or see local details for [Oceanside](/service-areas/oceanside/).
+For a focused visit, review the [plumbing fixtures service in Oceanside](/service-areas/oceanside/plumbing-fixtures-repairs/) or see local details for [Oceanside](/service-areas/oceanside/).
 
 ## What fits a single visit?
 

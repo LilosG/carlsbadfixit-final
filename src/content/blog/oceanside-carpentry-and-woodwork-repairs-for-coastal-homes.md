@@ -40,7 +40,7 @@ Small wood issues rarely stay small.
 4. **Tightening or swapping failing hardware**
 5. **Resetting loose exterior wood details**
 
-These jobs are often a good fit for [carpentry and woodwork service](/services/carpentry-woodwork/) when the damage is limited and the surrounding structure is still solid.
+These jobs are often a good fit for [carpentry and woodwork in Oceanside](/service-areas/oceanside/carpentry-woodwork/) when the damage is limited and the surrounding structure is still solid.
 
 ## What to inspect around the house
 

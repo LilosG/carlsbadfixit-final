@@ -19,7 +19,7 @@ Focus on items that use existing shutoffs and do not require opening walls:
 - Toilet internal parts or full toilet swaps
 - Shower heads and hand shower kits
 
-If you want help planning the visit, review the [plumbing fixtures service page](/services/plumbing-fixtures-repairs/) or confirm local coverage in [Encinitas](/service-areas/encinitas/).
+If you want help planning the visit, review the [plumbing fixture service in Encinitas](/service-areas/encinitas/plumbing-fixtures-repairs/) or confirm local coverage in [Encinitas](/service-areas/encinitas/).
 
 ## What to prep before the visit
 

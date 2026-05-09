@@ -27,7 +27,7 @@ Not every plumbing update needs a separate appointment. A lot of smaller fixture
 - **Drain hardware adjustment**
 - **Minor leak checks around fixtures**
 
-If the scope is limited and the shutoff valves are working, these jobs are often good candidates for a single [plumbing fixtures and repairs service](/services/plumbing-fixtures-repairs/) visit.
+If the scope is limited and the shutoff valves are working, these jobs are often good candidates for a single [plumbing fixture repairs in Encinitas](/service-areas/encinitas/plumbing-fixtures-repairs/) visit.
 
 ## What to check before buying replacement parts
 

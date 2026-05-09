@@ -20,7 +20,7 @@ These upgrades are high value because they are visible every day and usually fit
 - Ceiling fans in living rooms and bedrooms
 - Dimmer switch upgrades for main living areas
 
-If you want professional help, start with the [electrical service overview](/services/electrical/) or check local coverage in [Oceanside](/service-areas/oceanside/).
+If you want professional help, start with the [electrical service in Oceanside](/service-areas/oceanside/electrical/) or check local coverage in [Oceanside](/service-areas/oceanside/).
 
 ## What fits in one visit?
 

@@ -16,7 +16,7 @@ Spring in Carlsbad is the perfect time to clear the small repairs that pile up d
 - Group items by room to cut down on setup time.
 - Keep materials on site when possible.
 
-If you want help planning the visit, review the [honey-do list service details](/services/honey-do-lists-small-repairs/) or see local availability in [Carlsbad](/service-areas/carlsbad/).
+If you want help planning the visit, review the [honey-do list service in Carlsbad](/service-areas/carlsbad/honey-do-lists-small-repairs/) or see local availability in [Carlsbad](/service-areas/carlsbad/).
 
 ## Carlsbad honey-do checklist (20 quick wins)
 

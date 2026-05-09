@@ -23,7 +23,7 @@ Small electrical issues can make a Carlsbad home feel frustrating day to day. Th
 9. Secure loose light fixture canopies.
 10. Swap an outdated dining fixture for a clean, modern look.
 
-For professional help, start with the [electrical service page](/services/electrical/) and confirm local availability in [Carlsbad](/service-areas/carlsbad/).
+For professional help, start with the [electrical service in Carlsbad](/service-areas/carlsbad/electrical/) and confirm local availability in [Carlsbad](/service-areas/carlsbad/).
 
 ## What fits in one visit?
 

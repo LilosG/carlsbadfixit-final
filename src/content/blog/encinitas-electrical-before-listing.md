@@ -18,7 +18,7 @@ Lighting and small electrical issues can make an Encinitas home feel dated durin
 - Replace loose or discolored switch plates
 - Install a quiet, balanced ceiling fan in the primary bedroom
 
-If you want professional help, review the [electrical service page](/services/electrical/) or confirm coverage in [Encinitas](/service-areas/encinitas/).
+If you want professional help, review the [electrical service in Encinitas](/service-areas/encinitas/electrical/) or confirm coverage in [Encinitas](/service-areas/encinitas/).
 
 ## What fits a single visit?
 

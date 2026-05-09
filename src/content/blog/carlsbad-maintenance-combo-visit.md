@@ -35,7 +35,7 @@ Examples that fit well:
 - Adjust sticky doors
 - Replace worn caulk at baseboards
 
-See the [honey-do list service page](/services/honey-do-lists-small-repairs/) for a full scope overview.
+See the [small repairs in Carlsbad](/service-areas/carlsbad/honey-do-lists-small-repairs/) for a full scope overview.
 
 ## Step 3: Add 1 to 2 fixture swaps
 

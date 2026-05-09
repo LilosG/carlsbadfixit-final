@@ -17,7 +17,7 @@ If your weekends are packed, a single handyman visit can knock out the small iss
 3. Put hardware, paint, or anchors in one place.
 4. Take photos of any problem areas.
 
-For local service details, see [Encinitas handyman coverage](/service-areas/encinitas/) and the [honey-do list service page](/services/honey-do-lists-small-repairs/).
+For local service details, see [Encinitas handyman coverage](/service-areas/encinitas/) and the [honey-do list help in Encinitas](/service-areas/encinitas/honey-do-lists-small-repairs/).
 
 ## Tasks that fit well
 

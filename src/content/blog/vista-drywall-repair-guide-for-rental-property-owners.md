@@ -26,7 +26,7 @@ Before you decide whether to patch it yourself or schedule help, walk the unit a
 - **Corner bead damage** near hallways
 - **Texture mismatches** from old patch jobs
 
-If damage is limited to a few clean holes, you may be able to handle it. If the wall has multiple repair spots, visible texture, or larger blown-out sections, it usually makes more sense to schedule [drywall repair service](/services/drywall-repair/).
+If damage is limited to a few clean holes, you may be able to handle it. If the wall has multiple repair spots, visible texture, or larger blown-out sections, it usually makes more sense to schedule [drywall repair in Vista](/service-areas/vista/drywall-repair/).
 
 ## When a DIY patch is reasonable
 

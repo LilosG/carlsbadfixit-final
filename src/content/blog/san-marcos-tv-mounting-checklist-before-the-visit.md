@@ -8,7 +8,7 @@ services: ["tv-mounting", "furniture-assembly-installation"]
 featured: false
 ---
 
-If you are booking [TV mounting service](/services/tv-mounting/) for your San Marcos home, a little prep makes the visit smoother. Most delays come from wall conditions, unclear placement, or missing access around furniture and outlets. If you get those sorted before the appointment, the work usually moves faster and the finished setup looks cleaner.
+If you are booking [TV mounting in San Marcos](/service-areas/san-marcos/tv-mounting/) for your San Marcos home, a little prep makes the visit smoother. Most delays come from wall conditions, unclear placement, or missing access around furniture and outlets. If you get those sorted before the appointment, the work usually moves faster and the finished setup looks cleaner.
 
 This is especially true in San Marcos where homes range from newer builder-grade layouts to older properties with patched drywall, fireplace bump-outs, and mixed wall materials. If you are in a two-story home, condo, or rental, it helps to know what is behind the wall before drilling starts.
 

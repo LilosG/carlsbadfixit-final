@@ -42,7 +42,7 @@ Not every item needs to be secured, but many do.
 
 These pieces can tip if the floor is uneven, drawers are extended, or climbing weight is added. Builder-grade walls in newer homes can also hide blocking issues, so the anchor method should match the wall condition.
 
-For that kind of work, the main service page is [furniture assembly and installation](/services/furniture-assembly-installation/).
+For that kind of work, the main service page is [furniture assembly and installation in Bressi Ranch](/service-areas/bressi-ranch/furniture-assembly-installation/).
 
 ## Wall-mounted shelves and load limits
 

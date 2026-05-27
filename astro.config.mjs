@@ -2,22 +2,14 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
+import mdx from "@astrojs/mdx";
 
-// https://astro.build/config
 export default defineConfig({
-  // Canonical production URL (used by Astro for sitemap, canonical helpers, etc.)
   site: "https://www.carlsbadfixit.com",
-  // Match your /services/, /contact/, etc. URL style
   trailingSlash: "always",
   integrations: [
-    sitemap({
-      filter: (page) => !page.includes("404"),
-      changefreq: "weekly",
-      priority: 0.7,
-      lastmod: new Date(),
-    }),
+    sitemap({ filter: (page) => !page.includes("404"), changefreq: "weekly", priority: 0.7, lastmod: new Date() }),
+    mdx(),
   ],
-  vite: {
-    plugins: [tailwindcss()],
-  },
+  vite: { plugins: [tailwindcss()] },
 });

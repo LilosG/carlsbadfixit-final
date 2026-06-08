@@ -1,13 +1,28 @@
 ---
-import { getCollection } from "astro:content";
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import PageCtaStrip from "../../components/PageCtaStrip.astro";
-import { services } from "../../data/services";
-import { serviceAreas } from "../../data/service-areas";
-import { getArticleJsonLd, getBreadcrumbJsonLd } from "../../lib/seo";
+// src/pages/blog/[slug].astro
+// Carlsbad Fix It — Blog Post Route
+// ====================================
+// Previous version: had Related Services + Service Areas sidebar (good),
+// but was missing Related Articles and a rendered FAQ section.
+// FAQs were in the frontmatter schema and the JSON-LD was emitted but
+// the questions were never displayed on the page for readers.
+//
+// This version adds:
+//   - FAQ render section (visible Q&A, styled to match the cf-* design system)
+//   - Related Articles section scored by tag overlap + service overlap
+//
+// All existing functionality preserved: localLinks, serviceLinks, areaLinks,
+// PageCtaStrip, article schema, breadcrumb schema, reading time.
+
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageCtaStrip from '../../components/PageCtaStrip.astro';
+import { services } from '../../data/services';
+import { serviceAreas } from '../../data/service-areas';
+import { getArticleJsonLd, getBreadcrumbJsonLd } from '../../lib/seo';
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+  const posts = await getCollection('blog');
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: { post },
@@ -17,50 +32,83 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await post.render();
 
-const siteUrl = Astro.site?.toString() ?? "https://www.carlsbadfixit.com";
+const siteUrl     = Astro.site?.toString() ?? 'https://www.carlsbadfixit.com';
 const canonicalUrl =
   post.data.canonical ?? new URL(`/blog/${post.slug}/`, siteUrl).toString();
-const ogImageUrl = post.data.image
+const ogImageUrl  = post.data.image
   ? new URL(post.data.image, siteUrl).toString()
   : undefined;
 
-const wordCount = post.body.split(/\s+/).filter(Boolean).length;
+const wordCount          = post.body.split(/\s+/).filter(Boolean).length;
 const readingTimeMinutes = Math.max(1, Math.round(wordCount / 200));
 
 const postServices = new Set(post.data.services as string[]);
-const postAreas = new Set(post.data.serviceAreas as string[]);
+const postAreas    = new Set(post.data.serviceAreas as string[]);
+const faqs         = post.data.faqs ?? [];
 
-const serviceLinks = services.filter((service) =>
-  postServices.has(service.slug),
-);
-const areaLinks = serviceAreas.filter((area) => postAreas.has(area.slug));
-const localLinks = areaLinks.flatMap((area) =>
+const serviceLinks = services.filter((s) => postServices.has(s.slug));
+const areaLinks    = serviceAreas.filter((a) => postAreas.has(a.slug));
+const localLinks   = areaLinks.flatMap((area) =>
   serviceLinks.map((service) => ({
     label: `${service.name} in ${area.label}`,
-    href: `/service-areas/${area.slug}/${service.slug}/`,
+    href:  `/service-areas/${area.slug}/${service.slug}/`,
   })),
 );
 
+// Related articles: service overlap primary, tag overlap secondary, recency tertiary
+const allPosts    = (await getCollection('blog')).filter((p) => p.slug !== post.slug);
+const relatedPosts = allPosts
+  .map((p) => {
+    const pServices = new Set(p.data.services as string[] ?? []);
+    const pTags     = p.data.tags ?? [];
+    const serviceOverlap = [...postServices].filter((s) => pServices.has(s)).length;
+    const tagOverlap     = pTags.filter((t) => (post.data.tags ?? []).includes(t)).length;
+    return { post: p, serviceOverlap, tagOverlap };
+  })
+  .sort(
+    (a, b) =>
+      b.serviceOverlap - a.serviceOverlap ||
+      b.tagOverlap     - a.tagOverlap     ||
+      b.post.data.pubDate.valueOf() - a.post.data.pubDate.valueOf(),
+  )
+  .slice(0, 3)
+  .map(({ post }) => post);
+
+// ── Schema ────────────────────────────────────────────────────────────────
+
 const articleJsonLd = JSON.stringify(
   getArticleJsonLd({
-    title: post.data.title,
-    description: post.data.description,
-    url: canonicalUrl,
+    title:         post.data.title,
+    description:   post.data.description,
+    url:           canonicalUrl,
     datePublished: post.data.pubDate.toISOString(),
-    dateModified: post.data.updatedDate?.toISOString(),
-    image: ogImageUrl,
-    tags: post.data.tags,
-    authorName: post.data.author,
+    dateModified:  post.data.updatedDate?.toISOString(),
+    image:         ogImageUrl,
+    tags:          post.data.tags,
+    authorName:    post.data.author,
   }),
 );
 
 const breadcrumbJsonLd = JSON.stringify(
   getBreadcrumbJsonLd([
-    { name: "Home", url: "/" },
-    { name: "Blog", url: "/blog/" },
+    { name: 'Home', url: '/' },
+    { name: 'Blog', url: '/blog/' },
     { name: post.data.title, url: `/blog/${post.slug}/` },
   ]),
 );
+
+const faqJsonLd =
+  faqs.length > 0
+    ? JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqs.map((f: { question: string; answer: string }) => ({
+          '@type': 'Question',
+          name: f.question,
+          acceptedAnswer: { '@type': 'Answer', text: f.answer },
+        })),
+      })
+    : null;
 ---
 
 <BaseLayout
@@ -70,155 +118,184 @@ const breadcrumbJsonLd = JSON.stringify(
   ogType="article"
   ogImage={ogImageUrl}
 >
-  <script
-    type="application/ld+json"
-    slot="head"
-    is:inline
-    set:html={articleJsonLd}
-  />
-  <script
-    type="application/ld+json"
-    slot="head"
-    is:inline
-    set:html={breadcrumbJsonLd}
-  />
-  <meta
-    property="article:published_time"
-    content={post.data.pubDate.toISOString()}
-    slot="head"
-  />
-  {
-    post.data.updatedDate && (
-      <meta
-        property="article:modified_time"
-        content={post.data.updatedDate.toISOString()}
-        slot="head"
-      />
-    )
-  }
+  <script type="application/ld+json" slot="head" is:inline set:html={articleJsonLd} />
+  <script type="application/ld+json" slot="head" is:inline set:html={breadcrumbJsonLd} />
+  {faqJsonLd && <script type="application/ld+json" slot="head" is:inline set:html={faqJsonLd} />}
+  <meta property="article:published_time" content={post.data.pubDate.toISOString()} slot="head" />
+  {post.data.updatedDate && (
+    <meta property="article:modified_time" content={post.data.updatedDate.toISOString()} slot="head" />
+  )}
 
+  <!-- ── Article ──────────────────────────────────────────────────────── -->
   <article class="shadow-soft rounded-3xl bg-white p-6 md:p-8">
     <div class="space-y-4">
       <p class="eyebrow text-cf-textMuted">Local homeowner guide</p>
-      <h1 class="text-h1 text-cf-text font-semibold">
-        {post.data.title}
-      </h1>
+      <h1 class="text-h1 text-cf-text font-semibold">{post.data.title}</h1>
       <p class="text-body-sm text-cf-textMuted">{post.data.description}</p>
       <div class="text-cf-textMuted flex flex-wrap items-center gap-3 text-xs">
-        <span>{post.data.pubDate.toLocaleDateString("en-US")}</span>
+        <span>{post.data.pubDate.toLocaleDateString('en-US')}</span>
         <span>By {post.data.author}</span>
         <span>{readingTimeMinutes} min read</span>
-        {
-          post.data.updatedDate && (
-            <span>
-              Updated {post.data.updatedDate.toLocaleDateString("en-US")}
-            </span>
-          )
-        }
-        {
-          post.data.tags.length > 0 && (
-            <div class="flex flex-wrap gap-2">
-              {post.data.tags.map((tag) => (
-                <span class="badge-muted">{tag}</span>
-              ))}
-            </div>
-          )
-        }
+        {post.data.updatedDate && (
+          <span>Updated {post.data.updatedDate.toLocaleDateString('en-US')}</span>
+        )}
+        {post.data.tags.length > 0 && (
+          <div class="flex flex-wrap gap-2">
+            {post.data.tags.map((tag) => (
+              <span class="badge-muted">{tag}</span>
+            ))}
+          </div>
+        )}
       </div>
     </div>
 
-    {
-      post.data.image && (
-        <figure class="shadow-soft overflow-hidden rounded-3xl">
-          <img
-            src={post.data.image}
-            alt={post.data.imageAlt ?? post.data.title}
-            loading="lazy"
-            class="h-full w-full object-cover"
-          />
-        </figure>
-      )
-    }
+    {post.data.image && (
+      <figure class="shadow-soft overflow-hidden rounded-3xl mt-6">
+        <img
+          src={post.data.image}
+          alt={post.data.imageAlt ?? post.data.title}
+          loading="eager"
+          fetchpriority="high"
+          class="h-full w-full object-cover"
+          width="1200"
+          height="675"
+        />
+      </figure>
+    )}
 
     <div class="blog-content text-cf-textMuted mt-6 space-y-5 text-sm">
       <Content />
     </div>
   </article>
 
-  {
-    (serviceLinks.length > 0 || areaLinks.length > 0) && (
-      <section class="mt-6 grid gap-4 md:grid-cols-2">
-        {serviceLinks.length > 0 && (
-          <div class="card">
-            <p class="text-cf-textMuted text-xs font-semibold tracking-wide uppercase">
-              Related services
-            </p>
-            <h2 class="text-cf-text mt-2 text-base font-semibold">
-              Schedule the right handyman visit
-            </h2>
-            <ul class="text-cf-textMuted mt-3 space-y-2 text-sm">
-              {serviceLinks.map((service) => (
-                <li>
-                  <a
-                    href={`/services/${service.slug}/`}
-                    class="text-cf-accentBlue font-semibold hover:underline"
-                  >
-                    {service.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {areaLinks.length > 0 && (
-          <div class="card">
-            <p class="text-cf-textMuted text-xs font-semibold tracking-wide uppercase">
-              Service areas
-            </p>
-            <h2 class="text-cf-text mt-2 text-base font-semibold">
-              Local coverage for your neighborhood
-            </h2>
-            <ul class="text-cf-textMuted mt-3 space-y-2 text-sm">
-              {areaLinks.map((area) => (
-                <li>
-                  <a
-                    href={`/service-areas/${area.slug}/`}
-                    class="text-cf-accentBlue font-semibold hover:underline"
-                  >
-                    Handyman in {area.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </section>
-    )
-  }
-
-  {
-    localLinks.length > 0 && (
-      <section class="bg-cf-sandSoft text-cf-text mt-6 rounded-3xl p-6 text-sm">
-        <p class="text-cf-textMuted text-xs font-semibold tracking-wide uppercase">
-          Local service pages
-        </p>
-        <h2 class="text-cf-text mt-2 text-lg font-semibold">
-          Explore service details by city
-        </h2>
-        <div class="mt-4 flex flex-wrap gap-2 text-xs">
-          {localLinks.slice(0, 6).map((link) => (
-            <a
-              href={link.href}
-              class="text-cf-accentBlue shadow-soft hover:bg-cf-card rounded-full bg-white px-3 py-1 font-semibold"
-            >
-              {link.label}
-            </a>
-          ))}
+  <!-- ── Related services + areas ─────────────────────────────────────── -->
+  {(serviceLinks.length > 0 || areaLinks.length > 0) && (
+    <section class="mt-6 grid gap-4 md:grid-cols-2">
+      {serviceLinks.length > 0 && (
+        <div class="card">
+          <p class="text-cf-textMuted text-xs font-semibold tracking-wide uppercase">
+            Related services
+          </p>
+          <h2 class="text-cf-text mt-2 text-base font-semibold">
+            Schedule the right handyman visit
+          </h2>
+          <ul class="text-cf-textMuted mt-3 space-y-2 text-sm">
+            {serviceLinks.map((service) => (
+              <li>
+                <a href={`/services/${service.slug}/`} class="text-cf-accentBlue font-semibold hover:underline">
+                  {service.name}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
-      </section>
-    )
-  }
+      )}
+      {areaLinks.length > 0 && (
+        <div class="card">
+          <p class="text-cf-textMuted text-xs font-semibold tracking-wide uppercase">
+            Service areas
+          </p>
+          <h2 class="text-cf-text mt-2 text-base font-semibold">
+            Local coverage for your neighborhood
+          </h2>
+          <ul class="text-cf-textMuted mt-3 space-y-2 text-sm">
+            {areaLinks.map((area) => (
+              <li>
+                <a href={`/service-areas/${area.slug}/`} class="text-cf-accentBlue font-semibold hover:underline">
+                  Handyman in {area.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </section>
+  )}
+
+  <!-- ── Local money pages ─────────────────────────────────────────────── -->
+  {localLinks.length > 0 && (
+    <section class="bg-cf-sandSoft text-cf-text mt-6 rounded-3xl p-6 text-sm">
+      <p class="text-cf-textMuted text-xs font-semibold tracking-wide uppercase">
+        Local service pages
+      </p>
+      <h2 class="text-cf-text mt-2 text-lg font-semibold">
+        Explore service details by city
+      </h2>
+      <div class="mt-4 flex flex-wrap gap-2 text-xs">
+        {localLinks.slice(0, 6).map((link) => (
+          <a
+            href={link.href}
+            class="text-cf-accentBlue shadow-soft hover:bg-cf-card rounded-full bg-white px-3 py-1 font-semibold"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- ── FAQ section ───────────────────────────────────────────────────── -->
+  {faqs.length > 0 && (
+    <section class="mt-6 shadow-soft rounded-3xl bg-white p-6 md:p-8">
+      <p class="eyebrow text-cf-textMuted">Common questions</p>
+      <h2 class="text-cf-text mt-2 text-h2 font-semibold mb-6">
+        Frequently Asked Questions
+      </h2>
+      <dl class="space-y-4">
+        {faqs.map((f: { question: string; answer: string }) => (
+          <div class="card">
+            <dt class="text-cf-text font-semibold text-sm">{f.question}</dt>
+            <dd class="mt-2 text-cf-textMuted text-sm leading-relaxed">{f.answer}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  )}
+
+  <!-- ── Related articles ───────────────────────────────────────────────── -->
+  {relatedPosts.length > 0 && (
+    <section class="mt-6">
+      <p class="eyebrow text-cf-textMuted">More guides</p>
+      <h2 class="text-cf-text mt-2 text-h2 font-semibold mb-4">Related Articles</h2>
+      <div class="grid gap-4 md:grid-cols-3">
+        {relatedPosts.map((p) => (
+          <a
+            href={`/blog/${p.slug}/`}
+            class="card flex flex-col justify-between hover:translate-y-[-2px] transition no-underline"
+          >
+            {p.data.image && (
+              <div class="mb-3 overflow-hidden rounded-2xl aspect-video">
+                <img
+                  src={p.data.image}
+                  alt={p.data.imageAlt ?? p.data.title}
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                  width="600"
+                  height="338"
+                />
+              </div>
+            )}
+            <div class="space-y-2">
+              <div class="text-cf-textMuted flex flex-wrap gap-2 text-[11px] tracking-wide uppercase">
+                {(p.data.tags ?? []).slice(0, 2).map((tag) => (
+                  <span class="badge-muted">{tag}</span>
+                ))}
+              </div>
+              <h3 class="text-cf-text text-base font-semibold leading-snug line-clamp-2">
+                {p.data.title}
+              </h3>
+              <p class="text-cf-textMuted text-sm line-clamp-2">{p.data.description}</p>
+            </div>
+            <div class="text-cf-textMuted mt-4 flex items-center justify-between text-xs">
+              <span>{p.data.pubDate.toLocaleDateString('en-US')}</span>
+              <span class="text-cf-accentBlue font-semibold">Read more</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
 
   <PageCtaStrip
     eyebrow="Ready for a visit?"

@@ -163,11 +163,77 @@ export function getCityServiceJsonLd(service: Service, area: ServiceArea) {
     serviceType: service.name,
     url,
     areaServed: {
-      "@type": "Place",
+      "@type": "City",
       name: area.label,
+      ...(AREA_SAME_AS[area.label] ? { sameAs: AREA_SAME_AS[area.label] } : {}),
     },
     provider: {
       "@id": BUSINESS_ID,
+    },
+  };
+}
+
+export function getHowToJsonLd(
+  serviceName: string,
+  cityLabel: string,
+  pageUrl: string,
+) {
+  const url = pageUrl.startsWith("http")
+    ? pageUrl
+    : new URL(pageUrl, SITE_URL).toString();
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: `How to schedule ${serviceName} in ${cityLabel}`,
+    description: `A clear 3-step process for ${serviceName.toLowerCase()} visits in ${cityLabel}: share your project list, review the estimate, and get the work done with a final walkthrough.`,
+    url,
+    step: [
+      {
+        "@type": "HowToStep",
+        position: 1,
+        name: "Share your project list and photos",
+        text: `Send a brief description of the work, a few photos, and your location in ${cityLabel} or another North County city. This helps confirm that a handyman visit is the right fit and lets us give you an accurate estimate upfront.`,
+      },
+      {
+        "@type": "HowToStep",
+        position: 2,
+        name: "Review your estimate and schedule",
+        text: "You will receive clear expectations on what can be completed, how long the visit will take, and how material costs will be handled before you commit to anything.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 3,
+        name: "We complete the visit and clean up",
+        text: "Work is completed with careful protection, clean work areas, and a final walkthrough so you know what was finished and where to look if any questions come up later.",
+      },
+    ],
+    totalTime: "PT2H",
+    performTime: "PT2H",
+  };
+}
+
+export function getServiceReviewJsonLd(review: {
+  quote: string;
+  name: string;
+  location: string;
+  role?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    reviewBody: review.quote,
+    author: {
+      "@type": "Person",
+      name: review.name,
+    },
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: "5",
+      bestRating: "5",
+    },
+    itemReviewed: {
+      "@id": `${SITE_URL}#localbusiness`,
     },
   };
 }

@@ -16,6 +16,8 @@ import {
   getLocalBusinessStubJsonLd,
   getCityServiceJsonLd,
   getFaqPageJsonLd,
+  getHowToJsonLd,
+  getServiceReviewJsonLd,
 } from "../../../lib/seo";
 import { getFaqItemsForService } from "../../../data/faqs";
 import ServiceExampleList from "../../../components/ServiceExampleList.astro";
@@ -79,8 +81,10 @@ const cityData = cityContent[cityKey] ?? {};
 const neighborhoods: string[] = cityData.neighborhoods ?? [];
 const popularProjects = cityData.popularProjects ?? [];
 
-// FAQ items by service
-const faqItems = getFaqItemsForService(service.slug);
+// FAQ items: city×service specific first, then generic service FAQs
+const cityServiceFaqs = moneyEntry.cityServiceFaqs ?? [];
+const serviceFaqItems = getFaqItemsForService(service.slug);
+const faqItems = [...cityServiceFaqs, ...serviceFaqItems];
 
 // SEO
 const title = `${service.name} in ${city.label} | Carlsbad Fix It`;
@@ -116,6 +120,18 @@ const faqJsonLd =
         ),
       )
     : null;
+
+const howToJsonLd = JSON.stringify(
+  getHowToJsonLd(
+    service.name,
+    city.label,
+    `/service-areas/${city.slug}/${service.slug}/`,
+  ),
+);
+
+const reviewJsonLd = reviewSnippet
+  ? JSON.stringify(getServiceReviewJsonLd(reviewSnippet))
+  : null;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -144,6 +160,22 @@ const faqJsonLd =
         slot="head"
         is:inline
         set:html={faqJsonLd}
+      />
+    )
+  }
+  <script
+    type="application/ld+json"
+    slot="head"
+    is:inline
+    set:html={howToJsonLd}
+  />
+  {
+    reviewJsonLd && (
+      <script
+        type="application/ld+json"
+        slot="head"
+        is:inline
+        set:html={reviewJsonLd}
       />
     )
   }

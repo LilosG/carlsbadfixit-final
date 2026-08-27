@@ -60,7 +60,7 @@ export const defaultSeo: DefaultSeoConfig = {
   defaultTitle: "Carlsbad Fix It | Handyman Services in Carlsbad, CA",
   defaultDescription:
     "Local handyman for home repairs, installations, and maintenance in Carlsbad, California.",
-  defaultOgImagePath: "/images/logo/logo-medium.png",
+  defaultOgImagePath: "/images/og-social.png",
   ogLocale: "en_US",
   twitterHandle: "@carlsbadfixit",
 };

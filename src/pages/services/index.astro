@@ -20,7 +20,7 @@ const servicesCollectionJsonLd = JSON.stringify(
       "Browse core handyman services from Carlsbad Fix It, including carpentry, electrical, plumbing fixture repairs, furniture assembly, honey-do lists, drywall repair, and TV mounting.",
     items: services.map((service) => ({
       name: service.name,
-      url: `/services//`,
+      url: `/services/${service.slug}/`,
     })),
   }),
 );
@@ -58,7 +58,7 @@ const breadcrumbJsonLd = JSON.stringify(
         <div class="space-y-2">
           <p class="eyebrow text-cf-textMuted">Services</p>
           <h1 class="text-display text-cf-text font-semibold tracking-tight">
-            Handyman services for homes in {primaryArea.label} and North County
+            Handyman Services in {primaryArea.label} &amp; North County San Diego
           </h1>
           <p class="text-body-sm text-cf-textMuted max-w-2xl">
             Carlsbad Fix It focuses on home repairs and improvements that fit

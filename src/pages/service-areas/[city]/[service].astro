@@ -87,10 +87,10 @@ const serviceFaqItems = getFaqItemsForService(service.slug);
 const faqItems = [...cityServiceFaqs, ...serviceFaqItems];
 
 // SEO
-const title = `${service.name} in ${city.label} | Carlsbad Fix It`;
+const title = `${service.name} Services in ${city.label} | Carlsbad Fix It`;
 const description = moneyEntry.intro
   ? `${moneyEntry.intro.slice(0, 155).trimEnd()}${moneyEntry.intro.length > 155 ? "…" : ""}`
-  : `${service.name} visits in ${city.label} for home repairs and improvements. Licensed and insured local handyman serving ${city.label} and nearby North County San Diego.`;
+  : `Professional ${service.name.toLowerCase()} services in ${city.label}. Licensed handyman for home repairs and improvements serving ${city.label} and nearby North County San Diego.`;
 
 const breadcrumbJsonLd = JSON.stringify(
   getBreadcrumbJsonLd([
@@ -203,7 +203,7 @@ const reviewJsonLd = reviewSnippet
           {service.name} in {city.label}
         </p>
         <h1 class="text-display font-semibold tracking-tight text-white">
-          {service.name} in {city.label}
+          {service.name} Services in {city.label}
         </h1>
         <p class="text-body-sm max-w-2xl text-sky-50">
           {introText}

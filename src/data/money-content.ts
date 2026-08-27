@@ -59,14 +59,14 @@ export const moneyContent: Record<string, Record<string, MoneyContentEntry>> = {
       },
       cityServiceFaqs: [
         {
-          question: "What carpentry repairs are most common in Carlsbad homes?",
+          question: "What carpentry repairs do Carlsbad homeowners need most?",
           answer:
-            "Older planned neighborhoods in Carlsbad commonly need wood gate repairs, interior door adjustments, and trim touch-ups around entryways and living rooms. Homes near the coast in La Costa and Carlsbad Village also see earlier wear on exterior wood from salt air exposure.",
+            "Wood gate repairs, interior door adjustments, and trim touch-ups around entryways and living rooms are the most frequent carpentry requests in Carlsbad. Homes near the coast in La Costa and Carlsbad Village also see earlier wear on exterior wood from salt air exposure.",
         },
         {
-          question: "Can I combine carpentry with other repairs in a single Carlsbad visit?",
+          question: "Can I combine carpentry with electrical or plumbing in the same Carlsbad visit?",
           answer:
-            "Yes. Many Carlsbad homeowners schedule a mixed visit that includes carpentry alongside drywall patches, a fixture swap, or caulk refresh. Grouping related work in the same area of the home keeps the visit efficient and cost-effective.",
+            "Yes. Many Carlsbad homeowners schedule a mixed visit that includes carpentry alongside drywall patches, a fixture swap, or a plumbing repair. Grouping related work in the same area of the home keeps the visit efficient and cost-effective.",
         },
       ],
     },
@@ -107,14 +107,14 @@ export const moneyContent: Record<string, Record<string, MoneyContentEntry>> = {
       },
       cityServiceFaqs: [
         {
-          question: "Which rooms do Carlsbad homeowners most often update in a lighting visit?",
+          question: "What lighting upgrades are most popular in Carlsbad homes?",
           answer:
-            "Kitchen pendants, primary bedroom ceiling fans, and living room dimmer switches are the most common upgrades in Carlsbad. Many homes built between 1995 and 2010 are still running builder-grade fixtures that are straightforward to improve in a single focused visit.",
+            "Kitchen pendants, primary bedroom ceiling fans, and living room dimmer switches are the most common electrical upgrades in Carlsbad. Many homes built between 1995 and 2010 still have builder-grade fixtures that are straightforward to improve in a single focused visit.",
         },
         {
-          question: "Do you install ceiling fans in Carlsbad homes?",
+          question: "Can a handyman install a ceiling fan in a Carlsbad home?",
           answer:
-            "Yes. Ceiling fan swaps are one of the most requested electrical visits in Carlsbad. We verify the existing box is correctly rated for the fan's weight before any install, and confirm wiring configuration so the install is safe and the controls work as expected.",
+            "Yes. Ceiling fan swaps are one of the most requested electrical visits in Carlsbad. The existing box is verified to be correctly rated for the fan's weight before installation, and wiring is confirmed so the fan and controls work safely as expected.",
         },
       ],
     },
@@ -156,14 +156,14 @@ export const moneyContent: Record<string, Record<string, MoneyContentEntry>> = {
       },
       cityServiceFaqs: [
         {
-          question: "What plumbing fixture repairs are most common in Carlsbad homes?",
+          question: "What plumbing repairs are most common in Carlsbad homes?",
           answer:
             "Faucet replacements in kitchens and primary baths, running toilet repairs, and garbage disposer swaps are the most frequent plumbing visits in Carlsbad. Homes near the coast may see faster wear on faucet finishes and valves from salt air and hard water.",
         },
         {
-          question: "Can you combine plumbing and other repairs in the same Carlsbad visit?",
+          question: "Can a handyman handle multiple plumbing repairs in one Carlsbad visit?",
           answer:
-            "In many cases, yes. A faucet swap in the kitchen and a toilet repair in the master bath are often completed in one visit when layout and shutoff access allow. Share your full list and we will confirm what makes sense to group together.",
+            "Yes. A faucet swap in the kitchen and a toilet repair in the primary bath are often completed in one visit when layout and shutoff access allow. Share the full list upfront and the visit will be scoped to confirm what makes sense to group together.",
         },
       ],
     },
@@ -205,12 +205,12 @@ export const moneyContent: Record<string, Record<string, MoneyContentEntry>> = {
       },
       cityServiceFaqs: [
         {
-          question: "What does a typical honey-do list visit look like in a Carlsbad home?",
+          question: "How many items fit in a honey-do handyman visit in Carlsbad?",
           answer:
-            "Common Carlsbad honey-do visits handle 4–8 items in a single appointment: tightening door hardware, patching small wall dings from pictures or anchors, caulking around tubs and windows, adjusting a sticky door or drawer, and swapping a light fixture. We prioritize the highest-visibility items first.",
+            "Most Carlsbad honey-do visits complete 4–8 items in a single appointment: tightening door hardware, patching wall dings from pictures or anchors, caulking around tubs and windows, adjusting sticky doors, and swapping a light fixture. The highest-visibility items are prioritized first.",
         },
         {
-          question: "Is a pre-listing honey-do visit a good idea for a Carlsbad home sale?",
+          question: "Is a pre-listing handyman visit worth it for a Carlsbad home sale?",
           answer:
             "Yes. Carlsbad real estate moves quickly and buyers notice deferred maintenance. A focused visit to address caulk gaps, scuffed walls, sticking doors, and loose hardware helps the home show cleaner without a large contractor expense before listing.",
         },
@@ -254,14 +254,14 @@ export const moneyContent: Record<string, Record<string, MoneyContentEntry>> = {
       },
       cityServiceFaqs: [
         {
-          question: "What types of furniture assembly are most common in Carlsbad?",
+          question: "What furniture assembly is most common in Carlsbad homes?",
           answer:
-            "Common Carlsbad furniture assembly visits include desks and home office setups, bedroom furniture and bed frames, dining sets, bookshelves, and outdoor patio furniture. Many homeowners schedule after a large delivery from IKEA, Pottery Barn, CB2, or West Elm.",
+            "Desks and home office setups, bedroom furniture and bed frames, dining sets, bookshelves, and outdoor patio furniture are the most common furniture assembly requests in Carlsbad. Many homeowners schedule after a large delivery from IKEA, Pottery Barn, CB2, or West Elm.",
         },
         {
-          question: "Do you anchor furniture to walls for earthquake safety in Carlsbad?",
+          question: "Does a handyman anchor furniture for earthquake safety in Carlsbad?",
           answer:
-            "Yes. Southern California earthquake preparedness is a practical concern, and many Carlsbad homeowners add anti-tip anchoring to tall bookshelves, dressers, and wardrobes. We can anchor new and existing pieces to wall studs as part of an assembly visit or as a standalone task.",
+            "Yes. Southern California earthquake preparedness is a practical concern, and many Carlsbad homeowners add anti-tip anchoring to tall bookshelves, dressers, and wardrobes. New and existing pieces can be anchored to wall studs as part of an assembly visit or as a standalone task.",
         },
       ],
     },
@@ -305,12 +305,12 @@ export const moneyContent: Record<string, Record<string, MoneyContentEntry>> = {
         {
           question: "What wall texture is most common in Carlsbad homes?",
           answer:
-            "Orange peel is the most common wall texture in Carlsbad, particularly in homes built from the mid-1990s through the mid-2000s. Knockdown and light skip trowel also appear in custom and older properties. We blend new texture into the surrounding area so repairs do not stand out under normal lighting.",
+            "Orange peel is the most common wall texture in Carlsbad, particularly in homes built from the mid-1990s through the mid-2000s. Knockdown and light skip trowel also appear in custom and older properties. New texture is blended into the surrounding area so drywall repairs do not stand out under normal lighting.",
         },
         {
-          question: "Can you match the existing paint after drywall repairs in Carlsbad?",
+          question: "Can a handyman match paint after drywall repair in Carlsbad?",
           answer:
-            "We blend texture to match the surrounding wall surface. For paint touch-up, having leftover paint from when the room was last painted gives the best match. We will give you an honest assessment of what to expect before starting so there are no surprises on color.",
+            "Texture is blended to match the surrounding wall surface. For paint touch-up, having leftover paint from the last time the room was painted gives the best match. An honest assessment of what to expect is provided before work starts so there are no surprises on color.",
         },
       ],
     },
@@ -352,14 +352,14 @@ export const moneyContent: Record<string, Record<string, MoneyContentEntry>> = {
       },
       cityServiceFaqs: [
         {
-          question: "What wall type is best for TV mounting in a Carlsbad home?",
+          question: "What walls work best for TV mounting in Carlsbad homes?",
           answer:
-            "Most Carlsbad homes have standard wood-stud drywall walls, which are ideal for a clean, solid TV mount. Some newer construction in areas like Bressi Ranch may have stone or tile feature walls — we assess what you have and choose the right mounting hardware before drilling anything.",
+            "Most Carlsbad homes have standard wood-stud drywall walls, which are ideal for a clean, solid TV mount. Some newer construction in areas like Bressi Ranch may have stone or tile feature walls — wall type is assessed and the right mounting hardware is selected before any drilling.",
         },
         {
-          question: "Can you mount a TV in a bedroom or guest room in a Carlsbad rental?",
+          question: "Can a handyman mount a TV in a Carlsbad rental or vacation home?",
           answer:
-            "Yes. Bedroom TV mounts are a common request for Carlsbad rental homes and short-term vacation rentals near the beach. We focus on secure installs with tidy cable management that work well for guests without requiring frequent adjustments between stays.",
+            "Yes. Bedroom and living room TV mounts are a common request for Carlsbad rental homes and short-term vacation rentals near the beach. Visits focus on secure installs with tidy cable management that hold up well between guests without requiring frequent adjustments.",
         },
       ],
     },

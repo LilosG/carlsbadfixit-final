@@ -27,7 +27,9 @@ export async function getStaticPaths({
   paginate: PaginateFunction;
 }) {
   const posts = (await getCollection("blog")).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+    (a, b) =>
+      (b.data.pubDate ?? b.data.publishDate ?? new Date(0)).valueOf() -
+      (a.data.pubDate ?? a.data.publishDate ?? new Date(0)).valueOf(),
   );
   const remaining = posts.filter((post) => !post.data.featured);
 

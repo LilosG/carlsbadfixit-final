@@ -73,11 +73,6 @@ function getBusinessProvider() {
     openingHoursSpecification: getOpeningHoursSpecification(),
     priceRange: businessProfile.priceRange,
     sameAs: businessProfile.socialLinks.map((link) => link.href),
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: businessProfile.aggregateRating.ratingValue,
-      reviewCount: businessProfile.aggregateRating.reviewCount,
-    },
   };
 }
 

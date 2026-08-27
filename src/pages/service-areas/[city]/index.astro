@@ -48,12 +48,12 @@ const reviewSnippet = content.reviewSnippet ?? {
   quote:
     "They handled drywall repairs, a few trim fixes, and a new light in one visit. Everything looked neat and was cleaned up before they left.",
   name: "Sarah M.",
-  location: `${city.label}, CA`,
+  location: city.label,
   role: "Homeowner",
 };
 
-const servicesTitle = `Handyman services available in ${city.label}`;
-const coverageTitle = `A local option for small home projects in ${city.label}, CA`;
+const servicesTitle = `Handyman Services Available in ${city.label}`;
+const coverageTitle = `A local option for small home projects in ${city.label}`;
 
 const breadcrumbJsonLd = JSON.stringify(
   getBreadcrumbJsonLd([
@@ -206,7 +206,7 @@ const faqJsonLd =
   <section class="mt-8">
     <EeatTrustBlock
       locationLabel={`${city.label} and nearby North County communities`}
-      heading={`Trusted handyman visits in ${city.label}`}
+      heading={`Trusted Handyman Services in ${city.label}`}
       body={`Carlsbad Fix It provides home repair and improvement visits in ${city.label} with careful planning, clear communication, and clean work areas. Each visit is scoped to completed on a reliable schedule.`}
     />
   </section>
@@ -397,7 +397,7 @@ const faqJsonLd =
     <div class="space-y-6">
       <SectionIntro
         eyebrow="How it works"
-        title={"A simple process for " + city.label + " homeowners"}
+        title={"How to Schedule a Handyman in " + city.label}
         description={processIntro}
       />
       <div class="grid gap-5 md:grid-cols-4">

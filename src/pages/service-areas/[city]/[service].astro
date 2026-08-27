@@ -594,25 +594,35 @@ const reviewJsonLd = reviewSnippet
 
   <section class="shadow-soft mt-8 rounded-3xl bg-white p-6 md:p-8">
     <div class="space-y-3">
-      <p class="eyebrow text-cf-textMuted">Related links</p>
+      <p class="eyebrow text-cf-textMuted">Related pages</p>
       <h2 class="text-h2 text-cf-text font-semibold">
-        Explore more options for {city.label} homeowners
+        {service.name} Services Near {city.label}: Other Areas We Serve
       </h2>
       <p class="text-body-sm text-cf-textMuted max-w-3xl">
-        See other handyman services in {city.label}, review the full service
-        list, or compare availability across nearby North County communities.
+        Carlsbad Fix It offers {service.name.toLowerCase()} services across North County San Diego. Compare availability in nearby communities or browse all services in {city.label}.
       </p>
+    </div>
+    <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        serviceAreas
+          .filter((a) => a.slug !== cityKey)
+          .map((a) => (
+            <a
+              href={`/service-areas/${a.slug}/${service.slug}/`}
+              class="card-elevated flex flex-col gap-1 text-sm"
+            >
+              <span class="text-cf-text font-semibold">{service.name} in {a.label}</span>
+              <span class="text-cf-textMuted text-xs">View availability in {a.name}</span>
+            </a>
+          ))
+      }
     </div>
     <div class="mt-4 flex flex-wrap gap-3 text-sm">
       <a href={`/service-areas/${city.slug}/`} class="btn-primary">
-        {city.label} service area
+        All services in {city.label}
       </a>
       <a href={`/services/${service.slug}/`} class="btn-pill-elevated">
         {service.name} overview
-      </a>
-      <a href="/services/" class="btn-pill-elevated"> All services </a>
-      <a href="/service-areas/" class="btn-pill-elevated">
-        All service areas
       </a>
       <a href="/contact/" class="btn-pill-accent"> Request a quote </a>
     </div>

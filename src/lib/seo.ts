@@ -228,7 +228,9 @@ export function getServiceReviewJsonLd(review: {
       bestRating: "5",
     },
     itemReviewed: {
+      "@type": "HomeAndConstructionBusiness",
       "@id": `${SITE_URL}#localbusiness`,
+      name: businessProfile.name,
     },
   };
 }
@@ -298,6 +300,13 @@ export function getReviewsJsonLd(testimonials: TestimonialItem[]) {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": `${SITE_URL}#localbusiness`,
+    name: businessProfile.name,
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5",
+      bestRating: "5",
+      reviewCount: testimonials.length,
+    },
     review: testimonials.map((t) => ({
       "@type": "Review",
       author: {
@@ -311,7 +320,9 @@ export function getReviewsJsonLd(testimonials: TestimonialItem[]) {
         bestRating: "5",
       },
       itemReviewed: {
+        "@type": "HomeAndConstructionBusiness",
         "@id": `${SITE_URL}#localbusiness`,
+        name: businessProfile.name,
       },
     })),
   };
